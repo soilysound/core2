@@ -16,6 +16,28 @@
     clip: rect(1px, 1px, 1px, 1px) !important;
 }
 
+.is-not-interactive {
+	pointer-events:none;
+	cursor:default;
+}
+
+.is-interactive {
+	cursor:pointer
+}
+
+.is-disabled {
+	cursor:default
+}
+
+.is-not-selectable {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
 @media all and (min-width:801px){
 	.is-hidden--bp10 {
 		display:none

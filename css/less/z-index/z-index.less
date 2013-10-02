@@ -1,0 +1,23 @@
+/* this will place an element above any other element with no z-index set */
+.u-z-bottom {
+	z-index:1;
+	position: relative
+}
+
+/* use this for things like dropdown mensu and other ui elements that sit on top of the normal content */
+.u-z-middle {
+	z-index:100;
+	position: relative
+}
+
+/* use this for overlays */
+.u-z-top {
+	z-index:1000;
+	position: relative
+}
+
+/* the nuclear option - force top of everything */
+.u-zz-top {
+	z-index:1000000000!important;
+	position: relative
+}
