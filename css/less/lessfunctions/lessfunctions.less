@@ -1,0 +1,32 @@
+/* Cross browser opacity */
+.opacity(@opacity: 0.5) {
+	opacity: @opacity;
+	filter: e(%("alpha(opacity=%d)",@opacity*100));
+}
+
+/* Clear fix */
+.cf() {
+	&:after {content:"";display:table;clear:both}
+	zoom:1;
+}
+
+/* Cross browser transforms */
+.transform(@arguments) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-ms-transform:@arguments;
+	transform: @arguments;
+}
+
+/* Cross browser transitions */
+.transition(@arguments) {
+	-webkit-transition: @arguments;
+	-moz-transition: @arguments;
+	transition: @arguments;
+}
+
+/* fixes the transition flickering and glitches that trouble mobile webkit browsers */
+.fix-flicker() {
+	-webkit-transform: translateZ(0);
+}
+

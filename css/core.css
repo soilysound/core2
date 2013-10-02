@@ -79,6 +79,7 @@ a,a:focus,a:active{outline:0;text-decoration:none;}
 .u-aspect4-3{position:relative;padding-bottom:74.8%;}
 .u-aspect16-9{position:relative;padding-bottom:100%;}
 .u-aspect__target{position:absolute;width:100%;height:100%;}
+.u-height-full{height:100%;}
 .u-no-overflow{position:relative;overflow:hidden;}
 .u-clip{max-width:100%;white-space:nowrap;overflow:hidden;}
 .u-ellipsis{max-width:100%;white-space:nowrap;overflow:hidden;text-oveflow:ellipsis;}
