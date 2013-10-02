@@ -1,0 +1,35 @@
+.is-hidden {
+	display:none;
+}
+
+.is-invisible {
+	visibility:hidden;
+}
+
+.is-visually-hidden {
+	position: absolute !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+@media all and (min-width:801px){
+	.is-hidden--bp10 {
+		display:none
+	}
+}
+
+@media all and (max-width:800px){
+	.is-hidden--bp20 {
+		display:none
+	}
+}
+
+@media all and (max-width:600px){
+	.is-hidden--bp30 {
+		display:none
+	}
+}

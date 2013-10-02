@@ -1,0 +1,51 @@
+.row {
+	outline:2px solid red;
+	width:100%;
+	position:relative;
+	display:table;
+	table-layout:fixed;
+	display:-webkit-box;
+	display:-moz-box;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:-ms-flexbox;
+	display:flex;
+}
+
+.row__col--gap-s {
+	margin-left:12px;
+}
+
+.row__col--gap-m {
+	margin-left:18px;
+}
+
+.row__col--gap-l {
+	margin-left:24px;
+}
+
+.row__col1 {
+	margin-left:0;
+}
+
+.row__col {
+	position:relative;
+	vertical-align:top;
+	outline:1px solid red;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-webkit-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+
+	/* for IE8-9 - no flexbox */
+	display: ~"table-cell\0/"
+}
+
+@media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
+
+	/* cancel out for ie10 - has flexbox*/
+	.row__col {
+		display: block
+	}
+}

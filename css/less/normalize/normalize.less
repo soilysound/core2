@@ -1,0 +1,34 @@
+@-ms-viewport {
+  width:auto;
+}
+
+* {
+	padding:0;
+	margin:0;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+html {
+	height:100%;
+	-webkit-text-size-adjust: none;
+	-webkit-touch-callout:none;
+	-ms-touch-action:none;
+
+	//prevents overzeaous aliasing on fonts
+	-webkit-font-smoothing:antialiased;
+
+	//prevents overzealous aliasing in firefox in osx
+	-moz-osx-font-smoothing: grayscale;
+
+	//disable double tap to zoom in ie10
+	-ms-touch-action: none !important;
+	-ms-overflow-style:-ms-autohiding-scrollbar;
+} 
+
+body {
+	height:100%;
+	font-family:sans-serif;
+	background:#aaa;
+}
