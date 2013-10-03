@@ -1,11 +1,10 @@
 #Core2
 
-A lightweight starting point for building websites using the BEM design pattern.
+A lightweight iteration of core using the BEM design pattern.
 
 ##Features
-* Small footprint - core2 is not a framework but a starting point to build upon
+* Small footprint - core2 is less of a full framework and more of a starting point to build upon
 * Provides common, utility classes.
-* Provides common, structural UI patterns.
+* Provides basic responsive layout patterns.
 * Consistent class name conventions.
-* Responsive friendly.
-* Easy to extend and build upon.
+* Designed to extend and build upon.
