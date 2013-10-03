@@ -10,6 +10,24 @@
 	zoom:1;
 }
 
+.flex-box(){
+	display:-webkit-box;
+	display:-moz-box;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:-ms-flexbox;
+	display:flex;
+}
+
+.flex-width(@arguments){
+	width:@arguments;
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	-webkit-flex: 0 1 auto;
+	-ms-flex: 0 1 auto;
+	flex: 0 1 auto;
+}
+
 /* Cross browser transforms */
 .transform(@arguments) {
 	-webkit-transform: @arguments;

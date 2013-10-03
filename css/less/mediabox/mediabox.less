@@ -1,0 +1,69 @@
+.mediabox {
+	display:table;
+	width: 100%;
+	margin-bottom: 24px
+}
+
+.mediabox__figure {
+	min-width:12px;
+	direction:ltr;
+	display: table-cell;
+	vertical-align: top;
+	border-color: transparent;
+	border-right-style:solid
+}
+
+.mediabox__body {
+	display: table-cell;
+	vertical-align: top;
+	direction:ltr;
+	//stops the width on IE10 pushing out the parent width
+	width:0
+}
+
+/* gap between image and body text */
+.mediabox--gap-s > .mediabox__figure {
+	border-width:12px
+}
+
+.mediabox--gap-m > .mediabox__figure {
+	border-width: 18px
+}
+
+.mediabox--gap-l > .mediabox__figure {
+	border-width:24px
+}
+
+/**
+ * Vertical media box
+ */
+
+.mediabox--vertical {
+	display:block
+}
+
+.mediabox--vertical > .mediabox__figure {
+	width:100%;
+	display: block;
+	border-style: none;
+	border-bottom-style: solid
+}
+
+.mediabox--vertical > .mediabox__body {
+	padding:0;
+	display: block;
+}
+
+/**
+ * Reverse direction mediabox
+ */
+
+.mediabox--reverse {
+	direction:rtl
+}
+
+.mediabox--reverse > .mediabox__figure {
+	border-style: none;
+	border-left-style: solid;
+}
+

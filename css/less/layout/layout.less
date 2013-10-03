@@ -1,26 +1,28 @@
 .row {
-	outline:2px solid red;
 	width:100%;
 	position:relative;
 	display:table;
 	table-layout:fixed;
-	display:-webkit-box;
-	display:-moz-box;
-	display:-webkit-flex;
-	display:-moz-flex;
-	display:-ms-flexbox;
-	display:flex;
+	
+	.flex-box();
 }
 
 .row__col {
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing: content-box;
+
+	-webkit-align-items:center;
+	-webkit-box-align:center;
+	outline:1px solid red;
+
 	position:relative;
 	vertical-align:top;
-	outline:1px solid red;
 	-webkit-box-flex: 1;
 	-moz-box-flex: 1;
-	-webkit-flex: 1 1 auto;
+	-webkit-flex: 1 1 0;
 	-ms-flex: 1 1 auto;
-	flex: 1 1 auto;
+	flex: 1 1 0;
 
 	/* for IE8-9 - no flexbox */
 	display: ~"table-cell\0/"
@@ -35,23 +37,37 @@
 }
 
 /* margins between columns */
-.row__col--gap-s {
-	margin-left:12px;
+.row--gap-s > .row__col {
+	padding-left:12px;
 }
 
-.row__col--gap-m {
-	margin-left:18px;
+.row--gap-m > .row__col {
+	padding-left:18px;
 }
 
-.row__col--gap-l {
-	margin-left:24px;
+.row--gap-l > .row__col {
+	padding-left:24px;
 }
 
-.row__col1 {
-	margin-left:0;
+.row__col1[class] {
+	padding-left:0;
+}
+
+/* vertical align middle column content */
+.row--align-middle > .row__col{
+
+	.flex-box();
+
+	//vertically align middle
+	vertical-align:middle;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
 }
 
 @media all and (max-width:800px){
+	
 	.row--collapse-bp20 {
 		display:block
 	}
@@ -64,6 +80,7 @@
 }
 
 @media all and (max-width:600px){
+	
 	.row--collapse-bp30 {
 		display:block
 	}
