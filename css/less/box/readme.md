@@ -1,1 +1,3 @@
-### BOX
+### Box
+
+## Usage
