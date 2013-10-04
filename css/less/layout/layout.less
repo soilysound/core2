@@ -1,9 +1,16 @@
+/**
+ * LAYOUT
+ * Create fluid and fixed width layouts
+ * Uses flex box with display table fall back for IE8 and 9
+ * ============================================================================
+*/
+
 .row {
 	width:100%;
 	position:relative;
 	display:table;
 	table-layout:fixed;
-	
+
 	.flex-box();
 }
 
@@ -37,6 +44,7 @@
 }
 
 /* margins between columns */
+
 .row--gap-s > .row__col {
 	padding-left:12px;
 }
@@ -54,6 +62,7 @@
 }
 
 /* vertical align middle column content */
+
 .row--align-middle > .row__col{
 
 	.flex-box();
@@ -66,8 +75,10 @@
 	align-items: center;
 }
 
+/* @BP20 */
+
 @media all and (max-width:800px){
-	
+
 	.row--collapse-bp20 {
 		display:block
 	}
@@ -79,8 +90,10 @@
 	}
 }
 
+/* @BP30 */
+
 @media all and (max-width:600px){
-	
+
 	.row--collapse-bp30 {
 		display:block
 	}
