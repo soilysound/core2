@@ -28,3 +28,12 @@
 
 * Uses the clothing size notation for sizes
 * `.box--s`   `.box--m`     `.box--l`
+
+### Set a 'moat' around the content using padding
+
+```html
+      <div class="box--moat-s"></div>
+```
+
+* Uses the clothing size notation for sizes
+* `.box--moat-s`   `.box--moat-m`     `.box--moat-l`
