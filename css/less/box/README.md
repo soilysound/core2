@@ -32,7 +32,7 @@
 ### Set a 'moat' around the content using padding
 
 ```html
-      <div class="box--moat-s"></div>
+      <div class="box box--moat-s"></div>
 ```
 
 * Uses the clothing size notation for sizes
