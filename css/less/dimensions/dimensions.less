@@ -1,4 +1,11 @@
+/**
+ * DIMENSIONS
+ * A set of utility classes for setting content sizes
+ * ============================================================================
+ */
+
 /* percentage dimensions */
+
 .u-span1of1 { width:100% }
 .u-span1of2 { width:50% }
 .u-span1of3 { width:33.33% }
@@ -13,6 +20,7 @@
 .u-span1of12 { width:8% }
 
 /* fixed width dimensions */
+
 .u-span1 { width:12px }
 .u-span2 { width:24px }
 .u-span3 { width:36px }
@@ -21,7 +29,7 @@
 .u-span6 { width:72px }
 .u-span7 { width:84px }
 .u-span8 { width:96px }
-.u-span9 { width:108px } 
+.u-span9 { width:108px }
 .u-span10 { width:120px }
 .u-span11 { width:132px }
 .u-span12 { width:144px }
@@ -52,7 +60,12 @@
 .u-span37 { width:444px }
 .u-span38 { width:456px }
 
-/* for dimensions to work on our flexbox layouts, we have to set the flex value to 0 */
+
+/**
+ * NOTE
+ * For dimensions to work on our flexbox layouts, we have to set the flex value to 0 on the column
+ */
+
 .row__col[class*="u-span"]{
 	-webkit-box-flex: 0;
 	-moz-box-flex: 0;
@@ -62,6 +75,7 @@
 }
 
 /* aspect ratios */
+
 .u-aspect16-9 {
 	position: relative;
 	padding-bottom:56.25%
@@ -77,6 +91,8 @@
 	padding-bottom:100%
 }
 
+/* the target for the aspect ratio - usually an image */
+
 .u-aspect__target {
 	position: absolute;
 	width:100%;
@@ -84,12 +100,15 @@
 }
 
 /* heights */
+
 .u-height-full {
 	height:100%;
 	height:100vh;
-} 
+}
 
 .u-minheight-full {
 	min-height:100%;
-	min-height:100vh	
+	min-height:100vh
 }
+
+

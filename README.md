@@ -8,3 +8,4 @@ A lightweight iteration of core using the BEM design pattern.
 * Provides basic responsive layout patterns.
 * Consistent class name conventions.
 * Designed to extend and build upon.
+* Uses clothing size notation for sizing, s, m, l, xl, xxl etc

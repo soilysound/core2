@@ -1,20 +1,68 @@
+/**
+ * BOX
+ * A general purpose container for content
+ * Use to set global bottom margins with clothing size notation
+ * ============================================================================
+ */
+
 .box {
 	display:block;
+  position: relative
 }
 
 .box--inline {
 	display:inline-block;
 }
 
-/* manage global margin bottoms */
-.box--primary {
-	margin-bottom:24px;
+/* Set margin bottoms using the clothing size notation */
+
+.box--s {
+  margin-bottom:12px;
 }
 
-.box--secondary {
+.box--m {
 	margin-bottom:18px;
 }
 
-.box--tertiary {
-	margin-bottom:12px;
+.box--l {
+	margin-bottom:24px;
 }
+
+/* @ BP20 */
+
+@media all and (max-width:800px){
+
+  .box--s {
+    margin-bottom:10px;
+  }
+
+  .box--m {
+    margin-bottom:14px;
+  }
+
+  .box--l {
+    margin-bottom:18px;
+  }
+
+}
+
+/* @ BP30 */
+
+@media all and (max-width:600px){
+
+  .box--s {
+    margin-bottom:8px;
+  }
+
+  .box--m {
+    margin-bottom:12px;
+  }
+
+  .box--l {
+    margin-bottom:15px;
+  }
+
+}
+
+
+
