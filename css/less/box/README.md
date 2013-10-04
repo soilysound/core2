@@ -8,7 +8,7 @@
 ### A basic box div
 
 ```html
-      <div class="box"></div>
+<div class="box"></div>
 ```
 
 * Columns automatically size themselves evenly across the parent containers width
@@ -17,13 +17,13 @@
 ### Inline block version
 
 ```html
-      <div class="box--inline"></div>
+<div class="box--inline"></div>
 ```   
 
 ### Set a margin
 
 ```html
-      <div class="box box--s"></div>
+<div class="box box--s"></div>
 ```    
 
 * Uses the clothing size notation for sizes
@@ -32,7 +32,7 @@
 ### Set a 'moat' around the content using padding
 
 ```html
-      <div class="box box--moat-s"></div>
+<div class="box box--moat-s"></div>
 ```
 
 * Uses the clothing size notation for sizes
