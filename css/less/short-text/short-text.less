@@ -1,0 +1,36 @@
+@media all and (max-width:800px){
+
+	.short-text-bp20 {
+		letter-spacing:-100px;
+		text-indent:-100px;
+		position: relative;
+		overflow:hidden;
+	}
+
+	.short-text-bp20[data-short-text]:after {
+		text-indent:100px;
+		display:inline-block;
+		content:attr(data-short-text);
+		letter-spacing: normal;
+	}
+
+}
+
+@media all and (max-width:600px){
+
+	.short-text-bp30 {
+		letter-spacing:-100px;
+		text-indent:-100px;
+		position: relative;
+		overflow:hidden;
+	}
+
+	.short-text-bp30[data-short-text]:after {
+		text-indent:100px;
+		display:inline-block;
+		content:attr(data-short-text);
+		letter-spacing: normal;
+	}
+
+}
+

@@ -1,0 +1,2 @@
+.short-text{outline:1px solid #008000;}
+@media all and (max-width:800px){.short-text:before{content:"" attr(data-bp20) "";}}
