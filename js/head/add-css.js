@@ -60,6 +60,11 @@
 			delete cssRules[id];
 		}
 
+		if(id in persistedRules){
+
+			delete persistedRules[id];
+		}
+
 		writeCss();
 	}
 	
@@ -102,7 +107,7 @@
 	writeCss();
 
 	//expose functions
-	SKY_SPORTS.addCss = addCss;
-	SKY_SPORTS.removeCss = removeCss;
+	window.SKY_SPORTS.addCss = addCss;
+	window.SKY_SPORTS.removeCss = removeCss;
 
 })(window, document);

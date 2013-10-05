@@ -1,15 +1,15 @@
 @media all and (max-width:800px){
 
 	.short-text-bp20 {
+		margin-top:-1.3em;
+		white-space:pre-wrap;
 		letter-spacing:-100px;
-		text-indent:-100px;
 		position: relative;
 		overflow:hidden;
 	}
 
 	.short-text-bp20[data-short-text]:after {
-		text-indent:100px;
-		display:inline-block;
+		display:block;
 		content:attr(data-short-text);
 		letter-spacing: normal;
 	}
@@ -20,14 +20,12 @@
 
 	.short-text-bp30 {
 		letter-spacing:-100px;
-		text-indent:-100px;
 		position: relative;
 		overflow:hidden;
 	}
 
 	.short-text-bp30[data-short-text]:after {
-		text-indent:100px;
-		display:inline-block;
+		display:block;
 		content:attr(data-short-text);
 		letter-spacing: normal;
 	}

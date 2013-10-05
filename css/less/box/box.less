@@ -18,29 +18,29 @@
 /* Set margin bottoms using the clothing size notation */
 
 .box--s {
-  margin-bottom:12px;
+  margin-bottom:@box-unit-s
 }
 
 .box--m {
-	margin-bottom:18px;
+	margin-bottom:@box-unit-m
 }
 
 .box--l {
-	margin-bottom:24px;
+	margin-bottom:@box-unit-l
 }
 
 /* Set padding using the clothing size notation */
 
 .box--island-s {
-  padding:12px
+  padding:@box-unit-s
 }
 
 .box--island-m {
-  padding:18px
+  padding:@box-unit-m
 }
 
 .box--island-l {
-  padding:24px
+  padding:@box-unit-l
 }
 
 
@@ -49,15 +49,27 @@
 @media all and (max-width:800px){
 
   .box--s {
-    margin-bottom:10px;
+    margin-bottom:@box-unit-s-bp20
   }
 
   .box--m {
-    margin-bottom:14px;
+    margin-bottom:@box-unit-m-bp20
   }
 
   .box--l {
-    margin-bottom:18px;
+    margin-bottom:@box-unit-l-bp20
+  }
+
+  .box--island-s {
+    padding:@box-unit-s-bp20
+  }
+
+  .box--island-m {
+    padding:@box-unit-m-bp20
+  }
+
+  .box--island-l {
+    padding:@box-unit-l-bp20
   }
 
 }
@@ -67,15 +79,27 @@
 @media all and (max-width:600px){
 
   .box--s {
-    margin-bottom:8px;
+    margin-bottom:@box-unit-s-bp30
   }
 
   .box--m {
-    margin-bottom:12px;
+    margin-bottom:@box-unit-m-bp30
   }
 
   .box--l {
-    margin-bottom:15px;
+    margin-bottom:@box-unit-l-bp30
+  }
+
+  .box--island-s {
+    padding:@box-unit-s-bp30
+  }
+
+  .box--island-m {
+    padding:@box-unit-m-bp30
+  }
+
+  .box--island-l {
+    padding:@box-unit-l-bp30
   }
 
 }

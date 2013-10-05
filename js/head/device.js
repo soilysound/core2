@@ -9,7 +9,7 @@
 
 (function(window, document){
 
-	window.SKY_SPORTS = {};
+	window.SKY_SPORTS = window.SKY_SPORTS || {};
 
 	var docEl = document.documentElement;
 
