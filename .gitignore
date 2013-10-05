@@ -1,5 +1,5 @@
 # Node modules #
 ###################
 *node_modules
-*GruntFile.js
-*package.json
+GruntFile.js
+package.json
