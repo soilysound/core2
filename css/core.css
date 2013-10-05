@@ -87,7 +87,7 @@ a,a:focus,a:active{outline:0;text-decoration:none;}
 .u-minheight-full{min-height:100%;min-height:100 vh;}
 .mediabox{display:table;width:100%;}
 .mediabox__figure{min-width:12px;direction:ltr;display:table-cell;vertical-align:top;}
-.mediabox__body{display:table-cell;vertical-align:top;direction:ltr;width:0;border-color:transparent;border-left-style:solid;}
+.mediabox__body{display:table-cell;vertical-align:top;direction:ltr;width:0;border-color:transparent;border-left-style:solid;position:relative;}
 .mediabox--gap-s>.mediabox__body{border-width:12px;}
 .mediabox--gap-m>.mediabox__body{border-width:18px;}
 .mediabox--gap-l>.mediabox__body{border-width:24px;}
