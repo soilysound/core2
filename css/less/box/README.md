@@ -29,10 +29,10 @@
 * Uses the clothing size notation for sizes
 * `.box--s`   `.box--m`     `.box--l`
 
-### Set a 'moat' around the content using padding
+### Set an island around the content using padding
 
 ```html
-<div class="box box--moat-s"></div>
+<div class="box box--island-s"></div>
 ```
 
 * Uses the clothing size notation for sizes
