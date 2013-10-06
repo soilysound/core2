@@ -1,3 +1,34 @@
+/**
+ * SHORT TEXT
+ * Replace a piece of text with a shorter alternative
+ * Available at each breakpoint
+ * ============================================================================
+*/
+
+
+/* @BP10 */
+
+@media all and (min-width:801px){
+
+	.short-text-bp10 {
+		margin-top:-1.3em;
+		white-space:pre-wrap;
+		letter-spacing:-100px;
+		position: relative;
+		overflow:hidden;
+	}
+
+	.short-text-bp10[data-short-text]:after {
+		display:block;
+		content:attr(data-short-text);
+		letter-spacing: normal;
+	}
+
+}
+
+
+/* @ BP20 */
+
 @media all and (max-width:800px){
 
 	.short-text-bp20 {
@@ -15,6 +46,8 @@
 	}
 
 }
+
+/* @ BP30 */
 
 @media all and (max-width:600px){
 
