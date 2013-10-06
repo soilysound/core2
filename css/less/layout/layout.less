@@ -15,13 +15,15 @@
 }
 
 .row__col {
+
+	//outline:1px solid red;
+
 	-webkit-box-sizing:content-box;
 	-moz-box-sizing:content-box;
 	box-sizing: content-box;
 
 	-webkit-align-items:center;
 	-webkit-box-align:center;
-	outline:1px solid red;
 
 	position:relative;
 	vertical-align:top;
@@ -58,7 +60,7 @@
 }
 
 //cancel left padding
-.row__col1[class] {
+.row[class*="--gap"] > .row__col:first-child {
 	padding-left:0;
 }
 
