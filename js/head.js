@@ -419,16 +419,38 @@ String.prototype.toCamel = function(){
 		return bp;
 	}
 
+	function throttle(fn, time) {
+    var handle;
+    function throttled() {
+        var args;
+        var context;
+        if(!handle) {
+            args = arguments;
+            context = this;
+            handle = setTimeout(execute, time);
+        }
+
+        function execute() {
+            handle = null;
+            fn.apply(context, args);
+        }
+    }
+
+
+    return throttled;
+}
+
 
 	if(window.addEventListener){
 
 		getBreakPoint();
 
-		window.addEventListener('resize', function(){
-
+		window.addEventListener('resize', throttle(function(){
+console.time(1);
 			getBreakPoint();
+console.timeEnd(1);
+		}, 500), false);
 
-		}, false);
 	}
 
 	SKY_SPORTS.hasFeature = feature();
