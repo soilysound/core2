@@ -5,7 +5,7 @@
  * ============================================================================
 */
 
-.row {
+.grid {
 	width:100%;
 	position:relative;
 	display:table;
@@ -14,7 +14,7 @@
 	.flex-box();
 }
 
-.row__col {
+.grid__col {
 
 	//outline:1px solid red;
 
@@ -40,33 +40,33 @@
 @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
 
 	/* cancel out for ie10 - has flexbox*/
-	.row__col {
+	.grid__col {
 		display: block
 	}
 }
 
 /* margins between columns */
 
-.row--gap-s > .row__col {
+.grid--gap-s > .grid__col {
 	padding-left:@box-unit-s;
 }
 
-.row--gap-m > .row__col {
+.grid--gap-m > .grid__col {
 	padding-left:@box-unit-m;
 }
 
-.row--gap-l > .row__col {
+.grid--gap-l > .grid__col {
 	padding-left:@box-unit-l;
 }
 
 //cancel left padding
-.row[class*="--gap"] > .row__col:first-child {
+.grid[class*="--gap"] > .grid__col:first-child {
 	padding-left:0;
 }
 
 /* vertical align middle column content */
 
-.row--align-middle > .row__col{
+.grid--align-middle > .grid__col{
 
 	.flex-box();
 
@@ -82,23 +82,23 @@
 
 @media all and (max-width:800px){
 
-	.row--gap-s > .row__col {
+	.grid--gap-s > .grid__col {
 		padding-left:@box-unit-s-bp20
 	}
 
-	.row--gap-m > .row__col {
+	.grid--gap-m > .grid__col {
 		padding-left:@box-unit-m-bp20
 	}
 
-	.row--gap-l > .row__col {
+	.grid--gap-l > .grid__col {
 		padding-left:@box-unit-l-bp20
 	}
 
-	.row--collapse-bp20 {
+	.grid--collapse-bp20 {
 		display:block
 	}
 
-	.row--collapse-bp20 > .row__col {
+	.grid--collapse-bp20 > .grid__col {
 		padding-left:0;
 		display:block;
 		width:100%
@@ -110,23 +110,23 @@
 @media all and (max-width:600px){
 
 
-	.row--gap-s > .row__col {
+	.grid--gap-s > .grid__col {
 		padding-left:@box-unit-s-bp30
 	}
 
-	.row--gap-m > .row__col {
+	.grid--gap-m > .grid__col {
 		padding-left:@box-unit-m-bp30
 	}
 
-	.row--gap-l > .row__col {
+	.grid--gap-l > .grid__col {
 		padding-left:@box-unit-l-bp30
 	}
 
-	.row--collapse-bp30 {
+	.grid--collapse-bp30 {
 		display:block
 	}
 
-	.row--collapse-bp30 > .row__col {
+	.grid--collapse-bp30 > .grid__col {
 		padding-left:0;
 		display:block;
 		width:100%
