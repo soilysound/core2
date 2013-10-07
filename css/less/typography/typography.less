@@ -13,40 +13,111 @@
 	text-transform: uppercase
 }
 
-
-/* body text */
-
-.text-s, 
-.text-s-s-m,
-.text-s-m-m {
-	.fs-s();
+.u-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
 }
 
-.text-m,
-.text-m-m-s,
-.text-m-s-s {
-	.fs-m();
+
+
+/* body text sizes */
+
+.tx-s {
+	.font-size-s();
 }
 
-.text-l,
-.text-l-l-m,
-.text-l-m-m,
-.text-l-m-s {
-	.fs-l();
+.tx-m {
+	.font-size-m();
 }
+
+.tx-l {
+	.font-size-l();
+}
+
+/* headline text */
+
+.h-xxxl {
+	.font-size-xxxl();
+	.font-primary();
+	line-height:1.25em;
+	margin-bottom: 0.45em
+}
+
+.h-xxl {
+	.font-size-xxl();
+	.font-primary();
+	line-height:1.3em;
+	margin-bottom: 0.5em
+}
+
+.h-xl {
+	.font-size-xl();
+	.font-primary();
+	line-height:1.35em;
+	margin-bottom: 0.6em
+}
+
+.h-l {
+	.font-size-l();
+	.font-primary();
+	line-height:1.42em;
+	margin-bottom:0.6em;
+}
+
+.h-m {
+	.font-size-m();
+	.font-primary();
+	margin-bottom:0.7em
+}
+
 
 
 /* @BP20 */
 
 @media all and (max-width:800px){
 
-	.text-s-m-m,
-	.text-l-m-m  {
-		.fs-m();
+	.tx-s--bp20 {
+		.font-size-s();
 	}
 
-	.text-m-s-s {
-		.fs-s();
+	.tx-m--bp20 {
+		.font-size-m();
+	}
+
+	.tx-l--bp20 {
+		.font-size-l();
+	}
+
+	
+	.h-xxxl--bp20 {
+		.font-size-xxxl();
+		line-height:1.25em;
+		margin-bottom: 0.45em
+	}
+
+	.h-xxl--bp20 {
+		.font-size-xxl();
+		line-height:1.3em;
+		margin-bottom: 0.5em
+	}
+
+	.h-xl--bp20 {
+		.font-size-xl();
+		line-height:1.35em;
+		margin-bottom: 0.6em
+	}
+
+	.h-l--bp20 {
+		.font-size-l();
+		line-height:1.42em;
+		margin-bottom:0.6em;
+	}
+
+	.h-m--bp20 {
+		.font-size-m();
+		margin-bottom:0.7em;
+		line-height:1.5em
 	}
 
 }
@@ -55,16 +126,46 @@
 
 @media all and (max-width:600px){
 
-	.text-s-s-m,
-	.text-s-m-m,
-	.text-l-l-m,
-	.text-l-m-m {
-		.fs-m();
+	.tx-s--bp30 {
+		.font-size-s();
 	}
 
-	.text-m-m-s,
-	.text-m-s-s {
-		.fs-s();
+	.tx-m--bp30 {
+		.font-size-m();
+	}
+
+	.tx-l--bp30 {
+		.font-size-l();
+	}
+
+	.h-xxxl--bp30 {
+		.font-size-xxxl();
+		line-height:1.25em;
+		margin-bottom: 0.45em
+	}
+
+	.h-xxl--bp30 {
+		.font-size-xxl();
+		line-height:1.3em;
+		margin-bottom: 0.5em
+	}
+
+	.h-xl--bp30 {
+		.font-size-xl();
+		line-height:1.35em;
+		margin-bottom: 0.6em
+	}
+
+	.h-l--bp30 {
+		.font-size-l();
+		line-height:1.42em;
+		margin-bottom:0.6em;
+	}
+
+	.h-m--bp30 {
+		.font-size-m();
+		margin-bottom:0.7em;
+		line-height:1.5em
 	}
 
 }
