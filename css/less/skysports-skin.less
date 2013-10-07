@@ -4,37 +4,84 @@
  * ============================================================================
 */
 
+/* Declare fonts */
+
+@font-face {
+  font-family: 'SkyNews';
+  src:url('../fonts/skynews.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/skynews.woff') format('woff'),
+      url('../fonts/skynews.ttf')  format('truetype')
+}
+
+@font-face {
+  font-family: 'SkyNewsReg';
+  src:url('../fonts/skynews-regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/skynews-regular.woff') format('woff'),
+      url('../fonts/skynews-regular.ttf')  format('truetype')
+}
+
+@font-face {
+  font-family: 'SkyNewsBold';
+  src:url('../fonts/skynews-bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/skynews-bold.woff') format('woff'),
+      url('../fonts/skynews-bold.ttf')  format('truetype')
+}
+
 /* Font sizes */
 
-.fs-xs(){
+.font-size-xs(){
 	font-size: 12px;
 	font-size:0.75rem;
 }
 
-.fs-s(){
+.font-size-s(){
 	font-size: 14px;
 	font-size:0.875rem
 }
 
-.fs-m(){
+.font-size-m(){
 	font-size: 16px;
 	font-size:1rem
 }
 
-.fs-l(){
+.font-size-l(){
 	font-size: 20px;
 	font-size: 1.25rem;
 }
 
-.fs-xl(){
+.font-size-xl(){
 	font-size: 24px;
 	font-size:1.5rem
 }
 
-.fs-xxl(){
+.font-size-xxl(){
 	font-size: 30px;
 	font-size:1.875rem
 }
+
+.font-size-xxxl(){
+	font-size: 42px;
+	font-size: 2.625rem
+}
+
+/* font families */
+
+.font-primary() {
+	font-family:'SkyNews';
+	font-weight:normal
+}
+
+.font-primary-reg() {
+	font-family:'SkyNewsReg';
+	font-weight:normal
+}
+
+.font-primary-bold() {
+	font-family:'SkyNewsBold';
+	font-weight:normal
+
+}
+
 
 /* box units - used in margins and padding */
 
