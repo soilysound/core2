@@ -72,11 +72,11 @@
 */
 
 
-.grid--swap-cols {
+.grid--swap-order {
 	direction:rtl
 }
 
-.grid--swap-cols > .grid__col {
+.grid--swap-order > .grid__col {
 	direction: ltr
 }
 
@@ -121,14 +121,14 @@
 	    flex-direction: column;
 	}
 
-	.grid--collapse-bp20.grid--swap-cols {
+	.grid--collapse-bp20.grid--swap-order {
 		-webkit-box-direction: reverse;
 	    -moz-box-direction: reverse;
 	    -webkit-flex-direction: column-reverse;
 	    -ms-flex-direction: column-reverse;
 	    flex-direction: column-reverse;
 	}
-	
+
 	.grid--collapse-bp20 > .grid__col {
 		padding-left:0;
 		width:100%
@@ -160,7 +160,7 @@
 	    flex-direction: column;
 	}
 
-	.grid--collapse-bp30.grid--swap-cols {
+	.grid--collapse-bp30.grid--swap-order {
 		-webkit-box-direction: reverse;
 	    -moz-box-direction: reverse;
 	    -webkit-flex-direction: column-reverse;

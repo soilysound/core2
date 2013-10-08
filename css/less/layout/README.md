@@ -6,19 +6,19 @@ Classes and utilities for layout and structure.
 
 ### A basic 2 column layout
 ```html
-<div class="row">
-      <div class="row__col"></div>
-      <div class="row__col"></div>
+<div class="grid">
+      <div class="grid__col"></div>
+      <div class="grid__col"></div>
 </div>
 ```
 * Columns automatically size themselves evenly across the parent containers width
-* Can take any number of columns from 1 onwards - simply add more .row__col children
+* Can take any number of columns from 1 onwards - simply add more .grid__col children
 
 ### Set defined column widths
 ```html
-<div class="row">
-      <div class="row__col"></div>
-      <div class="row__col u-span25"></div>
+<div class="grid">
+      <div class="grid__col"></div>
+      <div class="grid__col u-span25"></div>
 </div>
 ```   
 * Sets the second column to be 300px wide
@@ -28,17 +28,53 @@ Classes and utilities for layout and structure.
 
 ### Vertically align column content
 ```html
-<div class="row row--align-middle">
-      <div class="row__col"></div>
-      <div class="row__col"></div>
+<div class="grid grid--align-middle">
+      <div class="grid__col"></div>
+      <div class="grid__col"></div>
 </div>
-```    
-### Set margins between columns
+```   
+
+### Horizontally and vertically aligned content
 ```html
-<div class="row row--gap-s">
-      <div class="row__col"></div>
-      <div class="row__col"></div>
+<div class="grid grid--align-middle">
+      <div class="grid__col">
+      		<div class="overlay-box grid--align-middle-target"></div>
+      </div>
 </div>
 ```     
 * Column margins set using the clothing size notation
-* `row--gap-s`   `.row--gap-m`     `.row--gap-l`
+* `grid--gap-s`   `.grid--gap-m`     `.grid--gap-l`
+
+### Set margins between columns
+```html
+<div class="grid grid--gap-s">
+      <div class="grid__col"></div>
+      <div class="grid__col"></div>
+</div>
+```     
+* Column margins set using the clothing size notation
+* `grid--gap-s`   `.grid--gap-m`     `.grid--gap-l`
+
+
+### collapsing columns
+```html
+<div class="grid grid--collapse-bp20">
+      <div class="grid__col"></div>
+      <div class="grid__col"></div>
+</div>
+```     
+* This layout will collapse into 1 column at breakpoint 20.
+* If `.grid--collapse-bp20` is set, this will cascade to breakpoint 30 too. To just target breakpoint 30, use `.grid--collapse-bp30`
+
+
+### swap column order
+```html
+<div class="grid grid--swap-order">
+      <div class="grid__col"></div>
+      <div class="grid__col"></div>
+</div>
+```     
+* This built in function is limited to 2 columns to maintain compatibility with IE8 and 9
+* Swaps columns so 1:2 is 2:1
+* Will reorder the rows vertically if the columns are collapsed using `.grid--collapse-bp20` or `.grid--collapse-bp30`
+* Row reordering does not work in IE8 and 9
