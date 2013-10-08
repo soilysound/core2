@@ -29,8 +29,8 @@ Classes and utilities for layout and structure.
 ### Vertically align column content
 ```html
 <div class="grid grid--align-middle">
-      <div class="grid__col"></div>
-      <div class="grid__col"></div>
+      <div class="grid__col">I am vertically aligned</div>
+      <div class="grid__col">I am vertically aligned too</div>
 </div>
 ```   
 
@@ -38,12 +38,12 @@ Classes and utilities for layout and structure.
 ```html
 <div class="grid grid--align-middle">
       <div class="grid__col">
-      		<div class="overlay-box grid--align-middle-target"></div>
+      		<div class="overlay-box grid--align-middle-target">
+      		      I am vertically and horixontally aligned
+      		</div>
       </div>
 </div>
 ```     
-* Column margins set using the clothing size notation
-* `grid--gap-s`   `.grid--gap-m`     `.grid--gap-l`
 
 ### Set margins between columns
 ```html
@@ -76,5 +76,5 @@ Classes and utilities for layout and structure.
 ```     
 * This built in function is limited to 2 columns to maintain compatibility with IE8 and 9
 * Swaps columns so 1:2 is 2:1
-* Will reorder the rows vertically if the columns are collapsed using `.grid--collapse-bp20` or `.grid--collapse-bp30`
+* Will also vertically if the columns are collapsed into rows using `.grid--collapse-bp20` or `.grid--collapse-bp30`
 * Row reordering does not work in IE8 and 9
