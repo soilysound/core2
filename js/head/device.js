@@ -1,11 +1,11 @@
 /**
  * DEVICE
- * 
+ *
  * Gather information about the users device
  * Sets the browser or device and version if relevent
  * Test for pertinent browser features
  * Exposes the current css breakpoint
- */
+*/
 
 (function(window, document){
 
@@ -25,7 +25,7 @@
 			cssAnimations: !!(shim.style.animationName || shim.style.webkitAnimationName || shim.style.mozAnimationName),
 			touch:('ontouchstart' in window) || ('DocumentTouch' in window) && document instanceof window.documentumentTouch
 		};
-	
+
 	}
 
 	//get device
@@ -100,58 +100,11 @@
 
 	}
 
-	function getBreakPoint(){
-
-		var bp = window.getComputedStyle(document.head, null).getPropertyValue('font-family');
-		bp = parseInt(bp.replace(/['"]/g, ''), 10);
-
-		SKY_SPORTS.isBreakPoint = bp;
-
-		docEl.id = ('is-breakpoint-' + bp);
-
-		return bp;
-	}
-
-	function throttle(fn, time) {
-
-		var handle;
-
-		function throttled() {
-
-			var args,
-			context;
-
-			if(!handle) {
-				args = arguments;
-				context = this;
-				handle = setTimeout(execute, time);
-			}
-
-			function execute() {
-				handle = null;
-				fn.apply(context, args);
-			}
-		}
-
-		return throttled;
-	}
-
-
-	if(window.addEventListener){
-
-		getBreakPoint();
-
-		window.addEventListener('resize', throttle(function(){
-			getBreakPoint();
-		}, 300), false);
-
-	}
-
 	SKY_SPORTS.hasFeature = feature();
 	SKY_SPORTS.isDevice = getDevice();
-	
+
 	for(var device in SKY_SPORTS.isDevice){
-		
+
 		if(device === 'version'){
 			docEl.classList.add('version-' + SKY_SPORTS.isDevice[device]);
 		}
