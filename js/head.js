@@ -306,13 +306,90 @@ String.prototype.toCamel = function(){
 	window.SKY_SPORTS.removeCss = removeCss;
 
 })(window, document);;/**
+ * BREAKPOINTS
+ *
+ * Sets the current breakpoint as a global variable 'document.currentBreakPoint'.
+ * Creates an event listener for break point changes 'breakPointChange'.
+*/
+
+(function(window, document){
+
+  'use strict';
+
+  function getBreakPoint(){
+
+    //read current break point from css
+    var bp = window.getComputedStyle(document.head, null).getPropertyValue('font-family');
+    bp = parseInt(bp.replace(/['"]/g, ''), 10);
+
+    document.documentElement.id = ('is-breakpoint-' + bp);
+
+    return bp;
+  }
+
+  //throttle function to prevent window.onresize calling too frequently
+  function throttle(fn, time) {
+
+    var handle;
+
+    function throttled() {
+
+      var args,
+      context;
+
+      if(!handle) {
+        args = arguments;
+        context = this;
+        handle = setTimeout(execute, time);
+      }
+
+      function execute() {
+        handle = null;
+        fn.apply(context, args);
+      }
+    }
+
+    return throttled;
+  }
+
+  //check for event listeners to avoid IE8 errors
+  if(window.addEventListener){
+
+    //create a custom breakpoint event
+    var bpEvent = document.createEvent('Event');
+    bpEvent.initEvent('breakPointChange', true, true);
+    bpEvent.currentBreakPoint = getBreakPoint;
+
+    //set current breakpoint on load
+    document.currentBreakPoint = getBreakPoint();
+
+    //add throttled resize listener to check current breakpoint
+    window.addEventListener('resize', throttle(function(){
+
+      var currBP = getBreakPoint();
+
+      //check if the breakpoint has changed and dispatch our custom event
+      if(currBP !== document.currentBreakPoint) {
+
+        document.currentBreakPoint = currBP;
+        document.dispatchEvent(bpEvent);
+      }
+
+    }, 300), false);
+
+  }
+
+})(window, document);
+
+
+;/**
  * DEVICE
- * 
+ *
  * Gather information about the users device
  * Sets the browser or device and version if relevent
  * Test for pertinent browser features
  * Exposes the current css breakpoint
- */
+*/
 
 (function(window, document){
 
@@ -332,7 +409,7 @@ String.prototype.toCamel = function(){
 			cssAnimations: !!(shim.style.animationName || shim.style.webkitAnimationName || shim.style.mozAnimationName),
 			touch:('ontouchstart' in window) || ('DocumentTouch' in window) && document instanceof window.documentumentTouch
 		};
-	
+
 	}
 
 	//get device
@@ -407,57 +484,11 @@ String.prototype.toCamel = function(){
 
 	}
 
-	function getBreakPoint(){
-
-		var bp = window.getComputedStyle(document.head, null).getPropertyValue('font-family');
-		bp = parseInt(bp.replace(/['"]/g, ''), 10);
-
-		SKY_SPORTS.isBreakPoint = bp;
-
-		docEl.id = ('is-breakpoint-' + bp);
-
-		return bp;
-	}
-
-	function throttle(fn, time) {
-    var handle;
-    function throttled() {
-        var args;
-        var context;
-        if(!handle) {
-            args = arguments;
-            context = this;
-            handle = setTimeout(execute, time);
-        }
-
-        function execute() {
-            handle = null;
-            fn.apply(context, args);
-        }
-    }
-
-
-    return throttled;
-}
-
-
-	if(window.addEventListener){
-
-		getBreakPoint();
-
-		window.addEventListener('resize', throttle(function(){
-console.time(1);
-			getBreakPoint();
-console.timeEnd(1);
-		}, 500), false);
-
-	}
-
 	SKY_SPORTS.hasFeature = feature();
 	SKY_SPORTS.isDevice = getDevice();
-	
+
 	for(var device in SKY_SPORTS.isDevice){
-		
+
 		if(device === 'version'){
 			docEl.classList.add('version-' + SKY_SPORTS.isDevice[device]);
 		}

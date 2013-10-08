@@ -10,6 +10,9 @@
  * Set project specific variables such as font size, unit sizes, colors and gradients
  * ============================================================================
 */
+/* main site dimensions */
+/* body backgrounds */
+/* wrapper background */
 /* Declare fonts */
 @font-face {
   font-family: 'SkyNews';
@@ -27,8 +30,8 @@
 /* font families */
 /* box units - used in margins and padding */
 /* border radius */
-/* modules */
-@-ms-viewport {
+/* site base */
+@-ms-viewport  {
   width: auto;
 }
 * {
@@ -99,60 +102,30 @@ a:active {
   }
 }
 /**
- * SHORT TEXT
- * Replace a piece of text with a shorter alternative
- * Available at each breakpoint
+ * SITE BASE
+ * Set widths for wrapper class
+ * Set body backgrounds
  * ============================================================================
 */
-/* @BP10 */
-@media all and (min-width: 801px) {
-  .short-text-bp10 {
-    margin-top: -1.3em;
-    white-space: pre-wrap;
-    letter-spacing: -100px;
-    position: relative;
-    overflow: hidden;
-  }
-  .short-text-bp10[data-short-text]:after {
-    display: block;
-    content: attr(data-short-text);
-    letter-spacing: normal;
-  }
+body {
+  background: #aaaaaa;
 }
-/* @ BP20 */
-@media all and (max-width: 800px) {
-  .short-text-bp20 {
-    margin-top: -1.3em;
-    white-space: pre-wrap;
-    letter-spacing: -100px;
-    position: relative;
-    overflow: hidden;
-  }
-  .short-text-bp20[data-short-text]:after {
-    display: block;
-    content: attr(data-short-text);
-    letter-spacing: normal;
-  }
+/*  site wrapper settings */
+.wrap {
+  margin: 0 auto;
+  max-width: 1280px;
+  min-height: 100%;
+  min-height: 100vh;
+  background: #ffffff;
 }
-/* @ BP30 */
-@media all and (max-width: 600px) {
-  .short-text-bp30 {
-    letter-spacing: -100px;
-    position: relative;
-    overflow: hidden;
-  }
-  .short-text-bp30[data-short-text]:after {
-    display: block;
-    content: attr(data-short-text);
-    letter-spacing: normal;
-  }
-}
+/* modules */
 /**
  * LAYOUT
  * Create fluid and fixed width layouts
  * Uses flex box with display table fall back for IE8 and 9
  * ============================================================================
 */
+/* main grid class */
 .grid {
   width: 100%;
   position: relative;
@@ -201,6 +174,17 @@ a:active {
 .grid[class*="--gap"] > .grid__col:first-child {
   padding-left: 0;
 }
+/**
+ * Swap column order
+ * - as part of this grid framework, only 2 column layouts can be swapped to keep compaibilty with IE < 10
+ * - Swaps col so 1:2 becomes 2:1
+*/
+.grid--swap-cols {
+  direction: rtl;
+}
+.grid--swap-cols > .grid__col {
+  direction: ltr;
+}
 /* vertical align middle column content */
 .grid--align-middle > .grid__col {
   display: -webkit-box;
@@ -214,6 +198,9 @@ a:active {
   -webkit-align-items: center;
   align-items: center;
 }
+.grid--align-middle-target {
+  margin: auto;
+}
 /* @BP20 */
 @media all and (max-width: 800px) {
   .grid--gap-s > .grid__col {
@@ -226,11 +213,21 @@ a:active {
     padding-left: 20px;
   }
   .grid--collapse-bp20 {
-    display: block;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .grid--collapse-bp20.grid--swap-cols {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
   .grid--collapse-bp20 > .grid__col {
     padding-left: 0;
-    display: block;
     width: 100%;
   }
 }
@@ -246,154 +243,22 @@ a:active {
     padding-left: 18px;
   }
   .grid--collapse-bp30 {
-    display: block;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .grid--collapse-bp30.grid--swap-cols {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
   .grid--collapse-bp30 > .grid__col {
     padding-left: 0;
-    display: block;
     width: 100%;
-  }
-}
-.is-hidden {
-  display: none;
-}
-.is-invisible {
-  visibility: hidden;
-}
-.is-visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-}
-.is-not-interactive {
-  pointer-events: none;
-  cursor: default;
-}
-.is-interactive {
-  cursor: pointer;
-}
-.is-disabled {
-  cursor: default;
-}
-.is-not-selectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-@media all and (min-width: 801px) {
-  .is-hidden--bp10 {
-    display: none;
-  }
-}
-@media all and (max-width: 800px) {
-  .is-hidden--bp20 {
-    display: none;
-  }
-}
-@media all and (max-width: 600px) {
-  .is-hidden--bp30 {
-    display: none;
-  }
-}
-/**
- * BOX
- * A general purpose container for content
- * Use to set global bottom margins with clothing size notation
- * Use to set padding values with clothing size notation
- * ============================================================================
- */
-.box {
-  display: block;
-  position: relative;
-}
-.box--inline {
-  display: inline-block;
-}
-/* Set margin bottoms using the clothing size notation */
-.mb--s {
-  margin-bottom: 12px;
-}
-.mb--m {
-  margin-bottom: 18px;
-}
-.mb--l {
-  margin-bottom: 24px;
-}
-.mb--0 {
-  margin-bottom: 0;
-}
-/* Set padding using the clothing size notation */
-.box--island-s {
-  padding: 12px;
-}
-.box--island-m {
-  padding: 18px;
-}
-.box--island-l {
-  padding: 24px;
-}
-/* @BP20 */
-@media all and (max-width: 800px) {
-  /* set margin bottom for @BP20 */
-  .mb--s,
-  .mb--s-bp20 {
-    margin-bottom: 12px;
-  }
-  .mb--m,
-  .mb--m-bp20 {
-    margin-bottom: 16px;
-  }
-  .mb--l,
-  .mb--l-bp20 {
-    margin-bottom: 20px;
-  }
-  /* remove margin bottom for @BP20 */
-  .mb--0-bp20 {
-    margin-bottom: 0;
-  }
-  .box--island-s {
-    padding: 12px;
-  }
-  .box--island-m {
-    padding: 16px;
-  }
-  .box--island-l {
-    padding: 20px;
-  }
-}
-/* @BP30 */
-@media all and (max-width: 600px) {
-  /* set margin bottom for @BP30 */
-  .mb--s,
-  .mb--s-bp30 {
-    margin-bottom: 9px;
-  }
-  .mb--m,
-  .mb--m-bp30 {
-    margin-bottom: 14px;
-  }
-  .mb--l,
-  .mb--l-bp30 {
-    margin-bottom: 18px;
-  }
-  /* remove margin bottom for @BP30 */
-  .mb--0-bp30 {
-    margin-bottom: 0;
-  }
-  .box--island-s {
-    padding: 9px;
-  }
-  .box--island-m {
-    padding: 14px;
-  }
-  .box--island-l {
-    padding: 18px;
   }
 }
 /**
@@ -590,7 +455,102 @@ a:active {
 }
 .u-minheight-full {
   min-height: 100%;
-  min-height: 100vh;
+  min-height: 100 vh;
+}
+/**
+ * BOX
+ * A general purpose container for content
+ * Use to set global bottom margins with clothing size notation
+ * Use to set padding values with clothing size notation
+ * ============================================================================
+ */
+.box {
+  display: block;
+  position: relative;
+}
+.box--inline {
+  display: inline-block;
+}
+/* Set margin bottoms using the clothing size notation */
+.mb--s {
+  margin-bottom: 12px;
+}
+.mb--m {
+  margin-bottom: 18px;
+}
+.mb--l {
+  margin-bottom: 24px;
+}
+.mb--0 {
+  margin-bottom: 0;
+}
+/* Set padding using the clothing size notation */
+.box--island-s {
+  padding: 12px;
+}
+.box--island-m {
+  padding: 18px;
+}
+.box--island-l {
+  padding: 24px;
+}
+/* @BP20 */
+@media all and (max-width: 800px) {
+  /* set margin bottom for @BP20 */
+  .mb--s,
+  .mb--s-bp20 {
+    margin-bottom: 12px;
+  }
+  .mb--m,
+  .mb--m-bp20 {
+    margin-bottom: 16px;
+  }
+  .mb--l,
+  .mb--l-bp20 {
+    margin-bottom: 20px;
+  }
+  /* remove margin bottom for @BP20 */
+  .mb--0-bp20 {
+    margin-bottom: 0;
+  }
+  .box--island-s {
+    padding: 12px;
+  }
+  .box--island-m {
+    padding: 16px;
+  }
+  .box--island-l {
+    padding: 20px;
+  }
+}
+/* @BP30 */
+@media all and (max-width: 600px) {
+  /* set margin bottom for @BP30 */
+  .mb--s,
+  .mb--s-bp30 {
+    margin-bottom: 9px;
+  }
+  .mb--m,
+  .mb--m-bp30 {
+    margin-bottom: 14px;
+  }
+  .mb--l,
+  .mb--l-bp30 {
+    margin-bottom: 18px;
+  }
+  /* remove margin bottom for @BP30 */
+  .mb--0-bp30 {
+    margin-bottom: 0;
+  }
+  .box--island-s {
+    padding: 9px;
+  }
+  .box--island-m {
+    padding: 14px;
+  }
+  .box--island-l {
+    padding: 18px;
+  }
 }
 .mediabox {
   display: table;
@@ -752,70 +712,101 @@ a:active {
     width: 100%;
   }
 }
-.u-no-overflow {
-  position: relative;
-  overflow: hidden;
+/**
+ * SHORT TEXT
+ * Replace a piece of text with a shorter alternative
+ * Available at each breakpoint
+ * ============================================================================
+*/
+/* @BP10 */
+@media all and (min-width: 801px) {
+  .short-text-bp10 {
+    margin-top: -1.3em;
+    white-space: pre-wrap;
+    letter-spacing: -100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .short-text-bp10[data-short-text]:after {
+    display: block;
+    content: attr(data-short-text);
+    letter-spacing: normal;
+  }
 }
-.u-clip {
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+/* @ BP20 */
+@media all and (max-width: 800px) {
+  .short-text-bp20 {
+    margin-top: -1.3em;
+    white-space: pre-wrap;
+    letter-spacing: -100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .short-text-bp20[data-short-text]:after {
+    display: block;
+    content: attr(data-short-text);
+    letter-spacing: normal;
+  }
 }
-.u-ellipsis {
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-oveflow: ellipsis;
+/* @ BP30 */
+@media all and (max-width: 600px) {
+  .short-text-bp30 {
+    letter-spacing: -100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .short-text-bp30[data-short-text]:after {
+    display: block;
+    content: attr(data-short-text);
+    letter-spacing: normal;
+  }
 }
-.u-inline {
-  display: inline;
+.is-hidden {
+  display: none;
 }
-.u-inline-block {
-  display: inline-block;
+.is-invisible {
+  visibility: hidden;
 }
-.u-block {
-  display: block;
-}
-.u-table {
-  display: table;
-}
-.u-table-cell {
-  display: table-cell;
-}
-.u-text-left {
-  text-align: left;
-}
-.u-text-right {
-  text-align: right;
-}
-.u-text-center {
-  text-align: center;
-}
-.u-absolute {
+.is-visually-hidden {
   position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
 }
-.u-relative {
-  position: relative;
+.is-not-interactive {
+  pointer-events: none;
+  cursor: default;
 }
-.u-static {
-  position: static;
+.is-interactive {
+  cursor: pointer;
 }
-.u-fixed {
-  position: fixed;
+.is-disabled {
+  cursor: default;
 }
-.u-x-right {
-  right: 0;
-  left: auto;
+.is-not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.u-x-left {
-  left: 0;
-  right: auto;
+@media all and (min-width: 801px) {
+  .is-hidden--bp10 {
+    display: none;
+  }
 }
-.u-y-top {
-  top: 0;
+@media all and (max-width: 800px) {
+  .is-hidden--bp20 {
+    display: none;
+  }
 }
-.u-y-bottom {
-  bottom: 0;
+@media all and (max-width: 600px) {
+  .is-hidden--bp30 {
+    display: none;
+  }
 }
 /* this will place an element above any other element with no z-index set */
 .u-z-bottom {
@@ -996,4 +987,70 @@ a:active {
     margin-bottom: 0.7em;
     line-height: 1.5em;
   }
+}
+/* utliity classes */
+.u-no-overflow {
+  position: relative;
+  overflow: hidden;
+}
+.u-clip {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.u-ellipsis {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-oveflow: ellipsis;
+}
+.u-inline {
+  display: inline;
+}
+.u-inline-block {
+  display: inline-block;
+}
+.u-block {
+  display: block;
+}
+.u-table {
+  display: table;
+}
+.u-table-cell {
+  display: table-cell;
+}
+.u-text-left {
+  text-align: left;
+}
+.u-text-right {
+  text-align: right;
+}
+.u-text-center {
+  text-align: center;
+}
+.u-absolute {
+  position: absolute;
+}
+.u-relative {
+  position: relative;
+}
+.u-static {
+  position: static;
+}
+.u-fixed {
+  position: fixed;
+}
+.u-x-right {
+  right: 0;
+  left: auto;
+}
+.u-x-left {
+  left: 0;
+  right: auto;
+}
+.u-y-top {
+  top: 0;
+}
+.u-y-bottom {
+  bottom: 0;
 }
