@@ -11,9 +11,6 @@
 <div class="box"></div>
 ```
 
-* Columns automatically size themselves evenly across the parent containers width
-* Can take any number of columns from 1 onwards - simply add more .row__col children
-
 ### Inline block version
 
 ```html
@@ -36,4 +33,4 @@
 ```
 
 * Uses the clothing size notation for sizes
-* `.box--moat-s`   `.box--moat-m`     `.box--moat-l`
+* `.box--island-s`   `.box--island-m`     `.box--island-l`
