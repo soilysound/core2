@@ -12,33 +12,14 @@
 		<title></title>
 
 		<link rel="stylesheet" href="css/core.css">
-
-		<style>
-			body {
-				background:#aaa;
-			}
-			.wrap {
-				margin:0 auto;
-				position:relative;
-				max-width:1024px;
-				background:white;
-				min-height:100%;
-
-			}
-		</style>
-
-		<script src="js/shims/console.js"></script>
-		<script src="js/shims/dash-camelcase.js"></script>
-		<script src="js/shims/classlist.js"></script>
-		<script src="js/head/device.js"></script>
-		<script src="js/head/breakpoints.js"></script>
-		<script src="js/head/add-css.js"></script>
+		<script src="js/head/head.js"></script>
 
 	</head>
 	<body>
 		<div class="wrap">
-			<div class="grid grid--collapse-bp20 grid--collapse-bp30">
-				<div class="grid__col grid__col1">
+			
+			<div class="grid grid--collapse-bp20 grid--collapse-bp30 grid--swap-cols">
+				<div class="grid__col">
 
 					<section class="box box--island-m">
 						<div class="mediabox mediabox--gap-m mediabox--vertical-bp20">
@@ -114,7 +95,7 @@
 				</section>
 				</div>
 
-				<div class="grid__col grid__col2 u-span25">
+				<div class="grid__col u-span25">
 
 					<section class="box box--island-m">
 						<div class="mediabox mediabox--vertical mediabox--gap-m">
@@ -148,6 +129,7 @@
 			</div>
 		</div>
 		<script>
+<<<<<<< HEAD
 			//example usage of the breakpoint change event
 			document.addEventListener('breakPointChange', function(e){
 
@@ -156,6 +138,11 @@
 
 			}, false);
 
+=======
+			document.addEventListener('breakPointChange', function(){
+				console.log(document.currentBreakPoint)
+			}, false)
+>>>>>>> ae3c783f05a28c363e45e14e5ff135a958886ef7
 		</script>
 	</body>
 </html>

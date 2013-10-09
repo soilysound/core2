@@ -5,6 +5,9 @@
  * ============================================================================
 */
 
+
+/* main grid class */
+
 .grid {
 	width:100%;
 	position:relative;
@@ -15,8 +18,6 @@
 }
 
 .grid__col {
-
-	//outline:1px solid red;
 
 	-webkit-box-sizing:content-box;
 	-moz-box-sizing:content-box;
@@ -64,18 +65,36 @@
 	padding-left:0;
 }
 
+/**
+ * Swap column order
+ * - as part of this grid framework, only 2 column layouts can be swapped to keep compaibilty with IE < 10
+ * - Swaps col so 1:2 becomes 2:1
+*/
+
+
+.grid--swap-order {
+	direction:rtl
+}
+
+.grid--swap-order > .grid__col {
+	direction: ltr
+}
+
 /* vertical align middle column content */
 
-.grid--align-middle > .grid__col{
+.grid--align-middle > .grid__col {
 
 	.flex-box();
 
 	//vertically align middle
 	vertical-align:middle;
-
 	-ms-flex-align: center;
 	-webkit-align-items: center;
 	align-items: center;
+}
+
+.grid--align-middle-target {
+	margin: auto
 }
 
 /* @BP20 */
@@ -95,12 +114,23 @@
 	}
 
 	.grid--collapse-bp20 {
-		display:block
+	    -webkit-box-orient: vertical;
+	    -moz-box-orient: vertical;
+	    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	    flex-direction: column;
+	}
+
+	.grid--collapse-bp20.grid--swap-order {
+		-webkit-box-direction: reverse;
+	    -moz-box-direction: reverse;
+	    -webkit-flex-direction: column-reverse;
+	    -ms-flex-direction: column-reverse;
+	    flex-direction: column-reverse;
 	}
 
 	.grid--collapse-bp20 > .grid__col {
 		padding-left:0;
-		display:block;
 		width:100%
 	}
 }
@@ -123,12 +153,23 @@
 	}
 
 	.grid--collapse-bp30 {
-		display:block
+	    -webkit-box-orient: vertical;
+	    -moz-box-orient: vertical;
+	    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	    flex-direction: column;
+	}
+
+	.grid--collapse-bp30.grid--swap-order {
+		-webkit-box-direction: reverse;
+	    -moz-box-direction: reverse;
+	    -webkit-flex-direction: column-reverse;
+	    -ms-flex-direction: column-reverse;
+	    flex-direction: column-reverse;
 	}
 
 	.grid--collapse-bp30 > .grid__col {
 		padding-left:0;
-		display:block;
 		width:100%
 	}
 
