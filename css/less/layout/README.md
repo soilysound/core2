@@ -44,6 +44,8 @@ Classes and utilities for layout and structure.
       </div>
 </div>
 ```
+* Requires a height to be set on the `.grid` container
+
 
 ### Set margins between columns
 ```html
