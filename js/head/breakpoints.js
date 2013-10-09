@@ -15,7 +15,7 @@
     var bp = window.getComputedStyle(document.head, null).getPropertyValue('font-family');
     bp = parseInt(bp.replace(/['"]/g, ''), 10);
 
-    document.documentElement.id = ('is-breakpoint-' + bp);
+    document.documentElement.id = ('current-breakpoint-' + bp);
 
     return bp;
   }
