@@ -198,7 +198,8 @@ body {
   -webkit-align-items: center;
   align-items: center;
 }
-.grid--align-middle-target {
+/* vertically and horizontally align content in a div */
+.grid--align-middle__center {
   margin: auto;
 }
 /* @BP20 */
