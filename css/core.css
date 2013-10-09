@@ -83,6 +83,16 @@ a:active {
   outline: 0;
   text-decoration: none;
 }
+/**
+ * GET BREAK POINT
+ * Set a javascript readable value as css propertis on the head tag
+ * 10 = desktop
+ * 20 = tablet
+ * 30 = mobile
+ * ============================================================================
+ /
+ 
+ 
 /* @BP10 */
 @media all and (min-width: 801px) {
   head {
@@ -762,6 +772,12 @@ body {
     letter-spacing: normal;
   }
 }
+/**
+ * STATE
+ * Utility classes for the display of elements
+ * Always prefixed with is- 
+ * ============================================================================
+ */
 .is-hidden {
   display: none;
 }
@@ -990,7 +1006,14 @@ body {
   }
 }
 /* utliity classes */
-.u-no-overflow {
+/**
+ * UTLITY CLASSES
+ * General utility classes
+ * ALways prefixed with u-
+ * ============================================================================
+ */
+/* overflow */
+.u-overflow-hidden {
   position: relative;
   overflow: hidden;
 }
@@ -1005,6 +1028,7 @@ body {
   overflow: hidden;
   text-oveflow: ellipsis;
 }
+/* display */
 .u-inline {
   display: inline;
 }
@@ -1020,6 +1044,7 @@ body {
 .u-table-cell {
   display: table-cell;
 }
+/* align */
 .u-text-left {
   text-align: left;
 }
@@ -1029,6 +1054,7 @@ body {
 .u-text-center {
   text-align: center;
 }
+/* position */
 .u-absolute {
   position: absolute;
 }
@@ -1041,6 +1067,7 @@ body {
 .u-fixed {
   position: fixed;
 }
+/* xy position */
 .u-x-right {
   right: 0;
   left: auto;
