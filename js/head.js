@@ -372,6 +372,8 @@ String.prototype.toCamel = function(){
       if(currBP !== document.currentBreakPoint) {
 
         document.currentBreakPoint = currBP;
+
+        //trigger our custom event listener to fire
         document.dispatchEvent(bpEvent);
       }
 

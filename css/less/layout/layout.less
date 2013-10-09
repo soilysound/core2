@@ -5,6 +5,14 @@
  * ============================================================================
 */
 
+/* debugging class - ads red outlines */
+.-debug {
+	border:4px solid red
+}
+
+.-debug > div {
+	outline:2px solid red
+}
 
 /* main grid class */
 
@@ -35,6 +43,7 @@
 	flex: 1;
 
 	/* for IE8-9 - no flexbox */
+
 	display: ~"table-cell\0/"
 }
 
@@ -44,6 +53,16 @@
 	.grid__col {
 		display: block
 	}
+}
+
+/* vertical grid */
+
+.grid--vertical {
+	-webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 
 /* margins between columns */
@@ -71,7 +90,6 @@
  * - Swaps col so 1:2 becomes 2:1
 */
 
-
 .grid--swap-order {
 	direction:rtl
 }
@@ -79,6 +97,17 @@
 .grid--swap-order > .grid__col {
 	direction: ltr
 }
+
+/* swap order on vertical grid */
+
+.grid--vertical.grid--swap-order {
+	-webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
 
 /* vertical align middle column content */
 
@@ -97,6 +126,13 @@
 	margin: auto
 }
 
+/* no flex - add to set a fixed width or height on a flex column/row */
+
+.grid__col--noflex {
+	.no-flex();
+}
+
+
 /* @BP20 */
 
 @media all and (max-width:800px){
@@ -113,15 +149,19 @@
 		padding-left:@box-unit-l-bp20
 	}
 
-	.grid--collapse-bp20 {
+	.grid--vertical-bp20 {
 	    -webkit-box-orient: vertical;
 	    -moz-box-orient: vertical;
 	    -webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	    flex-direction: column;
+
+	    //display:block
 	}
 
-	.grid--collapse-bp20.grid--swap-order {
+	/* swap order set on collapsed columns */
+
+	.grid--vertical-bp20.grid--swap-order {
 		-webkit-box-direction: reverse;
 	    -moz-box-direction: reverse;
 	    -webkit-flex-direction: column-reverse;
@@ -129,10 +169,27 @@
 	    flex-direction: column-reverse;
 	}
 
-	.grid--collapse-bp20 > .grid__col {
+	.grid--vertical-bp20 > .grid__col {
 		padding-left:0;
-		width:100%
+		width:100%;
+		-ms-flex: auto;
 	}
+
+
+	/* for IE8-9 - no flexbox */
+
+	.grid--vertical-bp20.grid--swap-order > .grid__col:first-child {
+		display: ~"table-footer-group\0/"
+	}
+
+	/* override for IE10+ */
+
+	@media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
+		.grid--vertical-bp20.grid--swap-order > .grid__col:first-child {
+			display: block;
+		}
+	}
+
 }
 
 /* @BP30 */
@@ -152,7 +209,7 @@
 		padding-left:@box-unit-l-bp30
 	}
 
-	.grid--collapse-bp30 {
+	.grid--vertical-bp30 {
 	    -webkit-box-orient: vertical;
 	    -moz-box-orient: vertical;
 	    -webkit-flex-direction: column;
@@ -160,7 +217,7 @@
 	    flex-direction: column;
 	}
 
-	.grid--collapse-bp30.grid--swap-order {
+	.grid--vertical-bp30.grid--swap-order {
 		-webkit-box-direction: reverse;
 	    -moz-box-direction: reverse;
 	    -webkit-flex-direction: column-reverse;
@@ -168,7 +225,7 @@
 	    flex-direction: column-reverse;
 	}
 
-	.grid--collapse-bp30 > .grid__col {
+	.grid--vertical-bp30 > .grid__col {
 		padding-left:0;
 		width:100%
 	}
