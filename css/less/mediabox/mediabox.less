@@ -1,3 +1,9 @@
+/**
+ * MEDIABOX
+ * A set of components for displaying an image, headline and snippet
+ * ============================================================================
+ */
+
 .mediabox {
 	display:table;
 	width: 100%;
@@ -31,27 +37,24 @@
 .mediabox--gap-s > .mediabox__body,
 .mediabox--gap-s > .mediabox__body > .mediabox__image {
 	border-width: @box-unit-s;
-	border-bottom-width: @box-unit-s - 2px;
-	border-top-width: @box-unit-s - 2px;
 }
 
 .mediabox--gap-m > .mediabox__body,
 .mediabox--gap-m > .mediabox__body > .mediabox__image {
 	border-width: @box-unit-m;
-	border-bottom-width: @box-unit-m - 3px;
-	border-top-width: @box-unit-m - 3px;
+	border-bottom-width: @box-unit-m - 7px;
+	border-top-width: @box-unit-m - 8px;
 }
 
 .mediabox--gap-l > .mediabox__body,
 .mediabox--gap-l > .mediabox__body > .mediabox__image {
 	border-width: @box-unit-l;
-	border-bottom-width: @box-unit-l - 5px;
-	border-top-width: @box-unit-l - 5px;
+	border-bottom-width: @box-unit-l - 9px;
+	border-top-width: @box-unit-l - 9px;
 }
 
-/**
- * Vertical media box
- */
+
+/* Vertical media box */
 
 .mediabox--vertical {
 	display:block
@@ -67,8 +70,13 @@
 	border-style: none;
 	border-top-style: solid;
 	width:100%;
-	margin-top:-3px
 }
+
+/* remove margin bottom on headlines inside a horizontal mediabox */
+.mediabox:not(.mediabox--vertical) .mediabox__headline {
+	margin-bottom:0.08em
+}
+
 
 /**
  * Reverse direction mediabox
@@ -84,30 +92,6 @@
 	border-right-style: solid;
 }
 
-/**
- * Media box with headline above the image
- */
-
-.mediabox--top-headline {
-	display: block;
-}
-
-.mediabox--top-headline > .mediabox__body {
-	border-style: none;
-	display: block;
-	width: 100%
-}
-
-.mediabox--top-headline > .mediabox__body > .mediabox__image {
-	border-top-style:solid;
-	border-bottom-style:solid;
-}
-
-.mediabox--top-headline > .mediabox__body > .mediabox__headline {
-	margin-bottom:0;
-}
-
-
 
 /* @BP20 */
 
@@ -116,27 +100,19 @@
 	.mediabox--gap-s > .mediabox__body,
 	.mediabox--gap-s > .mediabox__body > .mediabox__image {
 		border-width: @box-unit-s-bp20;
-		border-top-width:@box-unit-s-bp20 - 2px
 	}
 
 	.mediabox--gap-m > .mediabox__body,
 	.mediabox--gap-m > .mediabox__body > .mediabox__image {
 		border-width: @box-unit-m-bp20;
-		border-top-width:@box-unit-m-bp20 - 4px
 	}
 
 	.mediabox--gap-l > .mediabox__body,
 	.mediabox--gap-l > .mediabox__body > .mediabox__image {
 		border-width: @box-unit-l-bp20;
-		border-top-width:@box-unit-l-bp20 - 6px
 	}
 
-	.mediabox--top-headline > .mediabox__body > .mediabox__image {
-		margin-bottom:0
-	}
-
-	.mediabox--vertical > .mediabox__body,
-	.mediabox--top-headline > .mediabox__body > .mediabox__image {
+	.mediabox--vertical > .mediabox__body {
 		margin-top:0.1em;
 	}
 
@@ -166,19 +142,16 @@
 	.mediabox--gap-s > .mediabox__body,
 	.mediabox--gap-s > .mediabox__body > .mediabox__image {
 		border-width: @box-unit-s-bp30;
-		border-top-width: @box-unit-s-bp30 - 2px
 	}
 
 	.mediabox--gap-m > .mediabox__body,
 	.mediabox--gap-m > .mediabox__body > .mediabox__image {
 		border-width: @box-unit-m-bp30;
-		border-top-width:@box-unit-m-bp30 - 4px
 	}
 
 	.mediabox--gap-l > .mediabox__body,
 	.mediabox--gap-l > .mediabox__body > .mediabox__image {
 		border-width: @box-unit-l-bp30;
-		border-top-width:@box-unit-l-bp30 - 6px
 	}
 
 	.mediabox--vertical-bp30 > .mediabox__body {
