@@ -34,23 +34,25 @@
 
 /* gap between image and body text */
 
-.mediabox--gap-s > .mediabox__body,
-.mediabox--gap-s > .mediabox__body > .mediabox__image {
+.mediabox--gap-s > .mediabox__body {
 	border-width: @box-unit-s;
+
+	//offset vertical gap
+	margin-top:-0.1em
 }
 
-.mediabox--gap-m > .mediabox__body,
-.mediabox--gap-m > .mediabox__body > .mediabox__image {
+.mediabox--gap-m > .mediabox__body {
 	border-width: @box-unit-m;
-	border-bottom-width: @box-unit-m - 7px;
-	border-top-width: @box-unit-m - 8px;
+
+	//offset vertical gap
+	margin-top:-0.4em
 }
 
-.mediabox--gap-l > .mediabox__body,
-.mediabox--gap-l > .mediabox__body > .mediabox__image {
+.mediabox--gap-l > .mediabox__body {
 	border-width: @box-unit-l;
-	border-bottom-width: @box-unit-l - 9px;
-	border-top-width: @box-unit-l - 9px;
+
+	//offset vertical gap
+	margin-top:-0.7em
 }
 
 
@@ -72,7 +74,9 @@
 	width:100%;
 }
 
-/* remove margin bottom on headlines inside a horizontal mediabox */
+
+/* reduce margin bottom on headlines inside a horizontal mediabox */
+
 .mediabox:not(.mediabox--vertical) .mediabox__headline {
 	margin-bottom:0.08em
 }
@@ -97,24 +101,24 @@
 
 @media all and (max-width:800px){
 
-	.mediabox--gap-s > .mediabox__body,
-	.mediabox--gap-s > .mediabox__body > .mediabox__image {
+	.mediabox--gap-s > .mediabox__body {
 		border-width: @box-unit-s-bp20;
 	}
 
-	.mediabox--gap-m > .mediabox__body,
-	.mediabox--gap-m > .mediabox__body > .mediabox__image {
+	.mediabox--gap-m > .mediabox__body {
 		border-width: @box-unit-m-bp20;
 	}
 
-	.mediabox--gap-l > .mediabox__body,
-	.mediabox--gap-l > .mediabox__body > .mediabox__image {
+	.mediabox--gap-l > .mediabox__body {
 		border-width: @box-unit-l-bp20;
 	}
 
 	.mediabox--vertical > .mediabox__body {
 		margin-top:0.1em;
 	}
+
+
+	/* vertical @BP20 */
 
 	.mediabox--vertical-bp20 {
 		display:block;
@@ -139,24 +143,23 @@
 
 @media all and (max-width:600px){
 
-	.mediabox--gap-s > .mediabox__body,
-	.mediabox--gap-s > .mediabox__body > .mediabox__image {
+	.mediabox--gap-s > .mediabox__body {
 		border-width: @box-unit-s-bp30;
 	}
 
-	.mediabox--gap-m > .mediabox__body,
-	.mediabox--gap-m > .mediabox__body > .mediabox__image {
+	.mediabox--gap-m > .mediabox__body {
 		border-width: @box-unit-m-bp30;
 	}
 
-	.mediabox--gap-l > .mediabox__body,
-	.mediabox--gap-l > .mediabox__body > .mediabox__image {
+	.mediabox--gap-l > .mediabox__body {
 		border-width: @box-unit-l-bp30;
 	}
 
 	.mediabox--vertical-bp30 > .mediabox__body {
 		margin-top:0.1em;
 	}
+
+	/* vertical @BP30 */
 
 	.mediabox--vertical-bp30 {
 		display:block

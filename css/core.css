@@ -504,21 +504,17 @@ body {
   border-color: transparent;
 }
 /* gap between image and body text */
-.mediabox--gap-s > .mediabox__body,
-.mediabox--gap-s > .mediabox__body > .mediabox__image {
+.mediabox--gap-s > .mediabox__body {
   border-width: 12px;
+  margin-top: -0.1em;
 }
-.mediabox--gap-m > .mediabox__body,
-.mediabox--gap-m > .mediabox__body > .mediabox__image {
+.mediabox--gap-m > .mediabox__body {
   border-width: 18px;
-  border-bottom-width: 11px;
-  border-top-width: 10px;
+  margin-top: -0.4em;
 }
-.mediabox--gap-l > .mediabox__body,
-.mediabox--gap-l > .mediabox__body > .mediabox__image {
+.mediabox--gap-l > .mediabox__body {
   border-width: 24px;
-  border-bottom-width: 15px;
-  border-top-width: 15px;
+  margin-top: -0.7em;
 }
 /* Vertical media box */
 .mediabox--vertical {
@@ -534,7 +530,7 @@ body {
   border-top-style: solid;
   width: 100%;
 }
-/* remove margin bottom on headlines inside a horizontal mediabox */
+/* reduce margin bottom on headlines inside a horizontal mediabox */
 .mediabox:not(.mediabox--vertical) .mediabox__headline {
   margin-bottom: 0.08em;
 }
@@ -551,21 +547,19 @@ body {
 }
 /* @BP20 */
 @media all and (max-width: 800px) {
-  .mediabox--gap-s > .mediabox__body,
-  .mediabox--gap-s > .mediabox__body > .mediabox__image {
+  .mediabox--gap-s > .mediabox__body {
     border-width: 12px;
   }
-  .mediabox--gap-m > .mediabox__body,
-  .mediabox--gap-m > .mediabox__body > .mediabox__image {
+  .mediabox--gap-m > .mediabox__body {
     border-width: 16px;
   }
-  .mediabox--gap-l > .mediabox__body,
-  .mediabox--gap-l > .mediabox__body > .mediabox__image {
+  .mediabox--gap-l > .mediabox__body {
     border-width: 20px;
   }
   .mediabox--vertical > .mediabox__body {
     margin-top: 0.1em;
   }
+  /* vertical @BP20 */
   .mediabox--vertical-bp20 {
     display: block;
   }
@@ -583,21 +577,19 @@ body {
 }
 /* @BP30 */
 @media all and (max-width: 600px) {
-  .mediabox--gap-s > .mediabox__body,
-  .mediabox--gap-s > .mediabox__body > .mediabox__image {
+  .mediabox--gap-s > .mediabox__body {
     border-width: 9px;
   }
-  .mediabox--gap-m > .mediabox__body,
-  .mediabox--gap-m > .mediabox__body > .mediabox__image {
+  .mediabox--gap-m > .mediabox__body {
     border-width: 14px;
   }
-  .mediabox--gap-l > .mediabox__body,
-  .mediabox--gap-l > .mediabox__body > .mediabox__image {
+  .mediabox--gap-l > .mediabox__body {
     border-width: 18px;
   }
   .mediabox--vertical-bp30 > .mediabox__body {
     margin-top: 0.1em;
   }
+  /* vertical @BP30 */
   .mediabox--vertical-bp30 {
     display: block;
   }
