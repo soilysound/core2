@@ -23,6 +23,12 @@
 	table-layout:fixed;
 
 	.flex-box();
+
+	/* this is to prevent swap direction option cascading down to nested grids in browsers that use the old 2009 syntax */
+	
+	-webkit-box-direction: normal;
+    -moz-box-direction: normal;
+   
 }
 
 .grid__col {
@@ -38,6 +44,12 @@
 	-ms-flex: 1;
 	flex: 1;
 
+	/* use border instead of padding or margin to avoid padding/margin inheritence issues */
+	
+	border-color:transparent;
+	border-left-style:solid;
+	border-width:0;
+
 	/* for IE8-9 - no flexbox */
 
 	display: ~"table-cell\0/"
@@ -46,6 +58,7 @@
 @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
 
 	/* cancel out for ie10 - has flexbox*/
+
 	.grid__col {
 		display: block
 	}
@@ -61,24 +74,31 @@
     flex-direction: column;
 }
 
-/* margins between columns */
+/**
+ * gaps between columns
+ * - Uses transparent borders so as to allow the use of padding and margins independently
+ */
 
 .grid--gap-s > .grid__col {
-	padding-left:@box-unit-s;
+	border-left-width:@box-unit-s;
 }
 
 .grid--gap-m > .grid__col {
-	padding-left:@box-unit-m;
+	border-left-width:@box-unit-m;
 }
 
 .grid--gap-l > .grid__col {
-	padding-left:@box-unit-l;
+	border-left-width:@box-unit-l;
 }
 
-//cancel left padding
-.grid[class*="--gap"] > .grid__col:first-child {
-	padding-left:0;
+
+/* cancel grid border padding */
+
+.grid > .grid__col:first-child {
+
+	border-width:0;
 }
+
 
 /**
  * Swap column order
@@ -93,6 +113,7 @@
 .grid--swap-order > .grid__col {
 	direction: ltr
 }
+
 
 /* swap order on vertical grid */
 
@@ -111,7 +132,8 @@
 
 	.flex-box();
 
-	//vertically align middle
+	/* vertically align middle */
+
 	vertical-align:middle;
 	-ms-flex-align: center;
 	-webkit-align-items: center;
@@ -134,15 +156,15 @@
 @media all and (max-width:800px){
 
 	.grid--gap-s > .grid__col {
-		padding-left:@box-unit-s-bp20
+		border-left-width:@box-unit-s-bp20
 	}
 
 	.grid--gap-m > .grid__col {
-		padding-left:@box-unit-m-bp20
+		border-left-width:@box-unit-m-bp20
 	}
 
 	.grid--gap-l > .grid__col {
-		padding-left:@box-unit-l-bp20
+		border-left-width:@box-unit-l-bp20
 	}
 
 	.grid--vertical-bp20 {
@@ -152,7 +174,12 @@
 	    -ms-flex-direction: column;
 	    flex-direction: column;
 
-	    //display:block
+	}
+
+	/* collapse the columns by setting to display block for IE9 */
+
+	.legacyie .grid--vertical-bp20 > .grid__col {
+		display:block;
 	}
 
 	/* swap order set on collapsed columns */
@@ -166,7 +193,7 @@
 	}
 
 	.grid--vertical-bp20 > .grid__col {
-		padding-left:0;
+		border-left-width:0;
 		width:100%;
 		-ms-flex: auto;
 	}
@@ -194,15 +221,15 @@
 
 
 	.grid--gap-s > .grid__col {
-		padding-left:@box-unit-s-bp30
+		border-left-width:@box-unit-s-bp30
 	}
 
 	.grid--gap-m > .grid__col {
-		padding-left:@box-unit-m-bp30
+		border-left-width:@box-unit-m-bp30
 	}
 
 	.grid--gap-l > .grid__col {
-		padding-left:@box-unit-l-bp30
+		border-left-width:@box-unit-l-bp30
 	}
 
 	.grid--vertical-bp30 {
@@ -222,8 +249,14 @@
 	}
 
 	.grid--vertical-bp30 > .grid__col {
-		padding-left:0;
+		border-left-width:0;
 		width:100%
+	}
+
+	/* collapse the columns by setting to display block for IE9 */
+	 
+	.legacyie .grid--vertical-bp30 > .grid__col {
+		display:block;
 	}
 
 }
