@@ -31,7 +31,7 @@
 /* box units - used in margins and padding */
 /* border radius */
 /* site base */
-@-ms-viewport {
+@-ms-viewport  {
   width: auto;
 }
 * {
@@ -154,6 +154,10 @@ body {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
+  /* this is to prevent swap direction option cascading down to nested grids in browsers that use the old 2009 syntax */
+
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
 }
 .grid__col {
   -webkit-align-items: center;
@@ -165,6 +169,11 @@ body {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  /* use border instead of padding or margin to avoid padding/margin inheritence issues */
+
+  border-color: transparent;
+  border-left-style: solid;
+  border-width: 0;
   /* for IE8-9 - no flexbox */
 
   display: table-cell\0/;
@@ -183,18 +192,22 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
 }
-/* margins between columns */
+/**
+ * gaps between columns
+ * - Uses transparent borders so as to allow the use of padding and margins independently
+ */
 .grid--gap-s > .grid__col {
-  padding-left: 12px;
+  border-left-width: 12px;
 }
 .grid--gap-m > .grid__col {
-  padding-left: 18px;
+  border-left-width: 18px;
 }
 .grid--gap-l > .grid__col {
-  padding-left: 24px;
+  border-left-width: 24px;
 }
-.grid[class*="--gap"] > .grid__col:first-child {
-  padding-left: 0;
+/* cancel grid border padding */
+.grid > .grid__col:first-child {
+  border-width: 0;
 }
 /**
  * Swap column order
@@ -223,6 +236,8 @@ body {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
+  /* vertically align middle */
+
   vertical-align: middle;
   -ms-flex-align: center;
   -webkit-align-items: center;
@@ -242,6 +257,8 @@ body {
 /* @BP20 */
 @media all and (max-width: 800px) {
   {
+    /* collapse the columns by setting to display block for IE9 */
+  
     /* swap order set on collapsed columns */
   
     /* for IE8-9 - no flexbox */
@@ -250,13 +267,13 @@ body {
   
   }
   .grid--gap-s > .grid__col {
-    padding-left: 12px;
+    border-left-width: 12px;
   }
   .grid--gap-m > .grid__col {
-    padding-left: 16px;
+    border-left-width: 16px;
   }
   .grid--gap-l > .grid__col {
-    padding-left: 20px;
+    border-left-width: 20px;
   }
   .grid--vertical-bp20 {
     -webkit-box-orient: vertical;
@@ -264,6 +281,9 @@ body {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+  }
+  .legacyie .grid--vertical-bp20 > .grid__col {
+    display: block;
   }
   .grid--vertical-bp20.grid--swap-order {
     -webkit-box-direction: reverse;
@@ -273,7 +293,7 @@ body {
     flex-direction: column-reverse;
   }
   .grid--vertical-bp20 > .grid__col {
-    padding-left: 0;
+    border-left-width: 0;
     width: 100%;
     -ms-flex: auto;
   }
@@ -289,13 +309,13 @@ body {
 /* @BP30 */
 @media all and (max-width: 600px) {
   .grid--gap-s > .grid__col {
-    padding-left: 9px;
+    border-left-width: 9px;
   }
   .grid--gap-m > .grid__col {
-    padding-left: 14px;
+    border-left-width: 14px;
   }
   .grid--gap-l > .grid__col {
-    padding-left: 18px;
+    border-left-width: 18px;
   }
   .grid--vertical-bp30 {
     -webkit-box-orient: vertical;
@@ -312,9 +332,45 @@ body {
     flex-direction: column-reverse;
   }
   .grid--vertical-bp30 > .grid__col {
-    padding-left: 0;
+    border-left-width: 0;
     width: 100%;
   }
+  /* collapse the columns by setting to display block for IE9 */
+  .legacyie .grid--vertical-bp30 > .grid__col {
+    display: block;
+  }
+}
+/**
+ * LISTS
+ * Basic styles for bulleted and normal lists
+ * ============================================================================
+ */
+/* standard list */
+.list {
+  list-style: none;
+  padding: 0;
+}
+.list__item {
+  margin-bottom: 0.4em;
+}
+/* floated list */
+.list--float > .list__item {
+  margin: 0 0 0 12px;
+  display: inline;
+}
+.list--float > .list__item:first-child {
+  margin-left: 0;
+}
+.list--bullet > .list__item:before {
+  content: "";
+  background: #aaa;
+  margin-right: 10px;
+  display: inline-block;
+  width: 0.38em;
+  height: 0.38em;
+  position: relative;
+  border-radius: 50%;
+  vertical-align: middle;
 }
 /**
  * TYPOGRAPHY
@@ -346,6 +402,10 @@ body {
   font-size: 20px;
   font-size: 1.25rem;
 }
+/* paragraph margins */
+p {
+  margin-bottom: 0.9em;
+}
 /* headline text */
 .h-xxxl {
   font-size: 42px;
@@ -361,7 +421,7 @@ body {
   font-family: 'SkyNews';
   font-weight: normal;
   line-height: 1.3em;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.35em;
 }
 .h-xl {
   font-size: 24px;
@@ -500,6 +560,10 @@ body {
   border-left-style: solid;
   position: relative;
 }
+/* remove margins off last item tag within the body */
+.mediabox__body > :last-child {
+  margin-bottom: 0;
+}
 .mediabox__image {
   border-color: transparent;
 }
@@ -556,9 +620,6 @@ body {
   .mediabox--gap-l > .mediabox__body {
     border-width: 20px;
   }
-  .mediabox--vertical > .mediabox__body {
-    margin-top: 0.1em;
-  }
   /* vertical @BP20 */
   .mediabox--vertical-bp20 {
     display: block;
@@ -585,9 +646,6 @@ body {
   }
   .mediabox--gap-l > .mediabox__body {
     border-width: 18px;
-  }
-  .mediabox--vertical-bp30 > .mediabox__body {
-    margin-top: 0.1em;
   }
   /* vertical @BP30 */
   .mediabox--vertical-bp30 {
@@ -963,15 +1021,12 @@ body {
 /* @BP20 */
 @media all and (max-width: 800px) {
   /* set margin bottom for @BP20 */
-  .box--s,
   .box--s-bp20 {
     margin-bottom: 12px;
   }
-  .box--m,
   .box--m-bp20 {
     margin-bottom: 16px;
   }
-  .box--l,
   .box--l-bp20 {
     margin-bottom: 20px;
   }
@@ -992,15 +1047,12 @@ body {
 /* @BP30 */
 @media all and (max-width: 600px) {
   /* set margin bottom for @BP30 */
-  .box--s,
   .box--s-bp30 {
     margin-bottom: 9px;
   }
-  .box--m,
   .box--m-bp30 {
     margin-bottom: 14px;
   }
-  .box--l,
   .box--l-bp30 {
     margin-bottom: 18px;
   }
