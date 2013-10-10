@@ -28,6 +28,12 @@
 	position: relative;
 }
 
+/* remove margins off last item tag within the body */
+
+.mediabox__body > :last-child {
+	margin-bottom:0;
+}
+
 .mediabox__image {
 	border-color: transparent
 }
@@ -113,10 +119,6 @@
 		border-width: @box-unit-l-bp20;
 	}
 
-	.mediabox--vertical > .mediabox__body {
-		margin-top:0.1em;
-	}
-
 
 	/* vertical @BP20 */
 
@@ -155,9 +157,6 @@
 		border-width: @box-unit-l-bp30;
 	}
 
-	.mediabox--vertical-bp30 > .mediabox__body {
-		margin-top:0.1em;
-	}
 
 	/* vertical @BP30 */
 
