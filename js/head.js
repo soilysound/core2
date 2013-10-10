@@ -419,19 +419,23 @@ String.prototype.toCamel = function(){
 
 		var ua = navigator.userAgent;
 
-		var isIE = /*@cc_on (function() {switch(@_jscript_version) {case 5.7: return 7; case 5.8: return 8; case 9: return 9; case 10: return 10;}})() || @*/ 0;
+		var isIE = (function() { if (new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) !== null) {
+			return parseFloat( RegExp.$1 ); } else { return false;}
+		})();
+		
 		var isChrome = !!window.chrome;
 		var isFirefox = ua.match(/firefox/i);
 		var isSafari = ua.match(/safari/i);
 		var isIpad = ua.match(/iPad/);
 		var isIphone = ua.match(/iP/);
 		var isAndroid = ua.match(/android/i);
-
 		if (isIE){
 
 			return {
 				msie:true,
-				version:isIE
+				version:isIE,
+				//legacy ie is IE versions < 10
+				legacyie:isIE < 10
 			};
 		}
 
