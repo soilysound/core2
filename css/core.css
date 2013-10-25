@@ -31,7 +31,7 @@
 /* box units - used in margins and padding */
 /* border radius */
 /* site base */
-@-ms-viewport  {
+@-ms-viewport {
   width: auto;
 }
 * {

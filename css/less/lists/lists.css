@@ -1,0 +1,1 @@
+.list{list-style:none;padding:0}.list__item{margin-bottom:.4em}.list--float>.list__item{margin:0 0 0 12px;display:inline}.list--float>.list__item:first-child{margin-left:0}.list--bullet>.list__item:before{content:"";background:#aaa;margin-right:10px;display:inline-block;width:.38em;height:.38em;position:relative;border-radius:50%;vertical-align:middle}
