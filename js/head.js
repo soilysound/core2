@@ -193,7 +193,39 @@ if (objCtr.defineProperty) {
 
 String.prototype.toCamel = function(){
 	return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
-};;/**
+};;// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+
+// MIT license
+
+(function() {
+  var lastTime = 0;
+  var vendors = ['moz', 'webkit'];
+  for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+    window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+    window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+  }
+
+  if(!window.requestAnimationFrame)
+    window.requestAnimationFrame = function(callback, element) {
+      var currTime = new Date().getTime();
+      var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+      var id = window.setTimeout(function() {
+        callback(currTime + timeToCall);
+      },
+      timeToCall);
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+
+  if(!window.cancelAnimationFrame){
+    window.cancelAnimationFrame = function(id) {
+      clearTimeout(id);
+    };
+  }
+}());;/**
  * ADD CSS
  *
  * Dynamically set a css string
@@ -202,108 +234,113 @@ String.prototype.toCamel = function(){
 
 ;(function(window, document){
 
-	window.SKY_SPORTS = window.SKY_SPORTS || {};
+  window.SKY_SPORTS = window.SKY_SPORTS || {};
 
-	var cssRules = {};
-	var persistedRules = {};
+  var cssRules = {};
+  var persistedRules = {};
 
-	//get existing persistent rules
-	
-	if(window.localStorage.getItem('jscss')){
+  //get existing persistent rules
 
-		cssRules = JSON.parse( window.localStorage.getItem('jscss') );
-		persistedRules = JSON.parse( window.localStorage.getItem('jscss') );
-	}
+  if(window.localStorage.getItem('jscss')){
+    cssRules = JSON.parse( window.localStorage.getItem('jscss') );
+    persistedRules = JSON.parse( window.localStorage.getItem('jscss') );
+  }
 
-	//create and add style tag
-	var style = document.createElement('style');
-	style.id = "jscss";
-	document.getElementsByTagName('head')[0].appendChild(style);
+  //create and add style tag
+  var style = document.createElement('style');
+  style.id = "jscss";
+  document.getElementsByTagName('head')[0].appendChild(style);
 
-	/**
-	 * Add a css string to the page head
-	 * @param {string} id			unique id for css string
-	 * @param {string} css string	css values to add
-	 * @param {boolean} persist		set true to persist values in localstorage
-	 */
-	
-	function addCss(id, cssString, persist){
+  /**
+  * Add a css string to the page head
+  * @param {string} id      unique id for css string
+  * @param {string} css string  css values to add
+  * @param {boolean} persist    set true to persist values in localstorage
+  */
 
-		if(id in cssRules === false || cssRules[id] !== cssString){
+  function addCss(id, cssString, persist){
 
-			cssRules[id] = cssString;
+  if(id in cssRules === false || cssRules[id] !== cssString){
 
-			if(persist === true){
-				alert('persist');
-				persistedRules[id] = cssString;
-			}
-			console.log(cssRules, persistedRules);
-			writeCss();
+    cssRules[id] = cssString;
 
-		}
-	}
+    if(persist === true){
+      alert('persist');
+      persistedRules[id] = cssString;
+    }
+    console.log(cssRules, persistedRules);
+    writeCss();
 
-	/**
-	 * Remove css by id reference
-	 * @param  {string}		id id of css string	
-	 */
-	
-	function removeCss(id){
+  }
+  }
 
-		if(id in cssRules){
+  /**
+  * Remove css by id reference
+  * @param  {string}    id id of css string 
+  */
 
-			delete cssRules[id];
-		}
+  function removeCss(id){
 
-		if(id in persistedRules){
+  if(id in cssRules){
 
-			delete persistedRules[id];
-		}
+    delete cssRules[id];
+  }
 
-		writeCss();
-	}
-	
-	/**
-	 * Write the css string into the style tag
-	 */
-	
-	function writeCss(){
+  if(id in persistedRules){
 
-		var css = createCssString();
-		style.styleSheet ? style.styleSheet = css : style.innerHTML = css;
-	}
+    delete persistedRules[id];
+  }
+
+  writeCss();
+  }
+
+  /**
+  * Write the css string into the style tag
+  */
+
+  function writeCss(){
+
+  var css = createCssString();
+
+  if(style.styleSheet){
+    style.styleSheet.cssText = css;
+  }
+  else {
+    style.textContent = css;
+  }
+  }
 
 
-	/**
-	 * parses an object of css strings into 1 string
-	 * @return {string} css string
-	 */
-	
-	function createCssString(){
+  /**
+  * parses an object of css strings into 1 string
+  * @return {string} css string
+  */
 
-		var css = '';
+  function createCssString(){
 
-		for (var id in cssRules){
+  var css = '';
 
-			css += cssRules[id];
-		}
+  for (var id in cssRules){
 
-		return css;
-	}
+    css += cssRules[id];
+  }
 
-	//write any persistent rules to localstorage as the page unloads
-	window.addEventListener('beforeunload', function(){
+  return css;
+  }
 
-		window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+  //write any persistent rules to localstorage as the page unloads
+  window.onbeforeunload =  function(){
 
-	}, false);
+  window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
 
-	//write any persistent styles on page load
-	writeCss();
+  };
 
-	//expose functions
-	window.SKY_SPORTS.addCss = addCss;
-	window.SKY_SPORTS.removeCss = removeCss;
+  //write any persistent styles on page load
+  writeCss();
+
+  //expose functions
+  window.SKY_SPORTS.addCss = addCss;
+  window.SKY_SPORTS.removeCss = removeCss;
 
 })(window, document);;/**
  * BREAKPOINTS
@@ -316,6 +353,13 @@ String.prototype.toCamel = function(){
 
   'use strict';
 
+  // set a default breakpoint
+  document.currentBreakPoint = 10;
+
+  /**
+   * return the current css breakpoint
+   * @return {number} 10 = desktop, 20 = tablet, 30 = mobile
+   */
   function getBreakPoint(){
 
     //read current break point from css
@@ -350,11 +394,11 @@ String.prototype.toCamel = function(){
     return throttled;
   }
 
-
+  //called by the match media event listener
   function dispatchEvent(){
-    console.log('uses match media listener');
-    document.dispatchEvent(bpEvent);
 
+    //dispatch our custom breakpoint event
+    document.dispatchEvent(bpEvent);
   }
 
 
@@ -370,10 +414,16 @@ String.prototype.toCamel = function(){
     var bpEvent = document.createEvent('Event');
     bpEvent.initEvent('breakPointChange', true, true);
 
-    //set current breakpoint
-    document.currentBreakPoint = getBreakPoint();
+    /**
+     * set current breakpoint 
+     * - using a requestAnimation frame here as this seems to alleviate an initial false result in IE10/11 
+     */
+    window.requestAnimationFrame(function(){
+      document.currentBreakPoint = getBreakPoint();
+    });
+ 
 
-    /* 1 */
+    /* 1 - use match media listeners */
     if(window.matchMedia && window.matchMedia('all').addListener){
 
       //bp30
@@ -408,7 +458,7 @@ String.prototype.toCamel = function(){
 
     }
 
-    /* 2 */
+    /* 2 - use a throttled resize event */
     else {
 
       window.addEventListener('resize', throttle(function(){
@@ -419,7 +469,7 @@ String.prototype.toCamel = function(){
         if(currBP !== document.currentBreakPoint) {
 
           document.currentBreakPoint = currBP;
-          console.log('uses resize event');
+
           //trigger our custom event listener to fire
           document.dispatchEvent(bpEvent);
         }

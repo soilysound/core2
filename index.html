@@ -264,9 +264,9 @@
         </div>
     </div>
     <script>
-        document.addEventListener('breakPointChange', function(e){
+        document.addEventListener && document.addEventListener('breakPointChange', function(e){
 
-            console.log('current brwakpoint is - ' + document.currentBreakPoint)
+            console.log('current breakpoint is - ' + document.currentBreakPoint);
 
         }, false);
     </script>

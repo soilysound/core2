@@ -7,107 +7,112 @@
 
 ;(function(window, document){
 
-	window.SKY_SPORTS = window.SKY_SPORTS || {};
+  window.SKY_SPORTS = window.SKY_SPORTS || {};
 
-	var cssRules = {};
-	var persistedRules = {};
+  var cssRules = {};
+  var persistedRules = {};
 
-	//get existing persistent rules
-	
-	if(window.localStorage.getItem('jscss')){
+  //get existing persistent rules
 
-		cssRules = JSON.parse( window.localStorage.getItem('jscss') );
-		persistedRules = JSON.parse( window.localStorage.getItem('jscss') );
-	}
+  if(window.localStorage.getItem('jscss')){
+    cssRules = JSON.parse( window.localStorage.getItem('jscss') );
+    persistedRules = JSON.parse( window.localStorage.getItem('jscss') );
+  }
 
-	//create and add style tag
-	var style = document.createElement('style');
-	style.id = "jscss";
-	document.getElementsByTagName('head')[0].appendChild(style);
+  //create and add style tag
+  var style = document.createElement('style');
+  style.id = "jscss";
+  document.getElementsByTagName('head')[0].appendChild(style);
 
-	/**
-	 * Add a css string to the page head
-	 * @param {string} id			unique id for css string
-	 * @param {string} css string	css values to add
-	 * @param {boolean} persist		set true to persist values in localstorage
-	 */
-	
-	function addCss(id, cssString, persist){
+  /**
+  * Add a css string to the page head
+  * @param {string} id      unique id for css string
+  * @param {string} css string  css values to add
+  * @param {boolean} persist    set true to persist values in localstorage
+  */
 
-		if(id in cssRules === false || cssRules[id] !== cssString){
+  function addCss(id, cssString, persist){
 
-			cssRules[id] = cssString;
+  if(id in cssRules === false || cssRules[id] !== cssString){
 
-			if(persist === true){
-				alert('persist');
-				persistedRules[id] = cssString;
-			}
-			console.log(cssRules, persistedRules);
-			writeCss();
+    cssRules[id] = cssString;
 
-		}
-	}
+    if(persist === true){
+      alert('persist');
+      persistedRules[id] = cssString;
+    }
+    console.log(cssRules, persistedRules);
+    writeCss();
 
-	/**
-	 * Remove css by id reference
-	 * @param  {string}		id id of css string	
-	 */
-	
-	function removeCss(id){
+  }
+  }
 
-		if(id in cssRules){
+  /**
+  * Remove css by id reference
+  * @param  {string}    id id of css string 
+  */
 
-			delete cssRules[id];
-		}
+  function removeCss(id){
 
-		if(id in persistedRules){
+  if(id in cssRules){
 
-			delete persistedRules[id];
-		}
+    delete cssRules[id];
+  }
 
-		writeCss();
-	}
-	
-	/**
-	 * Write the css string into the style tag
-	 */
-	
-	function writeCss(){
+  if(id in persistedRules){
 
-		var css = createCssString();
-		style.styleSheet ? style.styleSheet = css : style.innerHTML = css;
-	}
+    delete persistedRules[id];
+  }
+
+  writeCss();
+  }
+
+  /**
+  * Write the css string into the style tag
+  */
+
+  function writeCss(){
+
+  var css = createCssString();
+
+  if(style.styleSheet){
+    style.styleSheet.cssText = css;
+  }
+  else {
+    style.textContent = css;
+  }
+  }
 
 
-	/**
-	 * parses an object of css strings into 1 string
-	 * @return {string} css string
-	 */
-	
-	function createCssString(){
+  /**
+  * parses an object of css strings into 1 string
+  * @return {string} css string
+  */
 
-		var css = '';
+  function createCssString(){
 
-		for (var id in cssRules){
+  var css = '';
 
-			css += cssRules[id];
-		}
+  for (var id in cssRules){
 
-		return css;
-	}
+    css += cssRules[id];
+  }
 
-	//write any persistent rules to localstorage as the page unloads
-	window.addEventListener('beforeunload', function(){
+  return css;
+  }
 
-		window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+  //write any persistent rules to localstorage as the page unloads
+  window.onbeforeunload =  function(){
 
-	}, false);
+  window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
 
-	//write any persistent styles on page load
-	writeCss();
+  };
 
-	//expose functions
-	window.SKY_SPORTS.addCss = addCss;
-	window.SKY_SPORTS.removeCss = removeCss;
+  //write any persistent styles on page load
+  writeCss();
+
+  //expose functions
+  window.SKY_SPORTS.addCss = addCss;
+  window.SKY_SPORTS.removeCss = removeCss;
 
 })(window, document);

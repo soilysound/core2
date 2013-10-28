@@ -9,6 +9,13 @@
 
   'use strict';
 
+  // set a default breakpoint
+  document.currentBreakPoint = 10;
+
+  /**
+   * return the current css breakpoint
+   * @return {number} 10 = desktop, 20 = tablet, 30 = mobile
+   */
   function getBreakPoint(){
 
     //read current break point from css
@@ -43,11 +50,11 @@
     return throttled;
   }
 
-
+  //called by the match media event listener
   function dispatchEvent(){
-    console.log('uses match media listener');
-    document.dispatchEvent(bpEvent);
 
+    //dispatch our custom breakpoint event
+    document.dispatchEvent(bpEvent);
   }
 
 
@@ -63,10 +70,16 @@
     var bpEvent = document.createEvent('Event');
     bpEvent.initEvent('breakPointChange', true, true);
 
-    //set current breakpoint
-    document.currentBreakPoint = getBreakPoint();
+    /**
+     * set current breakpoint 
+     * - using a requestAnimation frame here as this seems to alleviate an initial false result in IE10/11 
+     */
+    window.requestAnimationFrame(function(){
+      document.currentBreakPoint = getBreakPoint();
+    });
+ 
 
-    /* 1 */
+    /* 1 - use match media listeners */
     if(window.matchMedia && window.matchMedia('all').addListener){
 
       //bp30
@@ -101,7 +114,7 @@
 
     }
 
-    /* 2 */
+    /* 2 - use a throttled resize event */
     else {
 
       window.addEventListener('resize', throttle(function(){
@@ -112,7 +125,7 @@
         if(currBP !== document.currentBreakPoint) {
 
           document.currentBreakPoint = currBP;
-          console.log('uses resize event');
+
           //trigger our custom event listener to fire
           document.dispatchEvent(bpEvent);
         }

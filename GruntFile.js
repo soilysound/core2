@@ -27,12 +27,23 @@ module.exports = function(grunt) {
         "css/core-min.css": ["css/core.css"]
       }
     }
+  },
+  watch: {
+    scripts: {
+      files: ['js/head/*.js', 'js/shims/*.js'],
+      tasks: ['minify'],
+      options: {
+        spawn: false,
+      },
+    },
   }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
 
   grunt.registerTask('minify', ['concat', 'uglify', 'cssmin']);
 
