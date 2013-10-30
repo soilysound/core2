@@ -13,7 +13,6 @@
   var persistedRules = {};
 
   //get existing persistent rules
-
   if(window.localStorage.getItem('jscss')){
     cssRules = JSON.parse( window.localStorage.getItem('jscss') );
     persistedRules = JSON.parse( window.localStorage.getItem('jscss') );

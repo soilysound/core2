@@ -25,7 +25,11 @@
     return bp;
   }
 
-  //throttle function to prevent window.onresize calling too frequently
+  /**
+   * Throttle a function so it doesnt run too often
+   * @param  {Function} fn   function to run
+   * @param  {Number}   time throttle time
+   */
   function throttle(fn, time) {
 
     var handle;
@@ -50,7 +54,9 @@
     return throttled;
   }
 
-  //called by the match media event listener
+  /**
+   * Function to run in the request animation frame
+   */
   function dispatchEvent(){
 
     //dispatch our custom breakpoint event
