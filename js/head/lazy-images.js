@@ -15,7 +15,7 @@
   }
 
   function loadImage(){
-    this.classList.add('lazy-image--loaded');
+    this.style.cssText = 'visibility:visible;opacity:1';
   }
 
   function swapSrc(src, lookup){
