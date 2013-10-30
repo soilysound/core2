@@ -15,7 +15,7 @@
   }
 
   function loadImage(){
-    this.style.cssText = 'visibility:visible;opacity:1';
+    this.style.cssText = 'visibility:visible;';
   }
 
   function swapSrc(src, lookup){
