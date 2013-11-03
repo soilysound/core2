@@ -23,10 +23,9 @@
 		return {
 			viewportUnits: !!shim.style.width,
 			cssAnimations: !!(shim.style.animationName || shim.style.webkitAnimationName || shim.style.mozAnimationName),
-			touch:('ontouchstart' in window) || ('DocumentTouch' in window) && document instanceof window.documentumentTouch
-		};
-
-	}
+			touch:('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
+    };
+  }
 
 	//get device
 	function getDevice(){
@@ -43,6 +42,7 @@
 		var isIpad = ua.match(/iPad/);
 		var isIphone = ua.match(/iP/);
 		var isAndroid = ua.match(/android/i);
+    
 		if (isIE){
 
 			return {

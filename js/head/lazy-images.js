@@ -2,7 +2,7 @@
 
   'use strict';
 
-  var images = document.getElementsByClassName('lazy-image');
+  var images = document.getElementsByClassName ? document.getElementsByClassName('postpone-load') : document.getElementsByTagName('img');
 
   /**
    * Check if image is out of the viewport
@@ -15,7 +15,7 @@
   }
 
   function loadImage(){
-    this.style.cssText = 'visibility:visible;';
+    this.classList.remove('postpone-load');
   }
 
   function swapSrc(src, lookup){
@@ -44,7 +44,7 @@
    * Scan list of images and load if in view
    */
   function scan(){
-    
+   
     for(var i = -1;++i<images.length;){
 
       var image = images[i];
@@ -55,20 +55,21 @@
       
       //if the image has no data-image then remove from loop and skip
       if(!src){
-        image.classList.remove('lazy-image');
+        image.classList.remove('postpone-load');
         continue;
       }
-
+     
       //check if image is out of view, if not then swap src and remove from loop
       if(outOfView(image)){
         continue;
       }
+
       else {
-        image.classList.remove('lazy-image');
         // use 3 methods to ensure onload is called in the various scenarios/browsers
         image.onload = loadImage;
-        image.naturalWidth > 0 && loadImage.call(image);
-        image.readyState === 'complete' && loadImage.call(image);
+        // //image.onerror = errorImage;
+        // image.naturalWidth > 0 && loadImage.call(image);
+        // image.readyState === 'complete' && loadImage.call(image);
         image.src = swapSrc(src, attrs.lookup);
       }
     }

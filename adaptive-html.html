@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/core.css" type="text/css">
+    <script src="js/head-min.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+
+  	<button onclick="add(this)">add div with function</button>
+
+  </body>
+  <script src="js/site-min.js"></script>
+  <script>
+  function add(el){
+    el.insertAdjacentHTML('afterend', '<div class="adaptive-html callfn" data-load-20="widget.html,30=" data-fn="adaptive-html">-</div>')
+  }
+  </script>
+</html>

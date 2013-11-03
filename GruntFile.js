@@ -6,18 +6,28 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
-      dist: {
+      head: {
         src: ['js/shims/*.js', 'js/head/*.js'],
         dest: 'js/head.js'
+      },
+
+      site: {
+        src: ['js/vendor/*.js', 'js/require/require-config.js', 'js/require/callfn.js'],
+        dest:'js/site.js'
       }
     },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd/mm/yyyy") %> */\n'
       },
-      dist: {
+      head: {
         files: {
           'js/head-min.js': ['js/head.js']
+        }
+      },
+      site: {
+        files:{
+          'js/site-min.js': ['js/site.js']
         }
       }
     },
@@ -30,7 +40,7 @@ module.exports = function(grunt) {
   },
   watch: {
     scripts: {
-      files: ['js/head/*.js', 'js/shims/*.js'],
+      files: ['js/head/*.js', 'js/shims/*.js', 'js/modules/*.js', 'js/require/*.js'],
       tasks: ['minify'],
       options: {
         spawn: false,
