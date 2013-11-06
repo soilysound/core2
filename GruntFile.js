@@ -38,6 +38,19 @@ module.exports = function(grunt) {
       }
     }
   },
+
+  lodash: {
+    build: {
+      // output location
+      'dest': '/js/vendor/lodash.custom.js',
+      'options': {
+        // modifiers for prepared builds
+        // backbone, legacy, modern, mobile, strict, underscore
+        'modifier': 'exports=amd include=extend --minify'
+      }
+    }
+  },
+
   watch: {
     scripts: {
       files: ['js/head/*.js', 'js/shims/*.js', 'js/modules/*.js', 'js/require/*.js'],
@@ -53,7 +66,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
-
+  grunt.loadNpmTasks('grunt-lodash');
 
   grunt.registerTask('minify', ['concat', 'uglify', 'cssmin']);
 

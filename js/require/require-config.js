@@ -1,6 +1,7 @@
 require.config({
-	baseUrl: "/core2/js/modules",
+	baseUrl: "/core2/js",
 	paths: {
-    "adaptive-html": "adaptive-html"
+    "adaptive-html": "modules/adaptive-html",
+    "underscore": "vendor/lodash.custom"
 	}
 });

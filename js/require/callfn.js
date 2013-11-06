@@ -1,3 +1,7 @@
+/**
+ * Simple wrapper to load require modules from html markup
+ */
+
 (function(){
 
 	var functions = document.getElementsByClassName('callfn');
@@ -11,6 +15,7 @@
       var funcName = func.fn;
 
       if(funcName){
+        
         require([funcName], function(foobar){
           foobar.init(el, func);
         })
