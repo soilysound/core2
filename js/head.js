@@ -434,39 +434,7 @@ if (!document.documentElement.dataset &&
         Object.defineProperty(Element.prototype, 'dataset', propDescriptor);
     }
 }
-;//https://gist.github.com/svlasov-gists/2383751
-function merge(target, source) {
-        
-    /* Merges two (or more) objects,
-       giving the last one precedence */
-    
-    if ( typeof target !== 'object' ) {
-        target = {};
-    }
-    
-    for (var property in source) {
-        
-        if ( source.hasOwnProperty(property) ) {
-            
-            var sourceProperty = source[ property ];
-            
-            if ( typeof sourceProperty === 'object' ) {
-                target[ property ] = util.merge( target[ property ], sourceProperty );
-                continue;
-            }
-            
-            target[ property ] = sourceProperty;
-            
-        }
-        
-    }
-    
-    for (var a = 2, l = arguments.length; a < l; a++) {
-        merge(target, arguments[a]);
-    }
-    
-    return target;
-};;// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+;// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
 // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
@@ -934,7 +902,7 @@ function merge(target, source) {
    * Scan list of images and load if in view
    */
   function scan(){
-   
+
     for(var i = -1;++i<images.length;){
 
       var image = images[i];
@@ -942,13 +910,13 @@ function merge(target, source) {
       //get image attributes
       var attrs = image.dataset;
       var src = attrs.imageSrc;
-      
+
       //if the image has no data-image then remove from loop and skip
       if(!src){
         image.classList.remove('postpone-load');
         continue;
       }
-     
+
       //check if image is out of view, if not then swap src and remove from loop
       if(outOfView(image)){
         continue;

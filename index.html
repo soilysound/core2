@@ -16,21 +16,30 @@
 
 <body>
 <div class="wrap">
-
-  <div class="grid site-layout-primary -debug">
+  <div class="grid site-layout-primary">
 
     <div class="grid__col site-layout-primary__col1">
+
       <div class="nav-primary-mobile">
         left nav mobile
       </div>
+
     </div>
 
     <div class="grid__col site-layout-primary__col2">
+
       <div class="site-header">
         <div class="site-header__body">
           site header <button id="switch" class="u-x-right">nav</button>
         </div>
       </div>
+
+      <script type="html/template" class="callfn" data-fn="adaptive-html" data-show-at="10|20">
+        <div class="nav-primary-desktop">
+        </div>
+      </script>
+
+
     </div>
   </div>
 
