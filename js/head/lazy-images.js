@@ -44,7 +44,7 @@
    * Scan list of images and load if in view
    */
   function scan(){
-   
+
     for(var i = -1;++i<images.length;){
 
       var image = images[i];
@@ -52,13 +52,13 @@
       //get image attributes
       var attrs = image.dataset;
       var src = attrs.imageSrc;
-      
+
       //if the image has no data-image then remove from loop and skip
       if(!src){
         image.classList.remove('postpone-load');
         continue;
       }
-     
+
       //check if image is out of view, if not then swap src and remove from loop
       if(outOfView(image)){
         continue;

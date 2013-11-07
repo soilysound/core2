@@ -10,7 +10,7 @@ define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
     * @param  {Object} data Object of module paramters set from HTML data-attributes
     */
     init: function(element, data){
-      
+
       //merge data with this
       _.extend(this, data);
 
@@ -24,6 +24,6 @@ define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
   };
 
   return exports;
-  
+
 
 });

@@ -30,6 +30,8 @@
 /* font families */
 /* box units - used in margins and padding */
 /* border radius */
+/* styles */
+/* transitions */
 /* site base */
 @-ms-viewport {
   width: auto;
@@ -125,7 +127,6 @@ body {
   margin: 0 auto;
   max-width: 1024px;
   min-height: 100%;
-  min-height: 100vmin;
   background: #ffffff;
 }
 /* modules */
@@ -338,6 +339,52 @@ body {
   /* collapse the columns by setting to display block for IE9 */
   .legacyie .grid--vertical-bp30 > .grid__col {
     display: block;
+  }
+}
+/**
+ * Primary site layout
+ * left column for mobile devices icontains main navigation and is hidden by default
+ * full width for non mobile device - left column never shows
+ * ============================================================================
+*/
+.site-layout-primary {
+  border: 3px solid orange;
+  min-height: 100%;
+  min-height: 100vh;
+}
+/**
+ * For BP10 the left hand nav is hidden and never shown
+ */
+@media all and (min-width: 801px) {
+  .site-layout-primary__col1 {
+    display: none;
+  }
+}
+/**
+ * For BP20 and 30, the left hand nav is hidden off canvas and slides in
+ */
+@media all and (max-width: 800px) {
+  .site-layout-primary__col1 {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.33s ease-in-out;
+    -moz-transition: -moz-transform 0.33s ease-in-out;
+    transition: transform 0.33s ease-in-out;
+    background: #777777;
+    z-index: 100;
+    position: relative;
+    width: 280px;
+    position: absolute;
+    height: 100%;
+    left: 0;
+  }
+  .site-layout-primary__col1--open {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    transform: none;
   }
 }
 /**
@@ -719,7 +766,7 @@ p {
 /**
  * STATE
  * Utility classes for the display of elements
- * Always prefixed with is- 
+ * Always prefixed with is-
  * ============================================================================
  */
 .is-hidden {
@@ -727,6 +774,13 @@ p {
 }
 .is-invisible {
   visibility: hidden;
+}
+.is-off-canvas {
+  position: absolute;
+  -webkit-transform: translateX(-5000px);
+  -moz-transform: translateX(-5000px);
+  -ms-transform: translateX(-5000px);
+  transform: translateX(-5000px);
 }
 .is-visually-hidden {
   position: absolute;
@@ -1142,16 +1196,22 @@ p {
 }
 /* xy position */
 .u-x-right {
+  position: absolute;
   right: 0;
   left: auto;
 }
 .u-x-left {
+  position: absolute;
   left: 0;
   right: auto;
 }
 .u-y-top {
+  position: absolute;
   top: 0;
+  bottom: auto;
 }
 .u-y-bottom {
+  position: absolute;
   bottom: 0;
+  top: auto;
 }
