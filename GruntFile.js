@@ -39,21 +39,21 @@ module.exports = function(grunt) {
     }
   },
 
-  lodash: {
-    build: {
-      // output location
-      'dest': '/js/vendor/lodash.custom.js',
-      'options': {
-        // modifiers for prepared builds
-        // backbone, legacy, modern, mobile, strict, underscore
-        'modifier': 'exports=amd include=extend --minify'
-      }
+  'lodash': {
+  'target': {
+    // output location
+    'dest': 'js/vendor/lodash.custom.js'
+  },
+  'options': {
+    'exports': ['amd'],
+    'include': ['extend', 'difference'],
+    'flags': ['--minify']
     }
   },
 
   watch: {
     scripts: {
-      files: ['js/head/*.js', 'js/shims/*.js', 'js/modules/*.js', 'js/require/*.js'],
+      files: ['js/head/*.js', 'js/shims/*.js', 'js/modules/*.js', 'js/require/*.js', 'js/vendor/*.js'],
       tasks: ['minify'],
       options: {
         spawn: false,
