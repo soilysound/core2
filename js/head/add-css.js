@@ -40,7 +40,6 @@
       alert('persist');
       persistedRules[id] = cssString;
     }
-    console.log(cssRules, persistedRules);
     writeCss();
 
   }

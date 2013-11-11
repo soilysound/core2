@@ -1,8 +1,10 @@
-define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
+define('adaptive-html',['underscore'], function(_){
 
   "use strict";
 
-  var exports = {
+  function exports(){}
+
+  exports.prototype = {
 
     /**
      * List of registered breakpoints
@@ -26,7 +28,6 @@ define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
       this._createBreakPoints();
       this._parseTemplate();
 
-      console.log(this);
       this._loadIfMatchesBreakPoint();
 
       //add breakpoint change handler

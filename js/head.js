@@ -508,7 +508,6 @@ if (!document.documentElement.dataset &&
       alert('persist');
       persistedRules[id] = cssString;
     }
-    console.log(cssRules, persistedRules);
     writeCss();
 
   }
