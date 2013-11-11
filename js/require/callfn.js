@@ -15,7 +15,7 @@
       var funcName = func.fn;
 
       if(funcName){
-        
+
         require([funcName], function(foobar){
           foobar.init(el, func);
         })
@@ -32,6 +32,6 @@
   }
 
   scan();
-	
+
 
 })();

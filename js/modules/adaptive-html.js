@@ -1,5 +1,7 @@
 define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
-  
+
+  "use strict";
+
   var exports = {
 
     /**
@@ -24,18 +26,16 @@ define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
       this._createBreakPoints();
       this._parseTemplate();
 
+      console.log(this);
       this._loadIfMatchesBreakPoint();
 
-      //create anonymous function with this bound to add to our event listener
-      this.listenerFunction = function(){
+      //add breakpoint change handler
+      document.addEventListener('breakPointChange', function(){
 
         this._loadIfMatchesBreakPoint();
 
-      }.bind(this);
+      }.bind(this), false);
 
-      //add breakpoint change handler
-      document.addEventListener('breakPointChange', this.listenerFunction, false);
-      
     },
 
     _loadIfMatchesBreakPoint: function(){
@@ -43,18 +43,14 @@ define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
       var currBP = document.currentBreakPoint;
 
       //if current breakpoint matches, append new html
-      if(this.showAt.indexOf(currBP) > -1){
+      if(this.showAt.indexOf(currBP) > -1 && !this.element.dataset.domAppended){
 
-        console.log(this.templateTarget, this.templateDom);
         this.templateTarget.insertAdjacentHTML('beforebegin', this.templateDom);
 
         //set flag that the dom has been appended - we only need to do this once
-        this.domAppended = true;
+        this.element.dataset.domAppended = true;
         this.templateTarget.parentNode.removeChild(this.templateTarget);
 
-        //remove breakpoint event listener, its no longer needed
-        document.removeEventListener('breakPointChange', this.listenerFunction, false);
-       
       }
 
     },
@@ -70,7 +66,7 @@ define(['adaptive-html', 'underscore'], function(adaptiveHTML, _){
       }
 
       this.showAt = _.difference(this.breakPoints, this.showAt);
-      
+
     },
 
     _parseTemplate: function(){
