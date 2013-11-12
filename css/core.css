@@ -113,6 +113,17 @@ a:active {
     font-family: "30";
   }
 }
+.adaptive-html {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.166s linear;
+  -moz-transition: opacity 0.166s linear;
+  transition: opacity 0.166s linear;
+}
+.adaptive-html--loaded {
+  visibility: visible;
+  opacity: 1;
+}
 /**
  * SITE BASE
  * Set widths for wrapper class

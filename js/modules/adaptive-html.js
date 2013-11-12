@@ -43,12 +43,12 @@ define('adaptive-html',['underscore'], function(_){
       var currBP = document.currentBreakPoint;
 
       //if current breakpoint matches, append new html
-      if(this.showAt === 'all' || this.showAt.indexOf(currBP) > -1 && !this.element.dataset.domAppended){
+      if(this.showAt === 'all' || this.showAt.indexOf(currBP) > -1 && !this.element.classList.contains('adaptive-html--loaded')){
 
         this.templateTarget.insertAdjacentHTML('beforebegin', this.templateDom);
 
         //set flag that the dom has been appended - we only need to do this once
-        this.element.dataset.domAppended = true;
+        this.element.classList.add('adaptive-html--loaded');
         this.templateTarget.parentNode.removeChild(this.templateTarget);
 
       }
