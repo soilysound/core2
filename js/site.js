@@ -2097,18 +2097,20 @@ var requirejs, require, define;
       var func = el.dataset;
       var funcName = func.fn;
 
+      //@NOTE - the dataset polyfill doesnt work in safari 5
+
       if(funcName){
 
-        require([funcName], function(foobar){
+        require(['adaptive-html'], function(Foobar){
 
           //if foobar is a function constructor
-          if(typeof foobar === 'function'){
-            var instance = new foobar();
+          if(typeof Foobar === 'function'){
+            var instance = new Foobar();
             instance.init(el, func);
           }
           //else its a standard object
           else {
-            foobar.init();
+            Foobar.init();
           }
         });
 

@@ -77,20 +77,19 @@
     bpEvent.initEvent('breakPointChange', true, true);
 
     /**
-     * set current breakpoint 
-     * - using a requestAnimation frame here as this seems to alleviate an initial false result in IE10/11 
+     * set current breakpoint
+     * - using a requestAnimation frame here as this seems to alleviate an initial false result in IE10/11
      */
     window.requestAnimationFrame(function(){
       document.currentBreakPoint = getBreakPoint();
     });
- 
+
 
     /* 1 - use match media listeners */
     if(window.matchMedia && window.matchMedia('all').addListener){
 
       //bp30
       window.matchMedia('(max-width:600px)').addListener(function(query){
-
         if(query.matches){
           document.currentBreakPoint = 30;
           window.requestAnimationFrame(dispatchEvent);
@@ -100,7 +99,6 @@
 
       //bp20
       window.matchMedia('(min-width:601px) and (max-width:800px)').addListener(function(query){
-
         if(query.matches){
           document.currentBreakPoint = 20;
           window.requestAnimationFrame(dispatchEvent);
@@ -110,7 +108,6 @@
 
       //bp10
       window.matchMedia('(min-width:801px)').addListener(function(query){
-
         if(query.matches){
           document.currentBreakPoint = 10;
           window.requestAnimationFrame(dispatchEvent);

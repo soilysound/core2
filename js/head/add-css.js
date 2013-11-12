@@ -47,7 +47,7 @@
 
   /**
   * Remove css by id reference
-  * @param  {string}    id id of css string 
+  * @param  {string}    id id of css string
   */
 
   function removeCss(id){
@@ -102,7 +102,7 @@
   //write any persistent rules to localstorage as the page unloads
   window.onbeforeunload =  function(){
 
-  window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+    //window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
 
   };
 

@@ -515,7 +515,7 @@ if (!document.documentElement.dataset &&
 
   /**
   * Remove css by id reference
-  * @param  {string}    id id of css string 
+  * @param  {string}    id id of css string
   */
 
   function removeCss(id){
@@ -570,7 +570,7 @@ if (!document.documentElement.dataset &&
   //write any persistent rules to localstorage as the page unloads
   window.onbeforeunload =  function(){
 
-  window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+    //window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
 
   };
 
@@ -581,7 +581,8 @@ if (!document.documentElement.dataset &&
   window.SKY_SPORTS.addCss = addCss;
   window.SKY_SPORTS.removeCss = removeCss;
 
-})(window, document);;/**
+})(window, document);
+;/**
  * BREAKPOINTS
  *
  * Sets the current breakpoint as a global variable 'document.currentBreakPoint'.
@@ -660,20 +661,19 @@ if (!document.documentElement.dataset &&
     bpEvent.initEvent('breakPointChange', true, true);
 
     /**
-     * set current breakpoint 
-     * - using a requestAnimation frame here as this seems to alleviate an initial false result in IE10/11 
+     * set current breakpoint
+     * - using a requestAnimation frame here as this seems to alleviate an initial false result in IE10/11
      */
     window.requestAnimationFrame(function(){
       document.currentBreakPoint = getBreakPoint();
     });
- 
+
 
     /* 1 - use match media listeners */
     if(window.matchMedia && window.matchMedia('all').addListener){
 
       //bp30
       window.matchMedia('(max-width:600px)').addListener(function(query){
-
         if(query.matches){
           document.currentBreakPoint = 30;
           window.requestAnimationFrame(dispatchEvent);
@@ -683,7 +683,6 @@ if (!document.documentElement.dataset &&
 
       //bp20
       window.matchMedia('(min-width:601px) and (max-width:800px)').addListener(function(query){
-
         if(query.matches){
           document.currentBreakPoint = 20;
           window.requestAnimationFrame(dispatchEvent);
@@ -693,7 +692,6 @@ if (!document.documentElement.dataset &&
 
       //bp10
       window.matchMedia('(min-width:801px)').addListener(function(query){
-
         if(query.matches){
           document.currentBreakPoint = 10;
           window.requestAnimationFrame(dispatchEvent);

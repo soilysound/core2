@@ -11,7 +11,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title></title>
   <link rel="stylesheet" href="css/core.css" type="text/css">
-  <script src="js/head-min.js"></script>
+  <script src="js/head.js"></script>
   <style>
 
     @-webkit-keyframes callfn {
@@ -20,10 +20,10 @@
       }
       100% {
         outline:0;
-      };
+      }
     }
 
-    
+
   </style>
 </head>
 
@@ -41,24 +41,38 @@
 
     <div class="grid__col site-layout-primary__col2">
 
+      <!-- site header -->
       <div class="site-header">
         <div class="grid site-header__body">
           <div class="grid__col u-span1of3">logo</div>
-          <div class="grid__col"><button id="switch" class="u-x-right">toggle nav</button></div>
+          <div class="grid__col">
+            <button id="switch" class="u-x-right is-hidden--bp10">toggle nav</button>
+          </div>
         </div>
       </div>
+      <!-- site header -->
 
-      <div class="callfn nav-primary-desktop is-hidden--bp30 is-hidden--bp20" data-fn="adaptive-html">
+      <!-- desktop nav -->
+      <div class="callfn nav-primary-desktop is-hidden--bp20 is-hidden--bp30" data-fn="adaptive-html">
         <script type="html/template">
           <h2>DESKTOP NAV</h2>
         </script>
       </div>
+      <!-- desktop nav -->
 
-      <div class="callfn is-hidden--bp30 is-hidden--bp20" data-fn="adaptive-html">
-        <noscript type="html/template">
-          <h3>Stuff</h3>
-          <p>This content was in a noscript</p>
-        </noscript>
+      <!-- main site 2 column layout -->
+      <div class="grid grid--vertical-bp20 site-layout-secondary -debug">
+        <div class="grid__col">
+          stuff
+        </div>
+
+        <div class="grid__col u-span25 callfn is-hidden--bp20 is-hidden--bp30" data-fn="adaptive-html">
+          <noscript type="html/template">
+            <h3>Right hand col content</h3>
+            <p>This content was in a noscript</p>
+            <p>We only show it desktop (bp10)</p>
+          </noscript>
+        </div>
       </div>
 
     </div>
@@ -66,7 +80,7 @@
 
 </div>
 </body>
-  <script src="js/site-min.js"></script>
+  <script src="js/site.js"></script>
   <script>
     var nav = document.querySelector('.site-layout-primary__col1');
     document.querySelector('#switch').onclick = function(){
