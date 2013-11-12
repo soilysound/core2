@@ -570,7 +570,7 @@ if (!document.documentElement.dataset &&
   //write any persistent rules to localstorage as the page unloads
   window.onbeforeunload =  function(){
 
-    //window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+    window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
 
   };
 
@@ -673,28 +673,31 @@ if (!document.documentElement.dataset &&
     if(window.matchMedia && window.matchMedia('all').addListener){
 
       //bp30
-      window.matchMedia('(max-width:600px)').addListener(function(query){
+      var mql30 = window.matchMedia('(max-width:600px)');
+      mql30.addListener(function(query){
         if(query.matches){
           document.currentBreakPoint = 30;
-          window.requestAnimationFrame(dispatchEvent);
+          dispatchEvent();
         }
 
       });
 
       //bp20
-      window.matchMedia('(min-width:601px) and (max-width:800px)').addListener(function(query){
+      var mql20 = window.matchMedia('(min-width:601px) and (max-width:800px)');
+      mql20.addListener(function(query){
         if(query.matches){
           document.currentBreakPoint = 20;
-          window.requestAnimationFrame(dispatchEvent);
+          dispatchEvent();
         }
 
       });
 
       //bp10
-      window.matchMedia('(min-width:801px)').addListener(function(query){
+      var mql10 = window.matchMedia('(min-width:801px)');
+      mql10.addListener(function(query){
         if(query.matches){
           document.currentBreakPoint = 10;
-          window.requestAnimationFrame(dispatchEvent);
+          dispatchEvent();
         }
 
       });
@@ -748,10 +751,29 @@ if (!document.documentElement.dataset &&
 
 		shim.style.cssText = 'width:10vw;-webkit-animation-name:xxx;-moz-animation-name:xxx;animation-name:xxx;-webkit-appearance:none';
 
+    //determine correct js animation start event name
+		var animationCandidates = {
+      'webkitAnimation':'webkitAnimationStart',
+      'mozAnimation':'mozAnimationStart',
+      'animation':'animationstart',
+      'msAnimation':'MSAnimationStart'
+    };
+
+    //create shim element
+    var animationEventName = false;
+
+    //test animation name candiates in shim element and set transitionPrefix to the match
+    for(var property in animationCandidates) {
+      if(property in shim.style){
+        animationEventName = animationCandidates[property];
+      }
+    }
+
 		return {
 			viewportUnits: !!shim.style.width,
 			cssAnimations: !!(shim.style.animationName || shim.style.webkitAnimationName || shim.style.mozAnimationName),
-			touch:('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
+			touch:('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0),
+      animationEvent:animationEventName
     };
   }
 
@@ -847,7 +869,7 @@ if (!document.documentElement.dataset &&
 
 	for(var item in SKY_SPORTS.hasFeature){
 
-		docEl.classList.add(SKY_SPORTS.hasFeature[item] === true ? item.toDash() : 'no-' + item.toDash());
+		docEl.classList.add(!!SKY_SPORTS.hasFeature[item] ? item.toDash() : 'no-' + item.toDash());
 	}
 
 
@@ -857,6 +879,9 @@ if (!document.documentElement.dataset &&
 
   'use strict';
 
+  /**
+   * Get a *live* node list of images - the browser can automatically update this list for us
+   */
   var images = document.getElementsByClassName ? document.getElementsByClassName('postpone-load') : document.getElementsByTagName('img');
 
   /**
@@ -899,7 +924,7 @@ if (!document.documentElement.dataset &&
    * Scan list of images and load if in view
    */
   function scan(){
-
+    
     for(var i = -1;++i<images.length;){
 
       var image = images[i];

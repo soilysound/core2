@@ -2,6 +2,9 @@
 
   'use strict';
 
+  /**
+   * Get a *live* node list of images - the browser can automatically update this list for us
+   */
   var images = document.getElementsByClassName ? document.getElementsByClassName('postpone-load') : document.getElementsByTagName('img');
 
   /**
@@ -44,7 +47,7 @@
    * Scan list of images and load if in view
    */
   function scan(){
-
+    
     for(var i = -1;++i<images.length;){
 
       var image = images[i];

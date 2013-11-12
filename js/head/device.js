@@ -20,10 +20,29 @@
 
 		shim.style.cssText = 'width:10vw;-webkit-animation-name:xxx;-moz-animation-name:xxx;animation-name:xxx;-webkit-appearance:none';
 
+    //determine correct js animation start event name
+		var animationCandidates = {
+      'webkitAnimation':'webkitAnimationStart',
+      'mozAnimation':'mozAnimationStart',
+      'animation':'animationstart',
+      'msAnimation':'MSAnimationStart'
+    };
+
+    //create shim element
+    var animationEventName = false;
+
+    //test animation name candiates in shim element and set transitionPrefix to the match
+    for(var property in animationCandidates) {
+      if(property in shim.style){
+        animationEventName = animationCandidates[property];
+      }
+    }
+
 		return {
 			viewportUnits: !!shim.style.width,
 			cssAnimations: !!(shim.style.animationName || shim.style.webkitAnimationName || shim.style.mozAnimationName),
-			touch:('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
+			touch:('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0),
+      animationEvent:animationEventName
     };
   }
 
@@ -119,7 +138,7 @@
 
 	for(var item in SKY_SPORTS.hasFeature){
 
-		docEl.classList.add(SKY_SPORTS.hasFeature[item] === true ? item.toDash() : 'no-' + item.toDash());
+		docEl.classList.add(!!SKY_SPORTS.hasFeature[item] ? item.toDash() : 'no-' + item.toDash());
 	}
 
 
