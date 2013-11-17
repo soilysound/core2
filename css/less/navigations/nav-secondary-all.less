@@ -1,0 +1,97 @@
+@media all and (min-width:801px){
+
+  .nav-secondary-all {
+    display: table;
+    width: 100%
+  }
+
+  .nav-secondary-all__head,
+  .nav-secondary-all__frame {
+    display: table-cell;
+    vertical-align: middle
+  }
+
+  .nav-secondary-all__head {
+    padding:0 12px
+  }
+
+  .nav-secondary-all__frame {
+    width: 100%
+  }
+
+  .nav-secondary-all__body {
+    list-style: none;
+    white-space: nowrap
+  }
+
+  .nav-secondary-all__item {
+    display: inline-block;
+    padding: 8px 6px
+  }
+
+  .nav-secondary-all__section {
+    display: none
+  }
+
+}
+
+@media all and (max-width:800px){
+
+  .nav-secondary-all {
+  	position: relative 
+  }
+
+  .nav-secondary-all__head {
+  	padding:6px 0;
+    text-align: center;
+    background: #888;
+    cursor: pointer;
+  }
+
+  //display sub section of clicked nav
+  .nav-secondary-all__section {
+    font-weight: normal
+  }
+
+
+  .nav-secondary-all__frame {
+    position: absolute;
+    width: 100%;
+    overflow: hidden
+  }
+
+  .nav-secondary-all__body {
+
+    .transform(translateY(-100%));
+    -webkit-transition: -webkit-transform 0.33s ease-in-out;
+    -moz-transition: -moz-transform 0.33s ease-in-out;
+    transition: transform 0.33s ease-in-out;
+
+    list-style:none;
+    padding: 0;
+
+    //set the links in 2 columns
+    -webkit-column-count: 2;
+  }
+
+  //nav body when opened
+  .nav-secondary-all__body--open {
+    .transform(translateY(0));
+  }
+
+
+  .nav-secondary-all__item {
+    padding:4px 9px
+
+  }
+
+
+  //offset elements - animate the container div immedietly after the nav element downards by the same amount as the height of the open nav
+  .nav-secondary-all__offset {
+    -webkit-transition: -webkit-transform 0.33s ease-in-out;
+    -moz-transition: -moz-transform 0.33s ease-in-out;
+    transition: transform 0.33s ease-in-out;
+  }
+
+}
+
