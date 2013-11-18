@@ -101,8 +101,8 @@
 
   //write any persistent rules to localstorage as the page unloads
   window.onbeforeunload =  function(){
-
-    window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+    //@TODO - this doesnt work properly
+    //window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
 
   };
 

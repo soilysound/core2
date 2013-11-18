@@ -12,37 +12,6 @@
   <title></title>
   <link rel="stylesheet" href="css/core.css" type="text/css">
   <script src="js/head.js"></script>
-  <style>
-
-    @-webkit-keyframes callfn {
-      0% {
-        outline:0;
-      }
-      100% {
-        outline:0;
-      }
-    }
-
-     @-moz-keyframes callfn {
-      0% {
-        outline:0;
-      }
-      100% {
-        outline:0;
-      }
-    }
-
-     @keyframes callfn {
-      0% {
-        outline:0;
-      }
-      100% {
-        outline:0;
-      }
-    }
-
-
-  </style>
 </head>
 
 <body>
@@ -64,7 +33,7 @@
         <div class="grid site-header__body">
           <div class="grid__col u-span1of3">logo</div>
           <div class="grid__col">
-            <button id="switch" class="u-x-right is-hidden--bp10">toggle nav</button>
+            <button id="switch" class="u-x-right is-hidden--bp10"><</button>
           </div>
         </div>
       </div>
@@ -102,7 +71,7 @@
       <!-- main site 2 column layout -->
       <div class="grid grid--vertical-bp20 site-layout-secondary u-minheight-100 -debug nav-secondary-all__offset">
         <div class="grid__col">
-
+          PAGE CONTENT
         </div>
 
         <div class="grid__col u-span27 callfn is-hidden--bp20 is-hidden--bp30 adaptive-html" data-fn="adaptive-html">
@@ -152,7 +121,7 @@
     }
 
     for(var i = -1;++i<navItems.length;){
-    
+
       navItems[i].onclick = function(e){
         navSection.textContent = e.target.textContent;
         navBody.classList.remove('nav-secondary-all__body--open');

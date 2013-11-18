@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       },
 
       site: {
-        src: ['js/vendor/*.js', 'js/require/require-config.js', 'js/require/callfn.js'],
+        src: ['js/vendor/*.js', 'js/require/require-config.js', 'js/require/callfn.js', 'js/core.js'],
         dest:'js/site.js'
       }
     },

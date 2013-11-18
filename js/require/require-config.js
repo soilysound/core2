@@ -3,6 +3,7 @@ require.config({
 	paths: {
     "adaptive-html": "modules/adaptive-html",
     "underscore": "vendor/lodash.custom",
-    "class": "modules/class"
+    "class": "modules/class",
+    "fastclick": "vendor/fastclick"
 	}
 });

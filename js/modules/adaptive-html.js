@@ -80,6 +80,7 @@ define('adaptive-html',['underscore'], function(_){
       this.templateTarget = this.element.querySelector('[type]');
       this.templateDom = this.templateTarget.textContent ?
       this.templateTarget.textContent : this.templateTarget.innerText;
+
     }
 
   };

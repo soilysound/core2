@@ -8,10 +8,10 @@
    * Try each vendor prefix to get event name
    * put msAnimation last as that return a none standard MSAnimationStart event name
   */
- 
+
   //listen for elements added to the page with animation start
   document.addEventListener(SKY_SPORTS.hasFeature.animationEvent, function(e){
-    
+
     if(e.animationName === 'callfn'){
 
       //if element has callfn attached, grab the data attributes and call the corrosponding requite plugin
@@ -19,7 +19,7 @@
       var func = el.dataset;
       var funcName = func.fn;
 
-      //@NOTE - the dataset polyfill doesnt work in safari 5
+      //@NOTE - the dataset polyfill doesnt work in safari
 
       if(funcName){
 
