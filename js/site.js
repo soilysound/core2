@@ -2871,7 +2871,8 @@ var requirejs, require, define;
     "adaptive-html": "modules/adaptive-html",
     "underscore": "vendor/lodash.custom",
     "class": "modules/class",
-    "fastclick": "vendor/fastclick"
+    "fastclick": "vendor/fastclick",
+    "nav-primary-mobile": "modules/nav-primary-mobile"
 	}
 });
 ;/**
@@ -2899,7 +2900,7 @@ var requirejs, require, define;
 
       if(funcName){
 
-        require(['adaptive-html'], function(Foobar){
+        require([funcName], function(Foobar){
 
           //if foobar is a function constructor
           if(typeof Foobar === 'function'){
@@ -2908,7 +2909,7 @@ var requirejs, require, define;
           }
           //else its a standard object
           else {
-            Foobar.init();
+            Foobar.init(el, func);
           }
         });
 

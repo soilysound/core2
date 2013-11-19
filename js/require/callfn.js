@@ -23,7 +23,7 @@
 
       if(funcName){
 
-        require(['adaptive-html'], function(Foobar){
+        require([funcName], function(Foobar){
 
           //if foobar is a function constructor
           if(typeof Foobar === 'function'){
@@ -32,7 +32,7 @@
           }
           //else its a standard object
           else {
-            Foobar.init();
+            Foobar.init(el, func);
           }
         });
 

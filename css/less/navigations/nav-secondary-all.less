@@ -16,16 +16,14 @@
   }
 
   .nav-secondary-all__frame {
-    width: 100%
+    width: 100%;
+    overflow: hidden
   }
 
   .nav-secondary-all__body {
-
     background: #ddd;
-
     list-style: none;
-    white-space: nowrap
-
+    white-space: nowrap;
   }
 
   .nav-secondary-all__item {
@@ -42,6 +40,8 @@
 @media all and (max-width:800px){
 
   .nav-secondary-all {
+
+    .fix-flicker();
   	position: relative;
   }
 
@@ -93,6 +93,9 @@
 
   //offset elements - animate the container div immedietly after the nav element downards by the same amount as the height of the open nav
   .nav-secondary-all__offset {
+
+    .fix-flicker();
+
     -webkit-transition: -webkit-transform 0.33s ease-in-out;
     -moz-transition: -moz-transform 0.33s ease-in-out;
     transition: transform 0.33s ease-in-out;
