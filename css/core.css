@@ -385,6 +385,7 @@ body {
 .site-layout-primary {
   min-height: 100%;
   min-height: 100vh;
+  -webkit-transform: translateZ(0);
 }
 /**
  * For BP10 the left hand nav is hidden and never shown
@@ -478,6 +479,7 @@ body {
     width: 100%;
   }
   .nav-secondary-all__body {
+    background: #ddd;
     list-style: none;
     white-space: nowrap;
   }
@@ -508,6 +510,7 @@ body {
     overflow: hidden;
   }
   .nav-secondary-all__body {
+    background: #ddd;
     -webkit-transform: translateY(-100%);
     -moz-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
