@@ -1,14 +1,8 @@
 @media all and (min-width:801px){
 
   .nav-secondary-all {
-    display: table;
-    width: 100%
-  }
-
-  .nav-secondary-all__head,
-  .nav-secondary-all__frame {
-    display: table-cell;
-    vertical-align: middle
+    width: 100%;
+    align: middle
   }
 
   .nav-secondary-all__head {
@@ -17,10 +11,11 @@
 
   .nav-secondary-all__frame {
     width: 100%;
-    overflow: hidden
+    overflow: hidden;
   }
 
   .nav-secondary-all__body {
+    width: 100%;
     background: #ddd;
     list-style: none;
     white-space: nowrap;
@@ -40,7 +35,7 @@
 @media all and (max-width:800px){
 
   .nav-secondary-all {
-
+    display: block;
     .fix-flicker();
   	position: relative;
   }
@@ -50,6 +45,7 @@
     text-align: center;
     background: #888;
     cursor: pointer;
+    display: block;
   }
 
   //display sub section of clicked nav
@@ -61,11 +57,12 @@
   .nav-secondary-all__frame {
     position: absolute;
     width: 100%;
-    overflow: hidden
+    overflow: hidden;
+    display: block;
   }
 
   .nav-secondary-all__body {
-
+    width: 100%;
     background: #ddd;
 
     .transform(translateY(-100%));
