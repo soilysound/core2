@@ -495,12 +495,15 @@ body {
     -webkit-transform: translateZ(0);
     position: relative;
   }
+  .nav-secondary-all > .nav-secondary-all__head,
+  .nav-secondary-all > .nav-secondary-all__frame {
+    display: block;
+  }
   .nav-secondary-all__head {
     padding: 6px 0;
     text-align: center;
     background: #888;
     cursor: pointer;
-    display: block;
   }
   .nav-secondary-all__section {
     font-weight: normal;
