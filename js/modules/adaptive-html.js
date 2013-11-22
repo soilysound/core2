@@ -26,7 +26,16 @@ define('adaptive-html',['underscore'], function(_){
       this.element = element;
 
       this._createBreakPoints();
-      this._parseTemplate();
+
+      //we have a src attribute so go and get the content
+      if(this.src){
+        this._getRemoteMarkup();
+      }
+
+      //its an inline template
+      else {
+        this._parseTemplate();
+      }
 
       this._loadIfMatchesBreakPoint();
 
@@ -75,11 +84,20 @@ define('adaptive-html',['underscore'], function(_){
 
     },
 
+    _getRemoteMarkup: function(){
+
+      console.log('make xhr call for html snippet');
+
+    },
+
     _parseTemplate: function(){
 
       this.templateTarget = this.element.querySelector('[type]');
-      this.templateDom = this.templateTarget.textContent ?
-      this.templateTarget.textContent : this.templateTarget.innerText;
+
+      if(this.templateTarget){
+        this.templateDom = this.templateTarget.textContent ?
+        this.templateTarget.textContent : this.templateTarget.innerText;
+      }
 
     }
 
