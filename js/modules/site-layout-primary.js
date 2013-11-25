@@ -1,4 +1,4 @@
-define('nav-primary-mobile', ['underscore'], function(_){
+define('site-layout-primary', ['underscore'], function(_){
 
 	"use strict";
 
@@ -25,7 +25,7 @@ define('nav-primary-mobile', ['underscore'], function(_){
 
 			this.leftNav = this.element.querySelector(this.leftNavSelector);
 			this.siteBody = this.element.querySelector(this.siteBodySelector);
-			this.trigger = this.element.querySelector(this.leftNavTrigger);
+			this.trigger = this.element.querySelector('[data-role="open-nav"]');
 		},
 
 		_bindEvents: function(){
