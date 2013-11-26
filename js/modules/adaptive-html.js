@@ -1,4 +1,4 @@
-define('adaptive-html',['underscore'], function(_){
+define('adaptive-html',['underscore', 'https://rawgithub.com/ded/reqwest/master/reqwest.js'], function(_, reqwest){
 
   "use strict";
 
@@ -11,6 +11,7 @@ define('adaptive-html',['underscore'], function(_){
      * @type {Array}
      */
     breakPoints:[10, 20, 30],
+    templateDom: '',
 
     /**
     * Initiate the adaptive html module
@@ -29,36 +30,55 @@ define('adaptive-html',['underscore'], function(_){
 
       //we have a src attribute so go and get the content
       if(this.src){
-        this._getRemoteMarkup();
+
+        //create a target
+        this.templateTarget = document.createElement('span');
+        element.appendChild(this.templateTarget);
+
+        this.xhr = reqwest('test.html');
+        this.xhr.then(function(resp){
+
+          this.templateDom = resp;
+          this._loadIfMatchesBreakPoint();
+
+        }.bind(this));
+
+        
       }
 
       //its an inline template
       else {
         this._parseTemplate();
+        this._loadIfMatchesBreakPoint();
       }
 
-      this._loadIfMatchesBreakPoint();
-
       //add breakpoint change handler
-      document.addEventListener('breakPointChange', function(){
-        this._loadIfMatchesBreakPoint();
+      document.addEventListener('breakPointChange', this.addBpEvent, false);
 
-      }.bind(this), false);
+      //create a referenceable function to bind to our breakpoint listener
+      this.addBpEvent = function(){
+        this._loadIfMatchesBreakPoint();
+      }.bind(this);
+
 
     },
 
     _loadIfMatchesBreakPoint: function(){
-
+      console.log(this.element);
       var currBP = document.currentBreakPoint;
 
       //if current breakpoint matches, append new html
-      if(this.showAt === 'all' || this.showAt.indexOf(currBP) > -1 && !this.element.classList.contains('adaptive-html--loaded')){
+      if((this.showAt === 'all' || this.showAt.indexOf(currBP) > -1) && !this.element.classList.contains('adaptive-html--loaded')){
 
         this.templateTarget.insertAdjacentHTML('beforebegin', this.templateDom);
 
         //set flag that the dom has been appended - we only need to do this once
         this.element.classList.add('adaptive-html--loaded');
+         //remove breakpoint listener
+        document.removeEventListener('breakPointChange', this.addBpEvent, false);
         this.templateTarget.parentNode.removeChild(this.templateTarget);
+
+       
 
       }
 
