@@ -6,13 +6,24 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
+      /* compile all files and modules we want to roll up into our head.js file here */
       head: {
         src: ['js/shims/*.js', 'js/head/*.js'],
         dest: 'js/head.js'
       },
 
+      /* compile all files and modules we want to roll up into our site.js file here */
       site: {
-        src: ['js/vendor/*.js', 'js/require/require-config.js', 'js/require/callfn.js', 'js/core.js'],
+        src: [
+          'js/vendor/require.js',
+          'js/require/require-config.js',
+
+          'js/vendor/fastclick.js',
+          'js/vendor/lodash.custom.js',
+          
+          'js/require/callfn.js',
+          'js/core.js'
+        ],
         dest:'js/site.js'
       }
     },
@@ -46,8 +57,7 @@ module.exports = function(grunt) {
   },
   'options': {
     'exports': ['amd'],
-    'include': ['extend', 'difference'],
-    'flags': ['--minify']
+    'include': ['extend', 'difference']
     }
   },
 

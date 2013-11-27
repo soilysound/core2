@@ -1,4 +1,4 @@
-define('adaptive-html',['underscore', 'https://rawgithub.com/ded/reqwest/master/reqwest.js'], function(_, reqwest){
+define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
 
   "use strict";
 
@@ -28,34 +28,21 @@ define('adaptive-html',['underscore', 'https://rawgithub.com/ded/reqwest/master/
 
       this._createBreakPoints();
 
-      //we have a src attribute so go and get the content
+      //we have a src attribute make xhr request and load
       if(this.src){
-
-        //create a target
-        this.templateTarget = document.createElement('span');
-        element.appendChild(this.templateTarget);
-
-        this.xhr = reqwest('test.html');
-        this.xhr.then(function(resp){
-
-          this.templateDom = resp;
-          this._loadIfMatchesBreakPoint();
-
-        }.bind(this));
-
-        
+        this._getContentXHR();
       }
 
-      //its an inline template
+      //its an inline template, parse and load
       else {
-        this._parseTemplate();
-        this._loadIfMatchesBreakPoint();
+        this._getContentInline();
       }
 
       //add breakpoint change handler
       document.addEventListener('breakPointChange', this.addBpEvent, false);
 
       //create a referenceable function to bind to our breakpoint listener
+      //this is we can *unbind* it later when were done
       this.addBpEvent = function(){
         this._loadIfMatchesBreakPoint();
       }.bind(this);
@@ -63,8 +50,29 @@ define('adaptive-html',['underscore', 'https://rawgithub.com/ded/reqwest/master/
 
     },
 
+    _getContentInline: function(){
+
+      this._parseTemplate();
+      this._loadIfMatchesBreakPoint();
+
+    },
+
+    _getContentXHR: function(){
+      //create a dom target to load the content
+      this.templateTarget = document.createElement('span');
+      this.element.appendChild(this.templateTarget);
+
+      this.xhr = reqwest(this.src);
+      this.xhr.then(function(resp){
+
+        this.templateDom = resp;
+        this._loadIfMatchesBreakPoint();
+
+      }.bind(this));
+    },
+
     _loadIfMatchesBreakPoint: function(){
-      console.log(this.element);
+
       var currBP = document.currentBreakPoint;
 
       //if current breakpoint matches, append new html
@@ -79,7 +87,6 @@ define('adaptive-html',['underscore', 'https://rawgithub.com/ded/reqwest/master/
         this.templateTarget.parentNode.removeChild(this.templateTarget);
 
        
-
       }
 
     },

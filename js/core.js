@@ -1,7 +1,6 @@
 /**
  * Call all core modules you want to include in the main site.js build
  */
-
 (function(){
 
   "use strict";
@@ -14,4 +13,5 @@
 
     });
   }
+  
 })();
