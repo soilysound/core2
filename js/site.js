@@ -2076,7 +2076,7 @@ var requirejs, require, define;
 /*jslint browser:true, node:true*/
 /*global define, Event, Node*/
 
-
+define('fastclick', [], function () {
 /**
  * Instantiate fast-clicking listeners on the specificed layer.
  *
@@ -2839,20 +2839,9 @@ FastClick.attach = function(layer) {
 };
 
 
-if (typeof define !== 'undefined' && define.amd) {
+return FastClick;
 
-	// AMD. Register as an anonymous module.
-	define(function() {
-		'use strict';
-		return FastClick;
-	});
-} else if (typeof module !== 'undefined' && module.exports) {
-	module.exports = FastClick.attach;
-	module.exports.FastClick = FastClick;
-} else {
-	window.FastClick = FastClick;
-}
-;/**
+});;/**
  * @license
  * Lo-Dash 2.2.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash exports="amd" include="extend,difference" --output js/vendor/lodash.custom.js`
