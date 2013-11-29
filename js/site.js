@@ -4546,10 +4546,12 @@ return FastClick;
   "use strict";
 
   var cssAnimations = SKY_SPORTS.hasFeature.animationEvent;
+  //var cssAnimations = false;
+
 
   //listen for elements added to the page with animation start
   if(cssAnimations){
-
+    console.log('css');
     document.addEventListener(SKY_SPORTS.hasFeature.animationEvent, function(e){
 
       if(e.animationName === 'callfn'){
@@ -4579,13 +4581,19 @@ return FastClick;
   }
 
   function scanCallFn(){
-
+    console.log('loop');
     //scan the page
     var callFn = document.querySelectorAll('.callfn');
 
     for(var i = -1;++i<callFn.length;){
 
-       getCallFn(callFn[i]);
+      var item = callFn[i];
+
+      //check whether the div with the callfn class is visible
+      if(item.offsetWidth){
+        getCallFn(callFn[i]);
+      }
+
 
     }
   }

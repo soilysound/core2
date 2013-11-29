@@ -7,6 +7,8 @@
   "use strict";
 
   var cssAnimations = SKY_SPORTS.hasFeature.animationEvent;
+  //var cssAnimations = false;
+
 
   //listen for elements added to the page with animation start
   if(cssAnimations){
@@ -46,7 +48,13 @@
 
     for(var i = -1;++i<callFn.length;){
 
-       getCallFn(callFn[i]);
+      var item = callFn[i];
+
+      //check whether the div with the callfn class is visible
+      if(item.offsetWidth){
+        getCallFn(callFn[i]);
+      }
+
 
     }
   }
