@@ -86,7 +86,7 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
         document.removeEventListener('breakPointChange', this.addBpEvent, false);
         this.templateTarget.parentNode.removeChild(this.templateTarget);
 
-       
+
       }
 
     },
