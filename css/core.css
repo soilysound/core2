@@ -210,6 +210,8 @@ body {
   border-color: transparent;
   border-left-style: solid;
   border-width: 0;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   /* for IE8-9 - no flexbox */
 
   display: table-cell\0/;
@@ -422,6 +424,17 @@ body {
     -ms-transform: translatex(0);
     transform: translatex(0);
   }
+}
+.site-layout-secondary {
+  min-height: 100 vh;
+}
+.site-layout-secondary__col2 {
+  width: 324px;
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 /* site header */
 .site-header__body {

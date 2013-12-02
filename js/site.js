@@ -4546,7 +4546,7 @@ return FastClick;
   "use strict";
 
   var cssAnimations = SKY_SPORTS.hasFeature.animationEvent;
-  //var cssAnimations = false;
+  // var cssAnimations = false;
 
 
   //listen for elements added to the page with animation start
@@ -4577,6 +4577,19 @@ return FastClick;
 
     }, false);
 
+    scheduledScan();
+
+
+  }
+
+  function scheduledScan(){
+
+    setInterval(function(){
+      console.time(1);
+      scanCallFn();
+      console.timeEnd(1);
+
+    }, 1000);
 
   }
 
@@ -4610,7 +4623,7 @@ return FastClick;
 
       var funcName = func.fn;
 
-      //@NOTE - the dataset polyfill doesnt work in safari
+      //@TODO - the dataset polyfill doesnt work in safari
 
       if(funcName){
 

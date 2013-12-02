@@ -1,5 +1,7 @@
 (function(window, document){
 
+  //@TODO - change the references to images to just 'elements' since this works with both
+  //
   'use strict';
 
   /**
@@ -52,7 +54,21 @@
 
       var image = images[i];
 
-      //get image attributes
+      //determine whether its a lazy module rather than an image
+      var isLazyModule = !image.nodeName.match(/img/g);
+
+      //check if image is out of view, if not then swap src and remove from loop
+      if(outOfView(image)){
+        continue;
+      }
+
+      if(isLazyModule){
+        image.classList.remove('postpone-load');
+        image.classList.add('callfn');
+        continue;
+      }
+
+      //its an image, so get image attributes
       var attrs = image.dataset;
       var src = attrs.imageSrc;
 
@@ -62,12 +78,8 @@
         continue;
       }
 
-      //check if image is out of view, if not then swap src and remove from loop
-      if(outOfView(image)){
-        continue;
-      }
-
       else {
+
         // use 3 methods to ensure onload is called in the various scenarios/browsers
         image.onload = loadImage;
         // //image.onerror = errorImage;

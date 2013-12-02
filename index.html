@@ -77,13 +77,8 @@
       </div>
 
       <!-- main site 2 column layout -->
-      <div class="grid grid--gap-m grid--vertical-bp20 site-layout-secondary u-minheight-100 nav-secondary-all__offset">
-        <div class="grid__col">
-
-
-          <div class="box adaptive-html is-hidden--bp20 callfn" data-fn="adaptive-html" data-src="test.html">
-            load some content into here
-         </div>
+      <div class="grid grid--gap-m grid--vertical-bp20 site-layout-secondary nav-secondary-all__offset">
+        <div class="grid__col site-layout-secondary__col1">
 
 
           <div class="box box--island-s box--m placeholder">
@@ -122,9 +117,13 @@
 
           </div>
 
+          <div class="box adaptive-html placeholder postpone-load" data-fn="adaptive-html" data-src="test.html">
+            load some content into here lazily
         </div>
 
-        <div class="grid__col u-span27 callfn is-hidden--bp20 is-hidden--bp30 adaptive-html" data-fn="adaptive-html">
+        </div>
+
+        <div class="grid__col site-layout-secondary__col2 callfn is-hidden--bp20 is-hidden--bp30 adaptive-html" data-fn="adaptive-html">
           <iframe type="html/template">
             <div class="box box--island-s box--m placeholder">
 
