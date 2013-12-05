@@ -11,7 +11,7 @@
 
   //listen for elements added to the page with animation start
   if(cssAnimations){
-    console.log('css');
+
     document.addEventListener(SKY_SPORTS.hasFeature.animationEvent, function(e){
 
       if(e.animationName === 'callfn'){
@@ -42,19 +42,21 @@
 
   }
 
+  /**
+   * For non css animation supporting browsers, schedule a regular 1 second scan of the page
+   */
   function scheduledScan(){
 
     setInterval(function(){
-      console.time(1);
+
       scanCallFn();
-      console.timeEnd(1);
 
     }, 1000);
 
   }
 
   function scanCallFn(){
-    console.log('loop');
+
     //scan the page
     var callFn = document.querySelectorAll('.callfn');
 

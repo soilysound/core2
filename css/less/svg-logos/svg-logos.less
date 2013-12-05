@@ -1,0 +1,39 @@
+/**
+ * SVG LOGOS
+ * Styles for svg site and channel logos with png fallback
+ * ============================================================================
+ */
+
+/* base styles */
+
+.logo {
+  display:inline-block;
+  position:relative;
+  min-width:50px;
+  vertical-align:middle;
+  line-height: 0;
+}
+
+.logo__image {
+  width: 100%;
+}
+
+
+/* logo with red button circle appended to the end */
+
+.logo--red-button:after {
+  content:"";
+  border-radius: 50%;
+  display: inline;
+  background: #da2331;
+  left: 100%;
+  margin-left:3.5%;
+  width:12%;
+  top:8%;
+  position: absolute;
+  z-index:2;
+  padding-bottom:12%;
+  //box-shadow:inset 2px -5px 4px rgba(0,0,0,0.1)
+}
+
+

@@ -7,6 +7,7 @@ require.config({
     "reqwest":"vendor/reqwest",
     "site-layout-primary": "modules/site-layout-primary",
     "underscore": "vendor/lodash.custom",
+    "accordian": "modules/accordian"
 
 	}
 });
