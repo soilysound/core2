@@ -15,7 +15,7 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
 
     /**
     * Initiate the adaptive html module
-    * @param  {Node}  root  Dom node of module root
+    * @param  {Node}  element  Dom node of module root
     * @param  {Object} data Object of module paramters set from HTML data-attributes
     */
     init: function(element, data){

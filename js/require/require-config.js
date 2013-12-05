@@ -1,5 +1,5 @@
 require.config({
-	baseUrl: "/core2/js",
+	baseUrl: "/js",
 	paths: {
     "adaptive-html": "modules/adaptive-html",
     "class": "modules/class",

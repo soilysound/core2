@@ -2053,7 +2053,7 @@ var requirejs, require, define;
     req(cfg);
 }(this));
 ;require.config({
-	baseUrl: "/core2/js",
+	baseUrl: "/js",
 	paths: {
     "adaptive-html": "modules/adaptive-html",
     "class": "modules/class",
@@ -2061,6 +2061,7 @@ var requirejs, require, define;
     "reqwest":"vendor/reqwest",
     "site-layout-primary": "modules/site-layout-primary",
     "underscore": "vendor/lodash.custom",
+    "accordian": "modules/accordian"
 
 	}
 });
@@ -4548,10 +4549,9 @@ return FastClick;
   var cssAnimations = SKY_SPORTS.hasFeature.animationEvent;
   // var cssAnimations = false;
 
-
   //listen for elements added to the page with animation start
   if(cssAnimations){
-    console.log('css');
+
     document.addEventListener(SKY_SPORTS.hasFeature.animationEvent, function(e){
 
       if(e.animationName === 'callfn'){
@@ -4582,19 +4582,21 @@ return FastClick;
 
   }
 
+  /**
+   * For non css animation supporting browsers, schedule a regular 1 second scan of the page
+   */
   function scheduledScan(){
 
     setInterval(function(){
-      console.time(1);
+
       scanCallFn();
-      console.timeEnd(1);
 
     }, 1000);
 
   }
 
   function scanCallFn(){
-    console.log('loop');
+
     //scan the page
     var callFn = document.querySelectorAll('.callfn');
 

@@ -865,6 +865,8 @@ if (!document.documentElement.dataset &&
 
 ;(function(window, document){
 
+  //@TODO - change the references to images to just 'elements' since this works with both
+  //
   'use strict';
 
   /**
@@ -924,7 +926,7 @@ if (!document.documentElement.dataset &&
       if(outOfView(image)){
         continue;
       }
-      
+
       if(isLazyModule){
         image.classList.remove('postpone-load');
         image.classList.add('callfn');
