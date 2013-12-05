@@ -64,7 +64,7 @@
   }
 
 
-  if(window.addEventListener){
+  if(document.createEvent){
 
     /**
      * Use 2 methods for getting media query feedback -

@@ -12,7 +12,11 @@ define('accordian',[], function(){
     * @param  {Object} data Object of module paramters set from HTML data-attributes
     */
     init: function(element, data){
-      alert(element);
+      element.addEventListener('click', function(){
+
+        alert(1);
+        
+      }, false);
     }
 
   };
