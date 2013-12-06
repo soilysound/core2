@@ -2,9 +2,9 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
 
   "use strict";
 
-  function exports(){}
+  function Exports(){}
 
-  exports.prototype = {
+  Exports.prototype = {
 
     /**
      * List of registered breakpoints
@@ -130,7 +130,7 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
 
   };
 
-  return exports;
+  return Exports;
 
 
 });

@@ -1,42 +1,34 @@
-/* shared less functions */
-@import "lessfunctions/lessfunctions.less";
-
-/* project specific settings */
+/**
+ * PROJECT SETTINGS
+ * Add site or section specific settings here
+ */
 @import "skysports-settings.less";
 
-/* site base */
-@import "normalize/normalize.less";
-@import "getbreakpoint/getbreakpoint.less";
-@import "adaptive-html/adaptive-html.less";
-@import "site-base/site-base.less";
-@import "callfn/callfn.less";
+/**
+ * REQUIRED MODULES - DO NOT EDIT
+ */
+@import "required/top.less";
 
-/* layout modules */
-@import "grid/grids.less";
+
+/**
+ * OPTIONAL MODULES
+ * Add the modules you need for each specific project
+ */
 @import "site-layouts/site-layout-primary.less";
 @import "site-layouts/site-layout-secondary.less";
 
-/* site header */
 @import "site-header/site-header.less";
 
-/* navs */
 @import "navigations/nav-primary-desktop.less";
 @import "navigations/nav-primary-mobile.less";
 @import "navigations/nav-secondary-all.less";
 
-/* modules */
 @import "lists/lists.less";
-@import "typography/typography.less";
-@import "mediabox/mediabox.less";
-@import "short-text/short-text.less";
-@import "state/state.less";
-@import "z-index/z-index.less";
-@import "svg-logos/svg-logos.less";
 @import "accordian/accordian.less";
 
-/* put these last so as to use the cascade for overrides */
-@import "dimensions/dimensions.less";
-@import "box/box.less";
 
-/* utliity classes */
-@import "utility/utility.less";
+/**
+ * REQUIRED MODULES - DO NOT EDIT
+ * These go last to preserve cascade
+ */
+@import "required/bottom.less";

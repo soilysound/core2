@@ -44,7 +44,7 @@ define('site-layout-primary', ['underscore'], function(_){
 					e.stopPropagation();
 
 					this.toggleNav();
-					
+
 				}
 
 			}.bind(this), true);
