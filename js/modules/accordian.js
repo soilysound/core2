@@ -61,13 +61,15 @@ define('accordian',['underscore'], function(_){
      */
     _setOffsets: function(index, direction, amount){
 
+      var currentOffset;
+
       for(var i = index;++i<this.items.length;){
 
         //get current clicked item
         var item = this.items[i];
 
         //get current offset of this item
-        var currentOffset = parseInt(item.dataset.offset, 10);
+        currentOffset = parseInt(item.dataset.offset, 10);
 
         //if direction is 1, were sliding down
         if(direction === 1){
@@ -78,12 +80,23 @@ define('accordian',['underscore'], function(_){
         else {
           currentOffset = Math.max(0, currentOffset - amount);
         }
-
         //set new offset value
         item.dataset.offset = currentOffset;
 
         //set styles to slide down or up
         item.style.cssText = "-webkit-transform:translateY(" + (currentOffset) + "px);-moz-transform:translateY(" + (currentOffset) + "px);transform:translateY(" + (currentOffset) + "px)";
+      }
+
+      //set total offset in parent component using padding bottom
+      if(direction === 1){
+        this.element.style.paddingBottom = currentOffset + "px";
+      }
+      else {
+        setTimeout(function(){
+
+          this.element.style.paddingBottom = currentOffset + "px";
+
+        }.bind(this), 333);
       }
 
     },
@@ -116,6 +129,7 @@ define('accordian',['underscore'], function(_){
 
         this._setOffsets(index, 1, contentHeight);
       }
+
     }
 
   };

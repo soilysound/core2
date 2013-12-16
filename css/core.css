@@ -1055,6 +1055,9 @@ p {
  * ============================================================================
  */
 /* base styles */
+.accordian {
+  outline: 5px solid #ff0000;
+}
 .accordian__item {
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
