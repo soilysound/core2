@@ -11,7 +11,7 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
     */
     init: function(element, data){
 
-      //merge data with this
+      //merge value of this with properties from html data attributes
       _.extend(this, data);
 
       //set reference to root element
@@ -69,6 +69,8 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
         //get current offset of this item
         currentOffset = parseInt(item.dataset.offset, 10);
 
+        console.log(currentOffset);
+
         //if direction is 1, were sliding down
         if(direction === 1){
           currentOffset += (amount);
@@ -87,9 +89,12 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
 
       //set total offset in parent component using padding bottom
       if(direction === 1){
+
         this.element.style.paddingBottom = currentOffset + "px";
       }
+
       else {
+
         setTimeout(function(){
 
           this.element.style.paddingBottom = currentOffset + "px";
