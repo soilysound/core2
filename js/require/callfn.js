@@ -92,14 +92,9 @@
         require([funcName], function(Foobar){
 
           //if foobar is a function constructor
-          if(typeof Foobar === 'function'){
-            var instance = new Foobar();
-            instance.init(el, func);
-          }
-          //else its a standard object
-          else {
-            Foobar.init(el, func);
-          }
+          var instance = new Foobar();
+          instance.init(el, func);
+
         });
 
         el.classList.remove('callfn');

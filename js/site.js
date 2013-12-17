@@ -2056,13 +2056,12 @@ var requirejs, require, define;
 	baseUrl: "/js",
 	paths: {
     "adaptive-html": "modules/adaptive-html",
-    "class": "modules/class",
     "fastclick": "vendor/fastclick",
     "reqwest":"vendor/reqwest",
     "site-layout-primary": "modules/site-layout-primary",
     "underscore": "vendor/lodash.custom",
     "accordian": "modules/accordian",
-    "class": "modules/class"
+    "widget": "modules/widget"
 
 	}
 });
@@ -4633,14 +4632,9 @@ return FastClick;
         require([funcName], function(Foobar){
 
           //if foobar is a function constructor
-          if(typeof Foobar === 'function'){
-            var instance = new Foobar();
-            instance.init(el, func);
-          }
-          //else its a standard object
-          else {
-            Foobar.init(el, func);
-          }
+          var instance = new Foobar();
+          instance.init(el, func);
+
         });
 
         el.classList.remove('callfn');
