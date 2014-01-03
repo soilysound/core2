@@ -69,7 +69,6 @@
         getCallFn(callFn[i]);
       }
 
-
     }
   }
 
@@ -79,7 +78,10 @@
     //if element has callfn attached, grab the data attributes and call the corrosponding requite plugin
       var func = el.dataset;
 
-      if(!el.dataset){
+      //turn true and false strings into booleans
+
+
+      if(!func.fn){
         return false;
       }
 

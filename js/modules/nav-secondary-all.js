@@ -11,7 +11,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
     inlineNav: false,
 
     init: function(element, data){
-
+      console.log(data);
       // merge data with this
       _.extend(this, data);
 
@@ -57,7 +57,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
 
       var height = this.navBody.offsetHeight;
 
-      if(this.navIsOpen || state === 'open'){
+      if(this.navIsOpen || state === 'close'){
 
         this.navIsOpen = false;
 
@@ -77,10 +77,20 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
     },
 
     // function to run when sub-nav item clicked
-    _navItemActions: function(el, event){
-      //event.preventDefault();
-      console.log(event);
+    _navItemActions: function(el, evnt){
 
+      //for IE8 compatibility access global event
+      evnt = evnt || event;
+
+      if(this.inlineNav){
+
+        evnt.preventDefault();
+
+        this.navSection.textContent = el.textContent;
+        this._toggleNav('close');
+
+
+      }
     }
 
   });
