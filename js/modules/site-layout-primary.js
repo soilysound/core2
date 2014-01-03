@@ -1,8 +1,8 @@
-define('site-layout-primary', ['underscore'], function(_){
+define('site-layout-primary', ['underscore', 'widget'], function(_, Widget){
 
 	"use strict";
 
-	return {
+  var exports = Widget.extend({
 
 		leftNavSelector: '.site-layout-primary__col1',
 		siteBodySelector: '.site-layout-primary__col2',
@@ -63,6 +63,8 @@ define('site-layout-primary', ['underscore'], function(_){
 				this.navIsOpen = true;
 			}
 		}
-	};
+	});
+
+	return exports;
 
 });

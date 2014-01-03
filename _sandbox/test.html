@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <link rel="stylesheet" href="">
+      <style>
+        .diva {
+          border:3px solid red;
+          width: 400px;
+          height:400px;
+        }
+
+        .divb {
+          background: pink;
+          width: 200px;
+          height:200px;
+        }
+
+
+      </style>
+  </head>
+  <body>
+
+    <div class="diva">
+
+      <div class="divb">
+
+
+
+      </div>
+
+    </div>
+<script>
+
+  document.querySelector('.diva').addEventListener('click', function(event){
+
+    console.log('diva', event.target);
+
+
+  }, true);
+
+  document.querySelector('.divb').addEventListener('click', function(event){
+    event.stopPropagation();
+    console.log('divb', event.target);
+
+  }, false)
+
+</script>
+
+  </body>
+</html>

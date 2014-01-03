@@ -59,7 +59,14 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
      */
     _setOffsets: function(index, direction, amount){
 
-      var currentOffset;
+      var currentOffset = 0;
+
+      //handle the last item
+      // - has no offset items beneath it
+      // - but still needs to offset container
+      if(index === this.items.length - 1 && direction === 1){
+        currentOffset = amount;
+      }
 
       for(var i = index;++i<this.items.length;){
 
@@ -68,8 +75,6 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
 
         //get current offset of this item
         currentOffset = parseInt(item.dataset.offset, 10);
-
-        console.log(currentOffset);
 
         //if direction is 1, were sliding down
         if(direction === 1){
@@ -86,6 +91,7 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
         //set styles to slide down or up
         item.style.cssText = "-webkit-transform:translateY(" + (currentOffset) + "px);-moz-transform:translateY(" + (currentOffset) + "px);transform:translateY(" + (currentOffset) + "px)";
       }
+
 
       //set total offset in parent component using padding bottom
       if(direction === 1){

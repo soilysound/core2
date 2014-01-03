@@ -2058,6 +2058,7 @@ var requirejs, require, define;
     "adaptive-html": "modules/adaptive-html",
     "dom":"modules/dom",
     "fastclick": "vendor/fastclick",
+    "nav-secondary-all": "modules/nav-secondary-all",
     "reqwest":"vendor/reqwest",
     "site-layout-primary": "modules/site-layout-primary",
     "underscore": "vendor/lodash.custom",
@@ -2846,8 +2847,8 @@ return FastClick;
 
 });;/**
  * @license
- * Lo-Dash 2.2.1 (Custom Build) <http://lodash.com/>
- * Build: `lodash exports="amd" include="extend,difference" --output js/vendor/lodash.custom.js`
+ * Lo-Dash 2.3.0 (Custom Build) <http://lodash.com/>
+ * Build: `lodash exports="amd" include="each,extend,difference" --output js/vendor/lodash.custom.js`
  * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
  * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -2872,7 +2873,7 @@ return FastClick;
   var maxPoolSize = 40;
 
   /** Used to detected named functions */
-  var reFuncName = /^function[ \n\r\t]+\w/;
+  var reFuncName = /^\s*function[ \n\r\t]+\w/;
 
   /** Used to detect functions containing a `this` reference */
   var reThis = /\bthis\b/;
@@ -2930,6 +2931,12 @@ return FastClick;
 
   /** Used as a reference to the global object */
   var root = (objectTypes[typeof window] && window) || this;
+
+  /** Detect free variable `global` from Node.js or Browserified code and use it as `root` */
+  var freeGlobal = objectTypes[typeof global] && global;
+  if (freeGlobal && (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal)) {
+    root = freeGlobal;
+  }
 
   /*--------------------------------------------------------------------------*/
 
@@ -3086,15 +3093,6 @@ return FastClick;
   }
 
   /**
-   * A no-operation function.
-   *
-   * @private
-   */
-  function noop() {
-    // no operation performed
-  }
-
-  /**
    * Releases the given array back to the array pool.
    *
    * @private
@@ -3124,6 +3122,34 @@ return FastClick;
     }
   }
 
+  /**
+   * Slices the `collection` from the `start` index up to, but not including,
+   * the `end` index.
+   *
+   * Note: This function is used instead of `Array#slice` to support node lists
+   * in IE < 9 and to ensure dense arrays are returned.
+   *
+   * @private
+   * @param {Array|Object|string} collection The collection to slice.
+   * @param {number} start The start index.
+   * @param {number} end The end index.
+   * @returns {Array} Returns the new array.
+   */
+  function slice(array, start, end) {
+    start || (start = 0);
+    if (typeof end == 'undefined') {
+      end = array ? array.length : 0;
+    }
+    var index = -1,
+        length = end - start || 0,
+        result = Array(length < 0 ? 0 : length);
+
+    while (++index < length) {
+      result[index] = array[start + index];
+    }
+    return result;
+  }
+
   /*--------------------------------------------------------------------------*/
 
   /**
@@ -3139,22 +3165,25 @@ return FastClick;
       objectProto = Object.prototype,
       stringProto = String.prototype;
 
+  /** Used to resolve the internal [[Class]] of values */
+  var toString = objectProto.toString;
+
   /** Used to detect if a method is native */
   var reNative = RegExp('^' +
-    String(objectProto.valueOf)
+    String(toString)
       .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-      .replace(/valueOf|for [^\]]+/g, '.+?') + '$'
+      .replace(/toString| for [^\]]+/g, '.*?') + '$'
   );
 
   /** Native method shortcuts */
   var fnToString = Function.prototype.toString,
       hasOwnProperty = objectProto.hasOwnProperty,
       push = arrayRef.push,
-      propertyIsEnumerable = objectProto.propertyIsEnumerable,
-      toString = objectProto.toString,
-      unshift = arrayRef.unshift;
+      propertyIsEnumerable = objectProto.propertyIsEnumerable;
 
+  /** Used to set meta data on functions */
   var defineProperty = (function() {
+    // IE 8 only accepts DOM elements
     try {
       var o = {},
           func = reNative.test(func = Object.defineProperty) && func,
@@ -3164,16 +3193,10 @@ return FastClick;
   }());
 
   /* Native method shortcuts for methods with the same name as other `lodash` methods */
-  var nativeBind = reNative.test(nativeBind = toString.bind) && nativeBind,
-      nativeCreate = reNative.test(nativeCreate = Object.create) && nativeCreate,
+  var nativeCreate = reNative.test(nativeCreate = Object.create) && nativeCreate,
       nativeIsArray = reNative.test(nativeIsArray = Array.isArray) && nativeIsArray,
       nativeKeys = reNative.test(nativeKeys = Object.keys) && nativeKeys,
-      nativeMax = Math.max,
-      nativeSlice = arrayRef.slice;
-
-  /** Detect various environments */
-  var isIeOpera = reNative.test(root.attachEvent),
-      isV8 = nativeBind && !/\n|true/.test(nativeBind + isIeOpera);
+      nativeMax = Math.max;
 
   /** Used to avoid iterating non-enumerable properties in IE < 9 */
   var nonEnumProps = {};
@@ -3185,10 +3208,10 @@ return FastClick;
   (function() {
     var length = shadowedProps.length;
     while (length--) {
-      var prop = shadowedProps[length];
+      var key = shadowedProps[length];
       for (var className in nonEnumProps) {
-        if (hasOwnProperty.call(nonEnumProps, className) && !hasOwnProperty.call(nonEnumProps[className], prop)) {
-          nonEnumProps[className][prop] = false;
+        if (hasOwnProperty.call(nonEnumProps, className) && !hasOwnProperty.call(nonEnumProps[className], key)) {
+          nonEnumProps[className][key] = false;
         }
       }
     }
@@ -3209,15 +3232,16 @@ return FastClick;
    *
    * The chainable wrapper functions are:
    * `after`, `assign`, `bind`, `bindAll`, `bindKey`, `chain`, `compact`,
-   * `compose`, `concat`, `countBy`, `createCallback`, `curry`, `debounce`,
-   * `defaults`, `defer`, `delay`, `difference`, `filter`, `flatten`, `forEach`,
-   * `forEachRight`, `forIn`, `forInRight`, `forOwn`, `forOwnRight`, `functions`,
-   * `groupBy`, `indexBy`, `initial`, `intersection`, `invert`, `invoke`, `keys`,
-   * `map`, `max`, `memoize`, `merge`, `min`, `object`, `omit`, `once`, `pairs`,
-   * `partial`, `partialRight`, `pick`, `pluck`, `pull`, `push`, `range`, `reject`,
-   * `remove`, `rest`, `reverse`, `shuffle`, `slice`, `sort`, `sortBy`, `splice`,
-   * `tap`, `throttle`, `times`, `toArray`, `transform`, `union`, `uniq`, `unshift`,
-   * `unzip`, `values`, `where`, `without`, `wrap`, and `zip`
+   * `compose`, `concat`, `countBy`, `create`, `createCallback`, `curry`,
+   * `debounce`, `defaults`, `defer`, `delay`, `difference`, `filter`, `flatten`,
+   * `forEach`, `forEachRight`, `forIn`, `forInRight`, `forOwn`, `forOwnRight`,
+   * `functions`, `groupBy`, `indexBy`, `initial`, `intersection`, `invert`,
+   * `invoke`, `keys`, `map`, `max`, `memoize`, `merge`, `min`, `object`, `omit`,
+   * `once`, `pairs`, `partial`, `partialRight`, `pick`, `pluck`, `pull`, `push`,
+   * `range`, `reject`, `remove`, `rest`, `reverse`, `shuffle`, `slice`, `sort`,
+   * `sortBy`, `splice`, `tap`, `throttle`, `times`, `toArray`, `transform`,
+   * `union`, `uniq`, `unshift`, `unzip`, `values`, `where`, `without`, `wrap`,
+   * and `zip`
    *
    * The non-chainable wrapper functions are:
    * `clone`, `cloneDeep`, `contains`, `escape`, `every`, `find`, `findIndex`,
@@ -3279,8 +3303,8 @@ return FastClick;
         props = [];
 
     ctor.prototype = { 'valueOf': 1, 'y': 1 };
-    for (var prop in new ctor) { props.push(prop); }
-    for (prop in arguments) { }
+    for (var key in new ctor) { props.push(key); }
+    for (key in arguments) { }
 
     /**
      * Detect if an `arguments` object's [[Class]] is resolvable (all but Firefox < 4, IE < 9).
@@ -3321,14 +3345,6 @@ return FastClick;
     support.enumPrototypes = propertyIsEnumerable.call(ctor, 'prototype');
 
     /**
-     * Detect if `Function#bind` exists and is inferred to be fast (all but V8).
-     *
-     * @memberOf _.support
-     * @type boolean
-     */
-    support.fastBind = nativeBind && !isV8;
-
-    /**
      * Detect if functions can be decompiled by `Function#toString`
      * (all but PS3 and older Opera mobile browsers & avoided in Windows 8 apps).
      *
@@ -3352,7 +3368,7 @@ return FastClick;
      * @memberOf _.support
      * @type boolean
      */
-    support.nonEnumArgs = prop != 0;
+    support.nonEnumArgs = key != 0;
 
     /**
      * Detect if properties shadowing those on `Object.prototype` are non-enumerable.
@@ -3494,6 +3510,66 @@ return FastClick;
   /*--------------------------------------------------------------------------*/
 
   /**
+   * The base implementation of `_.bind` that creates the bound function and
+   * sets its meta data.
+   *
+   * @private
+   * @param {Array} bindData The bind data array.
+   * @returns {Function} Returns the new bound function.
+   */
+  function baseBind(bindData) {
+    var func = bindData[0],
+        partialArgs = bindData[2],
+        thisArg = bindData[4];
+
+    function bound() {
+      // `Function#bind` spec
+      // http://es5.github.io/#x15.3.4.5
+      if (partialArgs) {
+        var args = partialArgs.slice();
+        push.apply(args, arguments);
+      }
+      // mimic the constructor's `return` behavior
+      // http://es5.github.io/#x13.2.2
+      if (this instanceof bound) {
+        // ensure `new bound` is an instance of `func`
+        var thisBinding = baseCreate(func.prototype),
+            result = func.apply(thisBinding, args || arguments);
+        return isObject(result) ? result : thisBinding;
+      }
+      return func.apply(thisArg, args || arguments);
+    }
+    setBindData(bound, bindData);
+    return bound;
+  }
+
+  /**
+   * The base implementation of `_.create` without support for assigning
+   * properties to the created object.
+   *
+   * @private
+   * @param {Object} prototype The object to inherit from.
+   * @returns {Object} Returns the new object.
+   */
+  function baseCreate(prototype, properties) {
+    return isObject(prototype) ? nativeCreate(prototype) : {};
+  }
+  // fallback for browsers without `Object.create`
+  if (!nativeCreate) {
+    baseCreate = (function() {
+      function Object() {}
+      return function(prototype) {
+        if (isObject(prototype)) {
+          Object.prototype = prototype;
+          var result = new Object;
+          Object.prototype = null;
+        }
+        return result || root.Object();
+      };
+    }());
+  }
+
+  /**
    * The base implementation of `_.createCallback` without support for creating
    * "_.pluck" or "_.where" style callbacks.
    *
@@ -3507,24 +3583,30 @@ return FastClick;
     if (typeof func != 'function') {
       return identity;
     }
-    // exit early if there is no `thisArg`
-    if (typeof thisArg == 'undefined') {
+    // exit early for no `thisArg` or already bound by `Function#bind`
+    if (typeof thisArg == 'undefined' || !('prototype' in func)) {
       return func;
     }
-    var bindData = func.__bindData__ || (support.funcNames && !func.name);
+    var bindData = func.__bindData__;
     if (typeof bindData == 'undefined') {
-      var source = reThis && fnToString.call(func);
-      if (!support.funcNames && source && !reFuncName.test(source)) {
-        bindData = true;
+      if (support.funcNames) {
+        bindData = !func.name;
       }
-      if (support.funcNames || !bindData) {
-        // checks if `func` references the `this` keyword and stores the result
-        bindData = !support.funcDecomp || reThis.test(source);
-        setBindData(func, bindData);
+      bindData = bindData || !support.funcDecomp;
+      if (!bindData) {
+        var source = fnToString.call(func);
+        if (!support.funcNames) {
+          bindData = !reFuncName.test(source);
+        }
+        if (!bindData) {
+          // checks if `func` references the `this` keyword and stores the result
+          bindData = reThis.test(source);
+          setBindData(func, bindData);
+        }
       }
     }
     // exit early if there are no `this` references or `func` is bound
-    if (bindData !== true && (bindData && bindData[1] & 1)) {
+    if (bindData === false || (bindData !== true && bindData[1] & 1)) {
       return func;
     }
     switch (argCount) {
@@ -3545,17 +3627,107 @@ return FastClick;
   }
 
   /**
+   * The base implementation of `createWrapper` that creates the wrapper and
+   * sets its meta data.
+   *
+   * @private
+   * @param {Array} bindData The bind data array.
+   * @returns {Function} Returns the new function.
+   */
+  function baseCreateWrapper(bindData) {
+    var func = bindData[0],
+        bitmask = bindData[1],
+        partialArgs = bindData[2],
+        partialRightArgs = bindData[3],
+        thisArg = bindData[4],
+        arity = bindData[5];
+
+    var isBind = bitmask & 1,
+        isBindKey = bitmask & 2,
+        isCurry = bitmask & 4,
+        isCurryBound = bitmask & 8,
+        key = func;
+
+    function bound() {
+      var thisBinding = isBind ? thisArg : this;
+      if (partialArgs) {
+        var args = partialArgs.slice();
+        push.apply(args, arguments);
+      }
+      if (partialRightArgs || isCurry) {
+        args || (args = slice(arguments));
+        if (partialRightArgs) {
+          push.apply(args, partialRightArgs);
+        }
+        if (isCurry && args.length < arity) {
+          bitmask |= 16 & ~32;
+          return baseCreateWrapper([func, (isCurryBound ? bitmask : bitmask & ~3), args, null, thisArg, arity]);
+        }
+      }
+      args || (args = arguments);
+      if (isBindKey) {
+        func = thisBinding[key];
+      }
+      if (this instanceof bound) {
+        thisBinding = baseCreate(func.prototype);
+        var result = func.apply(thisBinding, args);
+        return isObject(result) ? result : thisBinding;
+      }
+      return func.apply(thisBinding, args);
+    }
+    setBindData(bound, bindData);
+    return bound;
+  }
+
+  /**
+   * The base implementation of `_.difference` that accepts a single array
+   * of values to exclude.
+   *
+   * @private
+   * @param {Array} array The array to process.
+   * @param {Array} [values] The array of values to exclude.
+   * @returns {Array} Returns a new array of filtered values.
+   */
+  function baseDifference(array, values) {
+    var index = -1,
+        indexOf = getIndexOf(),
+        length = array ? array.length : 0,
+        isLarge = length >= largeArraySize && indexOf === baseIndexOf,
+        result = [];
+
+    if (isLarge) {
+      var cache = createCache(values);
+      if (cache) {
+        indexOf = cacheIndexOf;
+        values = cache;
+      } else {
+        isLarge = false;
+      }
+    }
+    while (++index < length) {
+      var value = array[index];
+      if (indexOf(values, value) < 0) {
+        result.push(value);
+      }
+    }
+    if (isLarge) {
+      releaseObject(values);
+    }
+    return result;
+  }
+
+  /**
    * The base implementation of `_.flatten` without support for callback
    * shorthands or `thisArg` binding.
    *
    * @private
    * @param {Array} array The array to flatten.
    * @param {boolean} [isShallow=false] A flag to restrict flattening to a single level.
-   * @param {boolean} [isArgArrays=false] A flag to restrict flattening to arrays and `arguments` objects.
+   * @param {boolean} [isStrict=false] A flag to restrict flattening to arrays and `arguments` objects.
    * @param {number} [fromIndex=0] The index to start from.
    * @returns {Array} Returns a new flattened array.
    */
-  function baseFlatten(array, isShallow, isArgArrays, fromIndex) {
+  function baseFlatten(array, isShallow, isStrict, fromIndex) {
     var index = (fromIndex || 0) - 1,
         length = array ? array.length : 0,
         result = [];
@@ -3567,7 +3739,7 @@ return FastClick;
           && (isArray(value) || isArguments(value))) {
         // recursively flatten arrays (susceptible to call stack limits)
         if (!isShallow) {
-          value = baseFlatten(value, isShallow, isArgArrays);
+          value = baseFlatten(value, isShallow, isStrict);
         }
         var valIndex = -1,
             valLength = value.length,
@@ -3577,7 +3749,7 @@ return FastClick;
         while (++valIndex < valLength) {
           result[resIndex++] = value[valIndex];
         }
-      } else if (!isArgArrays) {
+      } else if (!isStrict) {
         result.push(value);
       }
     }
@@ -3660,8 +3832,11 @@ return FastClick;
     var isArr = className == arrayClass;
     if (!isArr) {
       // unwrap any `lodash` wrapped values
-      if (hasOwnProperty.call(a, '__wrapped__ ') || hasOwnProperty.call(b, '__wrapped__')) {
-        return baseIsEqual(a.__wrapped__ || a, b.__wrapped__ || b, callback, isWhere, stackA, stackB);
+      var aWrapped = hasOwnProperty.call(a, '__wrapped__'),
+          bWrapped = hasOwnProperty.call(b, '__wrapped__');
+
+      if (aWrapped || bWrapped) {
+        return baseIsEqual(aWrapped ? a.__wrapped__ : a, bWrapped ? b.__wrapped__ : b, callback, isWhere, stackA, stackB);
       }
       // exit for functions and DOM nodes
       if (className != objectClass) {
@@ -3672,10 +3847,10 @@ return FastClick;
           ctorB = !support.argsObject && isArguments(b) ? Object : b.constructor;
 
       // non `Object` object instances with different constructors are not equal
-      if (ctorA != ctorB && !(
-            isFunction(ctorA) && ctorA instanceof ctorA &&
-            isFunction(ctorB) && ctorB instanceof ctorB
-          )) {
+      if (ctorA != ctorB &&
+            !(isFunction(ctorA) && ctorA instanceof ctorA && isFunction(ctorB) && ctorB instanceof ctorB) &&
+            ('constructor' in a && 'constructor' in b)
+          ) {
         return false;
       }
     }
@@ -3773,16 +3948,15 @@ return FastClick;
    *  provided to the new function.
    * @param {*} [thisArg] The `this` binding of `func`.
    * @param {number} [arity] The arity of `func`.
-   * @returns {Function} Returns the new bound function.
+   * @returns {Function} Returns the new function.
    */
-  function createBound(func, bitmask, partialArgs, partialRightArgs, thisArg, arity) {
+  function createWrapper(func, bitmask, partialArgs, partialRightArgs, thisArg, arity) {
     var isBind = bitmask & 1,
         isBindKey = bitmask & 2,
         isCurry = bitmask & 4,
         isCurryBound = bitmask & 8,
         isPartial = bitmask & 16,
-        isPartialRight = bitmask & 32,
-        key = func;
+        isPartialRight = bitmask & 32;
 
     if (!isBindKey && !isFunction(func)) {
       throw new TypeError;
@@ -3796,74 +3970,36 @@ return FastClick;
       isPartialRight = partialRightArgs = false;
     }
     var bindData = func && func.__bindData__;
-    if (bindData) {
+    if (bindData && bindData !== true) {
+      bindData = bindData.slice();
+
+      // set `thisBinding` is not previously bound
       if (isBind && !(bindData[1] & 1)) {
         bindData[4] = thisArg;
       }
+      // set if previously bound but not currently (subsequent curried functions)
       if (!isBind && bindData[1] & 1) {
         bitmask |= 8;
       }
+      // set curried arity if not yet set
       if (isCurry && !(bindData[1] & 4)) {
         bindData[5] = arity;
       }
+      // append partial left arguments
       if (isPartial) {
         push.apply(bindData[2] || (bindData[2] = []), partialArgs);
       }
+      // append partial right arguments
       if (isPartialRight) {
         push.apply(bindData[3] || (bindData[3] = []), partialRightArgs);
       }
+      // merge flags
       bindData[1] |= bitmask;
-      return createBound.apply(null, bindData);
+      return createWrapper.apply(null, bindData);
     }
-    // use `Function#bind` if it exists and is fast
-    // (in V8 `Function#bind` is slower except when partially applied)
-    if (isBind && !(isBindKey || isCurry || isPartialRight) &&
-        (support.fastBind || (nativeBind && isPartial))) {
-      if (isPartial) {
-        var args = [thisArg];
-        push.apply(args, partialArgs);
-      }
-      var bound = isPartial
-        ? nativeBind.apply(func, args)
-        : nativeBind.call(func, thisArg);
-    }
-    else {
-      bound = function() {
-        // `Function#bind` spec
-        // http://es5.github.io/#x15.3.4.5
-        var args = arguments,
-            thisBinding = isBind ? thisArg : this;
-
-        if (isCurry || isPartial || isPartialRight) {
-          args = nativeSlice.call(args);
-          if (isPartial) {
-            unshift.apply(args, partialArgs);
-          }
-          if (isPartialRight) {
-            push.apply(args, partialRightArgs);
-          }
-          if (isCurry && args.length < arity) {
-            bitmask |= 16 & ~32;
-            return createBound(func, (isCurryBound ? bitmask : bitmask & ~3), args, null, thisArg, arity);
-          }
-        }
-        if (isBindKey) {
-          func = thisBinding[key];
-        }
-        if (this instanceof bound) {
-          // ensure `new bound` is an instance of `func`
-          thisBinding = createObject(func.prototype);
-
-          // mimic the constructor's `return` behavior
-          // http://es5.github.io/#x13.2.2
-          var result = func.apply(thisBinding, args);
-          return isObject(result) ? result : thisBinding;
-        }
-        return func.apply(thisBinding, args);
-      };
-    }
-    setBindData(bound, nativeSlice.call(arguments));
-    return bound;
+    // fast path for `_.bind`
+    var creater = (bitmask == 1 || bitmask === 17) ? baseBind : baseCreateWrapper;
+    return creater([func, bitmask, partialArgs, partialRightArgs, thisArg, arity]);
   }
 
   /**
@@ -3915,28 +4051,6 @@ return FastClick;
   }
 
   /**
-   * Creates a new object with the specified `prototype`.
-   *
-   * @private
-   * @param {Object} prototype The prototype object.
-   * @returns {Object} Returns the new object.
-   */
-  function createObject(prototype) {
-    return isObject(prototype) ? nativeCreate(prototype) : {};
-  }
-  // fallback for browsers without `Object.create`
-  if (!nativeCreate) {
-    createObject = function(prototype) {
-      if (isObject(prototype)) {
-        noop.prototype = prototype;
-        var result = new noop;
-        noop.prototype = null;
-      }
-      return result || {};
-    };
-  }
-
-  /**
    * Gets the appropriate "indexOf" function. If the `_.indexOf` method is
    * customized, this method returns the custom method, otherwise it returns
    * the `baseIndexOf` function.
@@ -3954,7 +4068,7 @@ return FastClick;
    *
    * @private
    * @param {Function} func The function to set data on.
-   * @param {*} value The value to set.
+   * @param {Array} value The data array to set.
    */
   var setBindData = !defineProperty ? noop : function(func, value) {
     descriptor.value = value;
@@ -3987,7 +4101,7 @@ return FastClick;
   if (!support.argsClass) {
     isArguments = function(value) {
       return value && typeof value == 'object' && typeof value.length == 'number' &&
-        hasOwnProperty.call(value, 'callee') || false;
+        hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee') || false;
     };
   }
 
@@ -4083,6 +4197,22 @@ return FastClick;
     'array': false
   };
 
+  /**
+   * A function compiled to iterate `arguments` objects, arrays, objects, and
+   * strings consistenly across environments, executing the callback for each
+   * element in the collection. The callback is bound to `thisArg` and invoked
+   * with three arguments; (value, index|key, collection). Callbacks may exit
+   * iteration early by explicitly returning `false`.
+   *
+   * @private
+   * @type Function
+   * @param {Array|Object|string} collection The collection to iterate over.
+   * @param {Function} [callback=identity] The function called per iteration.
+   * @param {*} [thisArg] The `this` binding of `callback`.
+   * @returns {Array|Object|string} Returns `collection`.
+   */
+  var baseEach = createIterator(eachIteratorOptions);
+
   /*--------------------------------------------------------------------------*/
 
   /**
@@ -4104,16 +4234,16 @@ return FastClick;
    * @returns {Object} Returns the destination object.
    * @example
    *
-   * _.assign({ 'name': 'moe' }, { 'age': 40 });
-   * // => { 'name': 'moe', 'age': 40 }
+   * _.assign({ 'name': 'fred' }, { 'employer': 'slate' });
+   * // => { 'name': 'fred', 'employer': 'slate' }
    *
    * var defaults = _.partialRight(_.assign, function(a, b) {
    *   return typeof a == 'undefined' ? b : a;
    * });
    *
-   * var food = { 'name': 'apple' };
-   * defaults(food, { 'name': 'banana', 'type': 'fruit' });
-   * // => { 'name': 'apple', 'type': 'fruit' }
+   * var object = { 'name': 'barney' };
+   * defaults(object, { 'name': 'fred', 'employer': 'slate' });
+   * // => { 'name': 'barney', 'employer': 'slate' }
    */
   var assign = createIterator(defaultsIteratorOptions, {
     'top':
@@ -4144,18 +4274,20 @@ return FastClick;
    * @returns {Object} Returns `object`.
    * @example
    *
-   * function Dog(name) {
-   *   this.name = name;
+   * function Shape() {
+   *   this.x = 0;
+   *   this.y = 0;
    * }
    *
-   * Dog.prototype.bark = function() {
-   *   console.log('Woof, woof!');
+   * Shape.prototype.move = function(x, y) {
+   *   this.x += x;
+   *   this.y += y;
    * };
    *
-   * _.forIn(new Dog('Dagny'), function(value, key) {
+   * _.forIn(new Shape, function(value, key) {
    *   console.log(key);
    * });
-   * // => logs 'bark' and 'name' (property order is not guaranteed across environments)
+   * // => logs 'x', 'y', and 'move' (property order is not guaranteed across environments)
    */
   var forIn = createIterator(eachIteratorOptions, forOwnIteratorOptions, {
     'useHas': false
@@ -4222,11 +4354,56 @@ return FastClick;
    * @returns {boolean} Returns `true` if the `value` is a string, else `false`.
    * @example
    *
-   * _.isString('moe');
+   * _.isString('fred');
    * // => true
    */
   function isString(value) {
-    return typeof value == 'string' || toString.call(value) == stringClass;
+    return typeof value == 'string' ||
+      value && typeof value == 'object' && toString.call(value) == stringClass || false;
+  }
+
+  /*--------------------------------------------------------------------------*/
+
+  /**
+   * Iterates over elements of a collection, executing the callback for each
+   * element. The callback is bound to `thisArg` and invoked with three arguments;
+   * (value, index|key, collection). Callbacks may exit iteration early by
+   * explicitly returning `false`.
+   *
+   * Note: As with other "Collections" methods, objects with a `length` property
+   * are iterated like arrays. To avoid this behavior `_.forIn` or `_.forOwn`
+   * may be used for object iteration.
+   *
+   * @static
+   * @memberOf _
+   * @alias each
+   * @category Collections
+   * @param {Array|Object|string} collection The collection to iterate over.
+   * @param {Function} [callback=identity] The function called per iteration.
+   * @param {*} [thisArg] The `this` binding of `callback`.
+   * @returns {Array|Object|string} Returns `collection`.
+   * @example
+   *
+   * _([1, 2, 3]).forEach(function(num) { console.log(num); }).join(',');
+   * // => logs each number and returns '1,2,3'
+   *
+   * _.forEach({ 'one': 1, 'two': 2, 'three': 3 }, function(num) { console.log(num); });
+   * // => logs each number and returns the object (property order is not guaranteed across environments)
+   */
+  function forEach(collection, callback, thisArg) {
+    if (callback && typeof thisArg == 'undefined' && isArray(collection)) {
+      var index = -1,
+          length = collection.length;
+
+      while (++index < length) {
+        if (callback(collection[index], index, collection) === false) {
+          break;
+        }
+      }
+    } else {
+      baseEach(collection, callback, thisArg);
+    }
+    return collection;
   }
 
   /*--------------------------------------------------------------------------*/
@@ -4239,7 +4416,7 @@ return FastClick;
    * @memberOf _
    * @category Arrays
    * @param {Array} array The array to process.
-   * @param {...Array} [array] The arrays of values to exclude.
+   * @param {...Array} [values] The arrays of values to exclude.
    * @returns {Array} Returns a new array of filtered values.
    * @example
    *
@@ -4247,33 +4424,7 @@ return FastClick;
    * // => [1, 3, 4]
    */
   function difference(array) {
-    var index = -1,
-        indexOf = getIndexOf(),
-        length = array ? array.length : 0,
-        seen = baseFlatten(arguments, true, true, 1),
-        result = [];
-
-    var isLarge = length >= largeArraySize && indexOf === baseIndexOf;
-
-    if (isLarge) {
-      var cache = createCache(seen);
-      if (cache) {
-        indexOf = cacheIndexOf;
-        seen = cache;
-      } else {
-        isLarge = false;
-      }
-    }
-    while (++index < length) {
-      var value = array[index];
-      if (indexOf(seen, value) < 0) {
-        result.push(value);
-      }
-    }
-    if (isLarge) {
-      releaseObject(seen);
-    }
-    return result;
+    return baseDifference(array, baseFlatten(arguments, true, true, 1));
   }
 
   /**
@@ -4396,14 +4547,14 @@ return FastClick;
    *   return greeting + ' ' + this.name;
    * };
    *
-   * func = _.bind(func, { 'name': 'moe' }, 'hi');
+   * func = _.bind(func, { 'name': 'fred' }, 'hi');
    * func();
-   * // => 'hi moe'
+   * // => 'hi fred'
    */
   function bind(func, thisArg) {
     return arguments.length > 2
-      ? createBound(func, 17, nativeSlice.call(arguments, 2), null, thisArg)
-      : createBound(func, 1, null, null, thisArg);
+      ? createWrapper(func, 17, slice(arguments, 2), null, thisArg)
+      : createWrapper(func, 1, null, null, thisArg);
   }
 
   /**
@@ -4421,9 +4572,9 @@ return FastClick;
    * @returns {Function} Returns a callback function.
    * @example
    *
-   * var stooges = [
-   *   { 'name': 'moe', 'age': 40 },
-   *   { 'name': 'larry', 'age': 50 }
+   * var characters = [
+   *   { 'name': 'barney', 'age': 36 },
+   *   { 'name': 'fred',   'age': 40 }
    * ];
    *
    * // wrap to create custom callback shorthands
@@ -4434,8 +4585,8 @@ return FastClick;
    *   };
    * });
    *
-   * _.filter(stooges, 'age__gt45');
-   * // => [{ 'name': 'larry', 'age': 50 }]
+   * _.filter(characters, 'age__gt38');
+   * // => [{ 'name': 'fred', 'age': 40 }]
    */
   function createCallback(func, thisArg, argCount) {
     var type = typeof func;
@@ -4486,12 +4637,28 @@ return FastClick;
    * @returns {*} Returns `value`.
    * @example
    *
-   * var moe = { 'name': 'moe' };
-   * moe === _.identity(moe);
+   * var object = { 'name': 'fred' };
+   * _.identity(object) === object;
    * // => true
    */
   function identity(value) {
     return value;
+  }
+
+  /**
+   * A no-operation function.
+   *
+   * @static
+   * @memberOf _
+   * @category Utilities
+   * @example
+   *
+   * var object = { 'name': 'fred' };
+   * _.noop(object) === undefined;
+   * // => true
+   */
+  function noop() {
+    // no operation performed
   }
 
   /*--------------------------------------------------------------------------*/
@@ -4500,9 +4667,11 @@ return FastClick;
   lodash.bind = bind;
   lodash.createCallback = createCallback;
   lodash.difference = difference;
+  lodash.forEach = forEach;
   lodash.forIn = forIn;
   lodash.keys = keys;
 
+  lodash.each = forEach;
   lodash.extend = assign;
 
   /*--------------------------------------------------------------------------*/
@@ -4514,6 +4683,7 @@ return FastClick;
   lodash.isFunction = isFunction;
   lodash.isObject = isObject;
   lodash.isString = isString;
+  lodash.noop = noop;
   lodash.sortedIndex = sortedIndex;
 
   /*--------------------------------------------------------------------------*/
@@ -4525,16 +4695,16 @@ return FastClick;
    * @memberOf _
    * @type string
    */
-  lodash.VERSION = '2.2.1';
+  lodash.VERSION = '2.3.0';
 
   /*--------------------------------------------------------------------------*/
 
-  // some AMD build optimizers, like r.js, check for condition patterns like the following:
+  // some AMD build optimizers like r.js check for condition patterns like the following:
   if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
 
     // define as an anonymous module so, through path mapping, it can be
     // referenced as the "underscore" module
-    define("underscore",[],function() {
+    define('underscore', [], function() {
       return lodash;
     });
   }

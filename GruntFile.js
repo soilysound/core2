@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
           'js/vendor/fastclick.js',
           'js/vendor/lodash.custom.js',
-          
+
           'js/require/callfn.js',
           'js/core.js'
         ],
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
   },
   'options': {
     'exports': ['amd'],
-    'include': ['extend', 'difference']
+    'include': ['each', 'extend', 'difference']
     }
   },
 
