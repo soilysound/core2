@@ -20,29 +20,31 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
     */
     init: function(element, data){
 
-      //merge data with this
+      // merge data with this
       _.extend(this, data);
 
-      //set reference to root element
+      // set reference to root element
       this.element = element;
 
       this._createBreakPoints();
 
-      //we have a src attribute make xhr request and load
+      // we have a src attribute make xhr request and load
       if(this.src){
         this._getContentXHR();
       }
 
-      //its an inline template, parse and load
+      // its an inline template, parse and load
       else {
         this._getContentInline();
       }
 
-      //add breakpoint change handler
-      document.addEventListener('breakPointChange', this.addBpEvent, false);
+      // add breakpoint change handler (skip for IE8, as its not responsive)
+      if(!(SKY_SPORTS.isDevice.msie && SKY_SPORTS.isDevice.version === 8)){
+        document.addEventListener('breakPointChange', this.addBpEvent, false);
+      }
 
-      //create a referenceable function to bind to our breakpoint listener
-      //this is we can *unbind* it later when were done
+      // create a referenceable function to bind to our breakpoint listener
+      // this is we can *unbind* it later when were done
       this.addBpEvent = function(){
         this._loadIfMatchesBreakPoint();
       }.bind(this);

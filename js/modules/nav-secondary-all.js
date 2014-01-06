@@ -28,7 +28,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
 
       this.navHead = this.element.querySelector('.nav-secondary-all__head');
       this.navBody = this.element.querySelector('.nav-secondary-all__body');
-      this.navOffset = this.element.querySelector('.nav-secondary-all__offset') || this.dummy;
+      this.navOffset = document.querySelector('.nav-secondary-all__offset') || this.dummy;
       this.navItems = this.element.querySelectorAll('.nav-secondary-all__item');
       this.navSection = this.element.querySelector('.nav-secondary-all__section');
     },
@@ -72,7 +72,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
 
         this.navHead.classList.add('on');
         this.navBody.classList.add('nav-secondary-all__body--open');
-        this.navOffset.style.cssText = "-webkit-transform:translateY("+ height +"px)";
+        this.navOffset.style.cssText = "-ms-transform:translateY("+ height +"px);-moz-transform:translateY("+ height +"px);-webkit-transform:translateY("+ height +"px);transform:translateY("+ height +"px)";
       }
     },
 

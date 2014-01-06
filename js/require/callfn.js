@@ -24,7 +24,6 @@
     //now we have our event listen set up, add the animation css to the callfn elements
     SKY_SPORTS.addCss('callfn', '.callfn {-webkit-animation:callfn 0.01s;-moz-animation:callfn 0.01s;animation:callfn 0.01s;}', false);
 
-
   }
 
   else {
