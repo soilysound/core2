@@ -80,7 +80,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
     _navItemActions: function(el, evnt){
 
       //for IE8 compatibility access global event
-      evnt = evnt || event;
+      evnt = evnt || window.event;
 
       if(this.inlineNav){
 

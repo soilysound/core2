@@ -58,7 +58,7 @@
       <!-- page nav -->
       <div class="grid grid--align-middle nav-secondary-all">
         <h3 class="grid__col grid__col--noflex nav-secondary-all__head">
-          Football <span class="nav-secondary-all__section"></span> <span class="is-hidden--bp10">&#8744;</span>
+          Football <span class="nav-secondary-all__section"></span>
         </h3>
         <div class="grid__col nav-secondary-all__frame">
           <ul class="nav-secondary-all__body">
@@ -159,46 +159,5 @@
 </div>
 </body>
   <script src="/js/site.js"></script>
-  <script>
 
-    // var nav = document.querySelector('.site-layout-primary__col1');
-    // document.querySelector('#switch').onclick = function(){
-    //   nav.classList.toggle('site-layout-primary__col1--open');
-    // }
-
-    //nav
-    var navHead = document.querySelector('.nav-secondary-all__head');
-    var navBody = document.querySelector('.nav-secondary-all__body');
-    var navOffset = document.querySelector('.nav-secondary-all__offset');
-    var navItems = document.querySelectorAll('.nav-secondary-all__item');
-    var navSection = document.querySelector('.nav-secondary-all__section');
-
-    navHead.onclick = function(e){
-
-      var height = navBody.offsetHeight;
-
-      if(navHead.classList.contains('on')){
-        navHead.classList.remove('on');
-        navBody.classList.remove('nav-secondary-all__body--open');
-        navOffset.style.cssText = "";
-      }
-
-      else {
-        e.target.classList.add('on');
-        navBody.classList.add('nav-secondary-all__body--open');
-        navOffset.style.cssText = "-webkit-transform:translateY("+ height +"px)";
-      }
-
-    }
-
-    for(var i = -1;++i<navItems.length;){
-
-      navItems[i].onclick = function(e){
-        navSection.textContent = e.target.textContent;
-        navBody.classList.remove('nav-secondary-all__body--open');
-        navHead.classList.remove('on');
-        navOffset.style.cssText = "";
-      }
-    }
-  </script>
 </html>
