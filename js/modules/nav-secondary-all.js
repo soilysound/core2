@@ -11,7 +11,6 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
     inlineNav: false,
 
     init: function(element, data){
-      console.log(data);
       // merge data with this
       _.extend(this, data);
 
