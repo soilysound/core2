@@ -24,133 +24,35 @@
 
 <body>
 <div class="wrap">
-  <div class="grid site-layout-primary callfn" data-fn="site-layout-primary">
+  <div class="grid site-layout-primary">
 
     <div class="grid__col site-layout-primary__col1">
-
-      <div class="nav-primary-mobile">
-        <div class="nav-primary-mobile__trigger" data-role="open-nav">
-
-        </div>
-        MOBILE NAV
-      </div>
+      mob nav
 
     </div>
 
     <div class="grid__col site-layout-primary__col2">
 
-      <!-- site header -->
-      <div class="site-header">
-        <div class="grid grid--align-middle site-header__body">
-          <div class="grid__col u-span1of1">logo</div>
-        </div>
-      </div>
-      <!-- site header -->
-
-      <!-- desktop nav -->
-      <div class="callfn nav-primary-desktop is-hidden--bp20 is-hidden--bp30" data-fn="adaptive-html">
-        <script type="html/template">
-          <h2>DESKTOP NAV</h2>
-        </script>
-      </div>
-      <!-- desktop nav -->
-
-      <!-- page nav -->
-      <div class="grid grid--align-middle nav-secondary-all callfn" data-fn="nav-secondary-all">
-        <h3 class="grid__col grid__col--noflex nav-secondary-all__head">
-          Football <span class="nav-secondary-all__section"></span>
-        </h3>
-        <div class="grid__col nav-secondary-all__frame">
-          <ul class="nav-secondary-all__body">
-            <li class="nav-secondary-all__item">News
-            <li class="nav-secondary-all__item">Opinion
-            <li class="nav-secondary-all__item">Video
-            <li class="nav-secondary-all__item">Fixtures &amp; Results
-            <li class="nav-secondary-all__item">Tables
-            <li class="nav-secondary-all__item">Features
-            <li class="nav-secondary-all__item">Football on Sky
-            <li class="nav-secondary-all__item">Photos
-            <li class="nav-secondary-all__item">Score Centre
-            <li class="nav-secondary-all__item">Sky Bet
-          </ul>
-        </div>
-      </div>
 
       <!-- main site 2 column layout -->
-      <div class="grid grid--gap-m grid--vertical-bp20 site-layout-secondary nav-secondary-all__offset">
+      <div class="grid grid--gap-m grid--vertical-bp20 site-layout-secondary -debug">
         <div class="grid__col site-layout-secondary__col1">
 
 
-          <div class="box box--island-s box--m placeholder">
-
-            CONTENT 1
-
-          </div>
-
-          <div class="box box--island-s box--m placeholder is-hidden--bp10">
-
-            CONTENT 5
-
-          </div>
-
-          <div class="box box--island-s box--m placeholder is-hidden--bp10">
-
-            MOBILE SPECIFIC CONTENT
-
-          </div>
-
-          <div class="box box--island-s box--m placeholder">
-
-            CONTENT 2
-
-          </div>
-
-          <div class="box box--island-s box--m placeholder">
-
-            CONTENT 3
-
-          </div>
-
-          <div class="box box--island-s box--m placeholder">
-
-            CONTENT 4
-
-          </div>
-
-          <div class="box adaptive-html placeholder postpone-load" data-fn="adaptive-html" data-src="requests/html-chunk.html">
-            load some content into here lazily
-        </div>
+         col 1
 
         </div>
 
-        <div class="grid__col site-layout-secondary__col2 callfn is-hidden--bp20 is-hidden--bp30 adaptive-html" data-fn="adaptive-html">
-          <iframe type="html/template">
-            <div class="box box--island-s box--m placeholder">
-
-              CONTENT 5
-
-            </div>
-
-            <div class="box box--island-s box--m placeholder">
-
-              CONTENT 6
-
-            </div>
-
-            <div class="box box--island-s box--m placeholder">
-
-              CONTENT 7
-
-            </div>
-
-            <div class="box box--island-s box--m placeholder">
-
-              CONTENT 8
-
-            </div>
-          </iframe>
+        <div class="grid__col site-layout-secondary__col2 is-hidden--bp10">
+          col 2
 
         </div>
+
+        <div class="grid__col site-layout-secondary__col3">
+          col 3
+
+        </div>
+
       </div>
 
     </div>
