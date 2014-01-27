@@ -4,7 +4,7 @@
 
   var Widget = {
 
-    extend:function(props){
+    extend: function(props){
 
       function Exports(){}
 
