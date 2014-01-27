@@ -31,7 +31,7 @@
     //create shim element
     var animationEventName = false;
 
-    //test animation name candiates in shim element and set transitionPrefix to the match
+    //test animation name candidates in shim element and set transitionPrefix to the match
     for(var property in animationCandidates) {
       if(property in shim.style){
         animationEventName = animationCandidates[property];
@@ -54,14 +54,14 @@
 		var isIE = (function() { if (new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) !== null) {
 			return parseFloat( RegExp.$1 ); } else { return false;}
 		})();
-		
+
 		var isChrome = !!window.chrome;
 		var isFirefox = ua.match(/firefox/i);
 		var isSafari = ua.match(/safari/i);
 		var isIpad = ua.match(/iPad/);
 		var isIphone = ua.match(/iP/);
 		var isAndroid = ua.match(/android/i);
-    
+
 		if (isIE){
 
 			return {
