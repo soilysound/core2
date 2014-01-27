@@ -12,14 +12,6 @@
   <title></title>
   <link rel="stylesheet" href="/css/core.css" type="text/css">
   <script src="/js/head.js"></script>
-  <style>
-  .placeholder {
-    background: pink;
-    min-height:200px;
-    text-align: center;
-    padding-top: 80px
-  }
-  </style>
 </head>
 
 <body>
@@ -35,23 +27,102 @@
 
 
       <!-- main site 2 column layout -->
-      <div class="grid grid--gap-m grid--vertical-bp20 site-layout-secondary -debug">
+      <div class="grid grid--gap-m grid--vertical-bp20 grid--vertical-bp30 site-layout-secondary">
         <div class="grid__col site-layout-secondary__col1">
 
 
-         col 1
+         <mock class="placeholder">
+          1 top story
+         </mock>
+
+         <mock class="placeholder">
+          2 news list
+         </mock>
+
+         <mock class="placeholder is-hidden--bp5 is-hidden--bp10">
+          5 Fixtures/res
+         </mock>
+
+         <mock class="placeholder">
+          3 Hot picks
+         </mock>
+
+         <mock class="placeholder placeholder--small is-hidden--bp5">
+          9 Sky Bet
+         </mock>
+
 
         </div>
 
-        <div class="grid__col site-layout-secondary__col2 is-hidden--bp10">
-          col 2
+        <div class="grid__col site-layout-secondary__col2 is-hidden--bp10 is-hidden--bp20 is-hidden--bp30 adaptive-html callfn" data-fn="adaptive-html">
+          <script type="html/template">
+            <mock class="placeholder">
+              14 news by cat
+             </mock>
+
+             <mock class="placeholder placeholder--small">
+              10 feature promo
+             </mock>
+
+              <mock class="placeholder placeholder--small">
+              10 feature promo
+              </mock>
+
+              <mock class="placeholder placeholder--small">
+              10 feature promo
+              </mock>
+
+              <mock class="placeholder">
+              9 Sky bet
+             </mock>
+          </script>
 
         </div>
 
-        <div class="grid__col site-layout-secondary__col3">
-          col 3
+        <div class="grid__col site-layout-secondary__col3 adaptive-html callfn is-hidden--bp20 is-hidden--bp30" data-fn="adaptive-html">
+          <script type="html/template">
+
+             <mock class="placeholder">
+              7 live on sky
+             </mock>
+
+              <mock class="placeholder">
+              5 fixtures/results
+              </mock>
+
+              <mock class="placeholder">
+              8 table
+              </mock>
+
+          </script>
 
         </div>
+
+      </div>
+
+      <div class="box">
+         <mock class="placeholder">
+          4 Video
+         </mock>
+
+
+          <mock class="placeholder placeholder--small is-hidden--bp5">
+              10 feature promo
+              </mock>
+
+              <mock class="placeholder placeholder--small is-hidden--bp5">
+              10 feature promo
+              </mock>
+
+          <mock class="placeholder">
+          6 Opinion
+          </mock>
+
+          <mock class="placeholder is-hidden--bp30">
+          12 Photo feature
+          </mock>
+
+
 
       </div>
 

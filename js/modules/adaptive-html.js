@@ -10,7 +10,7 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
      * List of registered breakpoints
      * @type {Array}
      */
-    breakPoints:[10, 20, 30],
+    breakPoints:[5, 10, 20, 30],
     templateDom: '',
 
     /**
@@ -76,7 +76,7 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
     _loadIfMatchesBreakPoint: function(){
 
       var currBP = document.currentBreakPoint;
-
+console.log(this.showAt);
       //if current breakpoint matches, append new html
       if((this.showAt === 'all' || this.showAt.indexOf(currBP) > -1) && !this.element.classList.contains('adaptive-html--loaded')){
 
@@ -126,6 +126,8 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
       if(this.templateTarget){
         this.templateDom = this.templateTarget.textContent ?
         this.templateTarget.textContent : this.templateTarget.innerText;
+
+        console.log(this.templateDom);
       }
 
     }

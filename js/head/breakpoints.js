@@ -109,10 +109,20 @@
       });
 
       //bp10
-      var mql10 = window.matchMedia('(min-width:801px)');
+      var mql10 = window.matchMedia('(min-width:801px) and (max-width:1164px)');
       mql10.addListener(function(query){
         if(query.matches){
           document.currentBreakPoint = 10;
+          dispatchEvent();
+        }
+
+      });
+
+      //bp5
+      var mql5 = window.matchMedia('(min-width:1165px)');
+      mql5.addListener(function(query){
+        if(query.matches){
+          document.currentBreakPoint = 5;
           dispatchEvent();
         }
 
