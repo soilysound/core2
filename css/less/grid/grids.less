@@ -27,7 +27,7 @@
 	/* this is to prevent swap direction option cascading down to nested grids in browsers that use the old 2009 syntax */
 
 	-webkit-box-direction: normal;
-  -moz-box-direction: normal;
+	-moz-box-direction: normal;
 
 }
 
@@ -165,14 +165,8 @@
 
 @media all and (min-width:601px) and (max-width:800px){
 
-	.grid--gap-s > .grid__col {
-		border-left-width:@col-gap-s;
-	}
-
-	.grid--gap-m > .grid__col {
-		border-left-width:@col-gap-s;
-	}
-
+	.grid--gap-s > .grid__col,
+	.grid--gap-m > .grid__col, 
 	.grid--gap-l > .grid__col {
 		border-left-width:@col-gap-s;
 	}
@@ -230,14 +224,8 @@
 @media all and (max-width:600px){
 
 
-	.grid--gap-s > .grid__col {
-		border-left-width:@col-gap-s;
-	}
-
-	.grid--gap-m > .grid__col {
-		border-left-width:@col-gap-s;
-	}
-
+	.grid--gap-s > .grid__col,
+	.grid--gap-m > .grid__col,
 	.grid--gap-l > .grid__col {
 		border-left-width:@col-gap-s;
 	}

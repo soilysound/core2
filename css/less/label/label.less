@@ -1,0 +1,39 @@
+// LABEL
+// Labels, captions, date stamps and tags
+// ============================================================================
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.label__tag,
+.label__timestamp {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
+	vertical-align: middle
+}
+
+.label__tag {
+	.label-m();
+	border-right: 12px solid transparent
+}
+
+.label__timestamp {
+	.caption-m();
+	width: 100%;
+}
+
+
+@media all and (@bp30-max) {
+
+	.label__tag {
+		max-width: 150px;
+		border-right: 8px solid transparent
+	}
+
+}
+

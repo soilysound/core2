@@ -6,125 +6,57 @@
  * ============================================================================
  */
 
+// arbitrary box
+
 .box {
 	display:block;
   position: relative;
 }
 
+// box with a margin bottom
+
+.box--gap {
+  margin-bottom: @box-gap-l;
+}
+
+// inline block box
+
 .box--inline {
 	display:inline-block;
 }
 
-/* Set margin bottoms using the clothing size notation */
+// arbitrary padded box
 
-.box--s {
-  margin-bottom:@col-gap-s;
+.box--island {
+  padding: @island-padding-l
 }
 
-.box--m {
-	margin-bottom:@col-gap-m;
-}
-
-.box--l {
-	margin-bottom:@col-gap-l;
-}
-
-.box--0 {
-  margin-bottom: 0
-}
-
-
-/* Set padding using the clothing size notation */
-
-.box--island-s {
-  padding:@col-gap-s;
-}
-
-.box--island-m {
-  padding:@col-gap-m;
-}
-
-.box--island-l {
-  padding:@col-gap-l;
-}
-
-
-/* @BP20 */
 
 @media all and (max-width:800px){
 
-  /* set margin bottom for @BP20 */
+  // set boxes for @BP20
 
-  .box--s-bp20 {
-    margin-bottom:@col-gap-s;
-  }
+ .box-gap {
+    margin-bottom: @box-gap-m; 
+ }
 
-  .box--m-bp20 {
-    margin-bottom:@col-gap-s;
-  }
-
-  .box--l-bp20 {
-    margin-bottom:@col-gap-s;
-  }
-
-
-  /* remove margin bottom for @BP20 */
-
-  .box--0-bp20 {
-    margin-bottom: 0
-  }
-
-
-  .box--island-s {
-    padding:@col-gap-s;
-  }
-
-  .box--island-m {
-    padding:@col-gap-s;
-  }
-
-  .box--island-l {
-    padding:@col-gap-s;
+ .box--island {
+    padding: @island-padding-m
   }
 
 }
 
-/* @BP30 */
 
 @media all and (max-width:600px){
 
+  // set boxes for @BP20
 
-  /* set margin bottom for @BP30 */
-
-  .box--s-bp30 {
-    margin-bottom:@col-gap-s;
+  .box-gap {
+    margin-bottom: @box-gap-s; 
   }
 
-  .box--m-bp30 {
-    margin-bottom:@col-gap-s;
-  }
-
-  .box--l-bp30 {
-    margin-bottom:@col-gap-s;
-  }
-
-  /* remove margin bottom for @BP30 */
-
-  .box--0-bp30 {
-    margin-bottom: 0
-  }
-
-
-  .box--island-s {
-    padding:@col-gap-s;
-  }
-
-  .box--island-m {
-    padding:@col-gap-s;
-  }
-
-  .box--island-l {
-    padding:@col-gap-s;
+  .box--island {
+    padding: @island-padding-s
   }
 
 }
