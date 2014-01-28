@@ -1,0 +1,76 @@
+// TOP STORY
+// Responsive top story component
+// ============================================================================
+
+.top-story {
+}
+
+.top-story__figure {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.top-story__image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.top-story__headline {
+  margin-bottom: 0.2em;
+  //remove line height offset
+  margin-top: -0.3em;
+}
+
+.top-story__headline,
+.top-story__headline-link {
+  .primary-headline-m();
+}
+
+.top-story__snippet {
+  .body-copy-m();
+  margin-bottom: 1em;
+}
+
+.top-story__body {
+  background: @light-bg;
+  padding: @island-padding-l;
+}
+
+// remove margin off last item
+.top-story__body > :last-child{
+  margin-bottom:0
+}
+
+// limit related links to 4 items for desktop
+.top-story__body .list--related > .list__item:nth-child(n+5) {
+  display: none;
+}
+
+@media all and (@bp30-max) {
+
+  .top-story__body {
+    padding: @island-padding-s;
+  }
+
+  .top-story__snippet {
+    display: none
+  }
+
+  .top-story__headline {
+    margin-bottom: 0.3em;
+    //remove line height offset
+    margin-top: -0.2em;
+  }
+
+  .top-story__headline,
+  .top-story__headline-link {
+    .primary-headline-s();
+  }
+
+  // limit related links to 2 items for mobile
+  .top-story__body .list--related > .list__item:nth-child(n+3) {
+    display: none;
+  }
+
+}

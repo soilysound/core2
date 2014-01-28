@@ -1,141 +1,123 @@
-/**
- * PROJECT SETTINGS
- * Set project specific variables such as font size, unit sizes, colors and gradients
- * ============================================================================
-*/
+// PROJECT SETTINGS
+// Set project specific variables such as font size, unit sizes, colors and gradients
+// ============================================================================
 
-/* main site dimensions */
+
+// main site dimensions
 
 @site-max-width: 1280px;
 @primary-nav-mobile-width: 280px;
 
-/* body backgrounds */
 
-.body-background(){
-	background:#aaa
-}
+// breakpoints
+// mobile
+@bp30-max: ~"max-width:600px";
 
-.body-background-bp20(){
-	background:#888
-}
+@bp20-min: ~"min-width:601px";
+@bp20-max: ~"max-width:800px";
 
-.body-background-bp30(){
-	background:#555
-}
+@bp10-min: ~"min-width:801px";
+@bp10-max: ~"max-width:1154px";
 
-/* wrapper background */
+@bp5-min: ~"min-width:1155px";
 
-@wrap-background: white;
+// color palettes
+
+@sky-sports-red: #da2331;
+@blue: #214CB8;
+
+// text
+@text-dark: #111111;
+@text-primary: #333333;
+@text-secondary: #666666;
+@text-light: #999999;
+
+@white: white;
+@dark-bg: #eaeaea;
+@light-bg: #f4f4f4;
+@keyline: #dcdcdc;
+
+@site-background: white;
 
 
-/* Declare fonts */
+// Declare fonts
 
 @font-face {
-  font-family: 'SkyNews';
-  src:url('../fonts/skynews.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/skynews.woff') format('woff'),
-      url('../fonts/skynews.ttf')  format('truetype')
+  font-family: 'SkyTextReg';
+  src:url('../fonts/sky_reg-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/sky_reg-webfont.woff') format('woff'),
+      url('../fonts/sky_reg-webfont.ttf')  format('truetype')
 }
 
 @font-face {
-  font-family: 'SkyNewsReg';
-  src:url('../fonts/skynews-regular.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/skynews-regular.woff') format('woff'),
-      url('../fonts/skynews-regular.ttf')  format('truetype')
+  font-family: 'SkyTextMed';
+  src:url('../fonts/sky_med-webfont.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/sky_med-webfont.woff') format('woff'),
+      url('../fonts/sky_med-webfont.ttf')  format('truetype')
 }
 
-@font-face {
-  font-family: 'SkyNewsBold';
-  src:url('../fonts/skynews-bold.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/skynews-bold.woff') format('woff'),
-      url('../fonts/skynews-bold.ttf')  format('truetype')
+// Font styles
+
+.primary-headline-m(){
+  // used in top story component;
+  font-family:'SkyTextMed';
+  font-weight:normal;
+  font-size:2rem;
+  color: @text-dark;
 }
 
-/* Font sizes */
-
-.font-size-xs(){
-	font-size: 12px;
-	font-size:0.75rem;
+.primary-headline-s(){
+  // used in top story component;
+  font-family:'SkyTextMed';
+  font-weight:normal;
+  font-size:1.5rem;
+  color: @text-dark;
 }
 
-.font-size-s(){
-	font-size: 14px;
-	font-size:0.875rem
+.secondary-headline-s(){
+  //used for small headlines in related links
+  font-family:'SkyTextReg';
+  font-weight:normal;
+  font-size:1rem;
+  color: @text-primary;
 }
 
-.font-size-m(){
-	font-size: 16px;
-	font-size:1rem
-}
-
-.font-size-l(){
-	font-size: 20px;
-	font-size: 1.25rem;
-}
-
-.font-size-xl(){
-	font-size: 24px;
-	font-size:1.5rem
-}
-
-.font-size-xxl(){
-	font-size: 30px;
-	font-size:1.875rem
-}
-
-.font-size-xxxl(){
-	font-size: 42px;
-	font-size: 2.625rem
-}
-
-/* font families */
-
-.font-primary() {
-	font-family:'SkyNews';
-	font-weight:normal
-}
-
-.font-primary-reg() {
-	font-family:'SkyNewsReg';
-	font-weight:normal
-}
-
-.font-primary-bold() {
-	font-family:'SkyNewsBold';
-	font-weight:normal
-
+.body-copy-m(){
+  // used in top story component;
+  font-family:'SkyTextReg';
+  font-weight:normal;
+  font-size:1.125rem;
+  font-size: 18px;
+  color: @text-primary;
 }
 
 
-/* box units - used in margins and padding */
 
-@box-unit-s: 12px;
-@box-unit-m: 18px;
-@box-unit-l: 24px;
+// box units - used in margins and padding
 
-@box-unit-s-bp20: 12px;
-@box-unit-m-bp20: 16px;
-@box-unit-l-bp20: 20px;
+@island-padding-l: 32px;
+@island-padding-m: 24px;
+@island-padding-s: 18px;
 
-@box-unit-s-bp30: 9px;
-@box-unit-m-bp30: 14px;
-@box-unit-l-bp30: 18px;
+@col-gap-l: 32px;
+@col-gap-m: 24px;
+@col-gap-s: 18px;
 
 
-/* border radius */
+// border radius
 
 @border-radius-s: 3px;
 @border-radius-m: 5px;
 @border-radius-l: 8px;
 
 
-/* styles */
+// styles
 
 .style-panel1(){
   background:#777
 }
 
-/* transitions */
+// transitions
 
 .transition-transform-m(){
   -webkit-transition:-webkit-transform 0.33s ease-in-out;

@@ -13,29 +13,42 @@
 }
 
 .list__item {
-	margin-bottom:0.4em;
+	margin-bottom:0.3em
 }
 
-
-/* floated list */
-
-.list--float > .list__item {
-	margin:0 0 0 12px;
-	display: inline;
+.list__link {
+	.secondary-headline-s();
 }
 
-.list--float > .list__item:first-child {
-	margin-left:0
-}
-
-.list--bullet > .list__item:before {
+// add a bullet
+.list__item:before {
 	content:"";
-	background:#aaa;
+	background:@text-light;
 	margin-right:10px;
 	display:inline-block;
-	width:0.38em;
-	height:0.38em;
+	width:0.35em;
+	height:0.35em;
+	top:-1px;
 	position: relative;
 	border-radius:50%;
 	vertical-align:middle;
 }
+
+// sits under a top story - 2 columns, collapses to 1 column for mobile
+.list--related {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+}
+
+@media all and (@bp30-max){
+	.list--related {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
+}
+
+
+
+
