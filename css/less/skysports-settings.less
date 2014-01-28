@@ -10,7 +10,7 @@
 
 
 // breakpoints
-// mobile
+
 @bp30-max: ~"max-width:600px";
 
 @bp20-min: ~"min-width:601px";
@@ -27,6 +27,7 @@
 @blue: #214CB8;
 
 // text
+
 @text-dark: #111111;
 @text-primary: #333333;
 @text-secondary: #666666;
@@ -60,48 +61,52 @@
 
 .primary-headline-m(){
   // used in top story component;
-  font-family:'SkyTextMed';
-  font-weight:normal;
-  font-size:2rem;
+  font-family: 'SkyTextMed';
+  font-weight: normal;
+  font-size: 2rem;
   color: @text-dark;
 }
 
 .primary-headline-s(){
   // used in top story component;
-  font-family:'SkyTextMed';
-  font-weight:normal;
-  font-size:1.5rem;
+  font-family: 'SkyTextMed';
+  font-weight: normal;
+  font-size: 1.5rem;
   color: @text-dark;
 }
 
 .secondary-headline-s(){
-  //used for small headlines in related links
-  font-family:'SkyTextReg';
-  font-weight:normal;
-  font-size:1rem;
+  // used for small headlines in related links
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 1rem;
   color: @text-primary;
 }
 
 .body-copy-m(){
   // used in top story component;
-  font-family:'SkyTextReg';
-  font-weight:normal;
-  font-size:1.125rem;
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 1.125rem;
   font-size: 18px;
   color: @text-primary;
 }
 
 
 
-// box units - used in margins and padding
+// box units - used to set margins, column gaps and padding
 
 @island-padding-l: 32px;
 @island-padding-m: 24px;
 @island-padding-s: 18px;
 
-@col-gap-l: 32px;
-@col-gap-m: 24px;
-@col-gap-s: 18px;
+@col-gap-l: 24px;
+@col-gap-m: 18px;
+@col-gap-s: 12px;
+
+@component-gap-l: 24px;
+@component-gap-m: 18px;
+@component-gap-s: 12px;
 
 
 // border radius
@@ -120,7 +125,7 @@
 // transitions
 
 .transition-transform-m(){
-  -webkit-transition:-webkit-transform 0.33s ease-in-out;
-  -moz-transition:-moz-transform 0.33s ease-in-out;
-  transition:transform 0.33s ease-in-out;
+  -webkit-transition: -webkit-transform 0.33s ease-in-out;
+  -moz-transition: -moz-transform 0.33s ease-in-out;
+  transition: transform 0.33s ease-in-out;
 }

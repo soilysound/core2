@@ -226,13 +226,13 @@ body {
  * - Uses transparent borders so as to allow the use of padding and margins independently
  */
 .grid--gap-s > .grid__col {
-  border-left-width: 18px;
+  border-left-width: 12px;
 }
 .grid--gap-m > .grid__col {
-  border-left-width: 24px;
+  border-left-width: 18px;
 }
 .grid--gap-l > .grid__col {
-  border-left-width: 32px;
+  border-left-width: 24px;
 }
 /* cancel grid border padding */
 .grid > .grid__col:first-child {
@@ -301,13 +301,13 @@ body {
   
   }
   .grid--gap-s > .grid__col {
-    border-left-width: 18px;
+    border-left-width: 12px;
   }
   .grid--gap-m > .grid__col {
-    border-left-width: 18px;
+    border-left-width: 12px;
   }
   .grid--gap-l > .grid__col {
-    border-left-width: 18px;
+    border-left-width: 12px;
   }
   .grid--vertical-bp20 {
     -webkit-box-orient: vertical;
@@ -343,13 +343,13 @@ body {
 /* @BP30 */
 @media all and (max-width: 600px) {
   .grid--gap-s > .grid__col {
-    border-left-width: 18px;
+    border-left-width: 12px;
   }
   .grid--gap-m > .grid__col {
-    border-left-width: 18px;
+    border-left-width: 12px;
   }
   .grid--gap-l > .grid__col {
-    border-left-width: 18px;
+    border-left-width: 12px;
   }
   .grid--vertical-bp30 {
     -webkit-box-orient: vertical;
@@ -424,15 +424,15 @@ body {
 }
 /* gap between image and body text */
 .mediabox--gap-s > .mediabox__body {
-  border-width: 18px;
+  border-width: 12px;
   margin-top: -0.1em;
 }
 .mediabox--gap-m > .mediabox__body {
-  border-width: 24px;
+  border-width: 18px;
   margin-top: -0.4em;
 }
 .mediabox--gap-l > .mediabox__body {
-  border-width: 32px;
+  border-width: 24px;
   margin-top: -0.7em;
 }
 /* Vertical media box */
@@ -467,13 +467,13 @@ body {
 /* @BP20 */
 @media all and (max-width: 800px) {
   .mediabox--gap-s > .mediabox__body {
-    border-width: 18px;
+    border-width: 12px;
   }
   .mediabox--gap-m > .mediabox__body {
-    border-width: 18px;
+    border-width: 12px;
   }
   .mediabox--gap-l > .mediabox__body {
-    border-width: 18px;
+    border-width: 12px;
   }
   /* vertical @BP20 */
   .mediabox--vertical-bp20 {
@@ -494,13 +494,13 @@ body {
 /* @BP30 */
 @media all and (max-width: 600px) {
   .mediabox--gap-s > .mediabox__body {
-    border-width: 18px;
+    border-width: 12px;
   }
   .mediabox--gap-m > .mediabox__body {
-    border-width: 18px;
+    border-width: 12px;
   }
   .mediabox--gap-l > .mediabox__body {
-    border-width: 18px;
+    border-width: 12px;
   }
   /* vertical @BP30 */
   .mediabox--vertical-bp30 {
@@ -743,12 +743,18 @@ body {
   }
 }
 @media all and (min-width:601px) and (max-width:800px) {
+  .site-layout-secondary > .grid__col {
+    border-width: 12px;
+  }
   .site-layout-secondary__col2,
   .site-layout-secondary__col3 {
     display: none;
   }
 }
 @media all and (min-width:801px) and (max-width:1154px) {
+  .site-layout-secondary > .grid__col {
+    border-width: 12px;
+  }
   .site-layout-secondary__col2 {
     display: none;
   }
@@ -762,6 +768,9 @@ body {
   }
 }
 @media all and (min-width:1155px) {
+  .site-layout-secondary > .grid__col {
+    border-width: 18px;
+  }
   .site-layout-secondary__col2 {
     width: 276px;
     -webkit-box-flex: 0;
@@ -1262,77 +1271,77 @@ body {
 }
 /* Set margin bottoms using the clothing size notation */
 .box--s {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 .box--m {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .box--l {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 .box--0 {
   margin-bottom: 0;
 }
 /* Set padding using the clothing size notation */
 .box--island-s {
-  padding: 18px;
+  padding: 12px;
 }
 .box--island-m {
-  padding: 24px;
+  padding: 18px;
 }
 .box--island-l {
-  padding: 32px;
+  padding: 24px;
 }
 /* @BP20 */
 @media all and (max-width: 800px) {
   /* set margin bottom for @BP20 */
   .box--s-bp20 {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   .box--m-bp20 {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   .box--l-bp20 {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   /* remove margin bottom for @BP20 */
   .box--0-bp20 {
     margin-bottom: 0;
   }
   .box--island-s {
-    padding: 18px;
+    padding: 12px;
   }
   .box--island-m {
-    padding: 18px;
+    padding: 12px;
   }
   .box--island-l {
-    padding: 18px;
+    padding: 12px;
   }
 }
 /* @BP30 */
 @media all and (max-width: 600px) {
   /* set margin bottom for @BP30 */
   .box--s-bp30 {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   .box--m-bp30 {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   .box--l-bp30 {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   }
   /* remove margin bottom for @BP30 */
   .box--0-bp30 {
     margin-bottom: 0;
   }
   .box--island-s {
-    padding: 18px;
+    padding: 12px;
   }
   .box--island-m {
-    padding: 18px;
+    padding: 12px;
   }
   .box--island-l {
-    padding: 18px;
+    padding: 12px;
   }
 }
 /**
