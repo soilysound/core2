@@ -1285,7 +1285,7 @@ body {
   background: black;
   border-color: #ffffff;
   min-height: 180px;
-  outline: 1px solid #ffffff;
+  border-width: 2px;
 }
 .video-block__row {
   margin-bottom: 18px;
