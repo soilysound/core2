@@ -14,16 +14,17 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	text-align: left;
-	vertical-align: middle
+	vertical-align: middle;
 }
 
 .label__tag {
-	.label-m();
-	border-right: 12px solid transparent
+	.label(@text-m);
+	border-right: 12px solid transparent;
+	max-width: 270px;
 }
 
 .label__timestamp {
-	.caption-m();
+	.caption(@text-m);
 	width: 100%;
 }
 
@@ -31,8 +32,16 @@
 @media all and (@bp30-max) {
 
 	.label__tag {
-		max-width: 150px;
+		max-width: 168px;
 		border-right: 8px solid transparent
+	}
+
+	.label__tag {
+		.label(@text-s);
+	}
+
+	.label__timestamp {
+		.caption(@text-s);
 	}
 
 }

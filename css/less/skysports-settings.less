@@ -21,6 +21,8 @@
 
 @bp5-min: ~"min-width:1155px";
 
+@not-bp30: ~"min-width:601px";
+
 // color palettes
 
 @sky-sports-red: #da2331;
@@ -33,7 +35,7 @@
 @text-secondary: #666666;
 @text-light: #999999;
 
-@white: white;
+@off-white: white;
 @dark-bg: #eaeaea;
 @light-bg: #f4f4f4;
 @keyline: #dcdcdc;
@@ -57,56 +59,77 @@
       url('../fonts/sky_med-webfont.ttf')  format('truetype')
 }
 
-// Font styles
+// Text styles
 
-.primary-headline-m(){
+@base-text-size: 16;
+@text-s: 14;
+@text-m: 16;
+@text-ml: 18;
+@text-l: 22;
+@text-xl: 26;
+@text-xxl: 32;
+@text-xxxl: 36;
+
+// function to calculate rem and pixel font sizes and return the values
+
+.calc-text-size(@size){
+  @remValue: @size / @base-text-size;
+  @pxValue: @size;
+}
+
+.primary-headline(@size){
   // used in top story component;
   font-family: 'SkyTextMed';
   font-weight: normal;
-  font-size: 2rem;
+
+  .calc-text-size(@size);
+  font-size: ~"@{pxValue}px";
+  font-size: ~"@{remValue}rem";
   color: @text-dark;
 }
 
-.primary-headline-s(){
-  // used in top story component;
-  font-family: 'SkyTextMed';
-  font-weight: normal;
-  font-size: 1.5rem;
-  color: @text-dark;
-}
-
-.secondary-headline-s(){
+.secondary-headline(@size){
   // used for small headlines in related links
   font-family: 'SkyTextReg';
   font-weight: normal;
-  font-size: 1rem;
+
+  .calc-text-size(@size);
+  font-size: ~"@{pxValue}px";
+  font-size: ~"@{remValue}rem";
   color: @text-primary;
 }
 
-.body-copy-m(){
+.body-copy(@size){
   // used in top story component;
   font-family: 'SkyTextReg';
   font-weight: normal;
-  font-size: 1.125rem;
-  font-size: 18px;
+
+  .calc-text-size(@size);
+  font-size: ~"@{pxValue}px";
+  font-size: ~"@{remValue}rem";
+
   color: @text-primary;
 }
 
-.caption-m {
+.caption(@size) {
   // used for datestamps
   font-family: 'SkyTextReg';
   font-weight: normal;
-  font-size: 1rem;
-  font-size: 16px;
+
+  .calc-text-size(@size);
+  font-size: ~"@{pxValue}px";
+  font-size: ~"@{remValue}rem";
   color: @text-secondary;
 }
 
-.label-m {
+.label(@size) {
   // used for datestamps
-  font-family: 'SkyTextMed';
+  font-family: 'SkyTextReg';
   font-weight: normal;
-  font-size: 1.125rem;
-  font-size: 18px;
+
+  .calc-text-size(@size);
+  font-size: ~"@{pxValue}px";
+  font-size: ~"@{remValue}rem";
   color: @blue;
 }
 
@@ -126,9 +149,9 @@
 @component-gap-m: 18px;
 @component-gap-s: 12px;
 
-@box-gap-l: 24px;
-@box-gap-m: 18px;
-@box-gap-s: 12px;
+@box-gap-l: 32px;
+@box-gap-m: 24px;
+@box-gap-s: 18px;
 
 // border radius
 

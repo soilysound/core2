@@ -6,6 +6,7 @@
 }
 
 .top-story__figure {
+  display: block;
   position: relative;
   padding-bottom: 56.25%;
 }
@@ -24,11 +25,11 @@
 
 .top-story__headline,
 .top-story__headline-link {
-  .primary-headline-m();
+  .primary-headline(@text-xxl);
 }
 
 .top-story__snippet {
-  .body-copy-m();
+  .body-copy(@text-ml);
   margin-bottom: 1em;
 }
 
@@ -38,7 +39,7 @@
 }
 
 .top-story__body > .label {
-  margin: -4px 0 9px;
+  margin: -7px 0 9px;
 }
 
 // remove margin off last item
@@ -58,7 +59,7 @@
   }
 
   .top-story__body > .label {
-    margin: -3px 0 7px;
+    margin: -4px 0 7px;
   }
 
   .top-story__snippet {
@@ -74,7 +75,7 @@
 
   .top-story__headline,
   .top-story__headline-link {
-    .primary-headline-s();
+    .primary-headline(@text-xl);
   }
 
   // limit related links to 2 items for mobile

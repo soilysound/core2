@@ -1,0 +1,35 @@
+// Video block
+// Responsive feature block
+// ============================================================================
+
+.video-block__item {
+  background: black;
+  border-color: @off-white;
+  min-height: 180px;
+  outline: 1px solid white
+}
+
+.video-block__row {
+  margin-bottom: @component-gap-m;
+}
+
+
+@media all and (@bp20-max){
+
+  .video-block__row > .video-block__item:last-child {
+    display: none
+  }
+
+}
+
+@media all and (@bp30-max){
+
+  .video-block__row > .video-block__item:nth-child(n+3) {
+    display: none
+  }
+
+  .video-block__row {
+    margin-bottom: @component-gap-s;
+  }
+}
+
