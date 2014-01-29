@@ -42,6 +42,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    less: {
+      development: {
+        paths: ['css/less'],
+        files: {
+          "css/core.css": ["css/less/core.less"]
+        }
+      }
+    },
     cssmin: {
     compress: {
       files: {
@@ -74,10 +82,11 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-lodash');
 
-  grunt.registerTask('minify', ['concat', 'uglify', 'cssmin']);
+  grunt.registerTask('minify', ['concat', 'uglify', 'less', 'cssmin']);
 
 };

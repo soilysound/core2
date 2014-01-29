@@ -47,8 +47,13 @@
   margin-bottom:0
 }
 
+// set links in 2 columns
+.top-story__body > .list {
+  .columns(2);
+}
+
 // limit related links to 4 items for desktop
-.top-story__body .list--related > .list__item:nth-child(n+5) {
+.top-story__body > .list > .list__item:nth-child(n+5) {
   display: none;
 }
 
@@ -78,8 +83,12 @@
     .primary-headline(@text-xl);
   }
 
+  .top-story__body > .list {
+    .columns(1);
+  }
+  
   // limit related links to 2 items for mobile
-  .top-story__body .list--related > .list__item:nth-child(n+3) {
+  .top-story__body .list > .list__item:nth-child(n+3) {
     display: none;
   }
 

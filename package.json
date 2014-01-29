@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-lodash": "~0.3.0"
+    "grunt-lodash": "~0.3.0",
+    "grunt-contrib-less": "~0.9.0"
   }
 }
