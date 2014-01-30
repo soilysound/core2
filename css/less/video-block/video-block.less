@@ -17,11 +17,15 @@
 }
 
 .video-block__body > .label {
-  margin:-9px 0 2px 0;
+  margin:-10px 0 2px 0;
+}
+
+.video-block__headline,
+.video-block__link {
+  .primary-headline(@text-ml);
 }
 
 .video-block__headline {
-  .primary-headline(@text-l);
   margin-bottom:3px;
   line-height: 1.3
 }
@@ -32,10 +36,8 @@
 }
 
 @media all and (@bp10-max) {
-  
-  .video-block__headline {
-    .primary-headline(@text-ml);
-  }
+
+
 
 }
 
@@ -60,5 +62,6 @@
   .video-block__row {
     margin-bottom: @component-gap-s;
   }
+
 }
 

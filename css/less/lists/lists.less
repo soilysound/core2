@@ -1,12 +1,9 @@
-// /**
-//  * LISTS
-//  * Basic styles for bulleted and normal lists
-//  * ============================================================================
-//  */
+// LISTS
+// Basic styles for bulleted and normal lists
+// ============================================================================
 
 
-// /* standard list */
-
+// standard list
 .list {
 	list-style:none;
 	padding:0;
@@ -16,38 +13,36 @@
 	margin-bottom:0.2em
 }
 
-// .list__link {
-// 	.secondary-headline(@text-m);
-// }
+//a block of links, 2 cols at desktop/ 1 col at mobile
+.list--block {
+  .columns(2);
+}
 
-// // add a bullet
-// .list__item:before {
-// 	content:"";
-// 	background:@text-light;
-// 	margin-right:10px;
-// 	display:inline-block;
-// 	width:0.35em;
-// 	height:0.35em;
-// 	top:-1px;
-// 	position: relative;
-// 	border-radius:50%;
-// 	vertical-align:middle;
-// }
+// horizontal list of links
+.list--bar > .list__item {
+  display: inline-block;
+  margin-right: 12px;
+}
 
-// // sits under a top story - 2 columns, collapses to 1 column for mobile
-// .list--related {
-// 	-webkit-column-count: 2;
-// 	-moz-column-count: 2;
-// 	column-count: 2;
-// }
+// add a bullet
+.list--bullet > .list__item:before {
+	content:"";
+	background:@text-light;
+	margin-right:10px;
+	display:inline-block;
+	width:0.35em;
+	height:0.35em;
+	top:-1px;
+	position: relative;
+	border-radius:50%;
+	vertical-align:middle;
+}
 
-// @media all and (@bp30-max){
-// 	.list--related {
-// 		-webkit-column-count: 1;
-// 		-moz-column-count: 1;
-// 		column-count: 1;
-// 	}
-// }
+@media all and (@bp30-max){
+  .list--block {
+    .columns(1);
+  }
+}
 
 
 

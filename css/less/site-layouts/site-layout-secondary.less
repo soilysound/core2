@@ -2,6 +2,11 @@
 // Main 3 column layout
 // All 3 columns display at full size
 
+// remove margin bottoms from last box-gap components in each column
+.site-layout-secondary > .grid__col > .box-gap:last-child {
+  margin-bottom: 0
+}
+
 
 @media all and (@bp30-max) {
 
@@ -25,6 +30,14 @@
 
 }
 
+@media all and (@bp10-min){
+  .site-layout-secondary__col3 {
+    background: @light-bg;
+    border-color: white;
+    padding: @island-padding-shaded-col
+  }
+}
+
 @media all and (@bp10-min) and (@bp10-max) {
 
   .site-layout-secondary > .grid__col {
@@ -36,7 +49,7 @@
   }
 
   .site-layout-secondary__col3 {
-    width: 324px;
+    width: 336px;
     .no-flex();
   }
 
@@ -54,7 +67,7 @@
   }
 
   .site-layout-secondary__col3 {
-    width: 324px;
+    width: 336px;
     .no-flex();
   }
 

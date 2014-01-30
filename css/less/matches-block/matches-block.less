@@ -1,0 +1,90 @@
+// Matches block
+// Responsive fixtures and results component
+// ============================================================================
+
+.matches__group {
+  padding: 0;
+  list-style: none;
+}
+
+.matches__item {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-bottom: 1px solid @keyline
+}
+
+.matches__item-col {
+  display: table-cell;
+  height: @data-promo-row-height;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden
+}
+
+.matches__label,
+.matches__info {
+  width: 38px;
+  .secondary-headline(@text-s)
+}
+
+.matches__info {
+  text-align: right
+}
+
+.matches__status {
+  width: 62px
+}
+
+.matches__participant {
+  .primary-headline(@text-s)
+}
+
+.matches__participant--side1 {
+  text-align: right;
+}
+
+// fixtures that are a team a vs team b score
+
+.matches__teamscores {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: seperate;
+  border-spacing: 1px;
+  padding: 0 4px;
+  text-indent: -100%
+}
+
+.matches__date {
+  display: block;
+  text-align: center;
+  .secondary-headline(@text-s)
+}
+
+.matches__teamscores-side {
+  display: table-cell;
+  background: @sky-sports-red;
+  vertical-align: middle;
+  text-align: center;
+  .primary-headline(@text-s);
+  color: white;
+  width: 50%;
+  border-radius:@border-radius-s;
+  text-indent: 0
+}
+
+
+.matches-block > .list {
+  margin: 9px 0 0
+}
+
+@media all and (@bp20-max) {
+  .matches-block {
+    padding: @island-padding-s;
+    padding-bottom:3px;
+    padding-top:3px
+  }
+}
+
+

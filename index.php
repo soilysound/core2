@@ -29,7 +29,7 @@
 
 
       <!-- main site 2 column layout -->
-     <div class="grid site-layout-secondary">
+     <div class="grid site-layout-secondary box-gap">
 
         <div class="grid__col site-layout-secondary__col1">
 
@@ -38,6 +38,9 @@
 
           <!-- news list -->
           <?php include "components/news-list.html"; ?>
+
+          <!-- matches block -->
+          <?php include "components/matches-block.html"; ?>
 
           <!-- hot picks -->
           <?php include "components/feature-block.html"; ?>
@@ -50,8 +53,15 @@
 
         </div>
 
-        <div class="grid__col site-layout-secondary__col3">
-          3
+        <div class="grid__col site-layout-secondary__col3 callfn adaptive-html" data-fn="adaptive-html">
+          <script type="html/template">
+            <!-- matches block -->
+            <?php include "components/matches-block.html"; ?>
+
+            <!-- mini table -->
+            <?php include "components/tables-block.html"; ?>
+
+          </script>
 
         </div>
 

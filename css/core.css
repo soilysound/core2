@@ -195,7 +195,7 @@ body {
     margin-bottom: 18px;
   }
   .box--island {
-    padding: 18px;
+    padding: 18px 14px;
   }
 }
 /**
@@ -224,6 +224,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   /* this is to prevent swap direction option cascading down to nested grids in browsers that use the old 2009 syntax */
+
   -webkit-box-direction: normal;
   -moz-box-direction: normal;
 }
@@ -238,12 +239,12 @@ body {
   -ms-flex: 1;
   flex: 1;
   /* use border instead of padding or margin to avoid padding/margin inheritence issues */
+
   border-color: transparent;
   border-left-style: solid;
   border-width: 0;
-  box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* for IE8-9 - no flexbox */
+
   display: table-cell\0/;
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
@@ -305,6 +306,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   /* vertically align middle */
+
   vertical-align: middle;
   -ms-flex-align: center;
   -webkit-align-items: center;
@@ -328,6 +330,16 @@ body {
 }
 /* @BP20 */
 @media all and (min-width: 601px) and (max-width: 800px) {
+  {
+    /* collapse the columns by setting to display block for IE9 */
+  
+    /* swap order set on collapsed columns */
+  
+    /* for IE8-9 - no flexbox */
+  
+    /* override for IE10+ */
+  
+  }
   .grid--gap-s > .grid__col,
   .grid--gap-m > .grid__col,
   .grid--gap-l > .grid__col {
@@ -340,11 +352,9 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
   }
-  /* collapse the columns by setting to display block for IE9 */
   .legacyie .grid--vertical-bp20 > .grid__col {
     display: block;
   }
-  /* swap order set on collapsed columns */
   .grid--vertical-bp20.grid--swap-order {
     -webkit-box-direction: reverse;
     -moz-box-direction: reverse;
@@ -357,11 +367,9 @@ body {
     width: 100%;
     -ms-flex: auto;
   }
-  /* for IE8-9 - no flexbox */
   .grid--vertical-bp20.grid--swap-order > .grid__col:first-child {
     display: table-footer-group\0/;
   }
-  /* override for IE10+ */
 }
 @media all and (min-width: 601px) and (max-width: 800px) and screen and (-ms-high-contrast: active), all and (min-width: 601px) and (max-width: 800px) and (-ms-high-contrast: none) {
   .grid--vertical-bp20.grid--swap-order > .grid__col:first-child {
@@ -759,6 +767,9 @@ body {
     transform: translateX(0);
   }
 }
+.site-layout-secondary > .grid__col > .box-gap:last-child {
+  margin-bottom: 0;
+}
 @media all and (max-width:600px) {
   .site-layout-secondary__col2,
   .site-layout-secondary__col3 {
@@ -774,6 +785,13 @@ body {
     display: none;
   }
 }
+@media all and (min-width:801px) {
+  .site-layout-secondary__col3 {
+    background: #f4f4f4;
+    border-color: white;
+    padding: 0 18px;
+  }
+}
 @media all and (min-width:801px) and (max-width:1154px) {
   .site-layout-secondary > .grid__col {
     border-width: 12px;
@@ -782,7 +800,7 @@ body {
     display: none;
   }
   .site-layout-secondary__col3 {
-    width: 324px;
+    width: 336px;
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
     -webkit-flex: 0 1 auto;
@@ -803,7 +821,7 @@ body {
     flex: 0 1 auto;
   }
   .site-layout-secondary__col3 {
-    width: 324px;
+    width: 336px;
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
     -webkit-flex: 0 1 auto;
@@ -938,6 +956,34 @@ body {
 .list__item {
   margin-bottom: 0.2em;
 }
+.list--block {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+.list--bar > .list__item {
+  display: inline-block;
+  margin-right: 12px;
+}
+.list--bullet > .list__item:before {
+  content: "";
+  background: #999999;
+  margin-right: 10px;
+  display: inline-block;
+  width: 0.35em;
+  height: 0.35em;
+  top: -1px;
+  position: relative;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+@media all and (max-width:600px) {
+  .list--block {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
 .action-link {
   display: inline-block;
   padding: 2px 4px 2px 1px;
@@ -962,8 +1008,8 @@ body {
     padding-left: 0;
   }
   .action-link:before {
-    font-size: 13px;
-    margin-right: 4px;
+    font-size: 12px;
+    margin-right: 3px;
   }
 }
 .label {
@@ -1106,7 +1152,7 @@ body {
 }
 @media all and (max-width:600px) {
   .top-story__body {
-    padding: 18px;
+    padding: 18px 14px;
   }
   .top-story__body > .label {
     margin: -4px 0 7px;
@@ -1180,6 +1226,7 @@ body {
   font-size: 16px;
   font-size: 1rem;
   color: #333333;
+  margin-bottom: -5px;
 }
 .news-list__body > .label {
   margin-top: -4px;
@@ -1207,6 +1254,11 @@ body {
   }
 }
 @media all and (max-width:600px) {
+  .news-list {
+    padding: 18px 14px;
+    padding-top: 3px;
+    padding-bottom: 9px;
+  }
   .news-list__item {
     margin-bottom: 12px;
   }
@@ -1226,7 +1278,7 @@ body {
     color: #111111;
   }
   .news-list__figure + .news-list__body {
-    padding-left: 18px;
+    padding-left: 0;
   }
   .news-list__body > .label {
     margin-bottom: 0;
@@ -1266,7 +1318,7 @@ body {
   margin-bottom: 0;
 }
 .feature-block__body {
-  padding: 18px;
+  padding: 18px 14px;
 }
 @media all and (max-width:600px) {
   .feature-block > .feature-block__item:nth-child(n+3) {
@@ -1284,18 +1336,21 @@ body {
   margin-bottom: 24px;
 }
 .video-block__body {
-  padding: 18px;
+  padding: 18px 14px;
   padding-bottom: 38px;
 }
 .video-block__body > .label {
-  margin: -9px 0 2px 0;
+  margin: -10px 0 2px 0;
 }
-.video-block__headline {
+.video-block__headline,
+.video-block__link {
   font-family: 'SkyTextMed';
   font-weight: normal;
-  font-size: 22px;
-  font-size: 1.375rem;
+  font-size: 18px;
+  font-size: 1.125rem;
   color: #111111;
+}
+.video-block__headline {
   margin-bottom: 3px;
   line-height: 1.3;
 }
@@ -1304,13 +1359,7 @@ body {
   bottom: 6px;
 }
 @media all and (max-width:1154px) {
-  .video-block__headline {
-    font-family: 'SkyTextMed';
-    font-weight: normal;
-    font-size: 18px;
-    font-size: 1.125rem;
-    color: #111111;
-  }
+  
 }
 @media all and (max-width:800px) {
   .video-block__row > .video-block__item:last-child {
@@ -1327,6 +1376,110 @@ body {
   .video-block__row {
     margin-bottom: 12px;
   }
+}
+.matches__group {
+  padding: 0;
+  list-style: none;
+}
+.matches__item {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-bottom: 1px solid #dcdcdc;
+}
+.matches__item-col {
+  display: table-cell;
+  height: 36px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.matches__label,
+.matches__info {
+  width: 38px;
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #333333;
+}
+.matches__info {
+  text-align: right;
+}
+.matches__status {
+  width: 62px;
+}
+.matches__participant {
+  font-family: 'SkyTextMed';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #111111;
+}
+.matches__participant--side1 {
+  text-align: right;
+}
+.matches__teamscores {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: seperate;
+  border-spacing: 1px;
+  padding: 0 4px;
+  text-indent: -100%;
+}
+.matches__date {
+  display: block;
+  text-align: center;
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #333333;
+}
+.matches__teamscores-side {
+  display: table-cell;
+  background: #da2331;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'SkyTextMed';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #111111;
+  color: white;
+  width: 50%;
+  border-radius: 3px;
+  text-indent: 0;
+}
+.matches-block > .list {
+  margin: 9px 0 0;
+}
+@media all and (max-width:800px) {
+  .matches-block {
+    padding: 18px 14px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+}
+.mini-table {
+  width: 100%;
+  table-layout: fixed;
+  outline: 1px solid #ff0000;
+}
+.mini-table th,
+.mini-table td {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.mini-table--football-league__col1 {
+  width: 10%;
+}
+.mini-table--football-league__col3 {
+  width: 10%;
+}
+.mini-table--football-league__col4 {
+  width: 10%;
 }
 /**
  * REQUIRED MODULES - DO NOT EDIT
