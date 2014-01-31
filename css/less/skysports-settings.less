@@ -26,7 +26,9 @@
 // color palettes
 
 @sky-sports-red: #da2331;
-@blue: #214CB8;
+@sky-sports-blue: #214CB8;
+@blue-mid: #011EA6;
+@blue-light: #214CB8;
 
 // text
 
@@ -137,20 +139,29 @@
   .calc-text-size(@size);
   font-size: ~"@{pxValue}px";
   font-size: ~"@{remValue}rem";
-  color: @blue;
+  color: @sky-sports-blue;
 }
 
 
 
 // box units - used to set margins, column gaps and padding
 
+// mobile site left and right padding/margin
+
+@bp30-site-margin: 14px;
+@bp10-site-margin: 14px;
+
 @island-padding-l: 32px;
 @island-padding-m: 24px;
-@island-padding-s: 18px 14px;
+@island-padding-s: 18px @bp30-site-margin;
+
+
+@island-padding-nobg-s: 6px @bp30-site-margin;
 
 // for shaded right hand col
 
-@island-padding-shaded-col: 0 18px;
+@island-padding-shaded-col: 18px 18px;
+@island-padding-nobg-col: 2px 24px;
 
 @col-gap-l: 24px;
 @col-gap-m: 18px;

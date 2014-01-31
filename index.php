@@ -17,6 +17,9 @@
 
 <body>
 <div class="wrap">
+
+
+
   <div class="grid site-layout-primary">
 
     <div class="grid__col site-layout-primary__col1">
@@ -26,7 +29,8 @@
 
     <div class="grid__col site-layout-primary__col2">
 
-
+    <!-- site header -->
+    <?php include "components/site-header.html"; ?>
 
       <!-- main site 2 column layout -->
      <div class="grid site-layout-secondary box-gap">
@@ -37,11 +41,23 @@
           <?php include "components/top-story.html"; ?>
 
           <!-- news list -->
+          <a href="#" class="block-header">
+            <h2 class="block-header__title">Latest News</h2>
+          </a>
           <?php include "components/news-list.html"; ?>
 
           <!-- matches block -->
-          <?php include "components/matches-block.html"; ?>
+          <a href="#" class="block-header is-hidden--bp10 is-hidden--bp5">
+            <h2 class="block-header__title">Matches</h2>
+          </a>
+          <?php
+            $display = "is-hidden--bp10 is-hidden--bp5";
+            include "components/matches-block.html";
+           ?>
 
+          <a href="#" class="block-header">
+            <h2 class="block-header__title">Features</h2>
+          </a>
           <!-- hot picks -->
           <?php include "components/feature-block.html"; ?>
 
@@ -49,16 +65,48 @@
         </div>
 
         <div class="grid__col site-layout-secondary__col2">
-          2
+
+          <!-- hot picks -->
+          <?php include "components/news-list-secondary.html"; ?>
+
+          <div class="box-gap box-gap--m" style="height:210px;background: #eee;">
+            SKY BET
+          </div>
+
+           <div class="box-gap box-gap--m" style="height:150px;background: #eee;">
+            PROMO 1
+          </div>
+
+           <div class="box-gap box-gap--m" style="height:150px;background:#eee;">
+            PROMO 2
+          </div>
+
+           <div class="box-gap box-gap--m" style="height:150px;background:#eee;">
+            PROMO 3
+          </div>
 
         </div>
 
         <div class="grid__col site-layout-secondary__col3 callfn adaptive-html" data-fn="adaptive-html">
           <script type="html/template">
             <!-- matches block -->
-            <?php include "components/matches-block.html"; ?>
+            <a href="#" class="block-header--aside">
+              <h2 class="block-header--aside__title">Featured Matches</h2>
+            </a>
+
+            <?php
+              $display = "";
+              include "components/matches-block.html";
+            ?>
+
+            <div style="height:250px;background:#ccc;margin-bottom:24px">
+
+            </div>
 
             <!-- mini table -->
+            <a href="#" class="block-header--aside">
+              <h2 class="block-header--aside__title">Premier League Table</h2>
+            </a>
             <?php include "components/tables-block.html"; ?>
 
           </script>
@@ -67,9 +115,12 @@
 
       </div>
 
-      <div class="box">
+      <div class="box site-layout-secondary">
 
         <!-- video block -->
+        <a href="#" class="block-header">
+          <h2 class="block-header__title">Video</h2>
+        </a>
         <?php include "components/video-block.html"; ?>
 
 

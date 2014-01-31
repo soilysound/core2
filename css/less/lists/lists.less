@@ -21,14 +21,18 @@
 // horizontal list of links
 .list--bar > .list__item {
   display: inline-block;
-  margin-right: 12px;
+  margin-right: 11px;
+}
+
+.list--bar > .list__item:last-child {
+  margin-right:0
 }
 
 // add a bullet
 .list--bullet > .list__item:before {
 	content:"";
 	background:@text-light;
-	margin-right:10px;
+	margin-right:8px;
 	display:inline-block;
 	width:0.35em;
 	height:0.35em;
@@ -41,6 +45,10 @@
 @media all and (@bp30-max){
   .list--block {
     .columns(1);
+  }
+
+  .list--bar > .list__item {
+    margin-right: 9px
   }
 }
 

@@ -7,8 +7,18 @@
   margin-bottom: 0
 }
 
+// set site margins for desktop view
+
+.site-layout-secondary {
+  padding: 0 @bp10-site-margin;
+
+}
 
 @media all and (@bp30-max) {
+
+  .site-layout-secondary {
+    padding: 0
+  }
 
   .site-layout-secondary__col2,
   .site-layout-secondary__col3 {
@@ -33,9 +43,10 @@
 @media all and (@bp10-min){
   .site-layout-secondary__col3 {
     background: @light-bg;
-    padding: @island-padding-shaded-col
+    padding: @island-padding-shaded-col;
   }
 }
+
 
 @media all and (@bp10-min) and (@bp10-max) {
 
@@ -56,17 +67,24 @@
 
 @media all and (@bp5-min){
 
+  .site-layout-secondary {
+    padding: 0;
+  }
+
   .site-layout-secondary > .grid__col {
     border-width:@col-gap-m;
   }
 
   .site-layout-secondary__col2 {
-    width: 276px;
+    width: 314px;
+    border-width: 0!important;
     .no-flex();
+    padding: @island-padding-nobg-col
   }
 
   .site-layout-secondary__col3 {
     width: 336px;
+    border-width: 0!important;
     .no-flex();
   }
 

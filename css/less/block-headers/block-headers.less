@@ -1,0 +1,71 @@
+.block-header,
+.block-header--aside {
+  display: block;
+  border-bottom: 1px solid @keyline;
+  position: relative;
+  margin-bottom: @component-gap-m
+}
+
+.block-header__title {
+  .secondary-headline(@text-xxl);
+  position: relative;
+  top: -10px;
+  margin-bottom: -10px;
+}
+
+.block-header:after,
+.block-header--aside:after {
+  text-align: right;
+  content: "\e052";
+  font-family: icons;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  font-size: 0.8em;
+  top: 11px;
+  right: @bp30-site-margin;
+  width: 36px;
+}
+
+@media all and (@bp30-max){
+
+  .block-header {
+    border: 0;
+    background: @sky-sports-blue;
+    padding: @island-padding-s;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    margin-bottom: @component-gap-s;
+    position: relative
+  }
+
+  .block-header__title {
+    overflow: hidden;
+    position: static;
+    white-space: nowrap;
+    .secondary-headline(@text-l);
+    color: @off-white;
+    margin: 0;
+  }
+}
+
+
+// block header used in shaded aside column
+
+.block-header--aside {
+  border: 0;
+  background: @sky-sports-red;
+  padding: @island-padding-s;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  margin-bottom: @component-gap-s;
+}
+
+.block-header--aside__title {
+  overflow: hidden;
+  position: static;
+  white-space: nowrap;
+  .secondary-headline(@text-ml);
+  color: @off-white;
+  margin: 0;
+}

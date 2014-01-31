@@ -59,8 +59,12 @@
 
 @media all and (@bp30-max) {
 
+  .top-story {
+    margin-bottom: 0
+  }
+
   .top-story__body {
-    padding: @island-padding-s;
+    padding: @island-padding-s
   }
 
   .top-story__body > .label {
@@ -72,7 +76,7 @@
   }
 
   .top-story__headline {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.4em;
     // remove line height offset
     margin-top: -0.2em;
     line-height: 1.25;
@@ -80,13 +84,15 @@
 
   .top-story__headline,
   .top-story__headline-link {
-    .primary-headline(@text-xl);
+    .primary-headline(@text-xxl);
+    padding-right: 32px;
+    line-height: 1.1
   }
 
   .top-story__body > .list {
     .columns(1);
   }
-  
+
   // limit related links to 2 items for mobile
   .top-story__body .list > .list__item:nth-child(n+3) {
     display: none;
