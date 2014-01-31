@@ -47,7 +47,7 @@
           <?php include "components/news-list.html"; ?>
 
           <!-- matches block -->
-          <a href="#" class="block-header is-hidden--bp10 is-hidden--bp5">
+          <a href="#" class="block-header block-header--no-gap is-hidden--bp10 is-hidden--bp5">
             <h2 class="block-header__title">Matches</h2>
           </a>
           <?php

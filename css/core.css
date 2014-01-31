@@ -1704,6 +1704,9 @@ th.mini-table__cell {
   right: 14px;
   width: 36px;
 }
+.block-header--no-gap {
+  margin-bottom: 0!important;
+}
 @media all and (max-width:600px) {
   .block-header {
     border: 0;
