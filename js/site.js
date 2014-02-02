@@ -4930,7 +4930,6 @@ return FastClick;
   if(SKY_SPORTS.hasFeature.touch){
 
     require(['fastclick'], function(Fastclick){
-			callfn.init();
       Fastclick.attach(document.body);
 
     });
