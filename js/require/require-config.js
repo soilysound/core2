@@ -2,6 +2,7 @@ require.config({
 	baseUrl: "/js",
 	paths: {
     "adaptive-html": "modules/adaptive-html",
+    "callfn": "require/callfn",
     "dom":"modules/dom",
     "fastclick": "vendor/fastclick",
     "nav-secondary-all": "modules/nav-secondary-all",

@@ -10,12 +10,13 @@
 }
 
 .list__item {
-	margin-bottom:0.2em
+	margin-bottom:0.4em
 }
 
 //a block of links, 2 cols at desktop/ 1 col at mobile
-.list--block {
-  .columns(2);
+.list--block > .list__item {
+  width: 50%;
+  display: inline-block;
 }
 
 // horizontal list of links
@@ -43,8 +44,9 @@
 }
 
 @media all and (@bp30-max){
-  .list--block {
-    .columns(1);
+  
+  .list--block > .list__item {
+  	width: 100%;
   }
 
   .list--bar > .list__item {

@@ -801,6 +801,10 @@ String.prototype.toCamel = function(){
 			};
 		}
 
+		return {
+			
+		}
+
 	}
 
 	SKY_SPORTS.hasFeature = feature();

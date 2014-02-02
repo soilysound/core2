@@ -4,9 +4,6 @@ define('site-layout-primary', ['underscore', 'widget'], function(_, Widget){
 
   var exports = Widget.extend({
 
-		leftNavSelector: '.site-layout-primary__col1',
-		siteBodySelector: '.site-layout-primary__col2',
-		leftNavTrigger: '.nav-primary-mobile__trigger',
 		navIsOpen: false,
 
 		init: function(element, data){
@@ -17,21 +14,36 @@ define('site-layout-primary', ['underscore', 'widget'], function(_, Widget){
 			this.element = element;
 
 			this._getElements();
+
+			// bail out if there is no mobile nav open button
+			if(!this.trigger){
+				return;
+			}
+
+			this._getNavWidth();
 			this._bindEvents();
 
 		},
 
 		_getElements: function(){
 
-			this.leftNav = this.element.querySelector(this.leftNavSelector);
-			this.siteBody = this.element.querySelector(this.siteBodySelector);
-			this.trigger = this.element.querySelector('[data-role="open-nav"]');
+			this.siteLayoutPrimary = this.element;
+			this.siteBody = this.siteLayoutPrimary.querySelector('.site-layout-primary__col2');
+			this.leftNav = this.siteLayoutPrimary.querySelector('.site-layout-primary__col1');
+			this.trigger = this.element.querySelector('[data-role="open-left-hand-nav"]');
+		},
+
+		_getNavWidth: function(){
+
+			if(window.getComputedStyle){
+				var styles = window.getComputedStyle(this.leftNav, null);
+				this.leftNavWidth = parseInt(styles.getPropertyValue("width"), 10);
+			}
 		},
 
 		_bindEvents: function(){
 
 			this.trigger.addEventListener('click', function(){
-
 				this.toggleNav();
 
 			}.bind(this), false);
@@ -54,12 +66,12 @@ define('site-layout-primary', ['underscore', 'widget'], function(_, Widget){
 		toggleNav: function(state){
 
 			if(this.navIsOpen || state === 'open'){
-				this.leftNav.style.cssText = "";
+				this.siteLayoutPrimary.style.cssText = "";
 				this.navIsOpen = false;
 			}
 
 			else {
-				this.leftNav.style.cssText = "-webkit-transform:translateX(0)";
+				this.siteLayoutPrimary.style.cssText = "-webkit-transform:translateX(" + this.leftNavWidth + "px);-moz-transform:translateX(" + this.leftNavWidth + "px);-ms-transform: translateX(" + this.leftNavWidth + "px); transform: translateX(" + this.leftNavWidth + "px)";
 				this.navIsOpen = true;
 			}
 		}

@@ -14,10 +14,15 @@
  * For BP10 the left hand nav is hidden and never shown
  */
 
-@media all and (min-width:801px){
+@media all and (@bp10-min){
+
+  .site-layout-primary {
+    .transform(translateX(0))!important
+  }
 
   .site-layout-primary__col1 {
-    display:none;
+    display: none;
+    width:@primary-nav-mobile-width;
   }
 
 }
@@ -26,27 +31,25 @@
  * For BP20 and 30, the left hand nav is hidden off canvas and slides in
  */
 
-@media all and (max-width:800px){
+@media all and (@bp20-max){
+
+  .site-layout-primary {
+    .transition-transform-m();
+    .transform(transateX(0));
+    -webkit-backface-visibility: hidden
+  }
 
   .site-layout-primary__col1  {
-
-      .fix-flicker();
-
-     .transform(translateX(-100%));
-     .transition-transform-m();
-     .style-panel1();
-     .u-z-middle;
-
-     width:@primary-nav-mobile-width;
-
-     position: absolute;
-     height:100%;
-     left:0;
+    position: absolute;
+    height: 100%;
+    .transform(translateX(-100%));
+    width:@primary-nav-mobile-width;
+    background: @dark-bg
 
   }
 
-  .site-layout-primary__col1--open {
-    .transform(translateX(0));
+  .site-layout-primary__col2 {
+    box-shadow: -4px 0 6px rgba(0,0,0,0.05)
   }
 
 }

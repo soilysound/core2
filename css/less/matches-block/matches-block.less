@@ -85,10 +85,10 @@
 .matches__promo {
   position: relative;
   background: @off-white;
-  padding: 18px 18px 24px 32px;
+  padding: 18px 24px 24px 32px;
   line-height: 1;
-  margin-bottom: @component-gap-s;
-  border-radius: @border-radius-s
+  margin-bottom: @component-gap-m;
+  border-radius: @border-radius-s;
 }
 
 .matches__promo-timestamp {
@@ -99,7 +99,7 @@
 .matches__promo-event {
   .primary-headline(@text-xl);
   margin-bottom: 14px;
-  white-space: nowrap
+  padding-right: 80px
 }
 
 .matches__promo-break {
@@ -118,6 +118,19 @@
   top: 1px
 }
 
+.matches__promo-event-badge {
+  position: absolute;
+  right: 18px;
+  top: 52px;
+  width: 42px
+}
+
+.matches__promo-event-badge:first-child {
+  right: 56px;
+  z-index: 2;
+
+}
+
 .matches__promo > .list {
   margin:0 0 0 -2px
 }
@@ -126,7 +139,7 @@
 
   .matches__promo {
     background: @light-bg;
-    padding-left: 24px
+    padding-left: 24px;
   }
 
 }

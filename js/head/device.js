@@ -121,6 +121,10 @@
 			};
 		}
 
+		return {
+			
+		}
+
 	}
 
 	SKY_SPORTS.hasFeature = feature();

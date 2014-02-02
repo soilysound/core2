@@ -1,0 +1,124 @@
+/* @media all and (min-width: 1165px) { */
+  head {
+    font-family: "5";
+  }
+/* } */
+
+/* @media all and (min-width: 801px) { */
+  .short-text-bp10 {
+    text-indent: -50px;
+    letter-spacing: -50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .short-text-bp10[data-short-text]:after {
+    text-indent: 50px;
+    display: inline-block;
+    content: attr(data-short-text);
+    letter-spacing: normal;
+  }
+/* } */
+
+/* @media all and (min-width: 1165px) { */
+  .is-hidden--bp5 {
+    display: none !important;
+  }
+/* } */
+
+/* @media all and (min-width:801px) { */
+  .site-layout-primary {
+    -webkit-transform: translateX(0) !important;
+    -moz-transform: translateX(0) !important;
+    -ms-transform: translateX(0) !important;
+    transform: translateX(0) !important;
+  }
+  .site-layout-primary__col1 {
+    display: none;
+    width: 272px;
+  }
+/* } */
+
+/* @media all and (min-width:801px) { */
+  .site-layout-secondary__col3 {
+    background: #f4f4f4;
+    padding: 18px 18px;
+  }
+/* } */
+
+/* @media all and (min-width:1155px) { */
+  .site-layout-secondary {
+    padding: 0;
+  }
+  .site-layout-secondary > .grid__col {
+    border-width: 18px;
+  }
+  .site-layout-secondary__col2 {
+    width: 314px;
+    border-width: 0!important;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    padding: 2px 24px;
+  }
+  .site-layout-secondary__col3 {
+    width: 336px;
+    border-width: 0!important;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+  }
+/* } */
+
+/* @media all and (min-width:801px) { */
+  .site-header__col1 {
+    display: none !important;
+  }
+/* } */
+
+/* @media all and (min-width: 801px) { */
+  .nav-secondary-all {
+    width: 100%;
+    align: middle;
+  }
+  .nav-secondary-all__head {
+    padding: 0 12px;
+  }
+  .nav-secondary-all__frame {
+    width: 100%;
+    overflow: hidden;
+  }
+  .nav-secondary-all__body {
+    width: 100%;
+    background: #ddd;
+    list-style: none;
+    white-space: nowrap;
+  }
+  .nav-secondary-all__item {
+    display: inline-block;
+    padding: 9px 6px;
+  }
+  .nav-secondary-all__section {
+    display: none;
+  }
+/* } */
+
+/* @media all and (min-width:601px) { */
+  .news-list__body .label__tag {
+    font-family: 'SkyTextReg';
+    font-weight: normal;
+    font-size: 14px;
+    font-size: 0.875rem;
+    color: #214cb8;
+  }
+  .news-list__body .label__timestamp {
+    font-family: 'SkyTextReg';
+    font-weight: normal;
+    font-size: 14px;
+    font-size: 0.875rem;
+    color: #666666;
+  }
+/* } */

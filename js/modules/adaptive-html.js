@@ -76,7 +76,7 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
     _loadIfMatchesBreakPoint: function(){
 
       var currBP = document.currentBreakPoint;
-console.log(this.showAt);
+alert(this.showAt);
       //if current breakpoint matches, append new html
       if((this.showAt === 'all' || this.showAt.indexOf(currBP) > -1) && !this.element.classList.contains('adaptive-html--loaded')){
 

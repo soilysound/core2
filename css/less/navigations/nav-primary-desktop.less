@@ -3,8 +3,92 @@
 	background:@blue-light
 }
 
-@media all and (@bp30-max){
+.nav-primary-desktop > .grid__col {
+	.flex-box();
+	vertical-align:middle;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.nav-primary-desktop__col2 {
+	width: 336px;
+	.no-flex();
+}
+
+.nav-primary-desktop__group {
+	padding: 0;
+	list-style: none;
+	white-space: nowrap
+}
+
+.nav-primary-desktop__item {
+	display: inline-block;
+	position: relative
+}
+
+.nav-primary-desktop__link {
+	display: inline-block;
+	text-transform: uppercase;
+	padding: 13px 16px;
+	.primary-headline(@text-m);
+	color: @off-white;
+}
+
+// add dropdown icon
+.nav-primary__dropdown-link:after {
+	content:"\e079";
+	font-family: icons;
+	margin-left: 5px;
+	font-size: 10px;
+	position: relative;
+	top: -1px
+}
+
+.nav-primary-desktop__item:first-child > .nav-primary-desktop__link{
+	padding-left: 22px
+}
+
+.nav-primary-desktop__menu {
+	min-width: 500px;
+	height: 300px;
+	.u-z-top;
+	position: absolute;
+	top: 100%;
+	visibility: hidden; 
+	overflow: hidden;
+}
+
+.nav-primary-desktop__menu-right {
+	right: 0
+}
+
+.nav-primary-desktop__menu-body {
+	background: @blue-mid;
+	position: absolute; 
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	-webkit-transition: opacity 0.166s ease-in-out
+}
+
+.nav-primary-desktop__item:hover,
+.nav-primary-desktop__item:active {
+	background: @blue-mid;
+}
+
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu,
+.nav-primary-desktop__item:active > .nav-primary-desktop__menu {
+	visibility: visible;
+}
+
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body,
+.nav-primary-desktop__item:active > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
+	opacity: 1
+}
+
+@media all and (@bp20-max){
   .nav-primary-desktop {
-    display: none
+    display: none;
   }
 }

@@ -12,6 +12,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="format-detection" content="telephone=no">
   <link rel="stylesheet" href="/css/core.css" type="text/css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" type="text/css" href="/css/ie8.css">
+  <![endif]-->
   <script src="/js/head.js"></script>
 </head>
 
@@ -20,10 +23,9 @@
 
 
 
-  <div class="grid site-layout-primary">
+  <div class="grid site-layout-primary callfn" data-fn="site-layout-primary">
 
     <div class="grid__col site-layout-primary__col1">
-      mob nav
 
     </div>
 
@@ -90,7 +92,7 @@
         <div class="grid__col site-layout-secondary__col3 callfn adaptive-html" data-fn="adaptive-html">
           <script type="html/template">
             <!-- matches block -->
-            <a href="#" class="block-header--aside">
+            <a href="#" class="block-header--aside block-header--no-gap">
               <h2 class="block-header--aside__title">Featured Matches</h2>
             </a>
 
