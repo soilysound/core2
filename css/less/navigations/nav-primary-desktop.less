@@ -49,6 +49,7 @@
 	padding-left: 22px
 }
 
+// dropdown menu
 .nav-primary-desktop__menu {
 	min-width: 500px;
 	height: 300px;
@@ -72,18 +73,16 @@
 	-webkit-transition: opacity 0.166s ease-in-out
 }
 
-.nav-primary-desktop__item:hover,
-.nav-primary-desktop__item:active {
+// add hover actions to open menu
+.nav-primary-desktop__item:hover {
 	background: @blue-mid;
 }
 
-.nav-primary-desktop__item:hover > .nav-primary-desktop__menu,
-.nav-primary-desktop__item:active > .nav-primary-desktop__menu {
-	visibility: visible;
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu {
+	visibility: visible; 
 }
 
-.nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body,
-.nav-primary-desktop__item:active > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
 	opacity: 1
 }
 

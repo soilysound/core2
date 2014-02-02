@@ -1020,16 +1020,13 @@ body {
   opacity: 0;
   -webkit-transition: opacity 0.166s ease-in-out;
 }
-.nav-primary-desktop__item:hover,
-.nav-primary-desktop__item:active {
+.nav-primary-desktop__item:hover {
   background: #011ea6;
 }
-.nav-primary-desktop__item:hover > .nav-primary-desktop__menu,
-.nav-primary-desktop__item:active > .nav-primary-desktop__menu {
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu {
   visibility: visible;
 }
-.nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body,
-.nav-primary-desktop__item:active > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
   opacity: 1;
 }
 @media all and (max-width:800px) {
