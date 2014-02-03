@@ -91,7 +91,7 @@
     align: middle;
     white-space: nowrap;
     overflow: hidden;
-    padding: 3px 0 4px 0;
+    padding: 4px 0;
     border-bottom: 1px solid #dcdcdc;
     margin-bottom: 18px;
   }
@@ -113,8 +113,16 @@
   .nav-secondary-all__link {
     display: inline-block;
   }
+  .nav-secondary-all__title,
+  .nav-secondary-all__title-link {
+    font-family: 'SkyTextMed';
+    font-weight: normal;
+    font-size: 18px;
+    font-size: 1.125rem;
+    color: #111111;
+  }
   .nav-secondary-all__link {
-    padding: 9px 12px;
+    padding: 9px 12px 10px 12px;
     font-family: 'SkyTextReg';
     font-weight: normal;
     font-size: 16px;

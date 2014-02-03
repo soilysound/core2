@@ -1,7 +1,4 @@
-.nav-secondary-all__title,
-.nav-secondary-all__title-link {
-  .primary-headline(@text-ml)
-}
+
 
 @media all and (@bp10-min){
 
@@ -10,7 +7,7 @@
     align: middle;
     white-space: nowrap;
     overflow: hidden;
-    padding: 3px 0 4px 0;
+    padding: 4px 0;
     border-bottom: 1px solid @keyline;
     margin-bottom: @box-gap-s
   }
@@ -38,8 +35,13 @@
     display: inline-block;
   }
 
+  .nav-secondary-all__title,
+  .nav-secondary-all__title-link {
+    .primary-headline(@text-ml)
+  }
+
   .nav-secondary-all__link {
-    padding: 9px 12px;
+    padding: 9px 12px 10px 12px;
     .secondary-headline(@text-m)
 
   }
@@ -77,20 +79,26 @@
 
   .nav-secondary-all__title-link {
     display: inline-block;
-    padding: 9px 12px 9px 0;
+    padding: 12px 12px 15px 0;
     color: @off-white
   }
 
   .nav-secondary-all__title-link:before {
     content: "\e079";
     font-family: icons;
-    font-size: 12px;
-    margin: 0 7px 0 3px;
+    font-size: 15px;
+    margin: 0 9px 0 6px;
+  }
+
+  .nav-secondary-all__title,
+  .nav-secondary-all__title-link {
+    .primary-headline(@text-l);
+    color: @off-white;
   }
 
   //display sub section of clicked nav
   .nav-secondary-all__section {
-    .secondary-headline(@text-ml);
+    .secondary-headline(@text-l);
     color: @off-white;
   }
 
@@ -142,6 +150,22 @@
 }
 
 @media all and (@bp30-max){
+
+  .nav-secondary-all__title-link:before {
+    font-size: 12px;
+    margin: 0 7px 0 3px;
+  }
+
+  .nav-secondary-all__title-link {
+    padding: 9px 12px 9px 0;
+  }
+
+  .nav-secondary-all__title,
+  .nav-secondary-all__title-link,
+  .nav-secondary-all__section {
+    font-size: unit(@text-ml, px);
+  }
+
   .nav-secondary-all {
     margin-bottom: 0
   }

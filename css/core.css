@@ -728,7 +728,6 @@ body {
 */
 .site-layout-primary {
   min-height: 100%;
-  min-height: 100vh;
 }
 /**
  * For BP10 the left hand nav is hidden and never shown
@@ -987,7 +986,7 @@ body {
 .nav-primary-desktop__link {
   display: inline-block;
   text-transform: uppercase;
-  padding: 13px 16px;
+  padding: 13px 15px;
   font-family: 'SkyTextMed';
   font-weight: normal;
   font-size: 16px;
@@ -1054,21 +1053,13 @@ body {
   background: pink;
   -webkit-transform: translateZ(0);
 }
-.nav-secondary-all__title,
-.nav-secondary-all__title-link {
-  font-family: 'SkyTextMed';
-  font-weight: normal;
-  font-size: 18px;
-  font-size: 1.125rem;
-  color: #111111;
-}
 @media all and (min-width:801px) {
   .nav-secondary-all {
     width: 100%;
     align: middle;
     white-space: nowrap;
     overflow: hidden;
-    padding: 3px 0 4px 0;
+    padding: 4px 0;
     border-bottom: 1px solid #dcdcdc;
     margin-bottom: 18px;
   }
@@ -1090,8 +1081,16 @@ body {
   .nav-secondary-all__link {
     display: inline-block;
   }
+  .nav-secondary-all__title,
+  .nav-secondary-all__title-link {
+    font-family: 'SkyTextMed';
+    font-weight: normal;
+    font-size: 18px;
+    font-size: 1.125rem;
+    color: #111111;
+  }
   .nav-secondary-all__link {
-    padding: 9px 12px;
+    padding: 9px 12px 10px 12px;
     font-family: 'SkyTextReg';
     font-weight: normal;
     font-size: 16px;
@@ -1126,20 +1125,29 @@ body {
   }
   .nav-secondary-all__title-link {
     display: inline-block;
-    padding: 9px 12px 9px 0;
+    padding: 12px 12px 15px 0;
     color: #ffffff;
   }
   .nav-secondary-all__title-link:before {
     content: "\e079";
     font-family: icons;
-    font-size: 12px;
-    margin: 0 7px 0 3px;
+    font-size: 15px;
+    margin: 0 9px 0 6px;
+  }
+  .nav-secondary-all__title,
+  .nav-secondary-all__title-link {
+    font-family: 'SkyTextMed';
+    font-weight: normal;
+    font-size: 22px;
+    font-size: 1.375rem;
+    color: #111111;
+    color: #ffffff;
   }
   .nav-secondary-all__section {
     font-family: 'SkyTextReg';
     font-weight: normal;
-    font-size: 18px;
-    font-size: 1.125rem;
+    font-size: 22px;
+    font-size: 1.375rem;
     color: #333333;
     color: #ffffff;
   }
@@ -1188,6 +1196,18 @@ body {
   }
 }
 @media all and (max-width:600px) {
+  .nav-secondary-all__title-link:before {
+    font-size: 12px;
+    margin: 0 7px 0 3px;
+  }
+  .nav-secondary-all__title-link {
+    padding: 9px 12px 9px 0;
+  }
+  .nav-secondary-all__title,
+  .nav-secondary-all__title-link,
+  .nav-secondary-all__section {
+    font-size: 18px;
+  }
   .nav-secondary-all {
     margin-bottom: 0;
   }
@@ -1968,11 +1988,11 @@ th.mini-table__cell {
 }
 .button {
   display: inline-block;
-  padding: 9px 12px 10px 12px;
+  padding: 11px 12px 12px 12px;
   font-family: 'SkyTextMed';
   font-weight: normal;
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 18px;
+  font-size: 1.125rem;
   color: #111111;
   background-color: #eaeaea;
   text-align: center;

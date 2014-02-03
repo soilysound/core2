@@ -36,8 +36,9 @@
     <!-- page nav -->
     <?php include "components/page-nav.html"; ?>
 
+    <div class="nav-secondary-all__offset">
       <!-- main site 2 column layout -->
-     <div class="grid site-layout-secondary box-gap nav-secondary-all__offset">
+     <div class="grid site-layout-secondary box-gap">
 
         <div class="grid__col site-layout-secondary__col1">
 
@@ -129,7 +130,7 @@
 
 
       </div>
-
+    </div>
 
 
     </div>

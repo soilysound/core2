@@ -72,7 +72,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
 
         this.navHead.classList.add('on');
         this.navBody.classList.add('nav-secondary-all__body--open');
-        this.navOffset.style.cssText = "-ms-transform:translateY("+ height +"px);-moz-transform:translateY("+ height +"px);-webkit-transform:translateY("+ height +"px);transform:translateY("+ height +"px)";
+        this.navOffset.style.cssText = "padding-bottom:" + height + "px;-ms-transform:translateY("+ height +"px);-moz-transform:translateY("+ height +"px);-webkit-transform:translateY("+ height +"px);transform:translateY("+ height +"px)";
       }
     },
 
