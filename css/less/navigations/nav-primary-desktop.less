@@ -1,6 +1,11 @@
-.nav-primary-desktop {
+.nav-primary-desktop-wrap {
 	height:50px;
 	background:@blue-light
+}
+
+.nav-primary-desktop {
+	max-width: @site-max-width;
+	margin: 0 auto;
 }
 
 .nav-primary-desktop > .grid__col {
@@ -45,10 +50,6 @@
 	top: -1px
 }
 
-.nav-primary-desktop__item:first-child > .nav-primary-desktop__link{
-	padding-left: 22px
-}
-
 // dropdown menu
 .nav-primary-desktop__menu {
 	min-width: 500px;
@@ -56,7 +57,7 @@
 	.u-z-top;
 	position: absolute;
 	top: 100%;
-	visibility: hidden; 
+	visibility: hidden;
 	overflow: hidden;
 }
 
@@ -66,7 +67,7 @@
 
 .nav-primary-desktop__menu-body {
 	background: @blue-mid;
-	position: absolute; 
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	opacity: 0;
@@ -79,7 +80,7 @@
 }
 
 .nav-primary-desktop__item:hover > .nav-primary-desktop__menu {
-	visibility: visible; 
+	visibility: visible;
 }
 
 .nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
@@ -87,7 +88,7 @@
 }
 
 @media all and (@bp20-max){
-  .nav-primary-desktop {
+  .nav-primary-desktop-wrap {
     display: none;
   }
 }

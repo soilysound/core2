@@ -1,61 +1,97 @@
-@media all and (min-width:801px){
+.nav-secondary-all__title,
+.nav-secondary-all__title-link {
+  .primary-headline(@text-ml)
+}
+
+@media all and (@bp10-min){
 
   .nav-secondary-all {
     width: 100%;
-    align: middle
+    align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 3px 0 4px 0;
+    border-bottom: 1px solid @keyline;
+    margin-bottom: @box-gap-s
   }
 
   .nav-secondary-all__head {
-    padding:0 12px
+    display: inline-block;
+  }
+
+  .nav-secondary-all__title-link {
+    padding: 7px 12px 5px 16px
   }
 
   .nav-secondary-all__frame {
-    width: 100%;
-    overflow: hidden;
+    display: inline-block;
   }
 
   .nav-secondary-all__body {
     width: 100%;
-    background: #ddd;
     list-style: none;
     white-space: nowrap;
   }
 
-  .nav-secondary-all__item {
+  .nav-secondary-all__item,
+  .nav-secondary-all__link {
     display: inline-block;
-    padding: 9px 6px
+  }
+
+  .nav-secondary-all__link {
+    padding: 9px 12px;
+    .secondary-headline(@text-m)
+
   }
 
   .nav-secondary-all__section {
     display: none
   }
 
+  .nav-secondary-all__offset {
+    .transform(translateY(0))!important
+  }
+
 }
 
-@media all and (max-width:800px){
+@media all and (@bp20-max){
 
   .nav-secondary-all {
     display: block;
     .fix-flicker();
   	position: relative;
-  }
+    margin-bottom: @box-gap-s
 
-  //cancel out flex box classes from markup
-  .nav-secondary-all > .nav-secondary-all__head,
-  .nav-secondary-all > .nav-secondary-all__frame {
-    display: block;
   }
 
   .nav-secondary-all__head {
-  	padding:6px 0;
-    text-align: center;
-    background: #888;
+    background-color: @blue-light;
     cursor: pointer;
+    padding-left: @bp30-site-margin
+  }
+
+  .nav-secondary-all__title,
+  .nav-secondary-all__section {
+    display: inline-block;
+  }
+
+  .nav-secondary-all__title-link {
+    display: inline-block;
+    padding: 9px 12px 9px 0;
+    color: @off-white
+  }
+
+  .nav-secondary-all__title-link:before {
+    content: "\e079";
+    font-family: icons;
+    font-size: 12px;
+    margin: 0 7px 0 3px;
   }
 
   //display sub section of clicked nav
   .nav-secondary-all__section {
-    font-weight: normal
+    .secondary-headline(@text-ml);
+    color: @off-white;
   }
 
 
@@ -68,7 +104,7 @@
 
   .nav-secondary-all__body {
     width: 100%;
-    background: #ddd;
+    background: @light-bg;
 
     .transform(translateY(-100%));
     -webkit-transition: -webkit-transform 0.33s ease-in-out;
@@ -76,21 +112,21 @@
     transition: transform 0.33s ease-in-out;
 
     list-style:none;
-    padding: 3px 0;
+    padding: 6px @bp30-site-margin;
 
     //set the links in 2 columns
-    -webkit-column-count: 2;
+    .columns(2);
   }
 
   //nav body when opened
   .nav-secondary-all__body--open {
-
     .transform(translateY(0));
   }
 
-  .nav-secondary-all__item {
-
-    padding:6px 9px
+  .nav-secondary-all__link {
+    .secondary-headline(@text-ml);
+    padding: 4px 4px;
+    display: block;
   }
 
   //offset elements - animate the container div immedietly after the nav element downards by the same amount as the height of the open nav
@@ -103,5 +139,11 @@
     transition: transform 0.33s ease-in-out;
   }
 
+}
+
+@media all and (@bp30-max){
+  .nav-secondary-all {
+    margin-bottom: 0
+  }
 }
 

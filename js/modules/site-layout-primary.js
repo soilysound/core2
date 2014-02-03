@@ -30,7 +30,7 @@ define('site-layout-primary', ['underscore', 'widget'], function(_, Widget){
 			this.siteLayoutPrimary = this.element;
 			this.siteBody = this.siteLayoutPrimary.querySelector('.site-layout-primary__col2');
 			this.leftNav = this.siteLayoutPrimary.querySelector('.site-layout-primary__col1');
-			this.trigger = this.element.querySelector('[data-role="open-left-hand-nav"]');
+			this.trigger = document.querySelector('[data-role="open-left-hand-nav"]');
 		},
 
 		_getNavWidth: function(){

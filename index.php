@@ -19,9 +19,11 @@
 </head>
 
 <body>
+
+<!-- site header -->
+<?php include "components/site-header.html"; ?>
+
 <div class="wrap">
-
-
 
   <div class="grid site-layout-primary callfn" data-fn="site-layout-primary">
 
@@ -31,11 +33,11 @@
 
     <div class="grid__col site-layout-primary__col2">
 
-    <!-- site header -->
-    <?php include "components/site-header.html"; ?>
+    <!-- page nav -->
+    <?php include "components/page-nav.html"; ?>
 
       <!-- main site 2 column layout -->
-     <div class="grid site-layout-secondary box-gap">
+     <div class="grid site-layout-secondary box-gap nav-secondary-all__offset">
 
         <div class="grid__col site-layout-secondary__col1">
 
@@ -75,16 +77,16 @@
             SKY BET
           </div>
 
-           <div class="box-gap box-gap--m" style="height:150px;background: #eee;">
-            PROMO 1
+           <div class="box-gap box-gap--m" style="height:150px;">
+            <img src="/_sandbox/promo-2.jpg" style="width:100%;">
           </div>
 
-           <div class="box-gap box-gap--m" style="height:150px;background:#eee;">
-            PROMO 2
+           <div class="box-gap box-gap--m" style="height:150px;">
+           <img src="/_sandbox/promo-1.jpg" style="width:100%;">
           </div>
 
-           <div class="box-gap box-gap--m" style="height:150px;background:#eee;">
-            PROMO 3
+           <div class="box-gap box-gap--m" style="height:150px">
+            <img src="/_sandbox/promo-3.jpg" style="width:100%;">
           </div>
 
         </div>
