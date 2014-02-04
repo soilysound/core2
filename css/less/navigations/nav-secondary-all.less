@@ -69,7 +69,12 @@
   .nav-secondary-all__head {
     background-color: @blue-light;
     cursor: pointer;
-    padding-left: @bp30-site-margin
+    padding-left: @bp30-site-margin;
+    .user-select(none);
+  }
+
+  .nav-secondary-all__head:active {
+    background: @blue-mid;
   }
 
   .nav-secondary-all__title,
@@ -82,10 +87,6 @@
     padding: 12px 12px 15px 0;
     color: @off-white;
     pointer-events: none
-  }
-
-  .nav-secondary-all__head:active {
-    background: @blue-mid
   }
 
 

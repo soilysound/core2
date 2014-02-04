@@ -1114,6 +1114,12 @@ body {
     background-color: #214cb8;
     cursor: pointer;
     padding-left: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  .nav-secondary-all__head:active {
+    background: #011ea6;
   }
   .nav-secondary-all__title,
   .nav-secondary-all__section {
@@ -1124,9 +1130,6 @@ body {
     padding: 12px 12px 15px 0;
     color: #ffffff;
     pointer-events: none;
-  }
-  .nav-secondary-all__head:active {
-    background: #011ea6;
   }
   .nav-secondary-all__title-link:before {
     content: "\e079";
