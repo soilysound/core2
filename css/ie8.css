@@ -46,9 +46,6 @@
 /* } */
 
 /* @media all and (min-width:1155px) { */
-  .site-layout-secondary {
-    padding: 0;
-  }
   .site-layout-secondary > .grid__col {
     border-width: 18px;
   }
@@ -70,6 +67,12 @@
     -webkit-flex: 0 1 auto;
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
+  }
+/* } */
+
+/* @media all and (min-width:1279px) { */
+  .site-layout-secondary {
+    padding: 0;
   }
 /* } */
 
@@ -154,5 +157,11 @@
     font-size: 14px;
     font-size: 0.875rem;
     color: #666666;
+  }
+/* } */
+
+/* @media all and (min-width:1155px) { */
+  .news-list-featured {
+    display: block;
   }
 /* } */

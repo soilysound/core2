@@ -45,11 +45,19 @@
           <!-- top story -->
           <?php include "components/top-story.html"; ?>
 
-          <!-- news list -->
+          <!-- featured stories -->
           <a href="#" class="block-header">
-            <h2 class="block-header__title">Latest News</h2>
+            <h2 class="block-header__title">Top stories</h2>
           </a>
-          <?php include "components/news-list.html"; ?>
+
+          <?php
+          $display = "is-hidden--bp5";
+          include "components/news-list-featured.html"; ?>
+
+          <!-- news list -->
+          <?php
+          $type = "news-list-secondary--2cols";
+          include "components/news-list-secondary.html"; ?>
 
           <!-- matches block -->
           <a href="#" class="block-header block-header--no-gap is-hidden--bp10 is-hidden--bp5">
@@ -69,27 +77,18 @@
 
         </div>
 
-        <div class="grid__col site-layout-secondary__col2">
+        <div class="grid__col site-layout-secondary__col2 callfn adaptive-html" data-fn="adaptive-html">
+          <script type="html/template">
+            <!-- secondary news list -->
+            <?php
+            $display = "";
+            include "components/news-list-featured.html"; ?>
 
-          <!-- hot picks -->
-          <?php include "components/news-list-secondary.html"; ?>
-
-          <div class="box-gap box-gap--m" style="height:210px;background: #eee;">
-            SKY BET
-          </div>
-
-           <div class="box-gap box-gap--m" style="height:150px;">
-            <img src="/_sandbox/promo-2.jpg" style="width:100%;">
-          </div>
-
-           <div class="box-gap box-gap--m" style="height:150px;">
-           <img src="/_sandbox/promo-1.jpg" style="width:100%;">
-          </div>
-
-           <div class="box-gap box-gap--m" style="height:150px">
-            <img src="/_sandbox/promo-3.jpg" style="width:100%;">
-          </div>
-
+            <!-- secondary news list -->
+            <?php
+            $type = "";
+            include "components/news-list-secondary.html"; ?>
+          </script>
         </div>
 
         <div class="grid__col site-layout-secondary__col3 callfn adaptive-html" data-fn="adaptive-html">

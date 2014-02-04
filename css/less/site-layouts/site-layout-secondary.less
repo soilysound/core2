@@ -67,10 +67,6 @@
 
 @media all and (@bp5-min){
 
-  .site-layout-secondary {
-    padding: 0;
-  }
-
   .site-layout-secondary > .grid__col {
     border-width:@col-gap-m;
   }
@@ -89,3 +85,12 @@
   }
 
 }
+
+@media all and (@bp5-max){
+// add padding as soon as were less than 1280px
+.site-layout-secondary {
+    padding: 0;
+  }
+}
+
+

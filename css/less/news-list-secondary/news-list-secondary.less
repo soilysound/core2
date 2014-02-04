@@ -21,4 +21,25 @@
   line-height: 1.25
 }
 
+.news-list-secondary--2cols > .news-list-secondary__group {
+  .columns(2);
+}
 
+@media all and (@bp30-max){
+  .news-list-secondary {
+    padding: @island-padding-nobg-s;
+    padding-bottom: 0
+  }
+
+  .news-list-secondary__group {
+    margin-bottom: @component-gap-s;
+  }
+
+  .news-list-secondary__link {
+    .primary-headline(@text-ml);
+  }
+
+  .news-list-secondary--2cols > .news-list-secondary__group {
+    .columns(1);
+  }
+}
