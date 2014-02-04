@@ -1,3 +1,7 @@
+// Featured news list
+// Displays 2 featured news stories collapsed or in 2 columns
+// ============================================================================
+ 
 .news-list-featured__item {
   margin-bottom: @box-gap-s
 }
@@ -28,8 +32,7 @@
    margin-bottom: 4px
 }
 
-// these fwatures are collapsed above tablet view
-
+// these features are collapsed above tablet view
 @media all and (@bp5-min){
   .news-list-featured {
     display: block;
@@ -54,7 +57,7 @@
 
   .news-list-featured__body {
     padding: @island-padding-nobg-s;
-    padding-bottom: 0
+    padding-bottom: 0 
   }
 
   .news-list-featured__headline,
@@ -64,5 +67,9 @@
 
   .news-list-featured__body > .label {
     margin-top: -6px;
+  }
+
+  .news-list-featured__body .label__timestamp {
+    display: none
   }
 }

@@ -46,7 +46,7 @@
           <?php include "components/top-story.html"; ?>
 
           <!-- featured stories -->
-          <a href="#" class="block-header">
+          <a href="#" class="block-header is-hidden--bp5 is-hidden--bp10">
             <h2 class="block-header__title">Top stories</h2>
           </a>
 
@@ -57,7 +57,7 @@
           <!-- news list -->
           <?php
           $type = "news-list-secondary--2cols";
-          include "components/news-list-secondary.html"; ?>
+          include "components/news-list.html"; ?>
 
           <!-- matches block -->
           <a href="#" class="block-header block-header--no-gap is-hidden--bp10 is-hidden--bp5">

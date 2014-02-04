@@ -74,11 +74,6 @@ a:active {
   outline: 0;
   text-decoration: none;
 }
-/* Cross browser opacity */
-/* Clear fix */
-/* Cross browser transforms */
-/* Cross browser transitions */
-/* fixes the transition flickering and glitches that trouble mobile webkit browsers */
 /**
  * GET BREAK POINT
  * Set a javascript readable value as css propertis on the head tag
@@ -1128,6 +1123,10 @@ body {
     display: inline-block;
     padding: 12px 12px 15px 0;
     color: #ffffff;
+    pointer-events: none;
+  }
+  .nav-secondary-all__head:active {
+    background: #011ea6;
   }
   .nav-secondary-all__title-link:before {
     content: "\e079";
@@ -2086,6 +2085,9 @@ th.mini-table__cell {
   }
   .news-list-featured__body > .label {
     margin-top: -6px;
+  }
+  .news-list-featured__body .label__timestamp {
+    display: none;
   }
 }
 /**
