@@ -1,0 +1,125 @@
+// Opinion feature block
+
+.opinion-block {
+
+}
+
+.opinion-block > .grid__col {
+  border-width: @col-gap-l;
+}
+
+.opinion-block__item {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-bottom: 1px solid @keyline;
+  padding: @island-padding-m + 8px @island-padding-m;
+}
+
+.opinion-block__figure,
+.opinion-block__body {
+  display: table-cell;
+  vertical-align: middle
+}
+
+.opinion-block__figure {
+  width: 16.66%
+}
+
+.opinion-block__thumb {
+  display: block;
+  position: relative;
+  padding-bottom: 100%;
+}
+
+.opinion-block__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.opinion-block__body {
+  padding-left: @component-gap-l;
+}
+
+.opinion-block__link {
+  .primary-headline(@text-xl);
+  margin: -2px 0 3px;
+  display: block
+}
+
+.opinion-block__snippet {
+  .secondary-headline(@text-m)
+}
+
+@media all and (@bp5-min){
+
+  .opinion-block__item-hero {
+    padding: @island-padding-m;
+  }
+
+  .opinion-block__item-hero .opinion-block__figure {
+    width: 20%
+  }
+
+  .opinion-block__item-hero .opinion-block__link {
+    font-size: unit(@text-xxl, px);
+    margin-bottom: 0
+  }
+
+  .opinion-block__item-hero .opinion-block__snippet {
+    .secondary-headline(@text-ml)
+  }
+}
+
+@media all and (@bp10-max){
+
+  .opinion-block__hero-image {
+    display: none
+  }
+
+  .opinion-block__link {
+     font-size: unit(@text-l, px);
+  }
+
+  .opinion-block__figure {
+    width: 20%
+  }
+}
+
+@media all and (@bp20-max){
+
+  .opinion-block > .grid__col,
+  .opinion-block  {
+    display: block;
+    border-width: 0
+  }
+
+}
+
+@media all and (@bp30-max){
+
+  .opinion-block__item {
+    padding: 9px @bp30-site-margin 12px @bp30-site-margin;
+  }
+
+  .opinion-block__item-hero {
+    padding-top: 6px
+  }
+
+  .opinion-block__figure {
+    width: 20%
+  }
+
+  .opinion-block__body {
+    padding-left: @component-gap-s + 3px;
+  }
+
+  .opinion-block__link {
+     font-size: unit(@text-ml, px);
+  }
+
+  .opinion-block__snippet {
+    display: none
+  }
+}

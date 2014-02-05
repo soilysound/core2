@@ -1,7 +1,7 @@
 // Featured news list
 // Displays 2 featured news stories collapsed or in 2 columns
 // ============================================================================
- 
+
 .news-list-featured__item {
   margin-bottom: @box-gap-s
 }
@@ -29,7 +29,8 @@
 }
 
 .news-list-featured__headline {
-   margin-bottom: 4px
+  margin-bottom:3px;
+  line-height: 1.3
 }
 
 // these features are collapsed above tablet view
@@ -50,6 +51,12 @@
 
 }
 
+@media all and (@bp30-max) {
+   .news-list-featured > .grid__col {
+      border-width:2px;
+   }
+}
+
 @media all and (@bp30-max){
   .news-list-featured__item  .list {
     display: none
@@ -57,7 +64,7 @@
 
   .news-list-featured__body {
     padding: @island-padding-nobg-s;
-    padding-bottom: 0 
+    padding-bottom: 0
   }
 
   .news-list-featured__headline,
@@ -66,7 +73,7 @@
   }
 
   .news-list-featured__body > .label {
-    margin-top: -6px;
+    margin: -7px 0 1px 0
   }
 
   .news-list-featured__body .label__timestamp {

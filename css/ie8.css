@@ -165,3 +165,23 @@
     display: block;
   }
 /* } */
+
+/* @media all and (min-width:1155px) { */
+  .opinion-block__item-hero {
+    padding: 24px;
+  }
+  .opinion-block__item-hero .opinion-block__figure {
+    width: 20%;
+  }
+  .opinion-block__item-hero .opinion-block__link {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
+  .opinion-block__item-hero .opinion-block__snippet {
+    font-family: 'SkyTextReg';
+    font-weight: normal;
+    font-size: 18px;
+    font-size: 1.125rem;
+    color: #333333;
+  }
+/* } */

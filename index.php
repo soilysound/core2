@@ -88,6 +88,10 @@
             <?php
             $type = "";
             include "components/news-list-secondary.html"; ?>
+
+            <div class="box-gap" style="height:330px;background:#eee">
+              sky bet
+            </div>
           </script>
         </div>
 
@@ -126,6 +130,12 @@
           <h2 class="block-header__title">Video</h2>
         </a>
         <?php include "components/video-block.html"; ?>
+
+        <!-- opinion block -->
+        <a href="#" class="block-header">
+          <h2 class="block-header__title">Opinion</h2>
+        </a>
+        <?php include "components/opinion-block.html"; ?>
 
 
       </div>
