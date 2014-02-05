@@ -87,8 +87,41 @@
 	opacity: 1
 }
 
+// search box - @TODO - placeholder code only
+
+.nav-primary-search {
+	padding: @island-padding-s;
+	padding-bottom: 0;
+	padding-top: 0;
+	width: 100%;
+}
+
+.nav-primary-search-input {
+	display: block;
+	width: 100%;
+	padding: 8px 12px;
+	.secondary-headline(@text-m);
+	border: 0;
+	background: rgba(0,0,0,0.15);
+	border-radius: @border-radius-s;
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1)
+}
+
+
+// desktop nav search box
+
+@media all and (@bp10-min){
+	.nav-primary-search-input,
+	.nav-primary-search-input::-webkit-input-placeholder {
+		color: rgba(255,255,255,0.8);
+	}
+
+}
+
 @media all and (@bp20-max){
   .nav-primary-desktop-wrap {
     display: none;
   }
 }
+
+

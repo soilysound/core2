@@ -28,9 +28,37 @@
   .primary-headline(@text-l);
 }
 
+.news-list-featured__snippet {
+  .secondary-headline(@text-m);
+}
+
 .news-list-featured__headline {
   margin-bottom:3px;
-  line-height: 1.3
+  line-height: 1.3;
+}
+
+.news-list-featured__item > .list {
+  clear: both;
+}
+
+.news-list-featured__body > .label {
+  margin-bottom: 2px;
+}
+
+// mini version
+
+.news-list-featured__item--mini .news-list-featured__figure {
+  width: 33.33%; 
+  float: left;
+  margin-right: @component-gap-s;
+}
+
+.news-list-featured__item--mini .news-list-featured__thumb {
+  padding-bottom: 100%;
+}
+
+.news-list-featured__item--mini .news-list-featured__headline {
+  padding: 2px 0 6px;
 }
 
 // these features are collapsed above tablet view

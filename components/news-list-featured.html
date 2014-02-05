@@ -1,6 +1,60 @@
-<div class="grid news-list-featured box-gap  <?php echo $display ?>">
 
-  <div class="grid__col news-list-featured__item">
+<?php 
+
+  if($nlftype == 'mini'){
+
+    echo '<div class="grid news-list-featured box-gap '.$display.'">
+
+    <div class="grid__col news-list-featured__item news-list-featured__item--mini">
+        <div class="label">
+          <a href="#" class="label__tag">Live blog</a>
+        </div>
+        <h3 class="news-list-featured__headline">
+            <a class="news-list-featured__link" href="#">Wednesday Football <span class="label-live">LIVE!</span></a>
+          </h3>
+        <div class="news-list-featured__figure news-list-featured__figure--mini">
+          <a href="#" class="news-list-featured__thumb">
+            <img src="http://e0.365dm.com/14/01/1-1/40/Yevhen-Konoplyanka_3075174.jpg?20140130121915" class="news-list-featured__image">
+          </a>
+        </div>
+        <div class="news-list-featured__body">
+          <p class="news-list-featured__snippet">Team news, scores and live updates from Wednesday\'s action.</p>
+        </div>
+
+        <ul class="list">
+          <li class="list__item"><a href="#" class="action-link">R Madrid 1 - A Madrid 0</a></li>
+          <li class="list__item"><a href="#" class="action-link">Man C 0 - Chelsea 0</a></li>
+        </ul>
+      </div>
+      <div class="grid__col news-list-featured__item news-list-featured__item--mini">
+        <div class="label">
+          <a href="#" class="label__tag">Premier League</a>
+        </div>
+        <h3 class="news-list-featured__headline">
+            <a class="news-list-featured__link" href="#">Mourhino masterclass</a>
+          </h3>
+        <div class="news-list-featured__figure news-list-featured__figure--mini">
+          <a href="#" class="news-list-featured__thumb">
+            <img src="http://e2.365dm.com/14/02/1-1/40/mourinho_3077874.jpg?20140204080439" class="news-list-featured__image">
+          </a>
+        </div>
+        <div class="news-list-featured__body">
+          <p class="news-list-featured__snippet">Matt Stanger has the highest praise for the Portuguese tactician.</p>
+        </div>
+
+        <ul class="list">
+          <li class="list__item"><a href="#" class="action-link">Cech: City favourites</a></li>
+          <li class="list__item"><a href="#" class="action-link">Man C 0 - Chelsea 0</a></li>
+        </ul>
+      </div>
+
+    </div>';
+  }
+
+  else {
+
+    echo '<div class="grid news-list-featured box-gap '.$display.'">
+    <div class="grid__col news-list-featured__item">
     <div class="news-list-featured__figure">
       <a href="#" class="news-list-featured__thumb">
         <img src="http://e0.365dm.com/14/02/16-9/30/mourinho_3077874.jpg?20140204080439" class="news-list-featured__image">
@@ -8,16 +62,16 @@
     </div>
     <div class="news-list-featured__body">
       <div class="label">
-        <a href="#" class="label__tag">Premier League</a>
+        <a href="#" class="label__tag">Live blog</a>
         <div class="label__timestamp">23/4/2014</div>
       </div>
       <h3 class="news-list-featured__headline">
-        <a class="news-list-featured__link" href="#">Mourhino masterclass</a>
+        <a class="news-list-featured__link" href="#">Wednesday Football <span class="label-live">LIVE!</span></a>
       </h3>
       <ul class="list">
-        <li class="list__item"><a href="#" class="action-link">Cech: City favourites</a></li>
-        <li class="list__item"><a href="#" class="action-link">Man C 0 - Chelsea 0</a></li>
-      </ul>
+          <li class="list__item"><a href="#" class="action-link">R Madrid 1 - A Madrid 0</a></li>
+          <li class="list__item"><a href="#" class="action-link">Man C 0 - Chelsea 0</a></li>
+        </ul>
     </div>
   </div>
 
@@ -42,4 +96,9 @@
     </div>
   </div>
 
-</div>
+</div>';
+
+
+  };
+?>
+  

@@ -18,14 +18,14 @@
 }
 
 .top-story__headline {
-  margin-bottom: 0.2em;
+  margin-bottom: 0.25em;
   // remove line height offset
   margin-top: -0.3em;
 }
 
-.top-story__headline,
 .top-story__headline-link {
   .primary-headline(@text-xxl);
+  line-height: 1.22;
 }
 
 .top-story__snippet {
@@ -35,7 +35,7 @@
 
 .top-story__body {
   background: @light-bg;
-  padding: @island-padding-l;
+  padding: @island-padding-l - 2px @island-padding-l @island-padding-l - 3px @island-padding-l;
 }
 
 .top-story__body > .label {
@@ -77,7 +77,6 @@
     line-height: 1.25;
   }
 
-  .top-story__headline,
   .top-story__headline-link {
     .primary-headline(@text-xxl);
     padding-right: 32px;

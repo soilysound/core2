@@ -89,6 +89,13 @@
 /* } */
 
 /* @media all and (min-width:801px) { */
+  .nav-primary-search-input,
+  .nav-primary-search-input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+/* } */
+
+/* @media all and (min-width:801px) { */
   .nav-secondary-all {
     width: 100%;
     align: middle;
@@ -102,7 +109,8 @@
     display: inline-block;
   }
   .nav-secondary-all__title-link {
-    padding: 7px 12px 5px 16px;
+    padding: 7px 12px 5px 14px;
+    text-transform: uppercase;
   }
   .nav-secondary-all__frame {
     display: inline-block;
@@ -125,7 +133,7 @@
     color: #111111;
   }
   .nav-secondary-all__link {
-    padding: 9px 12px 10px 12px;
+    padding: 9px 10px 10px 10px;
     font-family: 'SkyTextReg';
     font-weight: normal;
     font-size: 16px;
