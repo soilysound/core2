@@ -45,16 +45,16 @@
           <!-- top story -->
           <?php include "components/top-story.html"; ?>
 
-          <!-- featured stories -->
-          <a href="#" class="block-header is-hidden--bp5 is-hidden--bp10">
-            <h2 class="block-header__title">Top stories</h2>
-          </a>
 
           <?php
           $display = "is-hidden--bp5";
           include "components/news-list-featured.html"; ?>
 
           <!-- news list -->
+           <!-- featured stories -->
+          <a href="#" class="block-header is-hidden--bp5 is-hidden--bp10">
+            <h2 class="block-header__title">More News</h2>
+          </a>
           <?php
           $type = "news-list-secondary--2cols";
           include "components/news-list.html"; ?>
