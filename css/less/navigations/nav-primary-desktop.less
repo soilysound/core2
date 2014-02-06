@@ -107,6 +107,27 @@
 	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1)
 }
 
+.nav-primary-desktop__menu-links {
+	position: absolute;
+	top: 18px;
+	bottom: 18px;
+	left: 14px;
+	right: 14px;
+	.columns(3);
+}
+
+.nav-primary-desktop__menu-link:hover,
+.nav-primary-desktop__menu-link:active {
+	background: @webkit-tap-highlight-color
+}
+
+
+.nav-primary-desktop__menu-link {
+	.secondary-headline(@text-m);
+	color: white;
+	display: block;
+	padding: 5px 8px;
+}
 
 // desktop nav search box
 

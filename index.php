@@ -28,9 +28,7 @@
   <div class="grid site-layout-primary callfn" data-fn="site-layout-primary">
 
     <div class="grid__col site-layout-primary__col1">
-      <div class="nav-primary-search">
-        <input class="nav-primary-search-input" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Sky Sports...">
-      </div>
+      <?php include "components/primary-nav-mobile.html"; ?>
     </div>
 
     <div class="grid__col site-layout-primary__col2">

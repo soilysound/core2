@@ -61,7 +61,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
 
         this.navIsOpen = false;
 
-        this.navHead.classList.remove('on');
+        this.navHead.classList.remove('nav-secondary-all__head-on');
         this.navBody.classList.remove('nav-secondary-all__body--open');
         this.navOffset.style.cssText = "";
       }
@@ -70,7 +70,7 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
 
         this.navIsOpen = true;
 
-        this.navHead.classList.add('on');
+        this.navHead.classList.add('nav-secondary-all__head-on');
         this.navBody.classList.add('nav-secondary-all__body--open');
         this.navOffset.style.cssText = "padding-bottom:" + height + "px;-ms-transform:translateY("+ height +"px);-moz-transform:translateY("+ height +"px);-webkit-transform:translateY("+ height +"px);transform:translateY("+ height +"px)";
       }

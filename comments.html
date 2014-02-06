@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+    p {
+      background: orange ;
+    }
+  </style>
+</head>
+<body>
+  <div class="adaptive">
+  <!--[if IE 8]>
+<p>Welcome to Internet Explorer 8.</p>
+<![endif]-->
+</div>
+</body>
+<script>
+var a = document.querySelector('.adaptive');
+var nodes = a.childNodes;
+var comment;
+for(var i=nodes.length;--i>-1;){
+  if(nodes[i].nodeType === 8){
+    comment = nodes[i];
+    break;
+  }
+}
+
+var markup = comment.nodeValue.replace("[if IE 8]>", "").replace("<![endif]", "");
+a.insertAdjacentHTML('afterend', markup);
+
+</script>
+</html>

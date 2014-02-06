@@ -1,20 +1,51 @@
 .nav-primary-mobile {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: #222;
-  color: #aaa;
+  
 }
 
-.nav-primary-mobile__trigger {
-  position: absolute;
-  right: -42px;
-  top: 0;
-  height: 42px;
-  width: 42px;
-  background: pink;
-  .fix-flicker();
+.nav-primary-mobile__link {
+  display: block;
+  padding: 7px 18px;
+  .secondary-headline(@text-ml);
+  border-bottom: 1px solid @keyline;
+  cursor: pointer;
+  position: relative;
+  .user-select(none)
 }
+
+.nav-primary-mobile__link:active {
+  background: @keyline
+}
+
+.nav-primary-mobile__link-more:after {
+  content:"\e079";
+  font-family: icons;
+  margin-left: 5px;
+  font-size: 13px;
+  position: absolute;
+  right: 14px;
+  top: 10px;
+}
+
+.nav-primary-mobile__sub-links {
+  background: @keyline;
+  list-style: none;
+}
+
+.nav-primary-mobile__sub-item {
+   
+}
+
+.nav-primary-mobile__sub-link {
+  display: block;
+  .secondary-headline(@text-m);
+  padding: 4px 18px;
+}
+
+.nav-primary-mobile__sub-link:active {
+  background: @dark-bg
+}
+
+
 
 @media all and (@bp20-max){
 
