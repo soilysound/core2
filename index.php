@@ -28,12 +28,19 @@
   <div class="grid site-layout-primary callfn" data-fn="site-layout-primary">
 
     <div class="grid__col site-layout-primary__col1">
-          <div class="nav-primary-search">
-            <input class="nav-primary-search-input" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Sky Sports...">
-          </div>
+      <div class="nav-primary-search">
+        <input class="nav-primary-search-input" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Sky Sports...">
+      </div>
     </div>
 
     <div class="grid__col site-layout-primary__col2">
+
+    <!-- page title -->
+    <div class="page-header">
+      <h1 class="page-header__title">
+        Football
+      </h1>
+    </div>
 
     <!-- page nav -->
     <?php include "components/page-nav.html"; ?>
@@ -70,6 +77,11 @@
             $display = "is-hidden--bp10 is-hidden--bp5";
             include "components/matches-block.html";
            ?>
+          <!-- feature promos -->
+          <a href="#" class="block-header is-hidden--bp10 is-hidden--bp5">
+            <h2 class="block-header__title">Don't Miss</h2>
+          </a>
+          <?php include "components/feature-promos.html"; ?>
 
           <a href="#" class="block-header">
             <h2 class="block-header__title">Features</h2>
@@ -86,7 +98,7 @@
             <?php
               $display = "";
               $nlftype = "mini";
-              include "components/news-list-featured.html"; 
+              include "components/news-list-featured.html";
             ?>
 
             <!-- secondary news list -->
@@ -94,7 +106,7 @@
             $type = "";
             include "components/news-list-secondary.html"; ?>
 
-            <div class="box-gap" style="height:330px;background:#eee">
+            <div class="box-gap" style="height:420px;background:#eee">
               sky bet
             </div>
           </script>
@@ -113,14 +125,21 @@
             ?>
 
             <div style="height:250px;background:#ccc;margin-bottom:24px">
-
+              <img src="_sandbox/mpu.jpg">
             </div>
 
-            <!-- mini table -->
+            <!-- feature promos -->
+            <a href="#" class="block-header--aside block-header--no-gap">
+              <h2 class="block-header--aside__title">Don't Miss</h2>
+            </a>
+            <?php include "components/feature-promos.html"; ?>
+
+            <!-- mini table
             <a href="#" class="block-header--aside">
               <h2 class="block-header--aside__title">Premier League Table</h2>
             </a>
             <?php include "components/tables-block.html"; ?>
+            -->
 
           </script>
 
@@ -141,6 +160,12 @@
           <h2 class="block-header__title">Opinion</h2>
         </a>
         <?php include "components/opinion-block.html"; ?>
+
+        <!-- opinion block -->
+        <a href="#" class="block-header">
+          <h2 class="block-header__title">Photos</h2>
+        </a>
+        <?php include "components/photo-feature.html"; ?>
 
 
       </div>

@@ -27,8 +27,7 @@
 }
 
 .feature-block__headline,
-.feature-block__link,
-.feature-block__body .label__tag {
+.feature-block__link {
   color: @off-white;
 }
 
@@ -41,7 +40,27 @@
   padding: @island-padding-s
 }
 
+@media all and (@bp20-min){
+  .feature-block__body .label__tag {
+    color: @off-white
+  }
+}
+
 @media all and (@bp30-max){
+
+  .feature-block__item {
+    background: white;
+  }
+
+  .feature-block__body {
+    padding-bottom: 6px
+  }
+
+  .feature-block__headline,
+  .feature-block__link {
+    color: @text-dark;
+  }
+
   .feature-block > .feature-block__item:nth-child(n+3) {
     display: none
   }
