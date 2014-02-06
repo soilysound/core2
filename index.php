@@ -176,6 +176,7 @@
   </div>
 
 </div>
+<?php include "components/site-footer.html"; ?>
 </body>
 <script src="/js/site.js"></script>
 

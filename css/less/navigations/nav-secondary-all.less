@@ -1,4 +1,4 @@
-
+// secondary level navs - usualy primary page/section nav
 
 @media all and (@bp10-min){
 
@@ -9,16 +9,17 @@
     overflow: hidden;
     padding: 4px 0;
     border-bottom: 1px solid @keyline;
-    margin-bottom: @box-gap-s
+    margin-bottom: @box-gap-s;
   }
 
   .nav-secondary-all__head {
     display: inline-block;
+    display: none
   }
 
   .nav-secondary-all__title-link {
     padding: 7px 12px 5px @bp30-site-margin;
-    text-transform: uppercase
+    text-transform: uppercase;
   }
 
   .nav-secondary-all__frame {
@@ -105,6 +106,7 @@
   }
 
   //display sub section of clicked nav
+
   .nav-secondary-all__section {
     .secondary-headline(@text-l);
     color: @off-white;
@@ -135,6 +137,7 @@
   }
 
   //nav body when opened
+
   .nav-secondary-all__body--open {
     .transform(translateY(0));
   }
@@ -145,7 +148,7 @@
     display: block;
   }
 
-  //offset elements - animate the container div immedietly after the nav element downards by the same amount as the height of the open nav
+  // offset elements - animate the container div immedietly after the nav element downards by the same amount as the height of the open nav
   .nav-secondary-all__offset {
 
     .fix-flicker();

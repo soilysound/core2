@@ -107,6 +107,7 @@
   }
   .nav-secondary-all__head {
     display: inline-block;
+    display: none;
   }
   .nav-secondary-all__title-link {
     padding: 7px 12px 5px 14px;
