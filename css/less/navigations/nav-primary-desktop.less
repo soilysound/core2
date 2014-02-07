@@ -22,7 +22,7 @@
 }
 
 .nav-primary-desktop__group {
-	padding: 0;
+	padding: 0 0;
 	list-style: none;
 	white-space: nowrap
 }
@@ -161,6 +161,16 @@
 @media all and (@bp20-max){
   .nav-primary-desktop-wrap {
     display: none;
+  }
+
+  .nav-primary-search-input {
+  	padding: 10px 12px;
+  }
+}
+
+@media all and (@bp5-max){
+  .nav-primary-desktop__group {
+    margin-left: @bp30-site-margin * -1
   }
 
   .nav-primary-search-input {

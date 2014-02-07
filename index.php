@@ -1,3 +1,6 @@
+<?php
+  $blank_image = "data:image/gif;base64,R0lGODdhAQABAPAAAO7u7gAAACH/C1hNUCBEYXRhWE1QAyI/PgAsAAAAAAEAAQAAAgJEAQA7";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,10 +19,31 @@
   <link rel="stylesheet" type="text/css" href="/css/ie8.css">
   <![endif]-->
   <script src="/js/head.js"></script>
+  <style>
+  .message {
+    background: #ffcc00;
+    color: black;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 99;
+    padding: 12px;
+    text-align: center;
+    font-family: sans-serif
+  }
+
+  .chrome .message,
+  .ios .message {
+    display: none
+  }
+
+  </style>
 </head>
 
 <body>
-
+<div class="message">
+  This prototype should be viewed in chrome on a desktop and IOS on a mobile device
+</div>
 <!-- site header -->
 <?php include "components/site-header.html"; ?>
 

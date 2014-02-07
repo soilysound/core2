@@ -834,6 +834,10 @@ String.prototype.toCamel = function(){
   //
   'use strict';
 
+  //the amount of leeway to give the viewport before it regards an image is out of view
+  // eg -100 means it will only regard it as not in viewport if its more than 100px out of the viewport
+  var tolerance = -100;
+
   /**
    * Get a *live* node list of images - the browser can automatically update this list for us
    */
@@ -845,7 +849,7 @@ String.prototype.toCamel = function(){
   function outOfView(image){
 
     var coords = image.getBoundingClientRect();
-    return !(coords.top + coords.height > 0) || !(window.innerHeight - coords.top > 0) || !(coords.left + coords.width > 0) || !(window.innerWidth - coords.left > 0);
+    return !(coords.top + coords.height > tolerance) || !(window.innerHeight - coords.top > tolerance) || !(coords.left + coords.width > 0) || !(window.innerWidth - coords.left > 0);
 
   }
 
@@ -879,13 +883,13 @@ String.prototype.toCamel = function(){
    * Scan list of images and load if in view
    */
   function scan(){
-    
+
     for(var i = -1;++i<images.length;){
 
       var image = images[i];
 
       //determine whether its a lazy module rather than an image
-      var isLazyModule = !image.nodeName.match(/img/g);
+      var isLazyModule;// = !image.nodeName.match(/img/g);
 
       //check if image is out of view, if not then swap src and remove from loop
       if(outOfView(image)){
@@ -901,7 +905,7 @@ String.prototype.toCamel = function(){
       //its an image, so get image attributes
       var attrs = image.dataset;
       var src = attrs.imageSrc;
-
+      console.log(src);
       //if the image has no data-image then remove from loop and skip
       if(!src){
         image.classList.remove('postpone-load');
@@ -921,7 +925,7 @@ String.prototype.toCamel = function(){
 
     window.setTimeout(function(){
       window.requestAnimationFrame(scan);
-    }, 250);
+    }, 1000);
   }
 
   scan();

@@ -24,12 +24,27 @@
 
   .nav-secondary-all__frame {
     display: inline-block;
+    width: 100%;
+  }
+
+  // if touch screen make sure nav is always accesible even on mid sizes screens before the tablet breakpoint
+
+  .touch .nav-secondary-all__frame::-webkit-scrollbar {
+    background: @light-bg;
+    width:9px;
+    height:9px;
+  }
+
+  .nav-secondary-all__frame::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: @border-radius-m
   }
 
   .nav-secondary-all__body {
     width: 100%;
     list-style: none;
     white-space: nowrap;
+    padding-left: @bp30-site-margin
   }
 
   .nav-secondary-all__item,
@@ -128,6 +143,7 @@
     width: 100%;
     overflow: hidden;
     display: block;
+
   }
 
   .nav-secondary-all__body {
@@ -189,6 +205,12 @@
 
   .nav-secondary-all {
     margin-bottom: 0
+  }
+}
+
+@media all and (@bp5-max){
+  .nav-secondary-all__body {
+    padding-left: 0
   }
 }
 
