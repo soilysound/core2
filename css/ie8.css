@@ -141,8 +141,10 @@
     font-size: 1rem;
     color: #333333;
   }
-  .nav-secondary-all__link:hover {
+  .nav-secondary-all__link:hover,
+  .nav-secondary-all__link--on {
     background: #eaeaea;
+    border-radius: 3px;
   }
   .nav-secondary-all__section {
     display: none;
@@ -248,5 +250,11 @@
   .photo-feature__body {
     padding: 48px;
     padding-right: 0;
+  }
+/* } */
+
+/* @media all and (min-width:1279px) { */
+  .site-footer__body {
+    padding: 40px 0;
   }
 /* } */

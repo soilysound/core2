@@ -1,6 +1,6 @@
 .nav-primary-desktop-wrap {
-	height:50px;
-	background:@blue-light
+	background:@blue-light;
+	min-height: 51px
 }
 
 .nav-primary-desktop {
@@ -35,7 +35,7 @@
 .nav-primary-desktop__link {
 	display: inline-block;
 	text-transform: uppercase;
-	padding: 13px;
+	padding: 13px 16px;
 	.primary-headline(@text-m);
 	color: @off-white;
 }
@@ -116,7 +116,7 @@
 }
 
 .nav-primary-search-input {
-	display: block;
+	display: inline-block;
 	width: 100%;
 	padding: 8px 12px;
 	.secondary-headline(@text-m);
@@ -166,6 +166,16 @@
   .nav-primary-search-input {
   	padding: 10px 12px;
   }
+}
+
+@media all and (max-width: 1024px){
+	.nav-primary-desktop .nav-primary-search-input {
+		width: 100px!important
+	}
+
+	.nav-primary-desktop .nav-primary-search {
+		text-align: right
+	}
 }
 
 
