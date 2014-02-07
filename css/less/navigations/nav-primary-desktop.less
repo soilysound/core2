@@ -74,6 +74,25 @@
 	-webkit-transition: opacity 0.166s ease-in-out
 }
 
+// when the nav body is in 2 cols
+.nav-primary-desktop__menu-body > .grid__col1 {
+	width: 66%;
+	.no-flex();
+}
+
+.nav-primary-desktop__menu-links {
+	list-style: none;
+	padding: 0;
+}
+
+.nav-primary-desktop__menu-links--2col {
+	.columns(2)!important;
+}
+
+.nav-primary-desktop__menu-links--1col{
+	.columns(1)!important;
+}
+
 // add hover actions to open menu
 .nav-primary-desktop__item:hover {
 	background: @blue-mid;
@@ -118,7 +137,7 @@
 
 .nav-primary-desktop__menu-link:hover,
 .nav-primary-desktop__menu-link:active {
-	background: @webkit-tap-highlight-color
+	background: @blue-light
 }
 
 

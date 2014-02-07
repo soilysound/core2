@@ -119,6 +119,8 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
 
       event.preventDefault();
 
+      var accordianHead = event.target;
+
       var index = element.dataset.index;
       var content = element.querySelector('.accordian__item-content');
       var contentHeight = content.offsetHeight;
@@ -127,6 +129,7 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
 
         content.style.cssText = '';
         element.classList.remove('accordian__item--open');
+        accordianHead.classList.remove('accordian__item-head--on');
 
         this._setOffsets(index, -1, contentHeight);
       }
@@ -135,6 +138,7 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
 
         content.style.cssText = '-webkit-transform:translateY(0);-moz-transform:translateY(0);transform:translateY(0)';
         element.classList.add('accordian__item--open');
+        accordianHead.classList.add('accordian__item-head--on');
 
         this._setOffsets(index, 1, contentHeight);
       }

@@ -1022,6 +1022,28 @@ body {
   opacity: 0;
   -webkit-transition: opacity 0.166s ease-in-out;
 }
+.nav-primary-desktop__menu-body > .grid__col1 {
+  width: 66%;
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+.nav-primary-desktop__menu-links {
+  list-style: none;
+  padding: 0;
+}
+.nav-primary-desktop__menu-links--2col {
+  -webkit-column-count: 2 !important;
+  -moz-column-count: 2 !important;
+  column-count: 2 !important;
+}
+.nav-primary-desktop__menu-links--1col {
+  -webkit-column-count: 1 !important;
+  -moz-column-count: 1 !important;
+  column-count: 1 !important;
+}
 .nav-primary-desktop__item:hover {
   background: #011b51;
 }
@@ -1063,7 +1085,7 @@ body {
 }
 .nav-primary-desktop__menu-link:hover,
 .nav-primary-desktop__menu-link:active {
-  background: rgba(0,0,0,0.08);
+  background: #0a3389;
 }
 .nav-primary-desktop__menu-link {
   font-family: 'SkyTextReg';
@@ -1115,6 +1137,9 @@ body {
   position: absolute;
   right: 14px;
   top: 10px;
+}
+.nav-primary-mobile__link-more.accordian__item-head--on:after {
+  content: "\e07a";
 }
 .nav-primary-mobile__sub-links {
   background: #dcdcdc;
@@ -1934,6 +1959,7 @@ body {
   color: #333333;
 }
 .matches__promo-info {
+  display: inline-block;
   font-family: 'SkyTextReg';
   font-weight: normal;
   font-size: 16px;
@@ -2448,24 +2474,13 @@ th.mini-table__cell {
 .photo-feature {
   position: relative;
 }
-@media all and (max-width:600px) {
-  .block-header + .photo-feature {
-    margin-top: -12px;
-  }
-  .photo-feature__body {
-    padding: 18px 14px;
-  }
-  .photo-feature__body > .label {
-    margin: -10px 0 0px;
-  }
-}
 @media all and (max-width:800px) {
   .photo-feature__link {
     display: block;
     font-family: 'SkyTextMed';
     font-weight: normal;
-    font-size: 22px;
-    font-size: 1.375rem;
+    font-size: 26px;
+    font-size: 1.625rem;
     color: #111111;
   }
   .photo-feature__category {
@@ -2476,6 +2491,20 @@ th.mini-table__cell {
     font-size: 1rem;
     color: #333333;
     margin-bottom: 12px;
+  }
+  .photo-feature__body > .label {
+    margin: 4px 0 0;
+  }
+}
+@media all and (max-width:600px) {
+  .block-header + .photo-feature {
+    margin-top: -12px;
+  }
+  .photo-feature__body {
+    padding: 18px 14px;
+  }
+  .photo-feature__body > .label {
+    margin: -10px 0 0;
   }
 }
 @media all and (min-width:801px) {

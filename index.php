@@ -104,7 +104,7 @@
             $type = "";
             include "components/news-list-secondary.html"; ?>
 
-            <div class="box-gap" style="height:420px;background:#eee">
+            <div class="box-gap" style="height:423px;border:3px solid #eee;border-radius:5px;text-align: center;color: #aaa;padding-top: 200px;font-size: 20px;">
               sky bet
             </div>
           </script>
