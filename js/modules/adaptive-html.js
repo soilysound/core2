@@ -1,10 +1,10 @@
-define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
+define('adaptive-html', ['underscore', 'reqwest', 'callfn'], function(_, reqwest, callfn){
 
   "use strict";
 
-  function Exports(){}
+ 
 
-  Exports.prototype = {
+  return callfn.extend({
 
     /**
      * List of registered breakpoints
@@ -32,7 +32,6 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
       if(this.src){
         this._getContentXHR();
       }
-
       // its an inline template, parse and load
       else {
         this._getContentInline();
@@ -126,14 +125,12 @@ define('adaptive-html',['underscore', 'reqwest'], function(_, reqwest){
         this.templateDom = this.templateTarget.textContent ?
         this.templateTarget.textContent : this.templateTarget.innerText;
 
-        console.log(this.templateDom);
+        //console.log(this.templateDom);
       }
 
     }
 
-  };
-
-  return Exports;
+  });
 
 
 });

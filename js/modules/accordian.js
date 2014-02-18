@@ -1,8 +1,8 @@
-define('accordian',['underscore', 'widget'], function(_, Widget){
+define('accordian',['underscore', 'callfn'], function(_, callfn){
 
   "use strict";
 
-  var exports = Widget.extend({
+  return callfn.extend({
 
     /**
     * Initiate the accordion module
@@ -146,7 +146,5 @@ define('accordian',['underscore', 'widget'], function(_, Widget){
     }
 
   });
-
-  return exports;
 
 });

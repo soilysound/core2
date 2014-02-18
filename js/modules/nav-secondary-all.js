@@ -1,8 +1,8 @@
-define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
+define('nav-secondary-all', ['underscore', 'callfn'], function(_, callfn){
 
   "use strict";
 
-  var exports = Widget.extend({
+  return callfn.extend({
 
     // is the nav open?
     navOpen: false,
@@ -95,6 +95,5 @@ define('nav-secondary-all', ['underscore', 'widget'], function(_, Widget){
 
   });
 
-  return exports;
 
 });

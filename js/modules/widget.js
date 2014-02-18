@@ -1,8 +1,8 @@
-;define('widget', ['underscore'], function(_) {
+;define('callfn', ['underscore'], function(_) {
 
   "use strict";
 
-  var Widget = {
+  var Exports = {
 
     extend: function(props){
 
@@ -10,27 +10,25 @@
 
       Exports.prototype = props;
 
-      /**
-       * add super method used in old widgets
-       * @param  {Dom node} el   Dom node module is attched to
-       * @param  {Object}   data Data from the element dataset
-       */
-      Exports.prototype._super = function(el, data){
-
-        require(['dom'], function(dom){
-
-          this.$root = dom(el);
-          _.extend(this, data);
-
-        });
-
-      };
-
       return Exports;
+
+    },
+
+    scan: function(){
+
+      // get elements from page
+      var callfn = document.querySelectorAll('.callfn');
+
+      _.each(callfn, function(el){
+
+        console.log(el);
+
+      });
+
 
     }
   };
 
-  return Widget;
+  return Exports;
 
 });

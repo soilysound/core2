@@ -1,8 +1,8 @@
-define('site-layout-primary', ['underscore', 'widget'], function(_, Widget){
+define('site-layout-primary', ['underscore', 'callfn'], function(_, callfn){
 
 	"use strict";
 
-  var exports = Widget.extend({
+  return callfn.extend({
 
 		navIsOpen: false,
 
@@ -76,7 +76,5 @@ define('site-layout-primary', ['underscore', 'widget'], function(_, Widget){
 			}
 		}
 	});
-
-	return exports;
 
 });
