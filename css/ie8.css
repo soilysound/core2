@@ -207,7 +207,8 @@
 /* } */
 
 /* @media all and (min-width:1155px) { */
-  .news-list-featured {
+  .news-list-featured,
+  .news-list-featured__item {
     display: block;
   }
 /* } */

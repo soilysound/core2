@@ -74,6 +74,12 @@ a:active {
   outline: 0;
   text-decoration: none;
 }
+.display-table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+}
 /**
  * GET BREAK POINT
  * Set a javascript readable value as css propertis on the head tag
@@ -156,64 +162,25 @@ body {
     outline: 0;
   }
 }
-/**
- * BOX
- * A general purpose container for content
- * Use to set global bottom margins with clothing size notation
- * Use to set padding values with clothing size notation
- * ============================================================================
- */
-.box {
-  display: block;
-  position: relative;
+.block {
+  margin-bottom: 28px;
 }
-.box-gap {
-  margin-bottom: 32px;
-  display: block;
-  position: relative;
-}
-.box-gap--m {
-  margin-bottom: 24px;
-}
-.box-gap--s {
-  margin-bottom: 18px;
-}
-.box--inline {
-  display: inline-block;
-}
-.box--island {
-  padding: 32px;
-}
-@media all and (max-width: 800px) {
-  .box-gap {
-    margin-bottom: 24px;
-  }
-  .box--island {
-    padding: 24px;
+@media all and (min-width:601px) and (max-width:800px) {
+  .block {
+    margin-bottom: 20px;
   }
 }
-@media all and (max-width: 600px) {
-  .box-gap {
-    margin-bottom: 18px;
-  }
-  .box--island {
-    padding: 18px 14px;
+@media all and (max-width:600px) {
+  .block {
+    margin-bottom: 16px;
   }
 }
-/**
- * LAYOUT
- * Create fluid and fixed width layouts
- * Uses flex box with display table fall back for IE8 and 9
- * ============================================================================
-*/
-/* debugging class - adds red outlines */
 .-debug {
   border: 4px solid #ff0000;
 }
 .-debug > div {
   outline: 2px solid #ff0000;
 }
-/* main grid class */
 .grid {
   width: 100%;
   position: relative;
@@ -225,9 +192,6 @@ body {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  /* this is to prevent swap direction option cascading down to nested grids in browsers that use the old 2009 syntax */
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
 }
 .grid__col {
   -webkit-align-items: center;
@@ -239,165 +203,23 @@ body {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  /* use border instead of padding or margin to avoid padding/margin inheritence issues */
   border-color: transparent;
   border-left-style: solid;
   border-width: 0;
   background-clip: padding-box !important;
-  /* for IE8-9 - no flexbox */
   display: table-cell\0/;
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  /* cancel out for ie10 - has flexbox*/
   .grid__col {
     display: block;
   }
 }
-/* vertical grid */
-.grid--vertical {
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-/**
- * gaps between columns
- * - Uses transparent borders so as to allow the use of padding and margins independently
- */
-.grid--gap-s > .grid__col {
-  border-left-width: 12px;
-}
-.grid--gap-m > .grid__col {
-  border-left-width: 18px;
-}
-.grid--gap-l > .grid__col {
-  border-left-width: 24px;
-}
-/* cancel grid border padding */
 .grid > .grid__col:first-child {
   border-width: 0;
 }
-/**
- * Swap column order
- * - as part of this grid framework, only 2 column layouts can be swapped to keep compaibilty with IE < 10
- * - Swaps col so 1:2 becomes 2:1
-*/
-.grid--swap-order {
-  direction: rtl;
-}
-.grid--swap-order > .grid__col {
-  direction: ltr;
-}
-/* swap order on vertical grid */
-.grid--vertical.grid--swap-order {
-  -webkit-box-direction: reverse;
-  -moz-box-direction: reverse;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-}
-/* vertical align middle column content */
-.grid--align-middle > .grid__col {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  /* vertically align middle */
-  vertical-align: middle;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.grid--align-middle-target {
-  margin: auto;
-}
-/* no flex - add to set a fixed width or height on a flex column/row */
-.grid__col--noflex {
-  -webkit-box-flex: 0;
-  -moz-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-}
-/* set height of grid to be 100vh */
 .grid--100vh {
   min-height: 100%;
   min-height: 100vh;
-}
-/* @BP20 */
-@media all and (min-width: 601px) and (max-width: 800px) {
-  .grid--gap-s > .grid__col,
-  .grid--gap-m > .grid__col,
-  .grid--gap-l > .grid__col {
-    border-left-width: 12px;
-  }
-  .grid--vertical-bp20 {
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-  /* collapse the columns by setting to display block for IE9 */
-  .legacyie .grid--vertical-bp20 > .grid__col {
-    display: block;
-  }
-  /* swap order set on collapsed columns */
-  .grid--vertical-bp20.grid--swap-order {
-    -webkit-box-direction: reverse;
-    -moz-box-direction: reverse;
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-  .grid--vertical-bp20 > .grid__col {
-    border-left-width: 0;
-    width: 100%;
-    -ms-flex: auto;
-  }
-  /* for IE8-9 - no flexbox */
-  .grid--vertical-bp20.grid--swap-order > .grid__col:first-child {
-    display: table-footer-group\0/;
-  }
-  /* override for IE10+ */
-}
-@media all and (min-width: 601px) and (max-width: 800px) and screen and (-ms-high-contrast: active), all and (min-width: 601px) and (max-width: 800px) and (-ms-high-contrast: none) {
-  .grid--vertical-bp20.grid--swap-order > .grid__col:first-child {
-    display: block;
-  }
-}
-/* @BP30 */
-@media all and (max-width: 600px) {
-  .grid--gap-s > .grid__col,
-  .grid--gap-m > .grid__col,
-  .grid--gap-l > .grid__col {
-    border-left-width: 12px;
-  }
-  .grid--vertical-bp30 {
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-  .grid--vertical-bp30.grid--swap-order {
-    -webkit-box-direction: reverse;
-    -moz-box-direction: reverse;
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-  .grid--vertical-bp30 > .grid__col {
-    border-left-width: 0;
-    width: 100%;
-  }
-  /* collapse the columns by setting to display block for IE9 */
-  .legacyie .grid--vertical-bp30 > .grid__col {
-    display: block;
-  }
 }
 /**
  * TYPOGRAPHY
@@ -812,7 +634,7 @@ img {
     display: none;
   }
   .site-layout-secondary__col3 {
-    width: 336px;
+    width: 346px;
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
     -webkit-flex: 0 1 auto;
@@ -1545,8 +1367,7 @@ img {
   position: absolute;
 }
 .top-story__headline {
-  margin-bottom: 0.25em;
-  margin-top: -0.3em;
+  margin-bottom: 18px;
 }
 .top-story__headline-link {
   font-family: 'SkyTextMed';
@@ -1566,7 +1387,7 @@ img {
 }
 .top-story__body {
   background: #f4f4f4;
-  padding: 28px 32px 28px 32px;
+  padding: 24px;
 }
 .top-story__body > .label {
   margin: -7px 0 9px;
@@ -2298,7 +2119,8 @@ th.mini-table__cell {
   padding: 2px 0 6px;
 }
 @media all and (min-width:1155px) {
-  .news-list-featured {
+  .news-list-featured,
+  .news-list-featured__item {
     display: block;
   }
 }
@@ -2525,6 +2347,7 @@ th.mini-table__cell {
 }
 .photo-feature {
   position: relative;
+  background: #000000;
 }
 .photo-feature__figure {
   position: relative;

@@ -1,0 +1,44 @@
+// AUTO SIZE
+// utilities to auto size elements to specific aspect ratios
+// ============================================================================
+
+// 16/9
+
+.auto-size-16\/9 {
+
+  position: relative;
+  padding-bottom: 56.25%
+
+}
+
+// 4/3
+
+.auto-size-4\/3 {
+
+  padding-bottom:74.8%;
+
+}
+
+// 1/1
+
+.auto-size-1\/1 {
+
+  padding-bottom:100%;
+
+}
+
+// SET TARGET
+// Use this class on the target element for all of the above, eg -
+// ============================================================================
+// <div class="auto-size-16/9">
+//  <img src="img.png" class="auto-size__target">
+// </div>
+
+
+.auto-size__target {
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}

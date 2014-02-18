@@ -1,0 +1,108 @@
+// PROJECT SETTINGS
+// Set project specific variables such as font size, unit sizes, colors and gradients
+// ============================================================================
+
+
+// SITE SCAFFOLDING DIMENSIONS
+// set widths of main site scafolding, layouts and navs
+
+@site-max-width: 1002px;
+
+
+// SITE BREAKPOINTS
+
+@bp30-max: ~"max-width:600px";
+
+@bp20-min: ~"min-width:601px";
+@bp20-max: ~"max-width:800px";
+
+@bp10-min: ~"min-width:801px";
+@bp10-max: ~"max-width:1154px";
+
+@bp5-min: ~"min-width:1155px";
+@bp5-max: ~"min-width:1279px";
+
+@not-bp30: ~"min-width:601px";
+
+
+// PALETTES
+
+@sky-sports-red: #da2331;
+@sky-sports-blue: #214CB8;
+@blue-mid: #011b51;
+@blue-light: #0a3389;
+
+@off-white: white;
+@dark-bg: #eaeaea;
+@light-bg: #f4f4f4;
+@keyline: #dcdcdc;
+
+
+// TEXT COLORS
+
+@text-dark: #111111;
+@text-primary: #333333;
+@text-secondary: #666666;
+@text-light: #999999;
+
+
+// COMPONENT SPECIFIC COLORS
+
+@site-background: white;
+@webkit-tap-highlight-color: ~"rgba(0,0,0,0.08)";
+
+
+// TEXT SIZES
+
+@base-text-size: 16;
+@text-s: 14;
+@text-m: 16;
+@text-ml: 18;
+@text-l: 22;
+@text-xl: 26;
+@text-xxl: 32;
+@text-xxxl: 36;
+
+
+// function to convert pixels into rems and return both
+
+.calc-text-size(@size){
+  @remValue: @size / @base-text-size;
+  @pxValue: @size;
+}
+
+// GLOBAL BLOCK UNITS
+// use to set margins, paddings etc
+
+
+// margin bottom on blocks
+
+@block-margin-s: 12px;
+@block-margin-m: 18px;
+@block-margin-l: 24px;
+
+
+// padding inside blocks
+
+@block-padding-s: 12px;
+@block-padding-m: 18px;
+@block-padding-l: 24px;
+
+
+// gap between columns
+
+@column-gap-s: 12px;
+@column-gap-m: 18px;
+@column-gap-l: 24px;
+
+
+// site gutters
+
+@site-gutter-s: 12px;
+@site-gutter-m: 18px;
+@site-gutter-l: 24px;
+
+
+// COMPONENT SPECIFIC BLOCK UNITS
+
+

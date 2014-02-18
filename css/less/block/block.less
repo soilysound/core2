@@ -1,0 +1,34 @@
+// BLOCK
+// Class for a block of content
+// Use to add global margin bottoms
+
+.block {
+
+  margin-bottom: @block-margin-l;
+
+}
+
+// TABLET
+
+@media all and (@bp20-min) and (@bp20-max){
+
+  .block {
+
+    margin-bottom: @block-margin-m;
+
+  }
+
+}
+
+// MOBILE
+
+@media all and (@bp30-max){
+
+  .block {
+
+    margin-bottom: @block-margin-s;
+
+  }
+
+}
+

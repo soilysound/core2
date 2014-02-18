@@ -1,25 +1,47 @@
-// Cross browser opacity
+// LESS FUNCTIONS
+// ============================================================================
+
+
+// CROSS BROWSER OPACITY
+
 .opacity(@opacity: 0.5) {
 	opacity: @opacity;
 	filter: e(%("alpha(opacity=%d)",@opacity*100));
 }
 
-// Clear fix
+// CLEAR FIX
+// Clear a floated element
+
 .cf() {
-	&:after {content:"";display:table;clear:both}
+	&:after {
+		content: "";
+		display: table;
+		clear: both
+	}
+
 	zoom:1;
 }
 
+// FLEXBOX
+// Cross browser flex box
+// Does not work in IE8 and 9
+
 .flex-box(){
+
 	display:-webkit-box;
 	display:-moz-box;
 	display:-webkit-flex;
 	display:-moz-flex;
 	display:-ms-flexbox;
 	display:flex;
+
 }
 
+// NO FLEX
+// remove flex from fixed width column
+
 .no-flex(){
+
 	-webkit-box-flex: 0;
 	-moz-box-flex: 0;
 	-webkit-flex: 0 1 auto;
@@ -27,45 +49,76 @@
 	flex: 0 1 auto;
 }
 
+// FLEX CENTER
+// align items verticlly and horizontally
+
 .flex-center(){
-	-webkit-box-pack: center; 
-	-moz-box-pack: center; 
-	-ms-flex-pack: center; 
+
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
 	-webkit-justify-content: center;
 	justify-content: center;
 }
 
+
 .flex-order(@arguments){
+
 	-webkit-box-ordinal-group: @arguments;
 	-moz-box-ordinal-group: @arguments;
-	-ms-flex-order: @arguments;     
-	-webkit-order: @arguments;  
-	order: @arguments;  
+	-ms-flex-order: @arguments;
+	-webkit-order: @arguments;
+	order: @arguments;
+
 }
 
-// Cross browser transforms
+// DISPLAY TABLE
+
+.display-table {
+
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: separate;
+
+}
+
+// CROSS BROWSER TRANSFORMS
+
 .transform(@arguments) {
+
 	-webkit-transform: @arguments;
 	-moz-transform: @arguments;
 	-ms-transform:@arguments;
 	transform: @arguments;
+
 }
 
-// Cross browser transitions
+// CROSS BROWSER TRANSITIONS
+
 .transition(@arguments) {
+
 	-webkit-transition: @arguments;
 	-moz-transition: @arguments;
 	transition: @arguments;
+
 }
 
+// FIX FLICKER
 // fixes the transition flickering and glitches that trouble mobile webkit browsers
+
 .fix-flicker() {
+
 	-webkit-transform: translateZ(0);
+
 }
 
 
-// columns
+// CSS COLUMNS
+// Does not work in IE8 and 9
+
 .columns(@number, @gap:0){
+
 	-webkit-column-count: @number;
 	-moz-column-count: @number;
 	column-count: @number;
@@ -73,6 +126,7 @@
 }
 
 .user-select(@arguments) {
+
 	-webkit-user-select: @arguments;
 	-moz-user-select: @arguments;
 	user-select: @arguments;
