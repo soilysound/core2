@@ -1,10 +1,21 @@
-.adaptive-html {
-	visibility:hidden;
-	opacity:0;
-	.transition(opacity 0.166s linear)
+// ADAPTIVE HTML
+// Hide the content that is loaded adaptively until its loaded and ready
+// ============================================================================
+
+
+// Hide the content only if the user has css animations
+
+.css-animations .adaptive-html {
+
+	visibility: hidden;
+	opacity: 0;
+	.transition(opacity 0.166s linear);
+
 }
 
 .adaptive-html--loaded {
-	visibility:visible;
-	opacity:1
+
+	visibility: visible;
+	opacity: 1
+
 }
