@@ -4,32 +4,114 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <style>
-    p {
-      background: orange ;
-    }
-  </style>
-</head>
-<body>
-  <div class="adaptive">
-  <!--[if IE 8]>
-<p>Welcome to Internet Explorer 8.</p>
-<![endif]-->
-</div>
-</body>
-<script>
-var a = document.querySelector('.adaptive');
-var nodes = a.childNodes;
-var comment;
-for(var i=nodes.length;--i>-1;){
-  if(nodes[i].nodeType === 8){
-    comment = nodes[i];
-    break;
-  }
-}
+  <script>
+// addEventListener polyfill IE6+
+!window.addEventListener && (function (window, document) {
 
-var markup = comment.nodeValue.replace("[if IE 8]>", "").replace("<![endif]", "");
-a.insertAdjacentHTML('afterend', markup);
+  function EventListener(e, element) {
+
+    var instance = this;
+
+    for (property in e) {
+      instance[property] = e[property];
+    }
+
+    instance.currentTarget =  element;
+    instance.target = e.srcElement || element;
+    instance.timeStamp = +new Date;
+
+    instance.preventDefault = function () {
+      e.returnValue = false;
+    };
+
+    instance.stopPropagation = function () {
+      e.cancelBubble = true;
+    };
+
+  }
+
+  function addEventListener(type, listener) {
+
+    var element = this,
+    listeners = element.listeners = element.listeners || [],
+    index = listeners.push([listener, function (e) {
+      listener.call(element, new EventListener(e, element));
+    }]) - 1;
+
+    element.attachEvent('on' + type, listeners[index][1]);
+  }
+
+  function removeEventListener(type, listener) {
+
+    for (var element = this, listeners = element.listeners || [], length = listeners.length, index = 0; index < length; ++index) {
+      if (listeners[index][0] === listener) {
+        element.detachEvent('on' + type, listeners[index][1]);
+      }
+    }
+  }
+
+  window.addEventListener = document.addEventListener = addEventListener;
+  window.removeEventListener = document.removeEventListener = removeEventListener;
+
+  Element.prototype.addEventListener    = addEventListener;
+  Element.prototype.removeEventListener = removeEventListener;
+
+  //add preventDefault and stopPropagation to the event object for IE8
+  Event.prototype.preventDefault = function() { if (this.cancelable !== false) { this.returnValue = false; } };
+  Event.prototype.stopPropagation = function() { this.cancelBubble = true; };
+
+})(window, document);
+
+
+(function(){
+
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+
+      "use strict";
+
+      if (typeof this !== "function") {
+        // closest thing possible to the ECMAScript 5 internal IsCallable function
+        throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+      }
+
+      var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            return fToBind.apply(this instanceof fNOP && oThis
+                                   ? this
+                                   : oThis,
+                                 aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+
+      return fBound;
+    };
+  }
+
+
+})();
+
+</script>
+</head>
+
+<body>
+  <a href="#" id="link">link</a>
+</body>
+
+<script>
+    var blah = {};
+    function poo(e){
+      console.log(this);
+      e.preventDefault();
+      document.querySelector('#link').removeEventListener('click',poo , false);
+    }
+
+    document.querySelector('#link').addEventListener('click', poo.bind({blah: 'hello'}), false);
+
 
 </script>
 </html>
