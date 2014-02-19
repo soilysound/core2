@@ -13,8 +13,8 @@
     });
   }
 
-  require(['callfn'], function(callfn){
-		callfn.init();
+  require(['widget-lite'], function(widgetLite){
+		widgetLite.init();
   });
-  
+
 })();

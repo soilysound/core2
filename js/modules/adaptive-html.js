@@ -1,10 +1,10 @@
-define('adaptive-html', ['underscore', 'reqwest', 'callfn'], function(_, reqwest, callfn){
+define('adaptive-html', ['underscore', 'reqwest', 'widget-lite'], function(_, reqwest, widgetLite){
 
   "use strict";
 
- 
 
-  return callfn.extend({
+
+  return widgetLite.extend({
 
     /**
      * List of registered breakpoints

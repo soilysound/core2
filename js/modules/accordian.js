@@ -1,8 +1,8 @@
-define('accordian',['underscore', 'callfn'], function(_, callfn){
+define('accordian',['underscore', 'widget-lite'], function(_, widgetLite){
 
   "use strict";
 
-  return callfn.extend({
+  return widgetLite.extend({
 
     /**
     * Initiate the accordion module

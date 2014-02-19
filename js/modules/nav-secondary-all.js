@@ -1,8 +1,8 @@
-define('nav-secondary-all', ['underscore', 'callfn'], function(_, callfn){
+define('nav-secondary-all', ['underscore', 'widget'], function(_, widgetLite){
 
   "use strict";
 
-  return callfn.extend({
+  return widgetLite.extend({
 
     // is the nav open?
     navOpen: false,

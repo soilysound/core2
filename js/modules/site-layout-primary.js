@@ -1,8 +1,8 @@
-define('site-layout-primary', ['underscore', 'callfn'], function(_, callfn){
+define('site-layout-primary', ['underscore', 'widget-lite'], function(_, widgetLite){
 
 	"use strict";
 
-  return callfn.extend({
+  return widgetLite.extend({
 
 		navIsOpen: false,
 
