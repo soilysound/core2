@@ -7,7 +7,11 @@
     init: function(){
 
       this.scan();
-      this.scanUsingAnimationEvent();
+
+      setTimeout(function(){
+        this.scanUsingAnimationEvent();
+      }.bind(this), 500);
+
     },
 
     runFunction: function(element){
@@ -34,7 +38,7 @@
         // create instance of function
         var instance = new Foobar();
 
-        // call function and pass through the dom elemend and the dataset object
+        // call function and pass through the dom element and the dataset object
         instance.init(element, data);
 
         // remove the callfn class to prevent it getting called again
@@ -69,18 +73,17 @@
     // listen for new callfns appearing on the page by using the css animation start event
     scanUsingAnimationEvent: function(){
 
+      // add the animation css to the callfn elements
+      SKY_SPORTS.addCss('callfn', '.callfn {-webkit-animation:callfn 0.01s;-moz-animation:callfn 0.01s;animation:callfn 0.01s;}', false);
+
+      // then add the event listener, so it doesnt get run on first load
       document.addEventListener(SKY_SPORTS.hasFeature.animationEvent, function(e){
 
         if(e.animationName === 'callfn'){
-
           this.runFunction(e.target);
-
         }
 
       }.bind(this), false);
-
-      // now we have our event listen set up, add the animation css to the callfn elements
-      SKY_SPORTS.addCss('callfn', '.callfn {-webkit-animation:callfn 0.01s;-moz-animation:callfn 0.01s;animation:callfn 0.01s;}', false);
 
     },
 

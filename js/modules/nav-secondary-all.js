@@ -1,4 +1,4 @@
-define('nav-secondary-all', ['underscore', 'widget'], function(_, widgetLite){
+define('nav-secondary-all', ['underscore', 'widget-lite'], function(_, widgetLite){
 
   "use strict";
 

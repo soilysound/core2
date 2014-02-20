@@ -276,13 +276,7 @@ if (objCtr.defineProperty) {
     }
     i++;
   } while (i < len);
-})();;String.prototype.toDash = function(){
-	return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
-};
-
-String.prototype.toCamel = function(){
-	return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
-};;(function(){
+})();;(function(){
 
   "use strict";
 
@@ -417,6 +411,13 @@ String.prototype.toCamel = function(){
 })();
 
 
+;String.prototype.toCamel = function(){
+  return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
+};
+
+String.prototype.toDash = function(){
+  return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
+};
 ;/**
  * ADD CSS
  *
@@ -932,3 +933,10 @@ String.prototype.toCamel = function(){
 
 
 })(window, document);
+;String.prototype.toCamel = function(){
+  return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
+};
+
+String.prototype.toDash = function(){
+  return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
+};

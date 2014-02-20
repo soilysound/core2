@@ -113,13 +113,13 @@
 
 
           <?php
-          $display = "is-hidden--bp5";
+          $display = "";
           $nlftype = "full";
           include "components/news-list-featured.html"; ?>
 
           <!-- news list -->
            <!-- featured stories -->
-          <a href="#" class="block-header is-hidden--bp5 is-hidden--bp10">
+          <a href="#" class="block-header is-hidden--bp5">
             <h2 class="block-header__title">More News</h2>
           </a>
           <?php

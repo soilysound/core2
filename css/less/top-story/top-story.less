@@ -3,7 +3,7 @@
 // ============================================================================
 
 .top-story {
-  
+
 
 }
 
@@ -76,10 +76,8 @@
   }
 
   .top-story__headline {
-    margin-bottom: 0.4em;
-    // remove line height offset
-    margin-top: -0.2em;
-    line-height: 1.25;
+    margin: 0;
+    padding: @island-padding-s;
   }
 
   .top-story__headline-link {
@@ -89,7 +87,7 @@
   }
 
   // limit related links to 2 items for mobile
-  
+
   .top-story__body .list > .list__item:nth-child(n+3) {
     display: none;
   }

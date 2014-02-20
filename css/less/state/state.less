@@ -58,32 +58,29 @@ img {
 	opacity: 0
 }
 
-@media all and (min-width:1165px){
+@media all and (@bp5-min){
 	.is-hidden--bp5 {
 		display:none!important
 	}
 }
 
 
-@media all and (min-width:801px) and (max-width:1164px){
-	.is-hidden--bp10,
-	.is-hidden--bp10\+{
+@media all and (@bp10-min) and (@bp10-max){
+	.is-hidden--bp10 {
 		display:none!important
 	}
 
 
 }
 
-@media all and (max-width:800px){
-	.is-hidden--bp20,
-	.is-hidden--bp10\+ {
+@media all and (@bp20-max){
+	.is-hidden--bp20 {
 		display:none!important
 	}
 }
 
-@media all and (max-width:600px){
-	.is-hidden--bp30,
-	.is-hidden--bp10\+ {
+@media all and (@bp30-max){
+	.is-hidden--bp30 {
 		display:none!important
 	}
 }
