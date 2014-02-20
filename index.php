@@ -38,9 +38,9 @@
   }
 
   .advert--banner {
-    height: 280px;
+    height: 120px;
     background: #f4f4f4;
-    background-image: url(/_sandbox/banner-900x300.jpg);
+    background-image: url(/_sandbox/banner-728x90.jpg);
     background-position: 50% 50%;
     background-repeat: no-repeat
   }
@@ -68,6 +68,21 @@
       height: 50px;
       background-image: url(/_sandbox/banner-300x50.jpg);
     }
+  }
+
+  body:after {
+
+    content: "";
+    position: absolute;
+    top: 1024px;
+    width: 100%;
+    height: 18px;
+    background: red;
+    opacity: 0;
+    left: 0;
+    display: block
+
+
   }
 
   </style>
@@ -104,7 +119,7 @@
 
     <div class="nav-secondary-all__offset">
       <!-- main site 2 column layout -->
-     <div class="grid site-layout-secondary box-gap">
+     <div class="grid site-layout-secondary block">
 
         <div class="grid__col site-layout-secondary__col1">
 
@@ -172,10 +187,6 @@
         <div class="grid__col site-layout-secondary__col3 callfn adaptive-html" data-fn="adaptive-html">
           <script type="html/template">
 
-            <!-- mpu -->
-            <div style="height:600px;background:#ccc;margin-bottom:24px">
-              <img src="_sandbox/halfpage-300x600.jpg" height="600">
-            </div>
 
             <!-- matches block -->
             <a href="#" class="block-header--aside block-header--no-gap">
@@ -186,6 +197,11 @@
               $display = "";
               include "components/matches-block.html";
             ?>
+
+            <!-- mpu -->
+            <div style="height:600px;background:#ccc;margin-bottom:24px">
+              <img src="_sandbox/halfpage-300x600.jpg" height="600">
+            </div>
 
             <!-- feature promos -->
             <a href="#" class="block-header--aside block-header--no-gap">

@@ -16,6 +16,12 @@
   border-bottom: 1px solid @keyline
 }
 
+// to add a division between matches
+
+.matches__item--divider {
+  //border-bottom: 2px solid @keyline
+}
+
 .matches__item-col {
   display: table-cell;
   height: @data-promo-row-height;
@@ -82,23 +88,28 @@
 
 // featured event
 
+.matches__promo-group {
+  background: @off-white;
+  margin-bottom: @component-gap-m
+}
+
 .matches__promo {
   position: relative;
-  background: @off-white;
-  padding: 18px 18px 24px 24px;
+  padding: @island-padding-m;
   line-height: 1;
-  margin-bottom: @component-gap-m;
   border-radius: @border-radius-s;
+  border-bottom: 1px solid @keyline
 }
 
 .matches__promo-timestamp {
-  .secondary-headline(@text-ml);
-  margin-bottom: 10px;
+  .secondary-headline(@text-m);
+  margin-bottom: 8px;
+  margin-top: -3px
 }
 
 .matches__promo-event {
   position: relative;
-  .primary-headline(@text-xl);
+  .primary-headline(@text-l);
   margin-bottom: 14px;
   padding-right: 80px
 }
@@ -110,11 +121,10 @@
 .matches__promo-info {
   display: inline-block;
   .secondary-headline(@text-m);
-  margin-bottom: 18px;
 }
 
 .matches__promo-logo {
-  width: 95px;
+  width: 88px;
   margin-left: 5px;
   position: relative;
   top: 1px
@@ -133,8 +143,22 @@
 
 }
 
-.matches__promo > .list {
-  margin:0 0 0 -2px
+.matches__promo-related-links {
+  padding: @island-padding-m;
+  padding-top: 12px;
+  padding-bottom: 18px
+}
+
+.matches__promo-related-links > .list__item {
+  margin-bottom: 0
+}
+
+.matches__date-header {
+  text-align: center;
+  .secondary-headline(@text-m);
+  padding: 4px 0;
+  background: @dark-bg;
+  margin-bottom: 6px
 }
 
 @media all and (@bp20-max){
