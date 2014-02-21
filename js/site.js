@@ -2063,7 +2063,8 @@ var requirejs, require, define;
     "underscore": "vendor/lodash.custom",
     "accordian": "modules/accordian",
     "widget-lite": "modules/widget-lite",
-    "trigger-event": "modules/trigger-event"
+    "trigger-event": "modules/trigger-event",
+    "tabs-lite": "modules/tabs-lite"
 
 	}
 });

@@ -147,6 +147,7 @@
           </a>
           <?php
             $display = "is-hidden--bp10 is-hidden--bp5";
+            $matches_type = 'mini';
             include "components/matches-block.html";
            ?>
           <!-- feature promos -->

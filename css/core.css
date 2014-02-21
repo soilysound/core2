@@ -1779,6 +1779,17 @@ img {
 .matches-block > .list {
   margin-bottom: -6px;
 }
+.matches__date-header {
+  text-align: center;
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #333333;
+  padding: 4px 0;
+  background: #eaeaea;
+  margin-bottom: 12px;
+}
 .matches__promo-group {
   background: #ffffff;
   margin-bottom: 18px;
@@ -1847,17 +1858,6 @@ img {
 }
 .matches__promo-related-links > .list__item {
   margin-bottom: 0;
-}
-.matches__date-header {
-  text-align: center;
-  font-family: 'SkyTextReg';
-  font-weight: normal;
-  font-size: 16px;
-  font-size: 1rem;
-  color: #333333;
-  padding: 4px 0;
-  background: #eaeaea;
-  margin-bottom: 6px;
 }
 @media all and (max-width:800px) {
   .matches__promo {
@@ -2049,6 +2049,44 @@ th.mini-table__cell {
   color: #111111;
   color: #ffffff;
   margin: 0;
+}
+.tabs-block {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+.tabs-block__tabs {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  overflow: hidden;
+}
+.tabs-block__tab-item {
+  background: #dcdcdc;
+  display: table-cell;
+  vertical-align: middle;
+  height: 38px;
+  text-align: center;
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #333333;
+}
+.tabs-block__tab-item[data-on] {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+.tabs-block__content {
+  display: none;
+  padding: 18px 14px;
+}
+.tabs-block__content[data-on] {
+  display: block;
+}
+.betting-block {
+  border: 1px solid #ff0000;
 }
 .button {
   display: inline-block;

@@ -19,7 +19,8 @@
 // to add a division between matches
 
 .matches__item--divider {
-  //border-bottom: 2px solid @keyline
+  // keep this in the html but dont display
+  // border-bottom: 2px solid @keyline
 }
 
 .matches__item-col {
@@ -84,6 +85,14 @@
 
 .matches-block > .list {
   margin-bottom: -6px
+}
+
+.matches__date-header {
+  text-align: center;
+  .secondary-headline(@text-m);
+  padding: 4px 0;
+  background: @dark-bg;
+  margin-bottom: @component-gap-s
 }
 
 // featured event
@@ -151,14 +160,6 @@
 
 .matches__promo-related-links > .list__item {
   margin-bottom: 0
-}
-
-.matches__date-header {
-  text-align: center;
-  .secondary-headline(@text-m);
-  padding: 4px 0;
-  background: @dark-bg;
-  margin-bottom: 6px
 }
 
 @media all and (@bp20-max){

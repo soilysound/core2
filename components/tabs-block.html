@@ -1,27 +1,53 @@
-<div class="tabs-block callfn" data-fn="tabs">
+<!DOCTYPE html>
+<html>
 
-  <ul class="tabs-block__tabs">
-    <li class="tabs-block__tab-item">
-      <a href="#tab1" class="tabs-block__tab-link" data-role="tab-item">Tab 1</a>
-    </li>
-    <li class="tabs-block__tab-item">
-      <a href="#tab2" class="tabs-block__tab-link" data-role="tab-item">Tab 2</a>
-    </li>
-    <li class="tabs-block__tab-item">
-      <a href="#tab3" class="tabs-block__tab-link" data-role="tab-item">Tab 3</a>
-    </li>
-  </ul>
+<head>
+  <meta charset="utf-8">
+  <title>Football Homepage</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Scorecentre">
+  <meta name="application-name" content="SkySports">
+  <meta name="viewport" id="viewport" content="width=device-width,maximum-scale=1,minimum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/css/core.css" type="text/css">
+  <script src="/js/head.js"></script>
+</head>
+<body>
 
-  <div class="tab-block__content" data-role="tab-box" id="tab1">
+
+<div class="tabs-block callfn" data-fn="tabs-lite">
+
+  <div class="tabs-block__tabs">
+    <a href="#tab1" class="tabs-block__tab-item" data-on="true" data-role="tab-item">
+      Tab 1
+    </a>
+    <a href="#tab2" class="tabs-block__tab-item" data-role="tab-item">
+      Tab 2
+    </a>
+    <a href="#tab3" class="tabs-block__tab-item" data-role="tab-item">
+      Tab 3
+    </a>
+  </div>
+
+  <div class="tabs-block__content" data-on="true" data-role="tab-box" id="tab1">
     1
   </div>
 
-  <div class="tab-block__content" data-role="tab-box" id="tab2">
-    2
+  <div class="tabs-block__content" data-role="tab-box" id="tab2">
+    2<br><br><br><br><br><br><br>
   </div>
 
-  <div class="tab-block__content" data-role="tab-box" id="tab3">
+  <div class="tabs-block__content" data-role="tab-box" id="tab3">
     3
   </div>
 
 </div>
+
+<script src="/js/site.js"></script>
+</body>
+
+
+
+</html>

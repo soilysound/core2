@@ -1,0 +1,50 @@
+// TABS
+// ============================================================================
+
+.tabs-block {
+
+  position: relative;
+  overflow: hidden;
+  background: @off-white;
+
+}
+
+.tabs-block__tabs {
+
+  .display-table();
+  overflow: hidden;
+
+}
+
+.tabs-block__tab-item {
+
+  background: @keyline;
+  display: table-cell;
+  vertical-align: middle;
+  height: 38px;
+  text-align: center;
+  .secondary-headline(@text-m)
+
+}
+
+
+.tabs-block__tab-item[data-on] {
+
+   background: @off-white;
+   border-bottom: 1px solid rgba(0,0,0,0)
+}
+
+// tab content area
+.tabs-block__content {
+
+  display: none;
+  padding: @island-padding-s
+
+}
+
+.tabs-block__content[data-on] {
+
+  display: block;
+
+}
+

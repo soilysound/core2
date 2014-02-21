@@ -1,3 +1,16 @@
+<?php
+if(__FILE__ == $_SERVER['SCRIPT_FILENAME']){
+
+  //echo "not included";
+}
+
+else {
+
+  //echo "included";
+}
+
+?>
+
 <div class="matches-block block <?php echo $display ?>">
 
   <div class="matches__promo-group">
@@ -8,17 +21,21 @@
     <p class="matches__promo-info">Live only on <div class="logo matches__promo-logo"><img class="logo__image" src="http://www1.skysports.com/core/img/channels/Sky-Sports-1-Logo.svg"></div></p>
   </div>
 
-  <div class="matches__promo">
-    <h5 class="matches__promo-timestamp">Today 4pm - Premier League</h5>
-    <h4 class="matches__promo-event"><img src="http://e2.365dm.com/football/badges/192/413.png" class="matches__promo-event-badge">Arsenal <span class="matches__promo-break">vs</span> Newcastle <img src="http://e1.365dm.com/football/badges/192/409.png" class="matches__promo-event-badge"></h4>
-    <p class="matches__promo-info">Live only on <div class="logo matches__promo-logo"><img class="logo__image" src="http://www1.skysports.com/core/img/channels/Sky-Sports-1-Logo.svg"></div></p>
-  </div>
+  <? if($matches_type == 'full') : ?>
 
-  <div class="matches__promo">
-    <h5 class="matches__promo-timestamp">Monday 8pm - Premier League</h5>
-    <h4 class="matches__promo-event"><img src="http://e2.365dm.com/football/badges/192/413.png" class="matches__promo-event-badge">Arsenal <span class="matches__promo-break">vs</span> Newcastle <img src="http://e1.365dm.com/football/badges/192/409.png" class="matches__promo-event-badge"></h4>
-    <p class="matches__promo-info">Live only on <div class="logo matches__promo-logo"><img class="logo__image" src="http://www1.skysports.com/core/img/channels/Sky-Sports-1-Logo.svg"></div></p>
-  </div>
+    <div class="matches__promo">
+      <h5 class="matches__promo-timestamp">Today 4pm - Premier League</h5>
+      <h4 class="matches__promo-event"><img src="http://e2.365dm.com/football/badges/192/413.png" class="matches__promo-event-badge">Arsenal <span class="matches__promo-break">vs</span> Newcastle <img src="http://e1.365dm.com/football/badges/192/409.png" class="matches__promo-event-badge"></h4>
+      <p class="matches__promo-info">Live only on <div class="logo matches__promo-logo"><img class="logo__image" src="http://www1.skysports.com/core/img/channels/Sky-Sports-1-Logo.svg"></div></p>
+    </div>
+
+    <div class="matches__promo">
+      <h5 class="matches__promo-timestamp">Monday 8pm - Premier League</h5>
+      <h4 class="matches__promo-event"><img src="http://e2.365dm.com/football/badges/192/413.png" class="matches__promo-event-badge">Arsenal <span class="matches__promo-break">vs</span> Newcastle <img src="http://e1.365dm.com/football/badges/192/409.png" class="matches__promo-event-badge"></h4>
+      <p class="matches__promo-info">Live only on <div class="logo matches__promo-logo"><img class="logo__image" src="http://www1.skysports.com/core/img/channels/Sky-Sports-1-Logo.svg"></div></p>
+    </div>
+
+ <? endif; ?>
 
    <ul class="matches__promo-related-links list list--bar">
       <li class="list__item"><a href="#" class="action-link">Watch with Sky Sports day pass</a></li>
@@ -27,118 +44,191 @@
 
   </div>
 
+<? if($matches_type == 'full') : ?>
+
+  <div class="tabs-block callfn" data-fn="tabs-lite">
+
+    <div class="tabs-block__tabs">
+      <a href="#tab1" class="tabs-block__tab-item" data-on="true" data-role="tab-item">
+      Matches
+      </a>
+      <a href="#tab2" class="tabs-block__tab-item" data-role="tab-item">
+        Sky Bet
+      </a>
+    </div>
+
+    <div class="tabs-block__content" data-on="true" data-role="tab-box" id="tab1">
+
+  <? endif; ?>
+
+
   <div class="matches-block__match-list">
 
-    <h4 class="matches__date-header">Serie A</h4>
+    <? if($matches_type == 'full') : ?>
 
-    <ul class="matches__group">
-      <li>
-        <a href="#" class="matches__item matches__link">
-          <span class="matches__item-col matches__label">PREM</span>
-          <span class="matches__item-col matches__participant matches__participant--side1">Tottenham</span>
-          <span class="matches__item-col matches__status">
-            <span class="matches__teamscores">
-              <span class="matches__teamscores-side">1</span>
-              -
-              <span class="matches__teamscores-side">2</span>
-            </span>
-          </span>
-          <span class="matches__item-col matches__participant matches__participant--side2">Everton</span>
-          <span class="matches__item-col matches__info">FT</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="matches__item matches__link">
-          <span class="matches__item-col matches__label">INT</span>
-          <span class="matches__item-col matches__participant matches__participant--side1">Liverpool</span>
-          <span class="matches__item-col matches__status">
-            <span class="matches__teamscores">
-              <span class="matches__teamscores-side">1</span>
-              -
-              <span class="matches__teamscores-side">2</span>
-            </span>
-          </span>
-          <span class="matches__item-col matches__participant matches__participant--side2">Arsenal</span>
-          <span class="matches__item-col matches__info"></span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="matches__item matches__item--divider matches__link">
-        <span class="matches__item-col matches__label">PREM</span>
-        <span class="matches__item-col matches__participant matches__participant--side1">West Brom</span>
-        <span class="matches__item-col matches__status">
-          <span class="matches__date">
-            15:00
-          </span>
-        </span>
-        <span class="matches__item-col matches__participant matches__participant--side2">Sunderland</span>
-        <span class="matches__item-col matches__info"></span>
-      </a>
-      </li>
+      <h4 class="matches__date-header">Serie A</h4>
 
-      <li>
-        <a href="#" class="matches__item matches__link">
-          <span class="matches__item-col matches__label">ITA</span>
-          <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
-          <span class="matches__item-col matches__status">
-            <span class="matches__date">
-              13 Feb
-            </span>
-          </span>
-          <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
-          <span class="matches__item-col matches__info"></span>
-        </a>
-      </li>
+      <? endif; ?>
 
-      <li>
-        <a href="#" class="matches__item matches__item--divider matches__link">
-          <span class="matches__item-col matches__label">SPA</span>
-          <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
+      <ul class="matches__group">
+        <li>
+          <a href="#" class="matches__item matches__link">
+            <span class="matches__item-col matches__label">
+            <? if($matches_type == 'mini') : ?>
+              PREM
+            <? endif; ?>
+
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side1">Tottenham</span>
+            <span class="matches__item-col matches__status">
+              <span class="matches__teamscores">
+                <span class="matches__teamscores-side">1</span>
+                -
+                <span class="matches__teamscores-side">2</span>
+              </span>
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side2">Everton</span>
+            <span class="matches__item-col matches__info">FT</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="matches__item matches__link">
+            <span class="matches__item-col matches__label">
+            <? if($matches_type == 'mini') : ?>
+              INT
+            <? endif; ?>
+
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side1">Liverpool</span>
+            <span class="matches__item-col matches__status">
+              <span class="matches__teamscores">
+                <span class="matches__teamscores-side">1</span>
+                -
+                <span class="matches__teamscores-side">2</span>
+              </span>
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side2">Arsenal</span>
+            <span class="matches__item-col matches__info"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="matches__item matches__item--divider matches__link">
+          <span class="matches__item-col matches__label">
+          <? if($matches_type == 'mini') : ?>
+            PREM
+          <? endif; ?>
+          </span>
+          <span class="matches__item-col matches__participant matches__participant--side1">West Brom</span>
           <span class="matches__item-col matches__status">
             <span class="matches__date">
-              13 Feb
+              15:00
             </span>
           </span>
-          <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
+          <span class="matches__item-col matches__participant matches__participant--side2">Sunderland</span>
           <span class="matches__item-col matches__info"></span>
         </a>
-      </li>
+        </li>
 
-      <li>
-        <a href="#" class="matches__item matches__link">
-          <span class="matches__item-col matches__label">PREM</span>
-          <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
-          <span class="matches__item-col matches__status">
-            <span class="matches__date">
-              14 Feb
+        <li>
+          <a href="#" class="matches__item matches__link">
+            <span class="matches__item-col matches__label">
+            <? if($matches_type == 'mini') : ?>
+              ITA
+            <? endif; ?>
             </span>
-          </span>
-          <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
-          <span class="matches__item-col matches__info"></span>
-        </a>
-      </li>
-
-      <li>
-        <a href="#" class="matches__item matches__link">
-          <span class="matches__item-col matches__label">PREM</span>
-          <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
-          <span class="matches__item-col matches__status">
-            <span class="matches__date">
-              14 Feb
+            <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
+            <span class="matches__item-col matches__status">
+              <span class="matches__date">
+                13 Feb
+              </span>
             </span>
-          </span>
-          <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
-          <span class="matches__item-col matches__info"></span>
-        </a>
-      </li>
+            <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
+            <span class="matches__item-col matches__info"></span>
+          </a>
+        </li>
+        <? if($matches_type == 'full') : ?>
+        <li>
+          <a href="#" class="matches__item matches__item--divider matches__link">
+            <span class="matches__item-col matches__label">
+            <? if($matches_type == 'mini') : ?>
+               SPA
+            <? endif; ?>
+             </span>
+            <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
+            <span class="matches__item-col matches__status">
+              <span class="matches__date">
+                13 Feb
+              </span>
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
+            <span class="matches__item-col matches__info"></span>
+          </a>
+        </li>
 
-    </ul>
+        <li>
+          <a href="#" class="matches__item matches__link">
+            <span class="matches__item-col matches__label">
+            <? if($matches_type == 'mini') : ?>
+              PREM
+            <? endif; ?></span>
+            <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
+            <span class="matches__item-col matches__status">
+              <span class="matches__date">
+                14 Feb
+              </span>
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
+            <span class="matches__item-col matches__info"></span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="matches__item matches__link">
+            <span class="matches__item-col matches__label">
+            <? if($matches_type == 'mini') : ?>
+              PREM
+            <? endif; ?>
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side1">Man Utd</span>
+            <span class="matches__item-col matches__status">
+              <span class="matches__date">
+                14 Feb
+              </span>
+            </span>
+            <span class="matches__item-col matches__participant matches__participant--side2">Swansea</span>
+            <span class="matches__item-col matches__info"></span>
+          </a>
+        </li>
+
+      <? endif; ?>
+
+      </ul>
 
     <ul class="list list--bar">
       <li class="list__item"><a href="#" class="action-link">Live Scores</a></li>
       <li class="list__item"><a href="#" class="action-link">Fixtures</a></li>
       <li class="list__item"><a href="#" class="action-link">Results</a></li>
     </ul>
+
+    </div>
+
+    <? if($matches_type == 'full') : ?>
+
+
+    </div>
+    <div class="tabs-block__content" data-role="tab-box" id="tab2">
+
+      <?php include "betting-block.html"; ?>
+
+    </div>
+
+    </div>
+  <? endif; ?>
+
+
+
+    </div>
+
   </div>
 
 </div>
