@@ -2061,6 +2061,7 @@ th.mini-table__cell {
   table-layout: fixed;
   border-collapse: separate;
   overflow: hidden;
+  border-spacing: 0 1px;
 }
 .tabs-block__tab-item {
   background: #dcdcdc;
