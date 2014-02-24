@@ -10,11 +10,27 @@
   margin-bottom: @component-gap-m
 }
 
-.block-header__title {
+.block-header__title,
+.block-header__link {
   .secondary-headline(@text-xxl);
+  display: block
+}
+
+.block-header__title {
   position: relative;
   top: -10px;
   margin-bottom: -10px;
+  display: inline-block;
+  width: 99%
+}
+
+.block-header__related-link {
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
 }
 
 .block-header:after,
@@ -29,6 +45,7 @@
   top: 11px;
   right: @bp30-site-margin;
   width: 36px;
+  pointer-events: none;
 }
 
 // no margin bottom
@@ -37,14 +54,18 @@
   margin-bottom: 0!important;
 }
 
+@media all and (@bp20-min){
+  
+  .block-header:after {
+    content: "";
+  }
+} 
+
 @media all and (@bp30-max){
 
   .block-header {
     border: 0;
     background: @sky-sports-blue;
-    padding: @island-padding-s;
-    padding-top: 4px;
-    padding-bottom: 5px;
     margin-bottom: @component-gap-s;
     position: relative;
   }
@@ -53,9 +74,22 @@
     overflow: hidden;
     position: static;
     white-space: nowrap;
+    margin: 0;
     .secondary-headline(@text-l);
     color: @off-white;
-    margin: 0;
+    display: block;
+  }
+
+  .block-header__link {
+    .secondary-headline(@text-l);
+    color: @off-white;
+    padding: @island-padding-s;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .block-header__related-link {
+    display: none
   }
 }
 

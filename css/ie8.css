@@ -171,6 +171,12 @@
   }
 /* } */
 
+/* @media all and (min-width:601px) { */
+  .block-header:after {
+    content: "";
+  }
+/* } */
+
 /* @media all and (max-width:10000px) { */
   .news-list-featured > .grid__col {
     border-width: 12px;

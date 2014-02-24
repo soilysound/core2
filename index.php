@@ -134,9 +134,12 @@
 
           <!-- news list -->
            <!-- featured stories -->
-          <a href="#" class="block-header is-hidden--bp5">
-            <h2 class="block-header__title">More News</h2>
-          </a>
+          <div class="block-header is-hidden--bp5">
+            <h2 class="block-header__title"><a href="#" class="block-header__link">More News</a></h2>
+            <a href="#link" class="block-header__related-link action-link">News Wire</a>
+          </div>
+
+
           <?php
           $type = "news-list-secondary--2cols";
           include "components/news-list.html"; ?>
