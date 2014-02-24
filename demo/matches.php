@@ -36,6 +36,15 @@
     ?>
 
   </div>
+
+  <div style="float:left;margin:10px;width:320px;background:#eee;padding:12px">
+    mini table
+    <?php
+    $matches_type = 'mini';
+    include "../components/tables-block.html"
+    ?>
+
+  </div>
   </body>
   <script src="/js/site.js"></script>
 

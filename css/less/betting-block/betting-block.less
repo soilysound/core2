@@ -1,7 +1,89 @@
 // BETTING BLOCK
 
-.betting-block {
+.bet-block {
 
-  border: 1px solid red
+}
+
+.bet-block__header {
+
+  text-align: center;
+  .secondary-headline(@text-m);
+  padding: 4px 0;
+  background: @dark-bg;
+  margin-bottom: @component-gap-s
+
+}
+
+.bet-block__group {
+
+  list-style: none;
+  padding: 0;
+  margin-bottom: @component-gap-s
+}
+
+.bet-block__item {
+
+  .display-table();
+  border-bottom: 1px solid @keyline
+}
+
+.bet-block__item-col {
+
+  .data-promo-cell();
+  position: relative
+}
+
+.bet-block__item-odds {
+
+  .secondary-headline(@text-s);
+  padding: 0 4px;
+  background: white;
+  position: relative;
+  z-index: 2
+
+}
+
+.bet-block__item-home {
+
+  text-align: right
+
+}
+
+.bet-block__item-draw {
+  width: 60px
+}
+
+.bet-block__item-away {
+
+  text-align: left;
+  padding-right: 22px
+
+}
+
+.bet-block__item-home > .bet-block__item-odds {
+
+  padding-left: 0;
+  position: absolute;
+  left: 0
+
+}
+
+.bet-block__item-away > .bet-block__item-odds {
+
+  padding-right: 0;
+  position: absolute;
+  right: 0
+
+}
+
+@supports(-moz-box-sizing: border-box){
+
+  // firefox *still* doesnt allow position relative on table cells
+  // so we'll have to adjust this slightly using @supports to pick out firefox
+  .bet-block__item-away > .bet-block__item-odds {
+
+    right: 12px;
+
+  }
 
 }

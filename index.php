@@ -157,7 +157,7 @@
           <?php include "components/feature-promos.html"; ?>
 
           <a href="#" class="block-header">
-            <h2 class="block-header__title">Features</h2>
+            <h2 class="block-header__title">Sky Bet</h2>
           </a>
           <!-- hot picks -->
           <?php include "components/feature-block.html"; ?>
@@ -225,11 +225,21 @@
 
       <div class="box site-layout-secondary">
 
+         <!-- features block -->
+        <a href="#" class="block-header">
+          <h2 class="block-header__title">Features</h2>
+        </a>
+        <?php
+        $feature_block_type = "feature";
+        include "components/video-block.html"; ?>
+
         <!-- video block -->
         <a href="#" class="block-header">
           <h2 class="block-header__title">Video</h2>
         </a>
-        <?php include "components/video-block.html"; ?>
+        <?php
+        $feature_block_type = "video";
+        include "components/video-block.html"; ?>
 
         <!-- opinion block -->
         <a href="#" class="block-header">

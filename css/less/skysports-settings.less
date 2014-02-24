@@ -194,6 +194,15 @@
 // data promo widgets
 
 @data-promo-row-height: 36px;
+.data-promo-cell() {
+  display: table-cell;
+  height: @data-promo-row-height;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  .primary-headline(@text-s)
+}
 
 
 // styles

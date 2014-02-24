@@ -150,6 +150,11 @@ body {
     outline: 0;
   }
 }
+.callfn {
+  -webkit-animation: callfn 0.01s;
+  -moz-animation: callfn 0.01s;
+  animation: callfn 0.01s;
+}
 .block {
   margin-bottom: 28px;
 }
@@ -1662,6 +1667,13 @@ img {
   margin-bottom: 3px;
   line-height: 1.3;
 }
+.video-block__snippet {
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #333333;
+}
 .video-block__body > .action-link {
   position: absolute;
   bottom: 6px;
@@ -1672,6 +1684,16 @@ img {
   font-size: 14px;
   font-size: 0.875rem;
   color: #666666;
+}
+.video-block__body .label__tag {
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #214cb8;
+}
+.\-feature {
+  padding-bottom: 6px;
 }
 @media all and (max-width:800px) {
   .video-block__row > .video-block__item:last-child {
@@ -1702,7 +1724,6 @@ img {
 .matches__group {
   padding: 0;
   list-style: none;
-  margin-top: -3px;
   margin-bottom: 12px;
 }
 .matches__item {
@@ -1717,6 +1738,12 @@ img {
   vertical-align: middle;
   white-space: nowrap;
   overflow: hidden;
+  text-align: center;
+  font-family: 'SkyTextMed';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #111111;
 }
 .matches__label,
 .matches__info {
@@ -1726,6 +1753,7 @@ img {
   font-size: 14px;
   font-size: 0.875rem;
   color: #333333;
+  text-align: left;
 }
 .matches__info {
   text-align: right;
@@ -1743,6 +1771,9 @@ img {
 .matches__participant--side1 {
   text-align: right;
 }
+.matches__participant--side2 {
+  text-align: left;
+}
 .matches__teamscores {
   display: table;
   width: 100%;
@@ -1750,7 +1781,7 @@ img {
   border-collapse: seperate;
   border-spacing: 1px;
   padding: 0 4px;
-  text-indent: -100%;
+  text-indent: -200%;
 }
 .matches__date {
   display: block;
@@ -1884,6 +1915,10 @@ img {
   .matches__promo-event-badge:first-child {
     left: 0;
   }
+  .matches__promo-related-links {
+    padding: 0;
+    margin-bottom: 12px;
+  }
 }
 @media all and (max-width:600px) {
   .matches-block__match-list {
@@ -1892,6 +1927,12 @@ img {
   .matches__promo {
     margin-bottom: 9px;
     padding-left: 14px;
+  }
+  .matches__promo-group {
+    margin-bottom: 12px;
+  }
+  .matches__promo-related-links {
+    padding: 4px 0 0 14px;
   }
 }
 .mini-table {
@@ -1903,11 +1944,14 @@ img {
   margin-bottom: 12px;
 }
 .mini-table__cell {
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: middle;
+  display: table-cell;
   height: 36px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
   text-align: center;
+  font-family: 'SkyTextMed';
+  color: #111111;
   font-family: 'SkyTextReg';
   font-weight: normal;
   font-size: 14px;
@@ -2061,7 +2105,6 @@ th.mini-table__cell {
   table-layout: fixed;
   border-collapse: separate;
   overflow: hidden;
-  border-spacing: 0 1px;
 }
 .tabs-block__tab-item {
   background: #dcdcdc;
@@ -2086,8 +2129,78 @@ th.mini-table__cell {
 .tabs-block__content[data-on] {
   display: block;
 }
-.betting-block {
-  border: 1px solid #ff0000;
+.bet-block__header {
+  text-align: center;
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #333333;
+  padding: 4px 0;
+  background: #eaeaea;
+  margin-bottom: 12px;
+}
+.bet-block__group {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 12px;
+}
+.bet-block__item {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-bottom: 1px solid #dcdcdc;
+}
+.bet-block__item-col {
+  display: table-cell;
+  height: 36px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'SkyTextMed';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #111111;
+  position: relative;
+}
+.bet-block__item-odds {
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #333333;
+  padding: 0 4px;
+  background: white;
+  position: relative;
+  z-index: 2;
+}
+.bet-block__item-home {
+  text-align: right;
+}
+.bet-block__item-draw {
+  width: 60px;
+}
+.bet-block__item-away {
+  text-align: left;
+  padding-right: 22px;
+}
+.bet-block__item-home > .bet-block__item-odds {
+  padding-left: 0;
+  position: absolute;
+  left: 0;
+}
+.bet-block__item-away > .bet-block__item-odds {
+  padding-right: 0;
+  position: absolute;
+  right: 0;
+}
+@supports (-moz-box-sizing: border-box) {
+  .bet-block__item-away > .bet-block__item-odds {
+    right: 12px;
+  }
 }
 .button {
   display: inline-block;
@@ -2363,8 +2476,11 @@ th.mini-table__cell {
     float: left;
     margin-bottom: 0;
   }
-  .feature-promo:nth-child(n+3) {
+  .feature-promo:nth-child(n+5) {
     display: none;
+  }
+  .feature-promo:nth-child(-n+2) {
+    margin-bottom: 12px;
   }
 }
 @media all and (max-width:600px) {
@@ -2374,7 +2490,7 @@ th.mini-table__cell {
   .feature-promo {
     margin-bottom: 12px;
   }
-  .feature-promo:nth-child(n+3) {
+  .feature-promo:nth-child(n+4) {
     display: none;
   }
   .feature-promo__figure {

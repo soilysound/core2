@@ -41,13 +41,26 @@
   line-height: 1.3
 }
 
+.video-block__snippet {
+
+  .secondary-headline(@text-m)
+}
+
 .video-block__body > .action-link {
   position: absolute;
   bottom: 6px
 }
 
-.video-block__body .label__timestamp {
-  .caption(@text-s)
+.video-block__body .label__timestamp{
+  .caption(@text-s);
+}
+
+.video-block__body .label__tag {
+  .label(@text-s);
+}
+
+.\-feature {
+  padding-bottom: 6px
 }
 
 @media all and (@bp10-max) {

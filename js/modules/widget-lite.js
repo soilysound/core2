@@ -7,10 +7,7 @@
     init: function(){
 
       this.scan();
-
-      setTimeout(function(){
-        this.scanUsingAnimationEvent();
-      }.bind(this), 500);
+      this.scanUsingAnimationEvent();
 
     },
 
@@ -74,7 +71,7 @@
     scanUsingAnimationEvent: function(){
 
       // add the animation css to the callfn elements
-      SKY_SPORTS.addCss('callfn', '.callfn {-webkit-animation:callfn 0.01s;-moz-animation:callfn 0.01s;animation:callfn 0.01s;}', false);
+      //SKY_SPORTS.addCss('callfn', '.callfn {-webkit-animation:callfn 0.01s;-moz-animation:callfn 0.01s;animation:callfn 0.01s;}', false);
 
       // then add the event listener, so it doesnt get run on first load
       document.addEventListener(SKY_SPORTS.hasFeature.animationEvent, function(e){

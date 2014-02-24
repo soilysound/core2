@@ -59,8 +59,16 @@
     margin-bottom: 0
   }
 
-  .feature-promo:nth-child(n+3) {
+  // only show 4 promos at tablet
+
+  .feature-promo:nth-child(n+5) {
     display: none
+  }
+
+  // ad margin bottom to 1 and 2
+  .feature-promo:nth-child(-n+2) {
+    margin-bottom: @component-gap-s
+
   }
 }
 
@@ -74,7 +82,7 @@
     margin-bottom: @component-gap-s;
   }
 
-  .feature-promo:nth-child(n+3) {
+  .feature-promo:nth-child(n+4) {
     display: none
   }
 

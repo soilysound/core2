@@ -5,7 +5,6 @@
 .matches__group {
   padding: 0;
   list-style: none;
-  margin-top: -3px;
   margin-bottom: @component-gap-s
 }
 
@@ -24,17 +23,16 @@
 }
 
 .matches__item-col {
-  display: table-cell;
-  height: @data-promo-row-height;
-  vertical-align: middle;
-  white-space: nowrap;
-  overflow: hidden
+
+  .data-promo-cell()
+
 }
 
 .matches__label,
 .matches__info {
   width: 38px;
-  .secondary-headline(@text-s)
+  .secondary-headline(@text-s);
+  text-align: left
 }
 
 .matches__info {
@@ -53,6 +51,10 @@
   text-align: right;
 }
 
+.matches__participant--side2 {
+  text-align: left;
+}
+
 // fixtures that are a team a vs team b score
 
 .matches__teamscores {
@@ -62,7 +64,7 @@
   border-collapse: seperate;
   border-spacing: 1px;
   padding: 0 4px;
-  text-indent: -100%
+  text-indent: -200%
 }
 
 .matches__date {
@@ -184,31 +186,60 @@
   }
 
   .matches__promo-event {
+
     padding-right: 0
+
   }
 
   .matches__promo-event-badge {
+
     width: 52px;
     position: absolute;
     right: 0;
     top: -12px;
+
   }
 
    .matches__promo-event-badge:first-child {
+
       left: 0;
+   }
+
+   .matches__promo-related-links {
+
+      padding:0;
+      margin-bottom: @component-gap-s;
+
    }
 
 }
 
 
 @media all and (@bp30-max) {
+
   .matches-block__match-list {
+
     padding: @island-padding-nobg-s;
+
   }
 
   .matches__promo {
+
     margin-bottom: 9px;
     padding-left: @bp30-site-margin;
+
+  }
+
+  .matches__promo-group {
+
+    margin-bottom: @component-gap-s
+
+  }
+
+  .matches__promo-related-links {
+
+    padding: 4px 0 0 @bp30-site-margin;
+
   }
 }
 
