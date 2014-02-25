@@ -1,7 +1,82 @@
-<style>
-@media all {
-	body {
-		background: green;
-	}
-}
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+  .p {
+    opacity: 0;
+    -webkit-transition: opacity 1s linear;
+    }
+
+    .ps-on {
+      background: black;
+      color: white
+    }
+    </style>
+  <script>
+    var selections = {
+      ps1: true,
+      ps4: true
+    }
+  </script>
+</head>
+<body>
+  <div style="300px;display inline-block">
+    <ul>
+      <li class="p ps1" id="p1">player 1
+      <li class="p ps2" id="p2">player 2
+      <li class="p ps3" id="p3">player 3
+      <li class="p ps4" id="p4">player 4
+      <li class="p ps5" id="p5">player 5
+    </ul>
+  </div>
+  <div style="100px;display inline-block; background: #eee;">
+     <ul>
+      <li class="ps" id="ps1">player 1
+      <li class="ps" id="ps2">player 2
+      <li class="ps" id="ps3">player 3
+      <li class="ps" id="ps4">player 4
+      <li class="ps" id="ps5">player 5
+    </ul>
+  </div>
+  <script>
+
+  function updateView(){
+
+    // loop through selections
+    for(item in selections){
+      
+      // show player in left view
+      if(selections[item] === false){
+        document.querySelector('.'+item).style.opacity = '0';
+        document.querySelector('#'+item).classList.remove('ps-on');
+      }
+
+      if(selections[item] === true){
+        document.querySelector('.'+item).style.opacity = '1';
+        document.querySelector('#'+item).classList.add('ps-on');
+      }
+    }
+    
+  }
+
+  var ps = document.querySelectorAll('.ps');
+
+  for(var i = -1;++i<ps.length;){
+    
+    ps[i].onclick = function(e){
+
+      selections[this.id] = selections[this.id] ? false : true;
+      updateView();
+    }
+
+  }
+
+  updateView();
+
+
+  </script>
+</body>
+</html>
