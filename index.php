@@ -55,7 +55,6 @@
   @media all and (max-width: 800px){
     .advert--banner {
       background-image: url(/_sandbox/banner-468x60.jpg);
-      position: fixed;
       z-index: 2;
       height: 80px;
       bottom: 0;
@@ -112,6 +111,9 @@
       <h1 class="page-header__title">
         Football
       </h1>
+      <a href="#" class="page-header__sponsor">
+        <span class="page-header__sponsor-text">Sponsorsed by</span> <img src="/_sandbox/ford-logo.png" class="page-header__sponsor-image">
+      </a>
     </div>
 
     <!-- page nav -->
@@ -135,7 +137,9 @@
           <!-- news list -->
            <!-- featured stories -->
           <div class="block-header is-hidden--bp5">
-            <h2 class="block-header__title"><a href="#" class="block-header__link">More News</a></h2>
+            <h2 class="block-header__title">
+              <a href="#" class="block-header__link">Latest News</a>
+            </h2>
             <a href="#link" class="block-header__related-link action-link">News Wire</a>
           </div>
 
@@ -144,24 +148,36 @@
           $type = "news-list-secondary--2cols";
           include "components/news-list.html"; ?>
 
+          <?php
+          $type = "news-list-secondary--2cols is-hidden--bp20 is-hidden--bp30";
+          include "components/news-list-secondary.html"; ?>
+
           <!-- matches block -->
-          <a href="#" class="block-header block-header--no-gap is-hidden--bp10 is-hidden--bp5">
-            <h2 class="block-header__title">Matches</h2>
-          </a>
+          <div class="block-header is-hidden--bp5 is-hidden--bp10">
+            <h2 class="block-header__title">
+              <a href="#" class="block-header__link">Matches</a>
+            </h2>
+          </div>
           <?php
             $display = "is-hidden--bp10 is-hidden--bp5";
             $matches_type = 'mini';
             include "components/matches-block.html";
            ?>
+
           <!-- feature promos -->
-          <a href="#" class="block-header is-hidden--bp10 is-hidden--bp5">
-            <h2 class="block-header__title">Don't Miss</h2>
-          </a>
+          <div class="block-header is-hidden--bp10 is-hidden--bp5">
+            <h2 class="block-header__title">
+              <a href="#" class="block-header__link">Don't Miss</a>
+            </h2>
+          </div>
           <?php include "components/feature-promos.html"; ?>
 
-          <a href="#" class="block-header">
-            <h2 class="block-header__title">Sky Bet</h2>
-          </a>
+           <div class="block-header">
+            <h2 class="block-header__title">
+              <a href="#" class="block-header__link">Sky Bet</a>
+            </h2>
+            <a href="#link" class="block-header__related-link action-link">More betting</a>
+          </div>
           <!-- hot picks -->
           <?php include "components/feature-block.html"; ?>
 
@@ -193,9 +209,11 @@
 
 
             <!-- matches block -->
-            <a href="#" class="block-header--aside block-header--no-gap">
-              <h2 class="block-header--aside__title">Featured Matches</h2>
-            </a>
+            <div class="block-header-aside">
+              <h2 class="block-header-aside__title">
+                <a class="block-header-aside__link">Matches</a>
+              </h2>
+            </div>
 
             <?php
               $display = "";
@@ -208,15 +226,19 @@
             </div>
 
             <!-- feature promos -->
-            <a href="#" class="block-header--aside block-header--no-gap">
-              <h2 class="block-header--aside__title">Don't Miss</h2>
-            </a>
+            <div class="block-header-aside block-header--no-gap">
+              <h2 class="block-header-aside__title">
+                <a class="block-header-aside__link">Don't Miss</a>
+              </h2>
+            </div>
             <?php include "components/feature-promos.html"; ?>
 
             <!-- mini table
-            <a href="#" class="block-header--aside">
-              <h2 class="block-header--aside__title">Premier League Table</h2>
-            </a>
+            <div class="block-header--aside">
+              <h2 class="block-header--aside__title">
+                <a href="#" class="block-header--aside__link">League table</a>
+              </h2>
+            </div>
             <?php include "components/tables-block.html"; ?>
             -->
 
@@ -229,31 +251,43 @@
       <div class="box site-layout-secondary">
 
          <!-- features block -->
-        <a href="#" class="block-header">
-          <h2 class="block-header__title">Features</h2>
-        </a>
+        <div class="block-header">
+          <h2 class="block-header__title">
+            <a href="#" class="block-header__link">Features</a>
+          </h2>
+          <a href="#link" class="block-header__related-link action-link">link</a>
+        </div>
         <?php
         $feature_block_type = "feature";
         include "components/video-block.html"; ?>
 
         <!-- video block -->
-        <a href="#" class="block-header">
-          <h2 class="block-header__title">Video</h2>
-        </a>
+        <div class="block-header">
+          <h2 class="block-header__title">
+            <a href="#" class="block-header__link">Video</a>
+          </h2>
+          <a href="#link" class="block-header__related-link action-link">link</a>
+        </div>
         <?php
         $feature_block_type = "video";
         include "components/video-block.html"; ?>
 
         <!-- opinion block -->
-        <a href="#" class="block-header">
-          <h2 class="block-header__title">Opinion</h2>
-        </a>
+        <div class="block-header">
+          <h2 class="block-header__title">
+            <a href="#" class="block-header__link">Opinion</a>
+          </h2>
+          <a href="#link" class="block-header__related-link action-link">link</a>
+        </div>
         <?php include "components/opinion-block.html"; ?>
 
         <!-- opinion block -->
-        <a href="#" class="block-header">
-          <h2 class="block-header__title">Photos</h2>
-        </a>
+       <div class="block-header">
+          <h2 class="block-header__title">
+            <a href="#" class="block-header__link">Photos</a>
+          </h2>
+          <a href="#link" class="block-header__related-link action-link">link</a>
+        </div>
         <?php include "components/photo-feature.html"; ?>
 
 

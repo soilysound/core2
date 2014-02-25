@@ -2,114 +2,248 @@
 // Site block content headers
 // ============================================================================
 
-.block-header,
-.block-header--aside {
-  display: block;
-  border-bottom: 1px solid @keyline;
-  position: relative;
-  margin-bottom: @component-gap-m
-}
-
-.block-header__title,
-.block-header__link {
-  .secondary-headline(@text-xxl);
-  display: block
-}
-
-.block-header__title {
-  position: relative;
-  top: -10px;
-  margin-bottom: -10px;
-  display: inline-block;
-  width: 99%
-}
-
-.block-header__related-link {
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-}
-
-.block-header:after,
-.block-header--aside:after {
-  text-align: right;
-  content: "\e052";
-  font-family: icons;
-  color: white;
-  display: inline-block;
-  position: absolute;
-  font-size: 0.8em;
-  top: 11px;
-  right: @bp30-site-margin;
-  width: 36px;
-  pointer-events: none;
-}
-
-// no margin bottom
-
-.block-header--no-gap {
-  margin-bottom: 0!important;
-}
-
 @media all and (@bp20-min){
-  
-  .block-header:after {
-    content: "";
-  }
-} 
 
-@media all and (@bp30-max){
+// at tablet and above the headers are layed out like this
 
   .block-header {
-    border: 0;
-    background: @sky-sports-blue;
-    margin-bottom: @component-gap-s;
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid;
+    border-bottom: 1px solid @keyline;
     position: relative;
+    margin-bottom: @component-gap-m;
   }
 
   .block-header__title {
-    overflow: hidden;
-    position: static;
-    white-space: nowrap;
-    margin: 0;
-    .secondary-headline(@text-l);
-    color: @off-white;
-    display: block;
+    .secondary-headline(@text-xxl);
+    display: table-cell;
+    width: 99%;
+    position: relative;
+    top: -1px;
   }
 
   .block-header__link {
-    .secondary-headline(@text-l);
-    color: @off-white;
-    padding: @island-padding-s;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    .secondary-headline(@text-xxl);
+    display: block;
   }
 
   .block-header__related-link {
+    vertical-align: middle;
+    display: table-cell;
+    white-space: nowrap
+  }
+
+  // hide mobile chevron
+
+  .block-header:after {
     display: none
   }
+
 }
 
 
-// block header used in shaded aside column
+@media all and (@bp30-max){
 
-.block-header--aside {
-  border: 0;
+  // on mobile the headers are a bold block with a chevron
+
+  .block-header {
+
+    background: @sky-sports-blue;
+    margin-bottom: @component-gap-s;
+    position: relative;
+
+  }
+
+
+  .block-header__title,
+  .block-header__link {
+    .secondary-headline(@text-l);
+
+    color: @off-white;
+    display: block;
+
+  }
+
+  .block-header__link {
+
+    padding: 4px 5px 4px @bp30-site-margin;
+
+  }
+
+
+  .block-header__related-link {
+
+    display: none;
+
+  }
+
+}
+
+// Aside header
+// Always sits in the shaded 'mpu' column on the right
+// Doesnt ever appear in the main column
+
+.block-header-aside {
+
   background: @sky-sports-red;
-  padding: @island-padding-s;
-  padding-top: 6px;
-  padding-bottom: 7px;
   margin-bottom: @component-gap-s;
+  position: relative;
+
 }
 
-.block-header--aside__title {
-  overflow: hidden;
-  position: static;
-  white-space: nowrap;
-  .primary-headline(@text-ml);
+.block-header-aside__title,
+.block-header-aside__link {
+
+  .secondary-headline(@text-l);
   color: @off-white;
-  margin: 0;
+  display: block;
+
 }
+
+.block-header-aside__link {
+
+  padding: 4px 5px 4px @bp30-site-margin;
+
+}
+
+.block-header-aside__related-link {
+
+  display: none;
+
+}
+
+ // add chevron to both versions
+
+.block-header:after,
+.block-header-aside:after {
+
+  font-size: 14px;
+  content: "\e052";
+  color: white;
+  font-family: icons;
+  position: absolute;
+  right: 9px;
+  top: 9px;
+
+}
+
+// remove margin
+
+.block-header--no-gap {
+
+  margin-bottom: 0
+
+}
+
+// .block-header,
+// .block-header--aside {
+//   display: block;
+//   border-bottom: 1px solid @keyline;
+//   position: relative;
+//   margin-bottom: @component-gap-m
+// }
+
+// .block-header__title,
+// .block-header__link {
+//   .secondary-headline(@text-xxl);
+//   display: block
+// }
+
+// .block-header__title {
+//   position: relative;
+//   top: -10px;
+//   margin-bottom: -10px;
+//   display: inline-block;
+//   width: 99%
+// }
+
+// .block-header__related-link {
+//   display: inline-block;
+//   vertical-align: middle;
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   height: 100%;
+// }
+
+// .block-header:after,
+// .block-header--aside:after {
+//   text-align: right;
+//   content: "\e052";
+//   font-family: icons;
+//   color: white;
+//   display: inline-block;
+//   position: absolute;
+//   font-size: 0.8em;
+//   top: 11px;
+//   right: @bp30-site-margin;
+//   width: 36px;
+//   pointer-events: none;
+// }
+
+// // no margin bottom
+
+// .block-header--no-gap {
+//   margin-bottom: 0!important;
+// }
+
+// @media all and (@bp20-min){
+
+//   .block-header:after {
+//     content: "";
+//   }
+// }
+
+// @media all and (@bp30-max){
+
+//   .block-header {
+//     border: 0;
+//     background: @sky-sports-blue;
+//     margin-bottom: @component-gap-s;
+//     position: relative;
+//   }
+
+//   .block-header__title {
+//     overflow: hidden;
+//     position: static;
+//     white-space: nowrap;
+//     margin: 0;
+//     .secondary-headline(@text-l);
+//     color: @off-white;
+//     display: block;
+//   }
+
+//   .block-header__link {
+//     .secondary-headline(@text-l);
+//     color: @off-white;
+//     padding: @island-padding-s;
+//     padding-top: 5px;
+//     padding-bottom: 5px;
+//   }
+
+//   .block-header__related-link {
+//     display: none
+//   }
+// }
+
+
+// // block header used in shaded aside column
+
+// .block-header--aside {
+//   border: 0;
+//   background: @sky-sports-red;
+//   padding: @island-padding-s;
+//   padding-top: 6px;
+//   padding-bottom: 7px;
+//   margin-bottom: @component-gap-s;
+// }
+
+// .block-header--aside__title {
+//   overflow: hidden;
+//   position: static;
+//   white-space: nowrap;
+//   .primary-headline(@text-ml);
+//   color: @off-white;
+//   margin: 0;
+// }

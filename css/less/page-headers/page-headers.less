@@ -1,13 +1,31 @@
 // page header
 
 .page-header {
-  border-bottom: 1px solid @keyline;
   padding: 13px 0 10px @bp30-site-margin
 }
 
 .page-header__title {
   .secondary-headline(@text-xxxl);
+}
 
+.page-header__sponsor {
+  position: absolute;
+  right: 12px;
+  top: 20px;
+  display: inline-block
+}
+
+.page-header__sponsor-image {
+  width: 92px;
+  height: 36px;
+  vertical-align: middle
+}
+
+
+.page-header__sponsor-text {
+  .secondary-headline(@text-m);
+  color: @text-secondary;
+  margin-right: 9px
 }
 
 @media all and (@bp20-max){

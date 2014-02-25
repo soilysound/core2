@@ -1,6 +1,7 @@
+// NAV PRIMARY DESKTOP
+
 .nav-primary-desktop-wrap {
-	background:@blue-light;
-	min-height: 51px
+	min-height: 52px
 }
 
 .nav-primary-desktop {
@@ -17,8 +18,9 @@
 }
 
 .nav-primary-desktop__col2 {
-	width: 336px;
+	width: 100px;
 	.no-flex();
+
 }
 
 .nav-primary-desktop__group {
@@ -34,13 +36,15 @@
 
 .nav-primary-desktop__link {
 	display: inline-block;
-	text-transform: uppercase;
-	padding: 13px 16px;
-	.primary-headline(@text-m);
+	padding: 13px;
+	.secondary-headline(@text-ml);
 	color: @off-white;
 }
 
+// dropdown menu on nav items
+
 // add dropdown icon
+
 .nav-primary__dropdown-link:after {
 	content:"\e079";
 	font-family: icons;
@@ -50,7 +54,20 @@
 	top: -1px
 }
 
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu {
+	visibility: visible;
+}
+
+.nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
+	opacity: 1
+}
+
+.nav-primary-desktop__item:hover {
+	background:  @nav-primary-desktop-color1
+}
+
 // dropdown menu
+
 .nav-primary-desktop__menu {
 	min-width: 500px;
 	height: 300px;
@@ -66,7 +83,7 @@
 }
 
 .nav-primary-desktop__menu-body {
-	background: @blue-mid;
+	background: @nav-primary-desktop-color1;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -75,6 +92,7 @@
 }
 
 // when the nav body is in 2 cols
+
 .nav-primary-desktop__menu-body > .grid__col1 {
 	width: 66%;
 	.no-flex();
@@ -89,42 +107,22 @@
 	.columns(2)!important;
 }
 
-.nav-primary-desktop__menu-links--1col{
+.nav-primary-desktop__menu-links--1col {
 	.columns(1)!important;
 }
 
-// add hover actions to open menu
-.nav-primary-desktop__item:hover {
-	background: @blue-mid;
+// hover action on nav items
+
+.nav-primary-desktop__link-body {
+	padding-bottom: 1px;
 }
 
-.nav-primary-desktop__item:hover > .nav-primary-desktop__menu {
-	visibility: visible;
+.nav-primary-desktop__link:hover > .nav-primary-desktop__link-body {
+	padding-bottom: 1px;
+	border-bottom: 2px solid white
 }
 
-.nav-primary-desktop__item:hover > .nav-primary-desktop__menu > .nav-primary-desktop__menu-body {
-	opacity: 1
-}
-
-// search box - @TODO - placeholder code only
-
-.nav-primary-search {
-	padding: @island-padding-s;
-	padding-bottom: 0;
-	padding-top: 0;
-	width: 100%;
-}
-
-.nav-primary-search-input {
-	display: inline-block;
-	width: 100%;
-	padding: 8px 12px;
-	.secondary-headline(@text-m);
-	border: 0;
-	background: rgba(0,0,0,0.15);
-	border-radius: @border-radius-s;
-	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1)
-}
+// menu links
 
 .nav-primary-desktop__menu-links {
 	position: absolute;
@@ -148,22 +146,75 @@
 	padding: 5px 8px;
 }
 
-// desktop nav search box
+// watch live button
 
-@media all and (@bp10-min){
-	.nav-primary-search-input,
-	.nav-primary-search-input::-webkit-input-placeholder {
-		color: rgba(255,255,255,0.8);
-	}
+.nav-primary__watch-now {
+
+	.primary-headline(@text-m);
+	color: white;
+	display: inline-block;
+	width: 100%;
+	padding: 2px 12px 3px;
+	background: @sky-sports-red;
+	border-radius: @border-radius-m
 
 }
+
+// search box - @TODO - placeholder code only
+
+.nav-primary-search {
+	padding-bottom: 0;
+	padding-top: 0;
+	width: 230px;
+	position: relative;
+	display: inline-block;
+}
+
+.nav-primary-search__input {
+	display: inline-block;
+	width: 100%;
+	padding: 8px 40px 8px 12px;
+	.secondary-headline(@text-m);
+	border: 0;
+	background: white;
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1)
+}
+
+.nav-primary-search-input:-webkit-input-placeholder,
+.nav-primary-search-input:-moz-placeholder,
+.nav-primary-search-input:-webkit-input-placeholder  {
+	color: @text-primary
+}
+
+.nav-primary-search__button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: @sky-sports-blue;
+	border: 0;
+	width: 35px;
+	height: 100%;
+	color: white;
+	font-family: icons;
+}
+
+.nav-primary-search__button:after {
+	content: "\e018";
+}
+
+.nav-primary-search__button-text {
+	display: none;
+}
+
+
+// desktop nav search box
 
 @media all and (@bp20-max){
   .nav-primary-desktop-wrap {
     display: none;
   }
 
-  .nav-primary-search-input {
+  .nav-primary-search__input {
   	padding: 10px 12px;
   }
 }
@@ -173,13 +224,13 @@
     margin-left: @bp30-site-margin * -1
   }
 
-  .nav-primary-search-input {
+  .nav-primary-search__input {
   	padding: 10px 12px;
   }
 }
 
 @media all and (max-width: 1024px){
-	.nav-primary-desktop .nav-primary-search-input {
+	.nav-primary-desktop .nav-primary-search__input {
 		width: 100px!important
 	}
 

@@ -20,12 +20,13 @@
 }
 
 .top-story__headline {
-  margin-bottom: @component-gap-m
+  margin-bottom: @component-gap-s;
+  margin-top: -4px;
+  line-height: 1.22;
 }
 
 .top-story__headline-link {
   .primary-headline(@text-xxxl);
-  line-height: 1.22;
 }
 
 .top-story__snippet {
@@ -71,19 +72,17 @@
     margin: -4px 0 7px;
   }
 
-  .top-story__snippet {
-    display: none
-  }
-
   .top-story__headline {
-    margin: 0;
-    padding: @island-padding-s;
+    margin: -1px 0 9px 0;
+    line-height: 1
   }
 
   .top-story__headline-link {
-    .primary-headline(@text-xxl);
-    padding-right: 32px;
-    line-height: 1.1
+    .primary-headline(@text-l);
+  }
+
+  .top-story__snippet {
+    display: none
   }
 
   // limit related links to 2 items for mobile
