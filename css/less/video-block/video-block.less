@@ -17,6 +17,23 @@
   padding-bottom: 56.25%
 }
 
+.video-block__play-overlay {
+  position: relative
+}
+.video-block__play-overlay:after {
+  content:"\e022";
+  font-family: icons;
+  display: block;
+  position: absolute;
+  color: white;
+  font-size: 36px;
+  bottom: 14px;
+  left: 12px;
+  line-height: 1;
+  pointer-events: none;
+  text-shadow: 0 0 3px black;
+}
+
 .video-block__image {
   position: absolute;
   width: 100%;

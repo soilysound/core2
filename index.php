@@ -153,7 +153,7 @@
           include "components/news-list-secondary.html"; ?>
 
           <!-- matches block -->
-          <div class="block-header is-hidden--bp5 is-hidden--bp10">
+          <div class="block-header block-header--no-gap is-hidden--bp5 is-hidden--bp10">
             <h2 class="block-header__title">
               <a href="#" class="block-header__link">Matches</a>
             </h2>
@@ -209,7 +209,7 @@
 
 
             <!-- matches block -->
-            <div class="block-header-aside">
+            <div class="block-header-aside block-header--no-gap">
               <h2 class="block-header-aside__title">
                 <a class="block-header-aside__link">Matches</a>
               </h2>

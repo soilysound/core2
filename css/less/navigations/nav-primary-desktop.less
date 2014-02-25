@@ -18,8 +18,9 @@
 }
 
 .nav-primary-desktop__col2 {
-	width: 100px;
+	width: 118px;
 	.no-flex();
+	padding-right: @bp30-site-margin;
 
 }
 
@@ -154,7 +155,7 @@
 	color: white;
 	display: inline-block;
 	width: 100%;
-	padding: 2px 12px 3px;
+	padding: 3px 12px 4px 12px;
 	background: @sky-sports-red;
 	border-radius: @border-radius-m
 
@@ -177,13 +178,18 @@
 	.secondary-headline(@text-m);
 	border: 0;
 	background: white;
-	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1)
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+	border-radius: 0
 }
 
-.nav-primary-search-input:-webkit-input-placeholder,
-.nav-primary-search-input:-moz-placeholder,
-.nav-primary-search-input:-webkit-input-placeholder  {
-	color: @text-primary
+.nav-primary-search__input::-webkit-input-placeholder {
+	color: @text-light
+}
+.nav-primary-search__input::-moz-placeholder  {
+	color: @text-light
+}
+.nav-primary-search__input:-ms-input-placeholder  {
+	color: @text-light
 }
 
 .nav-primary-search__button {

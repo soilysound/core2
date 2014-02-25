@@ -72,6 +72,7 @@
   .site-header__col3 {
     text-align: right;
     white-space: nowrap;
+    padding-right: 14px;
   }
 /* } */
 
