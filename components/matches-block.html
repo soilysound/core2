@@ -1,16 +1,3 @@
-<?php
-if(__FILE__ == $_SERVER['SCRIPT_FILENAME']){
-
-  //echo "not included";
-}
-
-else {
-
-  //echo "included";
-}
-
-?>
-
 <div class="matches-block block <?php echo $display ?>">
 
   <div class="matches__promo-group">
@@ -61,7 +48,15 @@ else {
 
   <? endif; ?>
 
+<? if($matches_type == 'mini') : ?>
 
+        <div class="block-header-aside">
+          <h2 class="block-header-aside__title">
+            <a class="block-header-aside__link">Fixtures</a>
+          </h2>
+        </div>
+
+      <? endif; ?>
   <div class="matches-block__match-list">
 
     <? if($matches_type == 'full') : ?>
@@ -69,6 +64,8 @@ else {
       <h4 class="matches__date-header">Serie A</h4>
 
       <? endif; ?>
+
+
 
       <ul class="matches__group">
         <li>
