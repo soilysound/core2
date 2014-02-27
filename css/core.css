@@ -1119,11 +1119,6 @@ img {
     font-size: 1rem;
     color: #333333;
   }
-  .nav-secondary-all__link:hover,
-  .nav-secondary-all__link--on {
-    background: #eaeaea;
-    border-radius: 3px;
-  }
   .nav-secondary-all__section {
     display: none;
   }
@@ -2160,7 +2155,7 @@ th.mini-table__cell {
   }
 }
 .block-header-aside {
-  background: #da2331;
+  background: #214cb8;
   margin-bottom: 12px;
   position: relative;
 }
