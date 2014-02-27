@@ -1,82 +1,125 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <style>
-  .p {
+<style>
+body {
+  overfldow: hidden
+}
+  img {
+    margin: 12px;
+    width: 500px;
+    height: 390px;
+    position: relative;
+    ddisplay: none;
+    opacity:1;
+    -webkit-transition: opacity 0.16s linear;
+
+  }
+
+  .lazy-load {
     opacity: 0;
-    -webkit-transition: opacity 1s linear;
-    }
+  }
 
-    .ps-on {
-      background: black;
-      color: white
-    }
-    </style>
-  <script>
-    var selections = {
-      ps1: true,
-      ps4: true
-    }
-  </script>
-</head>
-<body>
-  <div style="300px;display inline-block">
-    <ul>
-      <li class="p ps1" id="p1">player 1
-      <li class="p ps2" id="p2">player 2
-      <li class="p ps3" id="p3">player 3
-      <li class="p ps4" id="p4">player 4
-      <li class="p ps5" id="p5">player 5
-    </ul>
-  </div>
-  <div style="100px;display inline-block; background: #eee;">
-     <ul>
-      <li class="ps" id="ps1">player 1
-      <li class="ps" id="ps2">player 2
-      <li class="ps" id="ps3">player 3
-      <li class="ps" id="ps4">player 4
-      <li class="ps" id="ps5">player 5
-    </ul>
-  </div>
-  <script>
+</style>
 
-  function updateView(){
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
 
-    // loop through selections
-    for(item in selections){
-      
-      // show player in left view
-      if(selections[item] === false){
-        document.querySelector('.'+item).style.opacity = '0';
-        document.querySelector('#'+item).classList.remove('ps-on');
-      }
+<script>
+var tolerance = 100;
+var lazyImages = document.getElementsByClassName('lazy-load');
+document.currentBreakPoint = 5;
+function isInViewPort(element){
 
-      if(selections[item] === true){
-        document.querySelector('.'+item).style.opacity = '1';
-        document.querySelector('#'+item).classList.add('ps-on');
-      }
+  var rect = element.getBoundingClientRect();
+
+  
+  if(element.height === 0){
+
+    // display set to none
+    return false;
+  }
+  // check elements visisbility in the vewport top and bottom
+  if((window.innerHeight - rect.top) < (0 - tolerance)){
+
+    // off the bottom
+    return false;
+  }
+
+  if(rect.bottom < (0 - tolerance)){
+
+    // off the top
+    return false;
+  }
+
+  return true;
+}
+
+function switchSrc(image, newSrc){
+
+  image.src = newSrc;
+}
+
+
+function loadImage(image){
+
+
+  var dataSrc = image.getAttribute('data-src');
+
+  if(!dataSrc || !image.classList.contains('lazy-load')){
+    return;
+  }
+
+  image.onload = function(){
+    this.classList.remove('lazy-load')
+  }
+
+  var suggestedBreakPoint = dataSrc.match(/\#{(.+)}/);
+
+  // there's a suggested breakpoint token, so swap the path in the data-src to one closer to current breakpoint
+  if(suggestedBreakPoint){
+
+    var breakPointToken = suggestedBreakPoint[0];
+    var breakPoint = parseInt(suggestedBreakPoint[1], 10);
+
+    if(document.currentBreakPoint > breakPoint){
+      breakPoint = document.currentBreakPoint;
     }
+     
+    dataSrc = dataSrc.replace(breakPointToken, breakPoint);
     
   }
 
-  var ps = document.querySelectorAll('.ps');
+  switchSrc(image, dataSrc);
 
-  for(var i = -1;++i<ps.length;){
-    
-    ps[i].onclick = function(e){
 
-      selections[this.id] = selections[this.id] ? false : true;
-      updateView();
+}
+
+function scan(){
+
+  for(var i = -1; ++i<lazyImages.length;){
+
+    var image = lazyImages[i];
+
+    if(isInViewPort(image)){
+      loadImage(image);
+    }
+
+    else {
+      continue;
     }
 
   }
+ 
+  setTimeout(function(){
+    window.requestAnimationFrame(scan)
+  }, 1000)
 
-  updateView();
+}
 
-
-  </script>
-</body>
-</html>
+scan();
+</script>
