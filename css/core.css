@@ -957,7 +957,6 @@ img {
   color: #333333;
   border: 0;
   background: white;
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 0;
 }
 .nav-primary-search__input::-webkit-input-placeholder {
@@ -1182,6 +1181,7 @@ img {
     font-size: 1.375rem;
     color: #333333;
     color: #ffffff;
+    white-space: nowrap;
   }
   .nav-secondary-all__frame {
     position: absolute;
@@ -1226,6 +1226,56 @@ img {
     -moz-transition: -moz-transform 0.33s ease-in-out;
     transition: transform 0.33s ease-in-out;
   }
+}
+.nav-secondary-all__finder {
+  float: right;
+  margin-right: 14px;
+}
+.nav-secondary-all__finder > .nav-primary-search {
+  width: 218px;
+  top: 3px;
+  border: 1px solid #dcdcdc;
+}
+.nav-secondary-all__finder .nav-primary-search__input {
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #333333;
+}
+.nav-primary-search__input:focus ~ .nav-primary-search__autocomplete,
+.nav-primary-search__autocomplete:hover {
+  visibility: visible;
+}
+.nav-secondary-all__finder .nav-primary-search__button {
+  background: 0;
+  color: #cccccc;
+}
+.nav-primary-search__autocomplete {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  visibility: hidden;
+  background: white;
+  border: 1px solid #dcdcdc;
+}
+.nav-primary-search__autocomplete-item {
+  border-bottom: 1px solid #dcdcdc;
+  list-style: none;
+}
+.nav-primary-search__autocomplete-item:nth-child(n+6) {
+  display: none;
+}
+.nav-primary-search__autocomplete-link {
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #333333;
+  line-height: 1.1;
+  white-space: nowrap;
+  display: block;
+  padding: 5px 11px;
 }
 @media all and (max-width:600px) {
   .nav-secondary-all__title-link:before {
@@ -2310,6 +2360,32 @@ th.mini-table__cell {
 }
 .button--block {
   display: block;
+}
+.select-box {
+  display: inline-block;
+  position: relative;
+  width: 72px;
+}
+.select-box__select {
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #333333;
+  -webkit-appearance: none;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+}
+.select-box:after {
+  content: "\e079";
+  font-family: icons;
+  font-size: 10px;
+  position: absolute;
+  right: 9px;
+  top: 5px;
+  pointer-events: none;
 }
 .news-list-featured__item {
   margin-bottom: 18px;

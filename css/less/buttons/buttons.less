@@ -16,5 +16,31 @@
 .button--block {
 
   display: block;
-  
+
+}
+
+.select-box {
+  display: inline-block;
+  position: relative;
+  width: 72px
+}
+
+.select-box__select {
+
+  .secondary-headline(@text-m);
+  -webkit-appearance: none;
+  border:0;
+  cursor:pointer;
+  display:inline-block;
+  width:100%
+}
+
+.select-box:after {
+  content:"\e079";
+  font-family:icons;
+  font-size: 10px;
+  position: absolute;
+  right:9px;
+  top: 5px;
+  pointer-events: none;
 }

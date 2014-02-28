@@ -140,7 +140,7 @@
             <h2 class="block-header__title">
               <a href="#" class="block-header__link">Latest News</a>
             </h2>
-            <a href="#link" class="block-header__related-link action-link">News Wire</a>
+            <a href="#link" class="block-header__related-link action-link">More News</a>
           </div>
 
 

@@ -19,32 +19,16 @@
   </head>
 
   <body>
-  <div style="float:left;margin:10px;width:320px;background:#eee;padding:12px">
-    Full version for football live blog
-    <?php
-    $matches_type = 'full';
-    include "../components/matches-block.html"
-    ?>
-
-  </div>
-
-   <div style="float:left;margin:10px;width:320px;background:#eee;padding:12px">
-    mini version for footy homepage
-    <?php
-    $matches_type = 'mini';
-    include "../components/matches-block.html"
-    ?>
-
-  </div>
-
-  <div style="float:left;margin:10px;width:320px;background:#eee;padding:12px">
-    mini table
-    <?php
-    $matches_type = 'mini';
-    include "../components/tables-block.html"
-    ?>
-
-  </div>
+  <div class="nav-primary-search">
+          <input class="nav-primary-search__input" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Find Teams &amp; Competitions">
+          <button type="submit" class="nav-primary-search__button"><span class="nav-primary-search__button-text">submit</span></button>
+          <div class="nav-primary-search_autocomplete">
+            <ul>
+              <li>Leeds United
+              <li>Manchester City
+            </ul>
+          </div>
+        </div>
   </body>
   <script src="/js/site.js"></script>
 
