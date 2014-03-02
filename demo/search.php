@@ -16,6 +16,11 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="/css/core.css" type="text/css">
     <script src="/js/head.js"></script>
+    <style>
+    .item-on {
+      background:#aaa;
+      }
+      </style>
   </head>
 
   <body>
@@ -31,18 +36,35 @@
   </body>
   <script src="/js/site.js"></script>
 <script>
-<?php
-  include "search-lookup.json";
+var searchTerms;
+var script = document.createElement('script');
+window.callback = function(json){
+  searchTerms = json;
+}
 
-?>
+script.src = 'http://www1.skysports.com/watch/video/search?callback=callback';
+document.head.appendChild(script);
+
+
  var input = document.querySelector('.nav-primary-search__input');
 var autocomplete = document.querySelector('.nav-primary-search__autocomplete ul');
-
+var links = autocomplete.getElementsByTagName('a');
 
   function buildList(matches){
     var html = '';
     for(var i = -1;++i<matches.length;){
-      html += '<li class="nav-primary-search__autocomplete-item"><a class="nav-primary-search__autocomplete-link" href="'+matches[i].itemLink+'">' + matches[i].t + '<br><small>' +  matches[i].itemLabel + '</small></a></li>';
+      var onClass = '';
+      if(i===0){
+        onClass = 'item-on';
+      };
+
+
+      if(matches[i].error === true){
+        html = "<li>NO MATCHES</li>";
+      }
+      else {
+      html += '<li class="nav-primary-search__autocomplete-item"><a class="'+onClass+' nav-primary-search__autocomplete-link" href="'+matches[i].itemLink+'">' + matches[i].t + '<br><small>' +  matches[i].itemLabel + '</small></a></li>';
+    }
     }
 
     autocomplete.innerHTML = html;
@@ -53,6 +75,18 @@ var autocomplete = document.querySelector('.nav-primary-search__autocomplete ul'
 
   var matches = [];
   input.addEventListener('keyup', function(e){
+    if(e.keyCode > 36 && e.keyCode < 41){
+      return;
+    }
+
+    if(e.keyCode === 13){
+      var selected = autocomplete.querySelector('.item-on');
+      if(selected){
+        location.href = selected.href;
+        return;
+      }
+    }
+
     matches = [];
     var searchTerm = e.target.value;
     if(searchTerm.length < 1){
@@ -68,25 +102,47 @@ var autocomplete = document.querySelector('.nav-primary-search__autocomplete ul'
       }
 
     }
-
+    if(matches.length){
     buildList(matches);
+  }
+  else {
+    buildList([{t:'NO MATCHES', error:true}])
+  }
   }, false);
 
   input.addEventListener('keydown', function(e){
-
-    if(e.keyCode === 9){
-      console.log('tab');
-    }
+     if(e.keyCode !== 38 && e.keyCode !== 40){
+      return;
+     }
+     var visibleItems = [];
+     for(var i = -1;++i<links.length;){
+      if(links[i].offsetWidth){
+        visibleItems.push(links[i])
+      }
+     }
+    
+    var iterator = 1;
+    var reset = 0;
 
     if(e.keyCode === 38){
-      console.log('arrow up');
+      iterator = -1;
+      reset = visibleItems.length - 1;
     }
 
-    if(e.keyCode === 40){
-      console.log('arrow down');
-    }
-
-
+  
+       for(var i = -1;++i<visibleItems.length;){
+        
+        if(visibleItems[i].classList.contains('item-on')){
+          visibleItems[i].classList.remove('item-on');
+          if(visibleItems[i + iterator]){
+            visibleItems[i + iterator].classList.add('item-on');
+          }
+          else {
+            visibleItems[reset].classList.add('item-on');
+          }
+          break;
+        }
+      }
 
   })
 

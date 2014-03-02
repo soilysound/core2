@@ -30,8 +30,12 @@ body {
 <img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
 
 <script>
+
 var tolerance = 100;
-var lazyImages = document.getElementsByClassName('lazy-load');
+
+//get a live node list which auto updates as images are added to the page
+var lazyImages = document.getElementsByClassName ? document.getElementsByClassName('lazy-load') : document.getElementsByTagName('img');
+
 document.currentBreakPoint = 5;
 function isInViewPort(element){
 
