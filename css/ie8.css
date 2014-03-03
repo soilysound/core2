@@ -143,6 +143,12 @@
   }
 /* } */
 
+/* @media all and (min-width:801px) { */
+  .search-box__autocomplete-item:nth-child(n+6) {
+    display: none;
+  }
+/* } */
+
 /* @media all and (min-width:601px) { */
   .news-list__body .label__tag {
     font-family: 'SkyTextReg';

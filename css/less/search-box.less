@@ -1,0 +1,108 @@
+// SEARCH BOX
+// Search box with opional autocomplete/finder
+// ============================================================================
+
+.search-box {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  border: 1px solid @keyline;
+  min-width: 200px;
+}
+
+.search-box__input {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 40px 8px 12px;
+  .secondary-headline(@text-m);
+  border: 0;
+  background: white;
+  border-radius: 0
+}
+
+.search-box__button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: @sky-sports-blue;
+  border: 0;
+  width: 35px;
+  height: 100%;
+  color: white;
+  font-family: icons;
+}
+
+.search-box__button:after {
+  content: "\e018";
+}
+
+.search-box__button-text {
+  display: none;
+}
+
+// AUTOCOMPLETE RESULTS
+
+.search-box__autocomplete {
+  position: absolute;
+  top: 100%;
+  border: 1px solid @keyline;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  .transition(opacity 0.166s linear)
+}
+
+.search-box__autocomplete-group {
+  list-style: none;
+  padding: 0;
+}
+
+.search-box__autocomplete-item {
+  border-bottom: 1px solid @keyline
+}
+
+.search-box__autocomplete-link {
+  line-height: 1.1;
+  white-space: nowrap;
+  display: block;
+  padding:5px 11px;
+  position: relative
+}
+
+// selected item
+.search-box__autocomplete-link[selected],
+.search-box__autocomplete-link:hover {
+  background: @dark-bg
+}
+
+.search-box__autocomplete-link-headline {
+  .primary-headline(@text-m);
+}
+
+.search-box__autocomplete-link-label {
+  .secondary-headline(@text-s);
+}
+
+// show autocomplete results when the input box is focused and when the div is hovered
+.search-box__input:focus ~ .search-box__autocomplete,
+.search-box__autocomplete:hover {
+  opacity:1;
+  visibility: visible;
+}
+
+// SET NUMBER OF ITEMS VISIBLE PER BREAKPOINT
+@media all and (@bp10-min){
+
+  // show 5 for 'desktop'
+  .search-box__autocomplete-item:nth-child(n+6){
+    display: none
+  }
+}
+
+@media all and (@bp20-max){
+
+  // show 5 for 'desktop'
+  .search-box__autocomplete-item:nth-child(n+3){
+    display: none
+  }
+}

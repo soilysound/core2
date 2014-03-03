@@ -17,14 +17,15 @@
     <link rel="stylesheet" href="/css/core.css" type="text/css">
     <script src="/js/head.js"></script>
     <style>
-    .item-on {
-      background:#aaa;
+    .nav-primary-search__autocomplete-link-selected {
+      background:pink;
       }
       </style>
   </head>
 
   <body>
-  <div class="nav-primary-search callfn" data-lite="true" data-fn="autocomplete-lite" data-src="http://www1.skysports.com/watch/video/search?callback=#{callback}">
+
+<!--   <div class="nav-primary-search callfn" data-lite="true" data-fn="autocomplete-lite" data-src="http://www1.skysports.com/watch/video/search?callback=#{callback}">
     <input class="nav-primary-search__input" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Find Teams &amp; Competitions">
     <button type="submit" class="nav-primary-search__button"><span class="nav-primary-search__button-text">submit</span></button>
     <div class="nav-primary-search__autocomplete">
@@ -32,7 +33,22 @@
 
       </ul>
     </div>
+  </div> -->
+  <br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <div class="search-box callfn" data-lite="true" data-fn="autocomplete-lite" data-src="http://www1.skysports.com/watch/video/search?callback=#{callback}">
+    <input id="search-box-1" class="search-box__input" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Find Teams &amp; Competitions">
+    <button type="submit" class="search-box__button"><span class="search-box__button-text">submit</span></button>
+    <div class="search-box__autocomplete">
+      <ul class="search-box__autocomplete-group">
+        
+      </ul>
+    </div>
   </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p>dfsdfsg</p>
+
   </body>
   <script src="/js/site.js"></script>
 <script>

@@ -12,6 +12,9 @@ define('autocomplete-lite', ['underscore', 'widget-lite'], function(_, widgetLit
 
     noMatchesMessage: "NO MATCHES",
 
+    // index of the selected item in the matching list
+    selectedIndex: -1,
+
     // initiate the autocomplete module
     init: function(element, data){
 
@@ -33,21 +36,35 @@ define('autocomplete-lite', ['underscore', 'widget-lite'], function(_, widgetLit
       // bind some ui actions to the input box
       this.input.addEventListener('keydown', this._bindUiActions.bind(this), false);
 
+      // hash to the focused input box if it has an id
+      this.input.addEventListener('focus', function(){
+
+        if(this.input.id){
+          location.hash = this.input.id;
+        }
+
+      }.bind(this), false);
 
     },
 
     _getElements: function(){
 
-      this.input = this.element.querySelector('.nav-primary-search__input');
-      this.autocomplete = this.element.querySelector('.nav-primary-search__autocomplete ul');
-      this.links = this.autocomplete.getElementsByTagName('a');
+      this.input = this.element.querySelector('.search-box__input');
+      this.resultsCon = this.element.querySelector('.search-box__autocomplete-group');
+      this.links = this.resultsCon.getElementsByTagName('a');
 
     },
 
     _bindUiActions: function(e){
 
+
       // we're only interested in the user using the arrow keys here so if they aren't, bail out
       if(e.keyCode !== 38 && e.keyCode !== 40){
+        return;
+      }
+
+      // there are no results so bail out
+      if(this.matches[0].error){
         return;
       }
 
@@ -60,34 +77,30 @@ define('autocomplete-lite', ['underscore', 'widget-lite'], function(_, widgetLit
         }
       }
 
-      console.log(visibleItems);
-
-      // to go down, we add one each time and reset to 0 when we reach the bottom
-      var iterator = 1;
-      var reset = 0;
 
       // if were going up then the iterator is minus 1 and we go to the end of the list at the top
       if(e.keyCode === 38){
-        iterator = -1;
-        reset = visibleItems.length - 1;
-      }
-
-      //loop through our list and either go back or forward when the user hits up and down
-      for(var i = -1;++i<visibleItems.length;){
-
-        if(visibleItems[i].classList.contains('item-on')){
-          visibleItems[i].classList.remove('item-on');
-
-          if(visibleItems[i + iterator]){
-            visibleItems[i + iterator].classList.add('item-on');
-          }
-          else {
-            visibleItems[reset].classList.add('item-on');
-          }
-
-          break;
+        this.selectedIndex--;
+        if(this.selectedIndex < 0){
+          this.selectedIndex = visibleItems.length -1;
         }
       }
+
+      // if we're going down we add one and go back to 0 if we reach the end
+      if(e.keyCode === 40){
+        this.selectedIndex++;
+        if(this.selectedIndex > visibleItems.length -1){
+          this.selectedIndex = 0;
+        }
+      }
+
+      //loop through our list and remove selected items
+      for(i = -1;++i<visibleItems.length;){
+        visibleItems[i].removeAttribute('selected');
+      }
+
+      // add new selected item
+      visibleItems[this.selectedIndex].setAttribute('selected', true);
 
     },
 
@@ -101,8 +114,9 @@ define('autocomplete-lite', ['underscore', 'widget-lite'], function(_, widgetLit
       // if user hits return:
       // try to go to the link that is currently highlighted in the list of matches
       if(e.keyCode === 13){
-        var selected = this.autocomplete.querySelector('.item-on');
+        var selected = this.resultsCon.querySelector('[selected]');
         if(selected){
+          this.input.value = selected.querySelector('.search-box__autocomplete-link-headline').innerText;
           location.href = selected.href;
           return;
         }
@@ -111,16 +125,20 @@ define('autocomplete-lite', ['underscore', 'widget-lite'], function(_, widgetLit
       // get current search term in the input box
       var query = e.target.value;
 
-      //if search term length is zero, nuke the list with an empty array
+      // if search term length is zero, nuke the list with an empty array
       if(query.length < 1){
-        this._buildList([]);
+        this.matches = [];
+        this._buildList();
         return;
       }
+
+      // reset matches array
+      this.matches = [];
 
       // loop through list of matching search terms
       for(var i = -1; ++i < this.searchTerms.terms.length;){
 
-        //get term
+        // get term
         var term = this.searchTerms.terms[i];
 
         // create regex to try match
@@ -135,12 +153,13 @@ define('autocomplete-lite', ['underscore', 'widget-lite'], function(_, widgetLit
 
       // if we have any matches, built the list and show the matching terms
       if(this.matches.length){
-        this._buildList(this.matches);
+        this._buildList();
       }
 
       // else sent an error message to the list
       else {
-        this._buildList([{error:true}]);
+        this.matches = [{error: true}];
+        this._buildList();
       }
 
     },
@@ -150,22 +169,18 @@ define('autocomplete-lite', ['underscore', 'widget-lite'], function(_, widgetLit
       var html = '';
       for(var i = -1;++i<this.matches.length;){
 
-        var onClass = '';
-
-        if(i===0){
-          onClass = 'nav-primary-search__autocomplete-link-selected';
-        }
-
         if(this.matches[i].error === true){
-          html = "<li>"+ this.noMatchesMessage + "</li>";
+          html = '<li class="search-box__autocomplete-item search-box__autocomplete-item--error">' + this.noMatchesMessage + '</li>';
+          break;
         }
 
         else {
-          html += '<li class="nav-primary-search__autocomplete-item"><a class="'+ onClass+ ' nav-primary-search__autocomplete-link" href="'+this.matches[i].itemLink+'">' + this.matches[i].t + '<br><small>' +  this.matches[i].itemLabel + '</small></a></li>';
+          html += '<li class="search-box__autocomplete-item"><a class="search-box__autocomplete-link" href="'+this.matches[i].itemLink+'"><h5 class="search-box__autocomplete-link-headline">' + this.matches[i].t + '</h5><p class="search-box__autocomplete-link-label">' +  this.matches[i].itemLabel + '</p></a></li>';
         }
       }
 
-      this.autocomplete.innerHTML = html;
+      this.resultsCon.innerHTML = html;
+      this.selectedIndex = -1;
     },
 
     _getData: function(){

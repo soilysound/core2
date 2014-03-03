@@ -1437,6 +1437,101 @@ img {
     color: #666666;
   }
 }
+.search-box {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  border: 1px solid #dcdcdc;
+  min-width: 200px;
+}
+.search-box__input {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 40px 8px 12px;
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #333333;
+  border: 0;
+  background: white;
+  border-radius: 0;
+}
+.search-box__button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #214cb8;
+  border: 0;
+  width: 35px;
+  height: 100%;
+  color: white;
+  font-family: icons;
+}
+.search-box__button:after {
+  content: "\e018";
+}
+.search-box__button-text {
+  display: none;
+}
+.search-box__autocomplete {
+  position: absolute;
+  top: 100%;
+  border: 1px solid #dcdcdc;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.166s linear;
+  -moz-transition: opacity 0.166s linear;
+  transition: opacity 0.166s linear;
+}
+.search-box__autocomplete-group {
+  list-style: none;
+  padding: 0;
+}
+.search-box__autocomplete-item {
+  border-bottom: 1px solid #dcdcdc;
+}
+.search-box__autocomplete-link {
+  line-height: 1.1;
+  white-space: nowrap;
+  display: block;
+  padding: 5px 11px;
+  position: relative;
+}
+.search-box__autocomplete-link[selected],
+.search-box__autocomplete-link:hover {
+  background: #eaeaea;
+}
+.search-box__autocomplete-link-headline {
+  font-family: 'SkyTextMed';
+  font-weight: normal;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #111111;
+}
+.search-box__autocomplete-link-label {
+  font-family: 'SkyTextReg';
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: #333333;
+}
+.search-box__input:focus ~ .search-box__autocomplete,
+.search-box__autocomplete:hover {
+  opacity: 1;
+  visibility: visible;
+}
+@media all and (min-width:801px) {
+  .search-box__autocomplete-item:nth-child(n+6) {
+    display: none;
+  }
+}
+@media all and (max-width:800px) {
+  .search-box__autocomplete-item:nth-child(n+3) {
+    display: none;
+  }
+}
 .accordian__item {
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
