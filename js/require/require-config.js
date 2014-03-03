@@ -1,6 +1,7 @@
 require.config({
 	baseUrl: "/js",
 	paths: {
+    "autocomplete-lite": "modules/autocomplete-lite",
     "adaptive-html": "modules/adaptive-html",
     "fastclick": "vendor/fastclick",
     "nav-secondary-all": "modules/nav-secondary-all",

@@ -15,14 +15,21 @@
         <li class="nav-secondary-all__item"><a href="#" class="nav-secondary-all__link">Fixtures</a></li>
         <li class="nav-secondary-all__item"><a href="#" class="nav-secondary-all__link">Results</a></li>
         <li class="nav-secondary-all__item"><a href="#" class="nav-secondary-all__link">Tables</a></li>
+        <li class="nav-secondary-all__item is-hidden--bp10"><a href="http://www1.skysports.com/football/teams/" class="nav-secondary-all__link">Teams</a></li>
+        <li class="nav-secondary-all__item is-hidden--bp10"><a href="http://www1.skysports.com/football/teams/" class="nav-secondary-all__link">Competitions</a></li>
         <li class="nav-secondary-all__item"><a href="#" class="nav-secondary-all__link">Video</a></li>
         <li class="nav-secondary-all__item"><a href="#" class="nav-secondary-all__link">Score Centre</a></li>
         <li class="nav-secondary-all__item"><a href="#" class="nav-secondary-all__link">Opinion</a></li>
         <li class="nav-secondary-all__item"><a href="#" class="nav-secondary-all__link">Bet</a></li>
-        <li class="nav-secondary-all__item nav-secondary-all__finder">
+        <li class="nav-secondary-all__finder is-hidden--bp30 is-hidden--bp20">
         <div class="nav-primary-search">
-          <input class="nav-primary-search__input" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Find Teams &amp; Competitions">
+          <input class="nav-primary-search__input" id="autocomplete" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Find Teams &amp; Competitions">
           <button type="submit" class="nav-primary-search__button"><span class="nav-primary-search__button-text">submit</span></button>
+           <div class="nav-primary-search__autocomplete">
+            <ul>
+
+            </ul>
+          </div>
 
         </div>
 

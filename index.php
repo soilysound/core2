@@ -155,7 +155,7 @@
           <!-- matches block -->
           <div class="block-header block-header--no-gap is-hidden--bp5 is-hidden--bp10">
             <h2 class="block-header__title">
-              <a href="#" class="block-header__link">Live on Sky</a>
+              <a href="http://www1.skysports.com/watch/sport-on-sky" class="block-header__link">Live on Sky</a>
             </h2>
           </div>
           <?php
@@ -211,7 +211,7 @@
             <!-- matches block -->
             <div class="block-header-aside block-header--no-gap">
               <h2 class="block-header-aside__title">
-                <a class="block-header-aside__link">Live on Sky</a>
+                <a class="block-header-aside__link" href="http://www1.skysports.com/watch/sport-on-sky">Live on Sky</a>
               </h2>
             </div>
 
@@ -255,7 +255,7 @@
           <h2 class="block-header__title">
             <a href="#" class="block-header__link">Features</a>
           </h2>
-          <a href="#link" class="block-header__related-link action-link">link</a>
+          <a href="#link" class="block-header__related-link action-link">More features</a>
         </div>
         <?php
         $feature_block_type = "feature";
@@ -266,7 +266,7 @@
           <h2 class="block-header__title">
             <a href="#" class="block-header__link">Video</a>
           </h2>
-          <a href="#link" class="block-header__related-link action-link">link</a>
+          <a href="#link" class="block-header__related-link action-link">More video</a>
         </div>
         <?php
         $feature_block_type = "video";
@@ -277,7 +277,7 @@
           <h2 class="block-header__title">
             <a href="#" class="block-header__link">Opinion</a>
           </h2>
-          <a href="#link" class="block-header__related-link action-link">link</a>
+          <a href="#link" class="block-header__related-link action-link">More opinion</a>
         </div>
         <?php include "components/opinion-block.html"; ?>
 
@@ -286,7 +286,7 @@
           <h2 class="block-header__title">
             <a href="#" class="block-header__link">Photos</a>
           </h2>
-          <a href="#link" class="block-header__related-link action-link">link</a>
+          <a href="#link" class="block-header__related-link action-link">More photos</a>
         </div>
         <?php include "components/photo-feature.html"; ?>
 
@@ -300,7 +300,9 @@
 
 </div>
 <?php include "components/site-footer.html"; ?>
-</body>
 <script src="/js/site.js"></script>
+<script src="/demo/autocomplete.js"></script>
+</body>
 
 </html>
+

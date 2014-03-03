@@ -6,7 +6,6 @@
     width: 100%;
     align: middle;
     white-space: nowrap;
-    overflow: hidden;
     padding: 4px 0;
     border-bottom: 1px solid @keyline;
     margin-bottom: @box-gap-s;
@@ -208,7 +207,7 @@
 
 .nav-secondary-all__finder .nav-primary-search__button {
   background: 0;
-  color: #ccc
+  color: #ccc;
 }
 
 .nav-primary-search__autocomplete {
@@ -217,7 +216,9 @@
   top: 100%;
   visibility: hidden;
   background: white;
-  border: 1px solid @keyline
+  border: 1px solid @keyline;
+  z-index: 2;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2)
 }
 .nav-primary-search__autocomplete-item {
   border-bottom: 1px solid @keyline;
@@ -232,9 +233,14 @@
   line-height: 1.1;
   white-space: nowrap;
   display: block;
-  padding:5px 11px
+  padding:5px 11px;
+  position: relative
 }
 
+
+.nav-primary-search__autocomplete-link-selected {
+  background: @light-bg
+}
 @media all and (@bp30-max){
 
   .nav-secondary-all__title-link:before {

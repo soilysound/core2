@@ -906,7 +906,7 @@ String.prototype.toDash = function(){
       //its an image, so get image attributes
       var attrs = image.dataset;
       var src = attrs.imageSrc;
-      console.log(src);
+      
       //if the image has no data-image then remove from loop and skip
       if(!src){
         image.classList.remove('postpone-load');
