@@ -138,9 +138,9 @@
            <!-- featured stories -->
           <div class="block-header is-hidden--bp5">
             <h2 class="block-header__title">
-              <a href="#" class="block-header__link">Latest News</a>
+              <a href="http://www1.skysports.com/news-wire/" class="block-header__link">Latest News</a>
             </h2>
-            <a href="#link" class="block-header__related-link action-link">More News</a>
+            <a href="http://www1.skysports.com/news-wire/" class="block-header__related-link action-link">More News</a>
           </div>
 
 

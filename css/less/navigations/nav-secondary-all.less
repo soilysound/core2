@@ -229,7 +229,7 @@
   display: none
 }
 .nav-primary-search__autocomplete-link {
-  .secondary-headline(@text-m);
+  .primary-headline(@text-m);
   line-height: 1.1;
   white-space: nowrap;
   display: block;
@@ -237,8 +237,13 @@
   position: relative
 }
 
+.nav-primary-search__autocomplete-link > small {
+   .secondary-headline(@text-m);
+}
 
-.nav-primary-search__autocomplete-link-selected {
+
+.nav-primary-search__autocomplete-link-selected,
+.nav-primary-search__autocomplete-link:hover {
   background: @light-bg
 }
 @media all and (@bp30-max){
