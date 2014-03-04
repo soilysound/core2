@@ -40,7 +40,7 @@
 
 /* @media all and (min-width:801px) { */
   .site-layout-secondary__col3 {
-    background: #f4f4f4;
+    background: #eeefef;
     padding: 18px 18px;
   }
 /* } */
@@ -98,7 +98,7 @@
     width: 100%;
   }
   .touch .nav-secondary-all__frame::-webkit-scrollbar {
-    background: #f4f4f4;
+    background: #eeefef;
     width: 9px;
     height: 9px;
   }
