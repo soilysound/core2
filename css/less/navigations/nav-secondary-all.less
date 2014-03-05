@@ -111,14 +111,17 @@
   }
 
 
-  .nav-secondary-all__title-link:before {
+  .nav-secondary-all__title-link:after {
     content: "\e079";
     font-family: icons;
-    font-size: 15px;
-    margin: 0 9px 0 6px;
+    font-size: 18px;
+    position: absolute;
+    right: 18px;
+    top: 15px
+
   }
 
-  .nav-secondary-all__head-on .nav-secondary-all__title-link:before {
+  .nav-secondary-all__head-on .nav-secondary-all__title-link:after {
     content: "\e07a";
   }
 
@@ -247,20 +250,23 @@
   background: @light-bg
 }
 @media all and (@bp30-max){
+  
 
-  .nav-secondary-all__title-link:before {
-    font-size: 12px;
-    margin: 0 7px 0 3px;
+  .nav-secondary-all__title-link:after {
+    font-size: 17px;
+    right: 14px;
+    position: absolute;
+    top: 12px
   }
 
   .nav-secondary-all__title-link {
-    padding: 8px 12px 9px 0;
+    padding: 7px 12px 8px 0;
   }
 
   .nav-secondary-all__title,
   .nav-secondary-all__title-link,
   .nav-secondary-all__section {
-    font-size: unit(@text-ml, px);
+    font-size: unit(21px, px);
   }
 
   .nav-secondary-all {
