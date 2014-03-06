@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Football Homepage</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Scorecentre">
+    <meta name="application-name" content="SkySports">
+    <meta name="viewport" id="viewport" content="width=device-width,maximum-scale=1,minimum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/core.css" type="text/css">
+    <script src="/js/head.js"></script>
+    <style>
+    .sec-nav {
+      outline:1px solid #ccc;
+      position: relative;
+    }
+
+ .sec-nav ul {
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  height: 42px;
+  padding-right: 70px
+ }
+    .sec-nav li {
+      display: inline-block;
+      font-size: 18px;
+      font-family: arial;
+      padding:8px 9px;
+      background: white
+
+    }
+
+.more {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  padding:8px 14px;
+  background: black;
+  color: white;
+  top: 0;
+  visibility: hidden;
+  z-index: 1000
+}
+
+.menu {
+  width: 200px;
+  height: 200px;
+  right:0;
+  top:100%;
+  visibility: hidden;
+  position: absolute;
+  background: black
+}
+
+.more:hover > .menu {
+  visibility: visible;
+}
+    </style>
+  </head>
+
+  <body>
+<div class="sec-nav">
+  <ul>
+    <li>News</li>
+    <li>Fixtures</li>
+    <li>Results</li>
+    <li>Teams A-Z</li>
+    <li>Leagues &amp; Cups</li>
+    <li>Tables</li>
+    <li>Live Scores</li>
+    <li>Betting</li>
+    <li>Pundits</li>
+  </ul>
+  <a href="#" class="more">more
+    <div class="menu"></div>
+  </a>
+</div>
+<script>
+  var li = document.getElementsByTagName('li');
+  var length = li.length - 1;
+  var more = document.querySelector('.more');
+  window.onresize = function(){
+    console.dir(li[length], li[length-1]);
+    if(li[length].offsetTop){
+      more.style.visibility = 'visible';
+    }
+    else {
+      more.style.visibility = "";
+    }
+  }
+</script>
+  </body>
+</html>
