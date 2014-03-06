@@ -138,9 +138,9 @@
            <!-- featured stories -->
           <div class="block-header is-hidden--bp5">
             <h2 class="block-header__title">
-              <a href="http://www1.skysports.com/news-wire/" class="block-header__link">Latest News</a>
+              <a href="http://www1.skysports.com/news-wire/11065" class="block-header__link">Latest News</a>
             </h2>
-            <a href="http://www1.skysports.com/news-wire/" class="block-header__related-link action-link">More News</a>
+            <a href="http://www1.skysports.com/news-wire/11065" class="block-header__related-link action-link">More News</a>
           </div>
 
 
@@ -165,9 +165,9 @@
            ?>
 
           <!-- feature promos -->
-          <div class="block-header is-hidden--bp10 is-hidden--bp5">
+          <div class="block-header is-hidden--bp10 is-hidden--bp5 block-header--nolink">
             <h2 class="block-header__title">
-              <a href="#" class="block-header__link">Don't Miss</a>
+              <a href="#" class="block-header__link">Around Sky Sports</a>
             </h2>
           </div>
           <?php include "components/feature-promos.html"; ?>
@@ -226,9 +226,9 @@
             </div>
 
             <!-- feature promos -->
-            <div class="block-header-aside block-header--no-gap">
+            <div class="block-header-aside block-header--no-gap block-header--nolink">
               <h2 class="block-header-aside__title">
-                <a class="block-header-aside__link">Don't Miss</a>
+                <a class="block-header-aside__link">Around Sky Sports</a>
               </h2>
             </div>
             <?php include "components/feature-promos.html"; ?>
