@@ -173,14 +173,14 @@
           </div>
           <?php include "components/feature-promos.html"; ?>
 
-          <!--  <div class="block-header">
+          <div class="block-header">
             <h2 class="block-header__title">
               <a href="#" class="block-header__link">Sky Bet</a>
             </h2>
             <a href="#link" class="block-header__related-link action-link">More betting</a>
-          </div> -->
+          </div>
           <!-- hot picks -->
-          <?php //include "components/feature-block.html"; ?>
+          <?php include "components/feature-block.html"; ?>
 
 
         </div>
