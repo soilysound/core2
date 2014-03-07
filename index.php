@@ -91,10 +91,11 @@
 <div class="message">
   This prototype should be viewed in chrome on a desktop and IOS on a mobile device
 </div>
-<!-- site header -->
-<?php include "components/site-header.html"; ?>
 
 <div class="advert--banner"></div>
+
+<!-- site header -->
+<?php include "components/site-header.html"; ?>
 
 <div class="wrap">
 
@@ -172,19 +173,21 @@
           </div>
           <?php include "components/feature-promos.html"; ?>
 
-           <div class="block-header">
+          <!--  <div class="block-header">
             <h2 class="block-header__title">
               <a href="#" class="block-header__link">Sky Bet</a>
             </h2>
             <a href="#link" class="block-header__related-link action-link">More betting</a>
-          </div>
+          </div> -->
           <!-- hot picks -->
-          <?php include "components/feature-block.html"; ?>
+          <?php //include "components/feature-block.html"; ?>
 
 
         </div>
 
         <div class="grid__col site-layout-secondary__col2 callfn adaptive-html" data-fn="adaptive-html">
+
+
           <script type="html/template">
             <!-- secondary news list -->
             <?php
@@ -205,8 +208,26 @@
         </div>
 
         <div class="grid__col site-layout-secondary__col3 callfn adaptive-html" data-fn="adaptive-html">
-          <script type="html/template">
 
+          <script type="html/template">
+          <div class="nav-secondary-all__finder block">
+          <div class="block-header-aside block-header--nolink">
+              <h2 class="block-header-aside__title">
+                <a class="block-header-aside__link">Find your Team</a>
+              </h2>
+            </div>
+          <div class="nav-primary-search">
+            <input class="nav-primary-search__input" id="autocomplete" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Find Teams &amp; Competitions">
+            <button type="submit" class="nav-primary-search__button"><span class="nav-primary-search__button-text">submit</span></button>
+
+             <div class="nav-primary-search__autocomplete">
+              <ul>
+
+              </ul>
+            </div>
+
+          </div>
+          </div>
 
             <!-- matches block -->
             <div class="block-header-aside block-header--no-gap">
@@ -221,8 +242,8 @@
             ?>
 
             <!-- mpu -->
-            <div style="height:600px;background:#ccc;margin-bottom:24px">
-              <img src="_sandbox/halfpage-300x600.jpg" height="600">
+            <div style="height:530px;background:#ccc;margin-bottom:24px">
+              <img src="_sandbox/halfpage-300x600.jpg" height="530" width="300">
             </div>
 
             <!-- feature promos -->
@@ -301,7 +322,14 @@
 </div>
 <?php include "components/site-footer.html"; ?>
 <script src="/js/site.js"></script>
-<script src="/demo/autocomplete.js"></script>
+<script>
+  window.setTimeout(function(){
+    var script = document.createElement('script');
+    script.src = "/demo\/autocomplete.js";
+    document.body.appendChild(script);
+  }, 2000)
+</script>
+
 </body>
 
 </html>
