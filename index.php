@@ -296,9 +296,9 @@
         <!-- opinion block -->
         <div class="block-header">
           <h2 class="block-header__title">
-            <a href="#" class="block-header__link">Opinion</a>
+            <a href="#" class="block-header__link">Pundits</a>
           </h2>
-          <a href="#link" class="block-header__related-link action-link">More opinion</a>
+          <a href="#link" class="block-header__related-link action-link">More pundits</a>
         </div>
         <?php include "components/opinion-block.html"; ?>
 

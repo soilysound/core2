@@ -1170,9 +1170,9 @@ img {
   .nav-secondary-all__title-link:before {
     content: "more";
     position: absolute;
-    right: 32px;
-    top: 13px;
-    font-size: 12px;
+    right: 43px;
+    top: 19px;
+    font-size: 13px;
     color: #eeeeee;
   }
   .nav-secondary-all__head-on .nav-secondary-all__title-link:after {
@@ -1308,6 +1308,10 @@ img {
     right: 14px;
     position: absolute;
     top: 13px;
+  }
+  .nav-secondary-all__title-link:before {
+    right: 30px;
+    top: 12px;
   }
   .nav-secondary-all__title-link {
     padding: 7px 12px 8px 0;
