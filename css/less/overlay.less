@@ -1,0 +1,236 @@
+// OVERLAY
+// responsive overlay using css transitions
+// ========================================
+
+
+@bar-height-m: 46px;
+@overlay-background-color: white;
+
+.overlay {
+  width:100%;
+  height:100%;
+  display:table;
+  position:absolute;
+  z-index:100000;
+  background-color:rgba(0,0,0,0);
+  .transition(background-color 0.45s ease-in-out);
+}
+
+.overlay__wrap {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  .fix-flicker();
+  z-index:99999999;
+}
+
+.overlay__inner {
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center;
+  .transform(translateY(-101%));
+  -webkit-transition:-webkit-transform 0.5s ease-in-out 0.08s;
+  -moz-transition:-moz-transform 0.5s ease-in-out 0.08s;
+  transition:transform 0.5s ease-in-out 0.08s;
+  position:relative;
+}
+
+.overlay__body {
+  position:relative;
+  margin: auto;
+  background:@overlay-background-color;
+  height:95%;
+  height:-webkit-calc(~"95vh - 0px");
+  height:-moz-calc(~"95vh - 0px");
+  height:calc(~"95vh - 0px");
+  width:95%;
+  min-height:300px;
+  max-width:520px;
+  max-height:550px;
+  height:~"550px\0/";
+  box-shadow:0 0 6px rgba(0,0,0,0.8);
+}
+
+.overlay__header {
+  padding:0!important;
+  //box-shadow:0 3px 6px rgba(0,0,0,0.2);
+  //border-bottom:1px solid #ddd;
+  position:relative;
+  z-index:10;
+  background:@grey2;
+}
+
+.overlay__header > .col {
+  padding:2px 0 0 0;
+  text-align:center;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  .fs-l();
+  .text-h4;
+  height:@bar-height-m;
+}
+
+.overlay__title {
+
+}
+
+//container element for each scrolling content slot
+.overlay__content {
+  position:absolute;
+  top:@bar-height-m;
+  bottom:0;
+  width:100%;
+  overflow:auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: left
+}
+
+//content slot, scrolls independently
+.overlay__content-slot {
+  top:0;
+  position:absolute!important;
+  height:100%;
+  width:100%;
+  overflow:auto;
+  text-align:left;
+}
+
+// disable for android - too janky
+.android .overlay__content-slot {
+  -webkit-animation:none!important
+}
+
+.overlay__content-slot-inner {
+  padding:18px 12px;
+}
+
+.overlay__footer {
+  position:absolute;
+  bottom:0;
+  padding:0!important;
+  border-top:1px solid #aaa;
+  box-shadow:0 -3px 6px rgba(0,0,0,0.2);
+  z-index:10;
+  display: flex
+}
+
+.overlay__footer > .col {
+  height:@bar-height-m;
+  padding:0 12px!important;
+  color:@dark1;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  width: 33%;
+  display: flex;
+  align-items: center
+}
+
+.overlay__footer > .col3 {
+  direction:rtl;
+}
+
+.overlay__footer > .col > .icon {
+  top:1px;
+}
+
+.overlay__close {
+  cursor:pointer;
+}
+
+.overlay__close > .icon {
+  font-size:14px;
+  width:15px!important;
+  height:15px!important
+}
+
+// optional back and forward buttons
+.overlay__nav {
+  line-height:2;
+}
+
+.overlay__nav > .icon {
+  font-size:14px;
+}
+
+.overlay__nav--disabled {
+  background:none;
+  pointer-events:none;
+}
+
+.overlay__nav--disabled > .icon {
+  color:#aaa;
+}
+
+// when open
+.overlay--open {
+  // @TODO - add IE8 semi transparent background image here
+  background-color:rgba(0,0,0,0.6);
+}
+
+.overlay--open > .overlay__inner {
+  .transform(translateY(0));
+}
+
+
+
+// Remote record popup
+.-remote-record .overlay__content {
+  top:0
+}
+
+// remote record overlay
+.-remote-record .overlay__header {
+  background:none
+}
+
+.-remote-record .overlay__body {
+  width:323px;
+  height:323px;
+  background:none;
+  box-shadow:none
+
+}
+
+
+@media all and (max-width:800px) and (orientation:portrait){
+  .overlay__body {
+    max-width:95%;
+    width:95%!important
+  }
+}
+
+@media all and (max-width:600px){
+
+  .overlay__body {
+    max-height:650px!important;
+  }
+
+  .overlay--open {
+    background-color:rgba(0,0,0,0.2);
+  }
+
+  .overlay__header > .col {
+    .fs-ml()
+  }
+
+  .overlay__footer > .col {
+    padding:0 9px!important;
+  }
+
+  .overlay__footer > .col1,
+  .overlay__footer > .col3 {
+    width:45%;
+  }
+
+  .overlay__footer > .col2 {
+    width: 10%
+  }
+
+  .overlay__content-slot-inner {
+    padding:14px 12px 12px 12px;
+  }
+}
