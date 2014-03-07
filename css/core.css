@@ -1165,6 +1165,15 @@ img {
     position: absolute;
     right: 18px;
     top: 15px;
+    color: #eeeeee;
+  }
+  .nav-secondary-all__title-link:before {
+    content: "more";
+    position: absolute;
+    right: 32px;
+    top: 13px;
+    font-size: 12px;
+    color: #eeeeee;
   }
   .nav-secondary-all__head-on .nav-secondary-all__title-link:after {
     content: "\e07a";
@@ -1295,10 +1304,10 @@ img {
 }
 @media all and (max-width:600px) {
   .nav-secondary-all__title-link:after {
-    font-size: 17px;
+    font-size: 12px;
     right: 14px;
     position: absolute;
-    top: 12px;
+    top: 13px;
   }
   .nav-secondary-all__title-link {
     padding: 7px 12px 8px 0;
@@ -1306,7 +1315,7 @@ img {
   .nav-secondary-all__title,
   .nav-secondary-all__title-link,
   .nav-secondary-all__section {
-    font-size: 21px;
+    font-size: 20px;
   }
   .nav-secondary-all {
     margin-bottom: 0;
