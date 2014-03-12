@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <style>
 body {
   overfldow: hidden
@@ -18,7 +20,10 @@ body {
   }
 
 </style>
-
+<div class="blah">
+  <p>hello</p>
+<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
+</div>
 <img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
 <img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
 <img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
@@ -27,103 +32,288 @@ body {
 <img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
 <img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
 <img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
-<img  data-src="http://e2.365dm.com/14/02/16-9/#{20}/day-cricket-ashley-giles-england_3091240.jpg?20140227123341" class="lazy-load">
-
+<script src="/js/shims/add-event-listener.js"></script>
 <script>
 
-var tolerance = 100;
 
-//get a live node list which auto updates as images are added to the page
-var lazyImages = document.getElementsByClassName ? document.getElementsByClassName('lazy-load') : document.getElementsByTagName('img');
+// Event.prototype.matchesTarget = function(selector){
 
-document.currentBreakPoint = 5;
-function isInViewPort(element){
+//   return true;
+//   var target = this.target;
 
-  var rect = element.getBoundingClientRect();
+//   var matchesSelector = 
+//   target.matches || 
+//   target.webkitMatchesSelector || 
+//   target.mozMatchesSelector || 
+//   target.msMatchesSelector;
+
+//   while (target && target !== document) {
+//     if (matchesSelector.call(target, selector)) {
+//       return true;
+//     } else {
+//       target = target.parentNode;
+//     }
+//   }
+
+//   return false;
+
+// };
+
+document.querySelector('.blah').addEventListener('click', function(e){
+  
+  if(e.matchesTarget('img')){
+    alert(1);
+  }
+
+}, false)
+
+
+function LazyImages(options){
+
+  var defaults = {
+    tolerance: 100,
+    className: 'lazy-load',
+    timeOut: 1000
+  }
+
+  // create merged options object
+  this.options = mergeObject(defaults, options);
+
+  // set a live node list of images - the browser will automamtically update this list
+  // for IE8, fallback to getElementsByTagName, which is also live
+  this.options.images = document.getElementsByClassName ? document.getElementsByClassName(this.options.className) : document.getElementsByTagName('img');
+
+  // check if the element is visible on the page
+  this.isInViewPort = function(element){
+
+    var rect = element.getBoundingClientRect();
+
+    if(rect.width === 0){
+
+      // element display is set to none
+      return false;
+
+    }
+
+    // check elements visibility in the vewport top and bottom
+    if((window.innerHeight - rect.top) < (0 - this.options.tolerance)){
+
+      // element off the bottom
+      return false;
+    }
+
+    if(rect.bottom < (0 - this.options.tolerance)){
+
+      // element off the top
+      return false;
+    }
+
+    return true;
+
+  }
+
+  // can the page for images
+  this.scan = function(nodeList){
+
+    for(var i = -1; ++i<nodeList.length;){
+
+      var image = nodeList[i];
+
+      if(this.isInViewPort(image)){
+        this.loadImage(image);
+      }
+
+      else {
+        continue;
+      }
+
+    }
+ 
+    setTimeout(function(){
+
+      window.requestAnimationFrame(this.scan.bind(this, this.options.images))
+    
+    }.bind(this), this.options.timeOut)
+
+  }
+
+ 
+
+  // load an image
+  this.loadImage = function(image){
+    
+    var dataSrc = image.getAttribute('data-src');
+
+    // image has no data-src or doesnt have the lazy load class
+    if(!dataSrc || !image.classList.contains('lazy-load')){
+      return;
+    }
+
+    function loaded(el){
+      el.classList.remove(this.options.className);
+    }
+
+    // set the onload handler
+    image.onload = loaded.bind(this, image);
+
+    // use a regex to grab the suggested breakpoint for the image
+    var suggestedBreakPoint = dataSrc.match(/\#{(.+)}/);
+
+    // there's a suggested breakpoint token, so swap the path in the data-src so it matches the current breakpoint
+    if(suggestedBreakPoint){
+
+      // breakpoint token is the pattern matche, eg #{20} or #{30}
+      var breakPointToken = suggestedBreakPoint[0];
+
+      // breakpoint is the the breakpoint above as a number
+      var breakPoint = parseInt(suggestedBreakPoint[1], 10);
+
+      // if the current breakpoint is more than the suggested one then:
+      // - the image suggested is bigger than the maximum width of the current breakpoint
+      // - use an image that is the same size as the current breakpoint instead
+      if(document.currentBreakPoint > breakPoint){
+        breakPoint = document.currentBreakPoint;
+      }
+      
+      // replace the breakpoint token in the path with the numerical breakpoint
+      dataSrc = dataSrc.replace(breakPointToken, breakPoint);
+      
+    }
+
+    image.src = dataSrc;
+
+  }
+
+  function mergeObject(obj1, obj2) {
+
+    var output = {};
+
+    if(!obj2) {
+      return obj1;
+    }
+
+    for (var prop in obj1) {
+      if (prop in obj2) {
+          output[prop] = obj2[prop];
+      } else {
+          output[prop] = obj1[prop];
+      }
+    }
+
+    return output;
+  }
+
+  this.scan(this.options.images);
+
+};
+
+new LazyImages({
+  tolerance: 100
+});
+
+
+// var tolerance = 100;
+
+// // get a live node list which auto updates as images are added to the page
+// // A few older browsers dont support getElementsByClassName so fall back to getElementsByTagName
+// var lazyImages = document.getElementsByClassName ? document.getElementsByClassName('lazy-load') : document.getElementsByTagName('img');
+
+// document.currentBreakPoint = 5;
+
+// function isInViewPort(element){
+
+//   var rect = element.getBoundingClientRect();
 
   
-  if(element.height === 0){
+//   if(rec.width === 0){
 
-    // display set to none
-    return false;
-  }
-  // check elements visisbility in the vewport top and bottom
-  if((window.innerHeight - rect.top) < (0 - tolerance)){
+//     // display is set to none
+//     return false;
 
-    // off the bottom
-    return false;
-  }
+//   }
 
-  if(rect.bottom < (0 - tolerance)){
+//   // check elements visisbility in the vewport top and bottom
+//   if((window.innerHeight - rect.top) < (0 - tolerance)){
 
-    // off the top
-    return false;
-  }
+//     // off the bottom
+//     return false;
+//   }
 
-  return true;
-}
+//   if(rect.bottom < (0 - tolerance)){
 
-function switchSrc(image, newSrc){
+//     // off the top
+//     return false;
+//   }
 
-  image.src = newSrc;
-}
+//   return true;
+// }
 
-
-function loadImage(image){
+// function loadImage(image){
 
 
-  var dataSrc = image.getAttribute('data-src');
+//   var dataSrc = image.getAttribute('data-src');
 
-  if(!dataSrc || !image.classList.contains('lazy-load')){
-    return;
-  }
+//   // image has no data-src or doesnt have the lazy load class
+//   if(!dataSrc || !image.classList.contains('lazy-load')){
+//     return;
+//   }
 
-  image.onload = function(){
-    this.classList.remove('lazy-load')
-  }
+//   // set the onload handler
+//   image.onload = function(){
+//     this.classList.remove('lazy-load')
+//   }
 
-  var suggestedBreakPoint = dataSrc.match(/\#{(.+)}/);
+//   // use a regex to grab the suggested breakpoint for the image
+//   var suggestedBreakPoint = dataSrc.match(/\#{(.+)}/);
 
-  // there's a suggested breakpoint token, so swap the path in the data-src to one closer to current breakpoint
-  if(suggestedBreakPoint){
+//   // there's a suggested breakpoint token, so swap the path in the data-src to one closer to current breakpoint
+//   if(suggestedBreakPoint){
 
-    var breakPointToken = suggestedBreakPoint[0];
-    var breakPoint = parseInt(suggestedBreakPoint[1], 10);
+//     // breakpoijt toke is the patter matches, eg #{20} or #{30}
+//     var breakPointToken = suggestedBreakPoint[0];
 
-    if(document.currentBreakPoint > breakPoint){
-      breakPoint = document.currentBreakPoint;
-    }
-     
-    dataSrc = dataSrc.replace(breakPointToken, breakPoint);
+//     // break point is the the breakpoint above as a number
+//     var breakPoint = parseInt(suggestedBreakPoint[1], 10);
+
+//     // if the current breakpoint is more than the suggested one then:
+//     // - the image suggested is bigger than the maximum width of the current breakpoint
+//     // - use an image that is the same size as the current breakpoint instead
+//     if(document.currentBreakPoint > breakPoint){
+//       breakPoint = document.currentBreakPoint;
+//     }
     
-  }
+//     // replace the breakpoint token in the path with the numerical breakpoint
+//     dataSrc = dataSrc.replace(breakPointToken, breakPoint);
+    
+//   }
 
-  switchSrc(image, dataSrc);
+//   image.src = dataSrc;
 
+// }
 
-}
+// function scan(){
 
-function scan(){
+//   for(var i = -1; ++i<lazyImages.length;){
 
-  for(var i = -1; ++i<lazyImages.length;){
+//     var image = lazyImages[i];
 
-    var image = lazyImages[i];
+//     if(isInViewPort(image)){
+//       loadImage(image);
+//     }
 
-    if(isInViewPort(image)){
-      loadImage(image);
-    }
+//     else {
+//       continue;
+//     }
 
-    else {
-      continue;
-    }
-
-  }
+//   }
  
-  setTimeout(function(){
-    window.requestAnimationFrame(scan)
-  }, 1000)
+//   setTimeout(function(){
+//     window.requestAnimationFrame(scan)
+//   }, 1000)
 
-}
+// }
 
-scan();
+// scan();
 </script>
+
+</html>

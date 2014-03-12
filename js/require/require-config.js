@@ -11,7 +11,9 @@ require.config({
     "accordian": "modules/accordian",
     "widget-lite": "modules/widget-lite",
     "trigger-event": "modules/trigger-event",
-    "tabs-lite": "modules/tabs-lite"
+    "tabs-lite": "modules/tabs-lite",
+    "postpone-load": "modules/postpone-load",
+    "delegate-matches": "modules/delegate-matches"
 
 	}
 });

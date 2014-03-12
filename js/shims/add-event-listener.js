@@ -21,6 +21,7 @@
       e.cancelBubble = true;
     };
 
+
   }
 
   function addEventListener(type, listener) {
@@ -54,5 +55,4 @@
   Event.prototype.stopPropagation = function() { this.cancelBubble = true; };
 
 })(window, document);
-
 
