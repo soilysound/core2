@@ -12,31 +12,11 @@
 
     // assume connection is 'slow'
     // then try various methods to ascertain if the connection is 'fast'
-    
-    var lowBandwidth = (function(){
+    var string = "";
 
-      // try using the navigator.connection object
-      var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;  
+    var lowBandwidth = true;
 
-      if(connection){
-
-        // if were on a metered connection then return false
-        if(connection.metered === true){
-          return true;
-        }
-
-        // newer browsers contain a connection.bandwidth property, if it is higher than 1 meg a second, return false
-        if(connection.bandwidth && connection.bandwidth > 1){
-          return false;
-        }
-
-        // older android implements a non standard connection.type that returns 1 for ethernet and 2 for wifi
-        // we'll regard 1 and 2 as fast connections and return true
-        if(connection.type && (connection.type === 1 || connection.type === 2)){
-          return false;
-
-        }
-      }
+     (function(){
 
       // try using window.performance to estimate connection speed
       if(window.performance){
@@ -46,16 +26,55 @@
         var end = perf.timing.responseStart; // first byte received
         var totalTime = end - start;
 
+        string += 'perfspeed: ' + totalTime + ' <br>';
+
+
         // if total time is less than 500ms, assume this is a fast connection
         if(totalTime < 500){
-          return false;
+          lowBandwidth = false;
         }
       }
+
+      // try using the navigator.connection object
+      var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;  
+
+      if(connection){
+
+        // if were on a metered connection then return false
+        if(connection.metered === true){
+          string += 'Metred: true <br>';
+          lowBandwidth = true;
+        }
+
+        // newer browsers contain a connection.bandwidth property, if it is higher than 1 meg a second, return false
+        if(connection.bandwidth){
+          string += 'Bandwidth: ' + connection.bandwidth + ' <br>';
+          lowBandwidth =  (connection.bandwidth < 1);
+        }
+
+        // older android implements a non standard connection.type that returns 1 for ethernet and 2 for wifi
+        // we'll regard 1 and 2 as fast connections and return true
+        // "UNKNOWN": "0",
+        // "ETHERNET": "1",
+        // "WIFI": "2",
+        // "CELL_2G": "3",
+        // "CELL_3G": "4"
+        if(connection.type){
+          string += 'type: ' + connection.type + ' <br>';
+          lowBandwidth = !(connection.type === 1 || connection.type === 2);
+
+        }
+      }
+
+      
 
       // we assume false if none of the above return true
       return true;
 
     })();
+
+    document.body.innerHTML = string;
+    document.body.style.cssText = "font-size: 30px; color:white; font-family: sans-serif";
 
 
 

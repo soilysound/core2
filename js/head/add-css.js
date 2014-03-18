@@ -1,9 +1,6 @@
-/**
- * ADD CSS
- *
- * Dynamically set a css string
- * Allows the set css values to be persistent using localstorage
- */
+// ADD CSS
+// dymanically add a persistent css string into the head
+// css is stored in locastorage until deleted
 
 ;(function(window, document){
 
@@ -12,37 +9,29 @@
     var cssRules = {};
 
     //get existing persistent rules
-    if(window.localStorage.getItem('cssjs')){
-      cssRules = JSON.parse( window.localStorage.getItem('cssjs') );
+    if(window.localStorage.getItem('jscss')){
+      cssRules = JSON.parse( window.localStorage.getItem('jscss'));
     }
 
     //create and add style tag
     var style = document.createElement('style');
-    style.id = "cssjs";
+    style.id = "jscss";
     document.getElementsByTagName('head')[0].appendChild(style);
 
-    /**
-    * Add a css string to the page head
-    * @param {string} id      unique id for css string
-    * @param {string} css string  css values to add
-    * @param {boolean} persist    set true to persist values in localstorage
-    */
+    // add a persistsnt css string to the head
+    // options.id = unique id
+    // options.css = css string
+    function addCss(options){
 
-    function addCss(id, cssString, persist){
-
-      if(id in cssRules === false || cssRules[id] !== cssString){
-
-        cssRules[id] = cssString;
-        writeCss();
-
+      if(options.id in cssRules === false || cssRules[options.id] !== css){
+        cssRules[options.id] = options.css;
       }
+
+      writeCss();
+
     }
 
-    /**
-    * Remove css by id reference
-    * @param  {string}    id id of css string
-    */
-
+    // remove saved css string by id reference
     function removeCss(id){
 
       if(id in cssRules){
@@ -53,10 +42,7 @@
       writeCss();
     }
 
-    /**
-    * Write the css string into the style tag
-    */
-
+    // write the css string into the style tag
     function writeCss(){
 
       var css = createCssString();
@@ -69,12 +55,7 @@
       }
     }
 
-
-    /**
-    * parses an object of css strings into 1 string
-    * @return {string} css string
-    */
-
+    // create 1 css string from all the saved css rules
     function createCssString(){
 
       var css = '';
@@ -89,8 +70,9 @@
 
     //write any persistent rules to localstorage as the page unloads
     window.onbeforeunload =  function(){
-      //@TODO - this doesnt work properly
-      //window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+    
+      // this doesnt work properly
+      window.localStorage.setItem('jscss', JSON.stringify(cssRules));
 
     };
 

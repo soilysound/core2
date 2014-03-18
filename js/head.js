@@ -418,12 +418,9 @@ if (objCtr.defineProperty) {
 String.prototype.toDash = function(){
   return this.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
 };
-;/**
- * ADD CSS
- *
- * Dynamically set a css string
- * Allows the set css values to be persistent using localstorage
- */
+;// ADD CSS
+// dymanically add a persistent css string into the head
+// css is stored in locastorage until deleted
 
 ;(function(window, document){
 
@@ -432,37 +429,29 @@ String.prototype.toDash = function(){
     var cssRules = {};
 
     //get existing persistent rules
-    if(window.localStorage.getItem('cssjs')){
-      cssRules = JSON.parse( window.localStorage.getItem('cssjs') );
+    if(window.localStorage.getItem('jscss')){
+      cssRules = JSON.parse( window.localStorage.getItem('jscss'));
     }
 
     //create and add style tag
     var style = document.createElement('style');
-    style.id = "cssjs";
+    style.id = "jscss";
     document.getElementsByTagName('head')[0].appendChild(style);
 
-    /**
-    * Add a css string to the page head
-    * @param {string} id      unique id for css string
-    * @param {string} css string  css values to add
-    * @param {boolean} persist    set true to persist values in localstorage
-    */
+    // add a persistsnt css string to the head
+    // options.id = unique id
+    // options.css = css string
+    function addCss(options){
 
-    function addCss(id, cssString, persist){
-
-      if(id in cssRules === false || cssRules[id] !== cssString){
-
-        cssRules[id] = cssString;
-        writeCss();
-
+      if(options.id in cssRules === false || cssRules[options.id] !== css){
+        cssRules[options.id] = options.css;
       }
+
+      writeCss();
+
     }
 
-    /**
-    * Remove css by id reference
-    * @param  {string}    id id of css string
-    */
-
+    // remove saved css string by id reference
     function removeCss(id){
 
       if(id in cssRules){
@@ -473,10 +462,7 @@ String.prototype.toDash = function(){
       writeCss();
     }
 
-    /**
-    * Write the css string into the style tag
-    */
-
+    // write the css string into the style tag
     function writeCss(){
 
       var css = createCssString();
@@ -489,12 +475,7 @@ String.prototype.toDash = function(){
       }
     }
 
-
-    /**
-    * parses an object of css strings into 1 string
-    * @return {string} css string
-    */
-
+    // create 1 css string from all the saved css rules
     function createCssString(){
 
       var css = '';
@@ -509,8 +490,9 @@ String.prototype.toDash = function(){
 
     //write any persistent rules to localstorage as the page unloads
     window.onbeforeunload =  function(){
-      //@TODO - this doesnt work properly
-      //window.localStorage.setItem('jscss', JSON.stringify(persistedRules));
+    
+      // this doesnt work properly
+      window.localStorage.setItem('jscss', JSON.stringify(cssRules));
 
     };
 
@@ -521,8 +503,7 @@ String.prototype.toDash = function(){
     window.SKY_SPORTS.addCss = addCss;
     window.SKY_SPORTS.removeCss = removeCss;
 
-})(window, document);
-;/**
+})(window, document);;/**
  * BREAKPOINTS
  *
  * Sets the current breakpoint as a global variable 'document.currentBreakPoint'.
@@ -679,260 +660,259 @@ String.prototype.toDash = function(){
 })(window, document);
 
 
-;/**
- * DEVICE
- *
- * Gather information about the users device
- * Sets the browser or device and version if relevent
- * Test for pertinent browser features
- * Exposes the current css breakpoint
-*/
-
-(function(window, document){
+;(function(window, document){
 
 	window.SKY_SPORTS = window.SKY_SPORTS || {};
 
-	var docEl = document.documentElement;
+	function getUa(ua){
 
-	//feature detection
-	function feature(){
+    function version(regex){
 
-		var shim = document.createElement('shim');
-
-		shim.style.cssText = 'width:10vw;-webkit-animation-name:xxx;-moz-animation-name:xxx;animation-name:xxx;-webkit-appearance:none';
-
-    //determine correct js animation start event name
-		var animationCandidates = {
-      'webkitAnimation':'webkitAnimationStart',
-      'mozAnimation':'mozAnimationStart',
-      'animation':'animationstart',
-      'msAnimation':'MSAnimationStart'
-    };
-
-    //create shim element
-    var animationEventName = false;
-
-    //test animation name candidates in shim element and set transitionPrefix to the match
-    for(var property in animationCandidates) {
-      if(property in shim.style){
-        animationEventName = animationCandidates[property];
-      }
+      return parseFloat(ua.match(regex)[1]);
     }
 
-		return {
-			viewportUnits: !!shim.style.width,
-			cssAnimations: !!(shim.style.animationName || shim.style.webkitAnimationName || shim.style.mozAnimationName),
-			touch:('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0),
-      animationEvent:animationEventName
-    };
+    // get IE version
+    var isIE = (function() { if (new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) !== null) {
+      return parseFloat( RegExp.$1 ); } else { return false;}
+    })();
+
+    // IE11 and above
+    var ie11Plus = ua.match(/rv\:([1-9][1-9]\.[0-9])/);
+    if(ie11Plus){
+      isIE = parseFloat(ie11Plus[1]);
+    }
+
+    // get mobile browsers
+    var isIpad = ua.match(/iPad/);
+    var isIphone = ua.match(/iP/);
+    var isAndroid = ua.match(/android/i);
+    var isWindowsPhone = ua.match(/windows phone/i);
+    var o = {classList: ''};
+    
+    if(isWindowsPhone){
+
+      o = {
+        mobile: true,
+        windowsphone: true,
+        name: 'windowsphone',
+        version: version(/os ([0-9]\.[0-9])/i)
+      };
+
+      o.classList = [o.name, o.name + o.version, 'mobile'].join(' ');
+      return o;
+    
+    }
+
+    if (isIE){
+
+      o = {
+        msie: true,
+        name: 'msie',
+        version: isIE
+      };
+
+      o.classList = [o.name, o.name + o.version].join(' ');
+      return o;
+    
+    }
+
+    if (isIpad || isIphone){
+
+      o = {
+        ios: true,
+        name: 'ios',
+        device: !!isIpad ? 'ipad' : 'iphone',
+        mobile: true,
+        version: version(/version\/([1-9]\.[0-9])/i)
+      };
+
+      o.classList = [o.name, o.name + o.version, o.device, 'mobile'].join(' ');
+      return o;
+    
+    }
+
+
+    if (isAndroid){
+
+      o = {
+        android: true,
+        name: 'android',
+        mobile: true,
+        version: version(/version\/([1-9]\.[0-9])/i)
+      };
+
+      o.classList = [o.name, o.name + o.version, 'mobile'].join(' ');
+      return o;
+    }
+
+  return o;
+
+}
+
+
+function featureDetect(deviceOb, shim){
+
+
+  function parse(feature, isPresent){
+
+    deviceOb.classList += isPresent ? ' ' + feature : ' no-' + feature;
+    return isPresent;
   }
 
-	//get device
-	function getDevice(){
+  // add some styles representing the features we're testing for
+  shim.style.cssText = "-webkit-animation-name:shim;animation-name:shim;-moz-animation-name:shim;width:10vw";
 
-		var ua = navigator.userAgent;
+  // touch screen
+  deviceOb.hasTouch = parse('touch', ('ontouchstart' in window) || ('DocumentTouch' in window) && doc instanceof window.DocumentTouch);
 
-		var isIE = (function() { if (new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) !== null) {
-			return parseFloat( RegExp.$1 ); } else { return false;}
-		})();
+  // svg
+  deviceOb.hasSvg = parse('svg', !!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"));
 
-		var isChrome = !!window.chrome;
-		var isFirefox = ua.match(/firefox/i);
-		var isSafari = ua.match(/safari/i);
-		var isIpad = ua.match(/iPad/);
-		var isIphone = ua.match(/iP/);
-		var isAndroid = ua.match(/android/i);
+  // css animations
+  deviceOb.hasCssAnimations = parse('cssanimations', !!(shim.style.animationName || shim.style.webkitAnimationName || shim.style.mozAnimationName));
 
-		if (isIE){
+  // viewport units
+  deviceOb.hasVpUnits = parse('vpunits', !!shim.style.width);
 
-			return {
-				msie:true,
-				version:isIE,
-				//legacy ie is IE versions < 10
-				legacyie:isIE < 10
-			};
-		}
+  //determine correct js animation start event name
+  var animationCandidates = {
+    'webkitAnimation':'webkitAnimationStart',
+    'mozAnimation':'mozAnimationStart',
+    'animation':'animationstart',
+    'msAnimation':'MSAnimationStart'
+  };
 
-		if (isIpad){
+  var animationEventName = false;
 
-			return {
-				ipad:true,
-				ios: true,
-				mobile: true,
-				version:6
-			};
-		}
+  //test animation name candidates in shim element and set transitionPrefix to the match
+  for(var property in animationCandidates) {
+    if(property in shim.style){
+      deviceOb.animationEventName = animationCandidates[property];
+    }
+  }
 
-		if (isIphone){
+  return deviceOb;
 
-			return {
-				iphone:true,
-				ios: true,
-				mobile: true,
-				version:6
-			};
-		}
+}
 
-		if (isAndroid){
+// create device object populated with us details
+var device = getUa(navigator.userAgent);
 
-			return {
-				android:true,
-				mobile:true
-			};
-		}
+// add feature details to device object
+var features = featureDetect(device, document.createElement('div'));
 
-		if (isChrome){
+// add classList to html tag
+document.documentElement.className = device.classList;
 
-			return {
-				chrome: true
-			};
-		}
 
-		if (isFirefox){
-
-			return {
-				firefox: true
-			};
-		}
-
-		if (isSafari){
-
-			return {
-				safari: true
-			};
-		}
-
-		return {
-			
-		}
-
-	}
-
-	SKY_SPORTS.hasFeature = feature();
-	SKY_SPORTS.isDevice = getDevice();
-
-	for(var device in SKY_SPORTS.isDevice){
-
-		if(device === 'version'){
-			docEl.classList.add('version-' + SKY_SPORTS.isDevice[device]);
-		}
-		else {
-			docEl.classList.add(device);
-		}
-	}
-
-	for(var item in SKY_SPORTS.hasFeature){
-
-		docEl.classList.add(!!SKY_SPORTS.hasFeature[item] ? item.toDash() : 'no-' + item.toDash());
-	}
-
+SKY_SPORTS.device = device;
 
 })(window, document);
 
-;(function(window, document){
+;// (function(window, document){
 
-  //@TODO - change the references to images to just 'elements' since this works with both
-  //
-  'use strict';
+//   //@TODO - change the references to images to just 'elements' since this works with both
+//   //
+//   'use strict';
 
-  //the amount of leeway to give the viewport before it regards an image is out of view
-  // eg -100 means it will only regard it as not in viewport if its more than 100px out of the viewport
-  var tolerance = -100;
+//   //the amount of leeway to give the viewport before it regards an image is out of view
+//   // eg -100 means it will only regard it as not in viewport if its more than 100px out of the viewport
+//   var tolerance = -100;
 
-  /**
-   * Get a *live* node list of images - the browser can automatically update this list for us
-   */
-  var images = document.getElementsByClassName ? document.getElementsByClassName('postpone-load') : document.getElementsByTagName('img');
+//   /**
+//    * Get a *live* node list of images - the browser can automatically update this list for us
+//    */
+//   var images = document.getElementsByClassName ? document.getElementsByClassName('postpone-load') : document.getElementsByTagName('img');
 
-  /**
-   * Check if image is out of the viewport
-   */
-  function outOfView(image){
+//   /**
+//    * Check if image is out of the viewport
+//    */
+//   function outOfView(image){
 
-    var coords = image.getBoundingClientRect();
-    return !(coords.top + coords.height > tolerance) || !(window.innerHeight - coords.top > tolerance) || !(coords.left + coords.width > 0) || !(window.innerWidth - coords.left > 0);
+//     var coords = image.getBoundingClientRect();
+//     return !(coords.top + coords.height > tolerance) || !(window.innerHeight - coords.top > tolerance) || !(coords.left + coords.width > 0) || !(window.innerWidth - coords.left > 0);
 
-  }
+//   }
 
-  function loadImage(){
-    this.classList.remove('postpone-load');
-  }
+//   function loadImage(){
+//     this.classList.remove('postpone-load');
+//   }
 
-  function swapSrc(src, lookup){
-    //get token and replace with correct size for this breakpoint
-    var match = (/#\{(.+)\}/).exec(src),
-    bp;
+//   function swapSrc(src, lookup){
+//     //get token and replace with correct size for this breakpoint
+//     var match = (/#\{(.+)\}/).exec(src),
+//     bp;
 
-    if(match){
-      bp = parseInt(match[1], 10);
-      match = match[0];
+//     if(match){
+//       bp = parseInt(match[1], 10);
+//       match = match[0];
 
 
-      if(document.currentBreakPoint > bp){
-        src = src.replace(match, document.currentBreakPoint);
-      }
+//       if(document.currentBreakPoint > bp){
+//         src = src.replace(match, document.currentBreakPoint);
+//       }
 
-      else {
-        src = src.replace(match, bp);
-      }
+//       else {
+//         src = src.replace(match, bp);
+//       }
 
-    }
-    return src;
-  }
+//     }
+//     return src;
+//   }
 
-  /**
-   * Scan list of images and load if in view
-   */
-  function scan(){
+//   /**
+//    * Scan list of images and load if in view
+//    */
+//   function scan(){
 
-    for(var i = -1;++i<images.length;){
+//     for(var i = -1;++i<images.length;){
 
-      var image = images[i];
+//       var image = images[i];
 
-      //determine whether its a lazy module rather than an image
-      var isLazyModule;// = !image.nodeName.match(/img/g);
+//       //determine whether its a lazy module rather than an image
+//       var isLazyModule;// = !image.nodeName.match(/img/g);
 
-      //check if image is out of view, if not then swap src and remove from loop
-      if(outOfView(image)){
-        continue;
-      }
+//       //check if image is out of view, if not then swap src and remove from loop
+//       if(outOfView(image)){
+//         continue;
+//       }
 
-      if(isLazyModule){
-        image.classList.remove('postpone-load');
-        image.classList.add('callfn');
-        continue;
-      }
+//       if(isLazyModule){
+//         image.classList.remove('postpone-load');
+//         image.classList.add('callfn');
+//         continue;
+//       }
 
-      //its an image, so get image attributes
-      var attrs = image.dataset;
-      var src = attrs.imageSrc;
+//       //its an image, so get image attributes
+//       var attrs = image.dataset;
+//       var src = attrs.imageSrc;
       
-      //if the image has no data-image then remove from loop and skip
-      if(!src){
-        image.classList.remove('postpone-load');
-        continue;
-      }
+//       //if the image has no data-image then remove from loop and skip
+//       if(!src){
+//         image.classList.remove('postpone-load');
+//         continue;
+//       }
 
-      else {
+//       else {
 
-        // use 3 methods to ensure onload is called in the various scenarios/browsers
-        image.onload = loadImage;
-        // //image.onerror = errorImage;
-        // image.naturalWidth > 0 && loadImage.call(image);
-        // image.readyState === 'complete' && loadImage.call(image);
-        image.src = swapSrc(src, attrs.lookup);
-      }
-    }
+//         // use 3 methods to ensure onload is called in the various scenarios/browsers
+//         image.onload = loadImage;
+//         // //image.onerror = errorImage;
+//         // image.naturalWidth > 0 && loadImage.call(image);
+//         // image.readyState === 'complete' && loadImage.call(image);
+//         image.src = swapSrc(src, attrs.lookup);
+//       }
+//     }
 
-    window.setTimeout(function(){
-      window.requestAnimationFrame(scan);
-    }, 1000);
-  }
+//     window.setTimeout(function(){
+//       window.requestAnimationFrame(scan);
+//     }, 1000);
+//   }
 
-  scan();
+//   scan();
 
 
-})(window, document);
+// })(window, document);
 ;String.prototype.toCamel = function(){
   return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
 };
