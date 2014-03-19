@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+      background: green
+    }
+      </style>
+    <link rel="stylesheet" href="/_sandbox/10.css" disabled lazyload data-min="801" data-max="1852" media="(min-width:801px) and (max-width:1852px)">
+    <link rel="stylesheet" href="/_sandbox/20.css" disabled lazyload data-min="601" data-max="800" media="(min-width:601px) and (max-width:800px)">
+    <link rel="stylesheet" href="_sandbox/30.css" disabled lazyload data-min="1" data-max="600" media="(max-width:600px)">
+    
+    <script>
+
+    var maxWidth = Math.max(screen.width, screen.height);
+    var maxWidth = Math.max(window.innerWidth, window.innerHeight)
+
+    var stylesheets = document.getElementsByTagName('link');
+
+    for(var i = -1;++i<stylesheets.length;){
+      var min = parseInt(stylesheets[i].getAttribute('data-min'));
+      if(maxWidth > min){
+        stylesheets[i].removeAttribute('disabled');
+      }
+    }
+
+    </script>
+
+  </head>
+  <body>
+ <p>Im some content in the body</p>
+ <script>
+ window.onload = function(){
+  document.body.innerHTML = "stylesheets loaded: " + (document.styleSheets.length) + "<br> Max width: " + maxWidth;
+ }
+
+ </script>
+  </body>
+</html>

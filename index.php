@@ -14,7 +14,6 @@
   <meta name="viewport" id="viewport" content="width=device-width,maximum-scale=1,minimum-scale=1">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="format-detection" content="telephone=no">
-  <link rel="stylesheet" href="/css/core.css" type="text/css">
   <!--[if IE 8]>
   <link rel="stylesheet" type="text/css" href="/css/ie8.css">
   <![endif]-->
@@ -321,6 +320,8 @@
 
 </div>
 <?php include "components/site-footer.html"; ?>
+  <link rel="stylesheet" href="/css/core.css" type="text/css">
+
 <script src="/js/site.js"></script>
 <script>
   window.setTimeout(function(){
